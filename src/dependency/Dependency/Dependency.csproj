@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+		<Authors>Andrei Sergeev, Pavel Moskovoy</Authors>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<Description>PrimeFuncPack: A Functional Programming Pack for .NET</Description>
+		<Copyright>Copyright © 2020 Andrei Sergeev, Pavel Moskovoy</Copyright>
+		<RootNamespace>PrimeFuncPack</RootNamespace>
+		<AssemblyName>EarlyFuncPack.Dependency</AssemblyName>
+		<Version>0.0.1-preview.1.8</Version>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="PrimeFuncPack.Primitives" Version="1.0.*" />
+	</ItemGroup>
+
+</Project>

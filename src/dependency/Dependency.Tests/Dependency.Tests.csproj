@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<IsPackable>false</IsPackable>
+		<Authors>Andrei Sergeev, Pavel Moskovoy</Authors>
+		<Description>PrimeFuncPack: A Functional Programming Pack for .NET</Description>
+		<Copyright>Copyright © 2020 Andrei Sergeev, Pavel Moskovoy</Copyright>
+		<RootNamespace>PrimeFuncPack.Tests</RootNamespace>
+		<AssemblyName>EarlyFuncPack.Dependency.Tests</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="EarlyFuncPack.Dependency" Version="*-*" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
+		<PackageReference Include="PrimeFuncPack.UnitTest.Data" Version="2.0.5" />
+		<PackageReference Include="PrimeFuncPack.UnitTest.Moq" Version="1.0.*" />
+		<PackageReference Include="xunit" Version="2.*" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.*">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="coverlet.collector" Version="1.*">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+
+</Project>

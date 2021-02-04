@@ -34,7 +34,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void ToThird_ExpectResolvedValueAreSameAsSecondSource(
+        public void ToThird_ExpectResolvedValueAreSameAsThirdSource(
             RecordType thirdSource)
         {
             var source = Dependency.Create(_ => LowerSomeTextStructType, _ => PlusFifteenIdRefType, _ => thirdSource);

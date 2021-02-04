@@ -7,16 +7,16 @@ namespace PrimeFuncPack
     partial class Dependency<T1, T2, T3>
     {
         public Dependency<TR> Fold<TR>(
-            Func<IServiceProvider, T1, T2, T3, TR> map)
+            Func<IServiceProvider, T1, T2, T3, TR> fold)
             =>
             InternalFold(
-                map ?? throw new ArgumentNullException(nameof(map)));
+                fold ?? throw new ArgumentNullException(nameof(fold)));
         
         private Dependency<TR> InternalFold<TR>(
-            Func<IServiceProvider, T1, T2, T3, TR> map)
+            Func<IServiceProvider, T1, T2, T3, TR> fold)
             =>
             Dependency<TR>.InternalCreate(
-                sp => map.Invoke(
+                sp => fold.Invoke(
                     sp,
                     firstResolver.Invoke(sp),
                     secondResolver.Invoke(sp),

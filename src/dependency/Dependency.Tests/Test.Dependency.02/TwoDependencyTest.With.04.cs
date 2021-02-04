@@ -7,13 +7,13 @@ using static PrimeFuncPack.UnitTest.TestData;
 
 namespace PrimeFuncPack.Tests
 {
-    partial class OneDependencyTest
+    partial class TwoDependencyTest
     {
         [Fact]
         public void WithTwo_OtherIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MinusFifteenIdNullNameRecord);
-            var other = null as Dependency<StructType, object?>;
+            var source = Dependency.Create(_ => SomeTextStructType, _ => PlusFifteenIdRefType);
+            var other = null as Dependency<RecordType?, DateTime>;
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.With(other!));
@@ -22,12 +22,14 @@ namespace PrimeFuncPack.Tests
         }
 
         [Theory]
-        [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
+        [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
         public void WithTwo_OtherIsNotNull_ExpectResolvedValuesAreSameAsSourceAndOther(
-            StructType otherLast)
+            RefType otherLast)
         {
-            var sourceValue = MinusFifteenIdSomeStringNameRecord;
-            var source = Dependency.Create(_ => sourceValue);
+            var firstSource = ZeroIdNullNameRecord;
+            var secondSource = SomeTextStructType;
+
+            var source = Dependency.Create(_ => firstSource, _ => secondSource);
 
             var otherFirst = PlusFifteenIdRefType;
             var other = Dependency.Create(_ => otherFirst, _ => otherLast);
@@ -35,7 +37,7 @@ namespace PrimeFuncPack.Tests
             var actual = source.With(other);
             var actualValue = actual.Resolve();
 
-            var expectedValue = (sourceValue, otherFirst, otherLast);
+            var expectedValue = (firstSource, secondSource, otherFirst, otherLast);
             Assert.Equal(expectedValue, actualValue);
         }
     }

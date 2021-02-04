@@ -54,9 +54,7 @@ namespace PrimeFuncPack.Tests
             var sourceSecond = SomeTextStructType;
 
             var actual = Dependency.Create(_ => sourceFirst, _ => sourceSecond, _ => sourceThird);
-
-            var serviceProvider = CreateServiceProvider();
-            var actualValue = actual.Resolve(serviceProvider);
+            var actualValue = actual.Resolve();
 
             var expectedValue = (sourceFirst, sourceSecond, sourceThird);
             Assert.Equal(expectedValue, actualValue);

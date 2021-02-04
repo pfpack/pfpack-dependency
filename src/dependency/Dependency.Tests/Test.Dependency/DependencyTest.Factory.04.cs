@@ -71,9 +71,7 @@ namespace PrimeFuncPack.Tests
             var sourceThird = new object();
 
             var actual = Dependency.Create(_ => sourceFirst, _ => sourceSecond, _ => sourceThird, _ => sourceFourth);
-
-            var serviceProvider = CreateServiceProvider();
-            var actualValue = actual.Resolve(serviceProvider);
+            var actualValue = actual.Resolve();
 
             var expectedValue = (sourceFirst, sourceSecond, sourceThird, sourceFourth);
             Assert.Equal(expectedValue, actualValue);

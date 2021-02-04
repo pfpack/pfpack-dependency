@@ -39,8 +39,7 @@ namespace PrimeFuncPack.Tests
             var sourceFirst = PlusFifteenIdRefType;
             var actual = Dependency.Create(_ => sourceFirst, _ => sourceSecond);
 
-            var serviceProvider = CreateServiceProvider();
-            var actualValue = actual.Resolve(serviceProvider);
+            var actualValue = actual.Resolve();
 
             var expectedValue = (sourceFirst, sourceSecond);
             Assert.Equal(expectedValue, actualValue);

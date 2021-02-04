@@ -89,10 +89,10 @@ namespace PrimeFuncPack.Tests
             var sourceThird = MinusFifteenIdRefType;
             var sourceFourth = MinusFifteenIdNullNameRecord;
 
-            var actual = Dependency.Create(_ => sourceFirst, _ => sourceSecond, _ => sourceThird, _ => sourceFourth, _ => sourceFifth);
+            var actual = Dependency.Create(
+                _ => sourceFirst, _ => sourceSecond, _ => sourceThird, _ => sourceFourth, _ => sourceFifth);
 
-            var serviceProvider = CreateServiceProvider();
-            var actualValue = actual.Resolve(serviceProvider);
+            var actualValue = actual.Resolve();
 
             var expectedValue = (sourceFirst, sourceSecond, sourceThird, sourceFourth, sourceFifth);
             Assert.Equal(expectedValue, actualValue);

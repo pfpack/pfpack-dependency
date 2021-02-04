@@ -23,9 +23,7 @@ namespace PrimeFuncPack.Tests
             RefType? sourceValue)
         {
             var actual = Dependency.Create(_ => sourceValue);
-
-            var serviceProvider = CreateServiceProvider();
-            var actualValue = actual.Resolve(serviceProvider);
+            var actualValue = actual.Resolve();
 
             Assert.Equal(sourceValue, actualValue);
         }

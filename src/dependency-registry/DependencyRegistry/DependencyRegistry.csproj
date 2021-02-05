@@ -22,7 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="EarlyFuncPack.Dependency" Version="0.0.1-preview.1.*" />
+		<PackageReference Include="EarlyFuncPack.Dependency" Version="0.0.1" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.*" />
 	</ItemGroup>
 

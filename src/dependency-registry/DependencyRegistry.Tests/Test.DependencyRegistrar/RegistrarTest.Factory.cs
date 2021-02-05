@@ -5,7 +5,7 @@ using System;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.DependencyRegistry.Tests
 {
     partial class DependencyRegistrarTest
     {

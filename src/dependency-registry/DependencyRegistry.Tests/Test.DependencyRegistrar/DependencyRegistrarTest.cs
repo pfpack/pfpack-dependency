@@ -1,6 +1,6 @@
 #nullable enable
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.DependencyRegistry.Tests
 {
     public sealed partial class DependencyRegistrarTest
     {

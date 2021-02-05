@@ -5,14 +5,14 @@ using System;
 
 namespace PrimeFuncPack
 {
-    public sealed partial class DependencyRegistrator<T>
+    public sealed partial class DependencyRegistrar<T>
         where T : class
     {
         private readonly IServiceCollection services;
 
         private readonly Func<IServiceProvider, T> resolver;
 
-        internal DependencyRegistrator(
+        internal DependencyRegistrar(
             IServiceCollection services,
             Func<IServiceProvider, T> resolver)
         {

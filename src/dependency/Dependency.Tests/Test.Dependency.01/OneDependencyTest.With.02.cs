@@ -13,10 +13,9 @@ namespace PrimeFuncPack.Tests
         public void WithOne_OtherIsNull_ExpectArgumentNullException()
         {
             var source = Dependency.Create(_ => PlusFifteenIdRefType);
-            var other = null as Dependency<StructType>;
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With(other!));
+                () => _ = source.With<StructType>(null!));
             
             Assert.Equal("other", ex.ParamName);
         }

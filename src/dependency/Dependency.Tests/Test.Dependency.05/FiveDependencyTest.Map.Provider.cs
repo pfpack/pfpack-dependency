@@ -19,11 +19,9 @@ namespace PrimeFuncPack.Tests
                 _ => MinusFifteenIdSomeStringNameRecord,
                 _ => new object());
 
-            var mapFirst = null as Func<IServiceProvider, StructType, RefType>;
-
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
-                    mapFirst!,
+                    (Func<IServiceProvider, StructType, RefType>)null!,
                     (_, _) => MinusFifteen,
                     (_, _) => decimal.MaxValue,
                     (_, _) => decimal.MinusOne,
@@ -42,12 +40,10 @@ namespace PrimeFuncPack.Tests
                 _ => MinusFifteenIdSomeStringNameRecord,
                 _ => PlusFifteenIdRefType);
 
-            var mapSecond = null as Func<IServiceProvider, RefType?, RecordType>;
-
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
                     (_, _) => PlusFifteenIdLowerSomeStringNameRecord,
-                    mapSecond!,
+                    (Func<IServiceProvider, RefType?, RecordType>)null!,
                     (_, _) => long.MaxValue,
                     (_, _) => SomeTextStructType,
                     (_, _) => TabString));
@@ -65,13 +61,11 @@ namespace PrimeFuncPack.Tests
                 _ => WhiteSpaceString,
                 _ => PlusFifteen);
 
-            var mapThird = null as Func<IServiceProvider, StructType, RefType>;
-
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
                     (_, _) => WhiteSpaceString,
                     (_, _) => PlusFifteen,
-                    mapThird!,
+                    (Func<IServiceProvider, StructType, RefType>)null!,
                     (_, _) => Zero,
                     (_, _) => new object()));
             
@@ -88,14 +82,12 @@ namespace PrimeFuncPack.Tests
                 _ => SomeTextStructType,
                 _ => EmptyString);
 
-            var mapFourth = null as Func<IServiceProvider, StructType, RecordType>;
-
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
                     (_, _) => SomeTextStructType,
                     (_, _) => decimal.MaxValue,
                     (_, _) => MinusFifteenIdSomeStringNameRecord,
-                    mapFourth!,
+                    (Func<IServiceProvider, StructType, RecordType>)null!,
                     (_, _) => int.MinValue));
             
             Assert.Equal("mapFourth", ex.ParamName);
@@ -111,15 +103,13 @@ namespace PrimeFuncPack.Tests
                 _ => MinusFifteenIdSomeStringNameRecord,
                 _ => PlusFifteenIdRefType);
 
-            var mapFifth = null as Func<IServiceProvider, RefType, decimal?>;
-
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
                     (_, _) => LowerSomeString,
                     (_, _) => MinusFifteenIdRefType,
                     (_, _) => MinusFifteenIdSomeStringNameRecord,
                     (_, _) => long.MaxValue,
-                    mapFifth!));
+                    (Func<IServiceProvider, RefType, decimal?>)null!));
             
             Assert.Equal("mapFifth", ex.ParamName);
         }
@@ -132,7 +122,7 @@ namespace PrimeFuncPack.Tests
             var source = Dependency.Create(
                 _ => MinusFifteen,
                 _ => EmptyString,
-                _ => null as RefType,
+                _ => (RefType?)null,
                 _ => SomeTextStructType,
                 _ => PlusFifteenIdRefType);
 

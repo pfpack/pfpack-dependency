@@ -2,7 +2,7 @@
 
 namespace PrimeFuncPack.Tests
 {
-    public sealed partial class DependencyRegistratorTest
+    public sealed partial class DependencyRegistrarTest
     {
     }
 }

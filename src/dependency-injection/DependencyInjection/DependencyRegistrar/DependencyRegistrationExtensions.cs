@@ -7,7 +7,7 @@ namespace PrimeFuncPack
 {
     public static class DependencyRegistrationExtensions
     {
-        public static DependencyRegistrator<T> ToRegistrator<T>(
+        public static DependencyRegistrar<T> ToRegistrar<T>(
             this Dependency<T> dependency,
             IServiceCollection services)
             where T : class

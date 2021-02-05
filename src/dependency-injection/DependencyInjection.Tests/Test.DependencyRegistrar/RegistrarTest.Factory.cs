@@ -7,13 +7,13 @@ using static PrimeFuncPack.UnitTest.TestData;
 
 namespace PrimeFuncPack.Tests
 {
-    partial class DependencyRegistratorTest
+    partial class DependencyRegistrarTest
     {
         [Fact]
         public void Create_ServicesAreNull_ExpectArgumentNullException()
         {            
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = DependencyRegistrator.Create(null!, _ => PlusFifteenIdRefType));
+                () => _ = DependencyRegistrar.Create(null!, _ => PlusFifteenIdRefType));
 
             Assert.Equal("services", ex.ParamName);
         }
@@ -25,7 +25,7 @@ namespace PrimeFuncPack.Tests
             var sourceServices = mockServices.Object;
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = DependencyRegistrator.Create<RecordType>(sourceServices, null!));
+                () => _ = DependencyRegistrar.Create<RecordType>(sourceServices, null!));
 
             Assert.Equal("resolver", ex.ParamName);
         }

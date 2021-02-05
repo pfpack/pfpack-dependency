@@ -23,9 +23,9 @@ namespace PrimeFuncPack.Tests
             RefType regService = isNotNull ? ZeroIdRefType : null!;
             var dependecy = Dependency.Create(_ => regService);
 
-            var registrator = dependecy.ToRegistrator(sourceServices);
+            var registrar = dependecy.ToRegistrar(sourceServices);
 
-            var actualServices = registrator.RegisterScoped();
+            var actualServices = registrar.RegisterScoped();
             Assert.Same(sourceServices, actualServices);
         }
 
@@ -48,12 +48,11 @@ namespace PrimeFuncPack.Tests
                 });
 
             var sourceServices = mockServices.Object;
-            
-            var registrator = DependencyRegistrator.Create(
-                sourceServices,
-                _ => regService);
+            var dependecy = Dependency.Create(_ => regService);
 
-            _ = registrator.RegisterScoped();
+            var registrar = dependecy.ToRegistrar(sourceServices);
+            _ = registrar.RegisterScoped();
+            
             mockServices.Verify(s => s.Add(It.IsAny<ServiceDescriptor>()), Times.Once);
         }
     }

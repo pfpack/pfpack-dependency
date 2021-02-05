@@ -13,10 +13,9 @@ namespace PrimeFuncPack.Tests
         public void WithThree_OtherIsNull_ExpectArgumentNullException()
         {
             var source = Dependency.Create(_ => SomeTextStructType, _ => long.MaxValue);
-            var other = (Dependency<RecordType?, StructType, decimal>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With(other));
+                () => _ = source.With<RecordType?, StructType, decimal>(null!));
             
             Assert.Equal("other", ex.ParamName);
         }

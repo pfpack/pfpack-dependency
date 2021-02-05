@@ -17,7 +17,7 @@ namespace PrimeFuncPack.Tests
                 _ => firstSource,
                 _ => SomeTextStructType,
                 _ => PlusFifteenIdLowerSomeStringNameRecord,
-                _ => null as string,
+                _ => (string?)null,
                 _ => new object());
 
             var actual = source.ToFirst();

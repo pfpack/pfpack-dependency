@@ -7,7 +7,7 @@ using static PrimeFuncPack.UnitTest.TestData;
 
 namespace PrimeFuncPack.Tests
 {
-    partial class DependencyRegistrationExtensionsTest
+    partial class DependencyRegistryExtensionsTest
     {
         [Fact]
         public void ToRegistrar_DependencyIsNull_ExpectArgumentNullException()

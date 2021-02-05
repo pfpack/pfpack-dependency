@@ -9,49 +9,49 @@ using static PrimeFuncPack.UnitTest.TestData;
 
 namespace PrimeFuncPack.Tests
 {
-    partial class DependencyRegistrationExtensionsTest
+    partial class DependencyRegistryExtensionsTest
     {
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void RegisterScoped_ExpectSourceServices(
+        public void RegisterTransient_ExpectSourceServices(
             bool isNotNull)
         {            
             var mockServices = MockServiceCollection.CreateMock();
             var sourceServices = mockServices.Object;
             
-            RefType regService = isNotNull ? ZeroIdRefType : null!;
+            RecordType regService = isNotNull ? ZeroIdNullNameRecord : null!;
             var dependency = Dependency.Create(_ => regService);
 
             var registrar = dependency.ToRegistrar(sourceServices);
 
-            var actualServices = registrar.RegisterScoped();
+            var actualServices = registrar.RegisterTransient();
             Assert.Same(sourceServices, actualServices);
         }
 
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void RegisterScoped_ExpectCallAddScopedOnce(
+        public void RegisterTransient_ExpectCallAddTransientOnce(
             bool isNotNull)
         {
-            RecordType regService = isNotNull ? MinusFifteenIdSomeStringNameRecord: null!;
+            string regService = isNotNull ? LowerSomeString: null!;
             var mockServices = MockServiceCollection.CreateMock(
                 sd =>
                 {
-                    Assert.Equal(typeof(RecordType), sd.ServiceType);
-                    Assert.Equal(ServiceLifetime.Scoped, sd.Lifetime);
+                    Assert.Equal(typeof(string), sd.ServiceType);
+                    Assert.Equal(ServiceLifetime.Transient, sd.Lifetime);
                     Assert.NotNull(sd.ImplementationFactory);
 
                     var actualService = sd.ImplementationFactory!.Invoke(Mock.Of<IServiceProvider>());
                     Assert.Equal(regService, actualService);
                 });
 
-            var sourceServices = mockServices.Object;
+            var sourceServices = mockServices.Object;            
             var dependency = Dependency.Create(_ => regService);
 
             var registrar = dependency.ToRegistrar(sourceServices);
-            _ = registrar.RegisterScoped();
+            _ = registrar.RegisterTransient();
             
             mockServices.Verify(s => s.Add(It.IsAny<ServiceDescriptor>()), Times.Once);
         }

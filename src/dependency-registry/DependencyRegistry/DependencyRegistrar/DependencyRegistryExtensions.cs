@@ -5,7 +5,7 @@ using System;
 
 namespace PrimeFuncPack
 {
-    public static class DependencyRegistrationExtensions
+    public static class DependencyRegistryExtensions
     {
         public static DependencyRegistrar<T> ToRegistrar<T>(
             this Dependency<T> dependency,

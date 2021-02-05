@@ -12,7 +12,7 @@ namespace PrimeFuncPack
 
         private readonly Func<IServiceProvider, T> resolver;
 
-        private DependencyRegistrator(
+        internal DependencyRegistrator(
             IServiceCollection services,
             Func<IServiceProvider, T> resolver)
         {

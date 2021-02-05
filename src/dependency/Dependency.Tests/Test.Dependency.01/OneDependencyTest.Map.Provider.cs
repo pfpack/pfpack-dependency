@@ -13,10 +13,10 @@ namespace PrimeFuncPack.Tests
         public void MapWithProvider_MapFuncIsNull_ExpectArgumentNullException()
         {
             var source = Dependency.Create(_ => PlusFifteenIdRefType);
-            var map = null as Func<IServiceProvider, RefType, RecordType>;
+            var map = (Func<IServiceProvider, RefType, RecordType>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.Map(map!));
+                () => _ = source.Map(map));
             
             Assert.Equal("map", ex.ParamName);
         }

@@ -10,7 +10,7 @@ namespace PrimeFuncPack
         
         private readonly Func<IServiceProvider, T2> secondResolver;
 
-        private Dependency(
+        internal Dependency(
             Func<IServiceProvider, T1> firstResolver,
             Func<IServiceProvider, T2> secondResolver)
         {

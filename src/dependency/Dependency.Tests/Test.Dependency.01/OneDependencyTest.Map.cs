@@ -13,10 +13,10 @@ namespace PrimeFuncPack.Tests
         public void Map_MapFuncIsNull_ExpectArgumentNullException()
         {
             var source = Dependency.Create(_ => SomeTextStructType);
-            var map = null as Func<StructType, RefType>;
+            var map = (Func<StructType, RefType>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.Map(map!));
+                () => _ = source.Map(map));
             
             Assert.Equal("map", ex.ParamName);
         }

@@ -15,7 +15,7 @@ namespace PrimeFuncPack
         private Dependency<TR> InternalMap<TR>(
             Func<T, TR> map)
             =>
-            Dependency<TR>.InternalCreate(
+            new(
                 sp => sp.Pipe(resolver).Pipe(map));
     }
 }

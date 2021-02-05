@@ -19,7 +19,7 @@ namespace PrimeFuncPack.Tests
                 _ => ZeroIdRefType,
                 _ => new object());
 
-            var fold = null as Func<IServiceProvider, RefType?, string, RecordType, RefType?, object?, decimal>;
+            var fold = (Func<IServiceProvider, RefType?, string, RecordType, RefType?, object?, decimal>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Fold(fold!));

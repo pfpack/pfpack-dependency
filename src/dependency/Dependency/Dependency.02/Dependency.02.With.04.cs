@@ -15,7 +15,7 @@ namespace PrimeFuncPack
         private Dependency<T1, T2, T3, T4> InternalWith<T3, T4>(
             Dependency<T3, T4> other)
             =>
-            Dependency<T1, T2, T3, T4>.InternalCreate(
+            new(
                 firstResolver,
                 secondResolver,
                 other.InternalFirstResolver,

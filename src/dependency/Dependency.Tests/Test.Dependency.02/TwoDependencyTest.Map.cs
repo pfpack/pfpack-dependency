@@ -13,10 +13,10 @@ namespace PrimeFuncPack.Tests
         public void Map_MapFirstFuncIsNull_ExpectArgumentNullException()
         {
             var source = Dependency.Create(_ => int.MaxValue, _ => MinusFifteenIdRefType);
-            var mapFirst = null as Func<int, StructType>;
+            var mapFirst = (Func<int, StructType>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.Map(mapFirst!, _ => PlusFifteenIdLowerSomeStringNameRecord));
+                () => _ = source.Map(mapFirst, _ => PlusFifteenIdLowerSomeStringNameRecord));
             
             Assert.Equal("mapFirst", ex.ParamName);
         }
@@ -25,10 +25,10 @@ namespace PrimeFuncPack.Tests
         public void Map_MapSecondFuncIsNull_ExpectArgumentNullException()
         {
             var source = Dependency.Create(_ => SomeTextStructType, _ => UpperSomeString);
-            var mapSecond = null as Func<string, DateTime?>;
+            var mapSecond = (Func<string, DateTime?>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.Map(_ => MinusFifteen, mapSecond!));
+                () => _ = source.Map(_ => MinusFifteen, mapSecond));
             
             Assert.Equal("mapSecond", ex.ParamName);
         }

@@ -10,7 +10,7 @@ namespace PrimeFuncPack
             Func<IServiceProvider, T1> first,
             Func<IServiceProvider, T2> second)
             =>
-            Dependency<T1, T2>.InternalCreate(
+            new(
                 first ?? throw new ArgumentNullException(nameof(first)),
                 second ?? throw new ArgumentNullException(nameof(second)));
     }

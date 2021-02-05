@@ -13,10 +13,10 @@ namespace PrimeFuncPack.Tests
         public void FoldWithProvider_FoldFuncIsNull_ExpectArgumentNullException()
         {
             var source = Dependency.Create(_ => ZeroIdRefType, _ => new object(), _ => long.MaxValue);
-            var fold = null as Func<IServiceProvider, RefType, object, long, RecordType>;
+            var fold = (Func<IServiceProvider, RefType, object, long, RecordType>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.Fold(fold!));
+                () => _ = source.Fold(fold));
             
             Assert.Equal("fold", ex.ParamName);
         }

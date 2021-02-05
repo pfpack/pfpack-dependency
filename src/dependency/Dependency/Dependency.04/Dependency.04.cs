@@ -14,7 +14,7 @@ namespace PrimeFuncPack
 
         private readonly Func<IServiceProvider, T4> fourthResolver;
 
-        private Dependency(
+        internal Dependency(
             Func<IServiceProvider, T1> firstResolver,
             Func<IServiceProvider, T2> secondResolver,
             Func<IServiceProvider, T3> thirdResolver,

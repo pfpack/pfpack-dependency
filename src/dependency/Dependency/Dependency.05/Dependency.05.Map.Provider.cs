@@ -27,7 +27,7 @@ namespace PrimeFuncPack
             Func<IServiceProvider, T4, TR4> mapFourth,
             Func<IServiceProvider, T5, TR5> mapFifth)
             =>
-            Dependency<TR1, TR2, TR3, TR4, TR5>.InternalCreate(
+            new(
                 sp => sp.Pipe(firstResolver).Pipe(first => mapFirst.Invoke(sp, first)),
                 sp => sp.Pipe(secondResolver).Pipe(second => mapSecond.Invoke(sp, second)),
                 sp => sp.Pipe(thirdResolver).Pipe(third => mapThird.Invoke(sp, third)),

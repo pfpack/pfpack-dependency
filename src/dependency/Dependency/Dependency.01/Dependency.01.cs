@@ -8,7 +8,7 @@ namespace PrimeFuncPack
     {
         private readonly Func<IServiceProvider, T> resolver;
 
-        private Dependency(
+        internal Dependency(
             Func<IServiceProvider, T> resolver)
             =>
             this.resolver = resolver;

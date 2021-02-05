@@ -15,10 +15,10 @@ namespace PrimeFuncPack.Tests
             var source = Dependency.Create(
                 _ => ZeroIdRefType, _ => SomeTextStructType, _ => MinusFifteenIdSomeStringNameRecord, _ => decimal.MinusOne);
 
-            var fold = null as Func<RefType?, StructType, RecordType, decimal, int?>;
+            var fold = (Func<RefType?, StructType, RecordType, decimal, int?>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.Fold(fold!));
+                () => _ = source.Fold(fold));
             
             Assert.Equal("fold", ex.ParamName);
         }

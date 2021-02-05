@@ -15,11 +15,11 @@ namespace PrimeFuncPack.Tests
             var source = Dependency.Create(
                 _ => SomeString, _ => LowerSomeTextStructType, _ => MinusFifteenIdNullNameRecord);
 
-            var mapFirst = null as Func<IServiceProvider, string, DateTimeOffset>;
+            var mapFirst = (Func<IServiceProvider, string, DateTimeOffset>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
-                    mapFirst!, (_, _) => MinusFifteen, (_, _) => decimal.MinusOne));
+                    mapFirst, (_, _) => MinusFifteen, (_, _) => decimal.MinusOne));
             
             Assert.Equal("mapFirst", ex.ParamName);
         }
@@ -30,11 +30,11 @@ namespace PrimeFuncPack.Tests
             var source = Dependency.Create(
                 _ => ZeroIdRefType, _ => PlusFifteen, _ => SomeTextStructType);
 
-            var mapSecond = null as Func<IServiceProvider, int, RefType>;
+            var mapSecond = (Func<IServiceProvider, int, RefType>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
-                    (_, _) => MinusFifteenIdSomeStringNameRecord, mapSecond!, (_, _) => decimal.One));
+                    (_, _) => MinusFifteenIdSomeStringNameRecord, mapSecond, (_, _) => decimal.One));
             
             Assert.Equal("mapSecond", ex.ParamName);
         }
@@ -45,11 +45,11 @@ namespace PrimeFuncPack.Tests
             var source = Dependency.Create(
                 _ => UpperSomeString, _ => long.MinValue, _ => MinusFifteenIdSomeStringNameRecord);
 
-            var mapThird = null as Func<IServiceProvider, RecordType, StructType?>;
+            var mapThird = (Func<IServiceProvider, RecordType, StructType?>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
-                    (_, _) => MinusFifteen, (_, _) => PlusFifteenIdLowerSomeStringNameRecord, mapThird!));
+                    (_, _) => MinusFifteen, (_, _) => PlusFifteenIdLowerSomeStringNameRecord, mapThird));
             
             Assert.Equal("mapThird", ex.ParamName);
         }

@@ -19,10 +19,10 @@ namespace PrimeFuncPack.Tests
                 _ => PlusFifteenIdLowerSomeStringNameRecord,
                 _ => MinusFifteenIdRefType);
 
-            var fold = null as Func<StructType, int, decimal, RecordType, RefType?, string>;
+            var fold = (Func<StructType, int, decimal, RecordType, RefType?, string>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.Fold(fold!));
+                () => _ = source.Fold(fold));
             
             Assert.Equal("fold", ex.ParamName);
         }

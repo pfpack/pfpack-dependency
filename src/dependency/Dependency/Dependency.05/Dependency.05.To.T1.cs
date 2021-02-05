@@ -6,6 +6,6 @@ namespace PrimeFuncPack
     {
         public Dependency<T1> ToFirst()
             =>
-            Dependency<T1>.InternalCreate(firstResolver);
+            new(firstResolver);
     }
 }

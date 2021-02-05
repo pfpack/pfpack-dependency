@@ -9,7 +9,7 @@ namespace PrimeFuncPack
         public static Dependency<T1> Create<T1>(
             Func<IServiceProvider, T1> first)
             =>
-            Dependency<T1>.InternalCreate(
+            new(
                 first ?? throw new ArgumentNullException(nameof(first)));
     }
 }

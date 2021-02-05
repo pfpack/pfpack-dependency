@@ -12,7 +12,7 @@ namespace PrimeFuncPack
             Func<IServiceProvider, T> resolver)
             where T : class
             =>
-            DependencyRegistrator<T>.InternalCreate(
+            new(
                 services ?? throw new ArgumentNullException(nameof(services)),
                 resolver ?? throw new ArgumentNullException(nameof(resolver)));
     }

@@ -12,7 +12,7 @@ namespace PrimeFuncPack
             IServiceCollection services)
             where T : class
             =>
-            DependencyRegistrator<T>.InternalCreate(
+            new(
                 services ?? throw new ArgumentNullException(nameof(services)),
                 dependency ?? throw new ArgumentNullException(nameof(dependency)));
     }

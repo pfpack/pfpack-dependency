@@ -15,11 +15,11 @@ namespace PrimeFuncPack.Tests
             var source = Dependency.Create(
                 _ => LowerSomeString, _ => ZeroIdRefType, _ => MinusFifteenIdSomeStringNameRecord, _ => int.MinValue);
 
-            var mapFirst = null as Func<string?, long>;
+            var mapFirst = (Func<string?, long>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
-                    mapFirst!, _ => SomeTextStructType, _ => decimal.Zero, _ => new object()));
+                    mapFirst, _ => SomeTextStructType, _ => decimal.Zero, _ => new object()));
             
             Assert.Equal("mapFirst", ex.ParamName);
         }
@@ -30,11 +30,11 @@ namespace PrimeFuncPack.Tests
             var source = Dependency.Create(
                 _ => int.MaxValue, _ => PlusFifteenIdRefType, _ => decimal.One, _ => LowerSomeTextStructType);
 
-            var mapSecond = null as Func<RefType, DateTimeOffset?>;
+            var mapSecond = (Func<RefType, DateTimeOffset?>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
-                    _ => MinusFifteenIdSomeStringNameRecord, mapSecond!, _ => ZeroIdRefType, _ => PlusFifteen));
+                    _ => MinusFifteenIdSomeStringNameRecord, mapSecond, _ => ZeroIdRefType, _ => PlusFifteen));
             
             Assert.Equal("mapSecond", ex.ParamName);
         }
@@ -45,11 +45,11 @@ namespace PrimeFuncPack.Tests
             var source = Dependency.Create(
                 _ => LowerSomeString, _ => Zero, _ => default(StructType), _ => new object());
 
-            var mapThird = null as Func<StructType, RecordType?>;
+            var mapThird = (Func<StructType, RecordType?>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
-                    _ => WhiteSpaceString, _ => decimal.MinValue, mapThird!, _ => LowerSomeTextStructType));
+                    _ => WhiteSpaceString, _ => decimal.MinValue, mapThird, _ => LowerSomeTextStructType));
             
             Assert.Equal("mapThird", ex.ParamName);
         }
@@ -60,11 +60,11 @@ namespace PrimeFuncPack.Tests
             var source = Dependency.Create(
                 _ => MinusFifteenIdSomeStringNameRecord, _ => LowerSomeString, _ => int.MaxValue, _ => decimal.MinusOne);
 
-            var mapFourth = null as Func<decimal, RecordType>;
+            var mapFourth = (Func<decimal, RecordType>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
-                    _ => new { Text = SomeString }, _ => SomeTextStructType, _ => PlusFifteen, mapFourth!));
+                    _ => new { Text = SomeString }, _ => SomeTextStructType, _ => PlusFifteen, mapFourth));
             
             Assert.Equal("mapFourth", ex.ParamName);
         }

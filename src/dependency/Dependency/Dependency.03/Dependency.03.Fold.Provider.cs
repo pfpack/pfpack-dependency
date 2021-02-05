@@ -15,7 +15,7 @@ namespace PrimeFuncPack
         private Dependency<TR> InternalFold<TR>(
             Func<IServiceProvider, T1, T2, T3, TR> fold)
             =>
-            Dependency<TR>.InternalCreate(
+            new(
                 sp => fold.Invoke(
                     sp,
                     firstResolver.Invoke(sp),

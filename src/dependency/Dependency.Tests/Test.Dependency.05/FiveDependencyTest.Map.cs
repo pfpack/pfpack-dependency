@@ -19,11 +19,9 @@ namespace PrimeFuncPack.Tests
                 _ => new object(),
                 _ => PlusFifteenIdSomeStringNameRecord);
 
-            var mapFirst = null as Func<int, DateTime?>;
-
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
-                    mapFirst!,
+                    (Func<int, DateTime?>)null!,
                     _ => WhiteSpaceString,
                     _ => long.MaxValue,
                     _ => MinusFifteen,
@@ -42,12 +40,10 @@ namespace PrimeFuncPack.Tests
                 _ => SomeTextStructType,
                 _ => ZeroIdRefType);
 
-            var mapSecond = null as Func<string, long>;
-
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
                     _ => SomeTextStructType,
-                    mapSecond!,
+                    (Func<string, long>)null!,
                     _ => decimal.One,
                     _ => new object(),
                     _ => WhiteSpaceString));
@@ -65,13 +61,11 @@ namespace PrimeFuncPack.Tests
                 _ => LowerSomeTextStructType,
                 _ => decimal.One);
 
-            var mapThird = null as Func<string?, object>;
-
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
                     _ => EmptyString,
                     _ => MinusFifteenIdNullNameRecord,
-                    mapThird!,
+                    (Func<string?, object>)null!,
                     _ => PlusFifteenIdRefType,
                     _ => new { Value = long.MaxValue }));
             
@@ -88,14 +82,12 @@ namespace PrimeFuncPack.Tests
                 _ => UpperSomeString,
                 _ => MinusFifteenIdSomeStringNameRecord);
 
-            var mapFourth = null as Func<string, long?>;
-
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
                     _ => SomeString,
                     _ => WhiteSpaceString,
                     _ => long.MaxValue,
-                    mapFourth!,
+                    (Func<string, long?>)null!,
                     _ => new object()));
             
             Assert.Equal("mapFourth", ex.ParamName);
@@ -111,15 +103,13 @@ namespace PrimeFuncPack.Tests
                 _ => WhiteSpaceString,
                 _ => MinusFifteenIdRefType);
 
-            var mapFifth = null as Func<RefType, StructType>;
-
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.Map(
                     _ => SomeTextStructType,
                     _ => PlusFifteen,
                     _ => decimal.One,
                     _ => int.MaxValue,
-                    mapFifth!));
+                    (Func<RefType, StructType>)null!));
             
             Assert.Equal("mapFifth", ex.ParamName);
         }

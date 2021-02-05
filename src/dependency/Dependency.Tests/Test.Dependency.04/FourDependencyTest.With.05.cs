@@ -13,12 +13,15 @@ namespace PrimeFuncPack.Tests
         public void WithOne_OtherIsNull_ExpectArgumentNullException()
         {
             var source = Dependency.Create(
-                _ => SomeTextStructType, _ => MinusFifteenIdSomeStringNameRecord, _ => SomeString, _ => PlusFifteenIdRefType);
+                _ => SomeTextStructType,
+                _ => MinusFifteenIdSomeStringNameRecord,
+                _ => SomeString,
+                _ => PlusFifteenIdRefType);
 
-            var other = null as Dependency<object>;
+            var other = (Dependency<object>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With(other!));
+                () => _ = source.With(other));
             
             Assert.Equal("other", ex.ParamName);
         }
@@ -33,7 +36,12 @@ namespace PrimeFuncPack.Tests
             var thirdSource = new { Id = PlusFifteen };
             var fourthSource = decimal.One;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
+            var source = Dependency.Create(
+                _ => firstSource,
+                _ => secondSource,
+                _ => thirdSource,
+                _ => fourthSource);
+                
             var other = Dependency.Create(_ => otherValue);
 
             var actual = source.With(other);

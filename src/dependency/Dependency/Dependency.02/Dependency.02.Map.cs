@@ -18,7 +18,7 @@ namespace PrimeFuncPack
             Func<T1, TR1> mapFirst,
             Func<T2, TR2> mapSecond)
             =>
-            Dependency<TR1, TR2>.InternalCreate(
+            new(
                 sp => sp.Pipe(firstResolver).Pipe(mapFirst),
                 sp => sp.Pipe(secondResolver).Pipe(mapSecond));
     }

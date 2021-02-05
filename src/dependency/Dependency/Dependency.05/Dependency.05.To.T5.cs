@@ -6,6 +6,6 @@ namespace PrimeFuncPack
     {
         public Dependency<T5> ToFifth()
             =>
-            Dependency<T5>.InternalCreate(fifthResolver);
+            new(fifthResolver);
     }
 }

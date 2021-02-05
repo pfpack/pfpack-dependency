@@ -10,8 +10,8 @@
 		<Description>PrimeFuncPack: A Functional Programming Pack for .NET</Description>
 		<Copyright>Copyright © 2020 Andrei Sergeev, Pavel Moskovoy</Copyright>
 		<RootNamespace>PrimeFuncPack</RootNamespace>
-		<AssemblyName>PrimeFuncPack.DependencyPipeline.Injection</AssemblyName>
-		<Version>1.0.0-preview.2.0.1</Version>
+		<AssemblyName>EarlyFuncPack.DependencyInjection</AssemblyName>
+		<Version>0.0.1-preview.1.6</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -22,8 +22,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0-rc.*" />
-		<PackageReference Include="PrimeFuncPack.DependencyPipeline" Version="1.0.0-preview.2.0.*" />
+		<PackageReference Include="EarlyFuncPack.Dependency" Version="0.0.1-preview.1.*" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.*" />
 	</ItemGroup>
 
 </Project>

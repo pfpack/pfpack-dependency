@@ -5,12 +5,12 @@ using System;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.DependencyRegistry.Tests
 {
-    partial class DependencyRegistrationExtensionsTest
+    partial class DependencyRegistryExtensionsTest
     {
         [Fact]
-        public void ToRegistrator_DependencyIsNull_ExpectArgumentNullException()
+        public void ToRegistrar_DependencyIsNull_ExpectArgumentNullException()
         {
             var mockServices = MockServiceCollection.CreateMock();
             var sourceServices = mockServices.Object;
@@ -18,19 +18,19 @@ namespace PrimeFuncPack.Tests
             Dependency<RefType> dependency = null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = dependency.ToRegistrator(sourceServices));
+                () => _ = dependency.ToRegistrar(sourceServices));
 
             Assert.Equal("dependency", ex.ParamName);
         }
 
         [Fact]
-        public void ToRegistrator_ServicesAreNull_ExpectArgumentNullException()
+        public void ToRegistrar_ServicesAreNull_ExpectArgumentNullException()
         {
             var dependency = Dependency.Create(
                 _ => MinusFifteenIdSomeStringNameRecord);
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = dependency.ToRegistrator(null!));
+                () => _ = dependency.ToRegistrar(null!));
 
             Assert.Equal("services", ex.ParamName);
         }

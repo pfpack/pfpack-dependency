@@ -5,9 +5,9 @@ using System;
 
 namespace PrimeFuncPack
 {
-    public static class DependencyRegistrationExtensions
+    public static class DependencyRegistryExtensions
     {
-        public static DependencyRegistrator<T> ToRegistrator<T>(
+        public static DependencyRegistrar<T> ToRegistrar<T>(
             this Dependency<T> dependency,
             IServiceCollection services)
             where T : class

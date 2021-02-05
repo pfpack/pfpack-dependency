@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using System;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.DependencyRegistry.Tests
 {
     internal sealed class MockServiceCollection
     {

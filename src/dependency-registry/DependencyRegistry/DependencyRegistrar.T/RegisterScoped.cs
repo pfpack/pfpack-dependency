@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace PrimeFuncPack
 {
-    partial class DependencyRegistrator<T>
+    partial class DependencyRegistrar<T>
     {
         public IServiceCollection RegisterScoped()
             =>

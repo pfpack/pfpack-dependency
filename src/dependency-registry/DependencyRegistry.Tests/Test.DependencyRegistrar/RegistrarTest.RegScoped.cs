@@ -7,9 +7,9 @@ using System;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.DependencyRegistry.Tests
 {
-    partial class DependencyRegistratorTest
+    partial class DependencyRegistrarTest
     {
         [Theory]
         [InlineData(true)]
@@ -21,11 +21,11 @@ namespace PrimeFuncPack.Tests
             var sourceServices = mockServices.Object;
             
             string regService = isNotNull ? SomeString : null!;
-            var registrator = DependencyRegistrator.Create(
+            var registrar = DependencyRegistrar.Create(
                 sourceServices,
                 _ => regService);
 
-            var actualServices = registrator.RegisterScoped();
+            var actualServices = registrar.RegisterScoped();
             Assert.Same(sourceServices, actualServices);
         }
 
@@ -49,11 +49,11 @@ namespace PrimeFuncPack.Tests
 
             var sourceServices = mockServices.Object;
             
-            var registrator = DependencyRegistrator.Create(
+            var registrar = DependencyRegistrar.Create(
                 sourceServices,
                 _ => regService);
 
-            _ = registrator.RegisterScoped();
+            _ = registrar.RegisterScoped();
             mockServices.Verify(s => s.Add(It.IsAny<ServiceDescriptor>()), Times.Once);
         }
     }

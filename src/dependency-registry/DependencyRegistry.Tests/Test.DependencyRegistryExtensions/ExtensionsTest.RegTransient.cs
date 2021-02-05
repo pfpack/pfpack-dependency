@@ -7,9 +7,9 @@ using System;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.DependencyRegistry.Tests
 {
-    partial class DependencyRegistratorTest
+    partial class DependencyRegistryExtensionsTest
     {
         [Theory]
         [InlineData(true)]
@@ -20,12 +20,12 @@ namespace PrimeFuncPack.Tests
             var mockServices = MockServiceCollection.CreateMock();
             var sourceServices = mockServices.Object;
             
-            RecordType regService = isNotNull ? PlusFifteenIdSomeStringNameRecord : null!;
-            var registrator = DependencyRegistrator.Create(
-                sourceServices,
-                _ => regService);
+            RecordType regService = isNotNull ? ZeroIdNullNameRecord : null!;
+            var dependency = Dependency.Create(_ => regService);
 
-            var actualServices = registrator.RegisterTransient();
+            var registrar = dependency.ToRegistrar(sourceServices);
+
+            var actualServices = registrar.RegisterTransient();
             Assert.Same(sourceServices, actualServices);
         }
 
@@ -35,11 +35,11 @@ namespace PrimeFuncPack.Tests
         public void RegisterTransient_ExpectCallAddTransientOnce(
             bool isNotNull)
         {
-            RefType regService = isNotNull ? MinusFifteenIdRefType : null!;
+            string regService = isNotNull ? LowerSomeString: null!;
             var mockServices = MockServiceCollection.CreateMock(
                 sd =>
                 {
-                    Assert.Equal(typeof(RefType), sd.ServiceType);
+                    Assert.Equal(typeof(string), sd.ServiceType);
                     Assert.Equal(ServiceLifetime.Transient, sd.Lifetime);
                     Assert.NotNull(sd.ImplementationFactory);
 
@@ -47,13 +47,12 @@ namespace PrimeFuncPack.Tests
                     Assert.Equal(regService, actualService);
                 });
 
-            var sourceServices = mockServices.Object;
-            
-            var registrator = DependencyRegistrator.Create(
-                sourceServices,
-                _ => regService);
+            var sourceServices = mockServices.Object;            
+            var dependency = Dependency.Create(_ => regService);
 
-            _ = registrator.RegisterTransient();
+            var registrar = dependency.ToRegistrar(sourceServices);
+            _ = registrar.RegisterTransient();
+            
             mockServices.Verify(s => s.Add(It.IsAny<ServiceDescriptor>()), Times.Once);
         }
     }

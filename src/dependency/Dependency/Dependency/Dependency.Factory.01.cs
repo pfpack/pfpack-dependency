@@ -6,10 +6,10 @@ namespace PrimeFuncPack
 {
     partial class Dependency
     {
-        public static Dependency<T1> Create<T1>(
-            Func<IServiceProvider, T1> first)
+        public static Dependency<T> Create<T>(
+            Func<IServiceProvider, T> single)
             =>
             new(
-                first ?? throw new ArgumentNullException(nameof(first)));
+                single ?? throw new ArgumentNullException(nameof(single)));
     }
 }

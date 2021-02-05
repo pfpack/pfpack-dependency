@@ -7,12 +7,12 @@
 		<Authors>Andrei Sergeev, Pavel Moskovoy</Authors>
 		<Description>PrimeFuncPack: A Functional Programming Pack for .NET</Description>
 		<Copyright>Copyright © 2020 Andrei Sergeev, Pavel Moskovoy</Copyright>
-		<RootNamespace>PrimeFuncPack.Tests</RootNamespace>
-		<AssemblyName>EarlyFuncPack.DependencyInjection.Tests</AssemblyName>
+		<RootNamespace>PrimeFuncPack.DependencyRegistry.Tests</RootNamespace>
+		<AssemblyName>EarlyFuncPack.DependencyRegistry.Tests</AssemblyName>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="EarlyFuncPack.DependencyInjection" Version="*-*" />
+		<PackageReference Include="EarlyFuncPack.DependencyRegistry" Version="*-*" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.*" />
 		<PackageReference Include="Moq" Version="4.*" />
 		<PackageReference Include="PrimeFuncPack.UnitTest.Data" Version="2.0.*" />

@@ -6,7 +6,7 @@ using System;
 
 namespace PrimeFuncPack.Tests
 {
-    public sealed class MockServiceCollection
+    internal sealed class MockServiceCollection
     {
         public static Mock<IServiceCollection> CreateMock(
             Action<ServiceDescriptor>? callback = null)

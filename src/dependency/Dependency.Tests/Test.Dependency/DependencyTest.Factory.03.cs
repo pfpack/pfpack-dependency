@@ -47,7 +47,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void Create_03_ResolversAreNotNull_ExpectResolvedValuesAreSameAsSource(
+        public void Create_03_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(
             RecordType sourceThird)
         {
             var sourceFirst = MinusFifteenIdRefType;

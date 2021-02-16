@@ -10,7 +10,7 @@ namespace PrimeFuncPack.Tests
     {
         [Theory]
         [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void ToFirst_ExpectResolvedValueAreSameAsFirstSource(
+        public void ToFirst_ExpectResolvedValueIsEqualToFirstSource(
             RecordType firstSource)
         {
             var source = Dependency.Create(
@@ -24,7 +24,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void ToSecond_ExpectResolvedValueAreSameAsSecondSource(
+        public void ToSecond_ExpectResolvedValueIsEqualToSecondSource(
             StructType secondSource)
         {
             var source = Dependency.Create(
@@ -38,7 +38,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
-        public void ToThird_ExpectResolvedValueAreSameAsThirdSource(
+        public void ToThird_ExpectResolvedValueIsEqualToThirdSource(
             RefType? thirdSource)
         {
             var source = Dependency.Create(
@@ -52,7 +52,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void ToFourth_ExpectResolvedValueAreSameAsFourthSource(
+        public void ToFourth_ExpectResolvedValueIsEqualToFourthSource(
             RecordType? fourthSource)
         {
             var source = Dependency.Create(

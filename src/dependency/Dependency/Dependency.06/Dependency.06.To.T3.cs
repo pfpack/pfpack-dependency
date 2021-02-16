@@ -6,6 +6,6 @@ namespace PrimeFuncPack
     {
         public Dependency<T3> ToThird()
             =>
-            throw new System.NotImplementedException();
+            new(thirdResolver);
     }
 }

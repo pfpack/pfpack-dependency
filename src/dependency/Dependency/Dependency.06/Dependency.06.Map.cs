@@ -14,7 +14,13 @@ namespace PrimeFuncPack
             Func<T5, TR5> mapFifth,
             Func<T6, TR6> mapSixth)
             =>
-            throw new NotImplementedException();
+            InternalMap(
+                mapFirst ?? throw new ArgumentNullException(nameof(mapFirst)),
+                mapSecond ?? throw new ArgumentNullException(nameof(mapSecond)),
+                mapThird ?? throw new ArgumentNullException(nameof(mapThird)),
+                mapFourth ?? throw new ArgumentNullException(nameof(mapFourth)),
+                mapFifth ?? throw new ArgumentNullException(nameof(mapFifth)),
+                mapSixth ?? throw new ArgumentNullException(nameof(mapSixth)));
 
         private Dependency<TR1, TR2, TR3, TR4, TR5, TR6> InternalMap<TR1, TR2, TR3, TR4, TR5, TR6>(
             Func<T1, TR1> mapFirst,

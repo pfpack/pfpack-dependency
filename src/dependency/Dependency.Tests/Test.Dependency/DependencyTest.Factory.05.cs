@@ -81,7 +81,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void Create_05_ResolversAreNotNull_ExpectResolvedValuesAreSameAsSource(
+        public void Create_05_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(
             StructType sourceFifth)
         {
             var sourceFirst = LowerSomeTextStructType;

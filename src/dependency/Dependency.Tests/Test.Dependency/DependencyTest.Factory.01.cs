@@ -19,7 +19,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
-        public void Create_01_SingleResolverIsNotNull_ExpectResolvedValueIsSameAsSource(
+        public void Create_01_SingleResolverIsNotNull_ExpectResolvedValueIsEqualToSource(
             RefType? sourceSingle)
         {
             var actual = Dependency.Create(_ => sourceSingle);

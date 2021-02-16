@@ -22,7 +22,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
-        public void WithFour_OtherIsNotNull_ExpectResolvedValuesAreSameAsSourceAndOther(
+        public void WithFour_OtherIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
             RefType? otherLast)
         {
             var sourceValue = int.MinValue;

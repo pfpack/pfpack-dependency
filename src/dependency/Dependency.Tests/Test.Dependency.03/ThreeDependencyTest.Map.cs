@@ -56,7 +56,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
-        public void Map_MapFuncIsNotNull_ExpectResolvedValuesAreSameAsMapped(
+        public void Map_MapFuncIsNotNull_ExpectResolvedValuesAreEqualToMapped(
             RefType? mappedLast)
         {
             var source = Dependency.Create(_ => SomeString, _ => Zero, _ => SomeTextStructType);

@@ -22,7 +22,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void WithTwo_OtherIsNotNull_ExpectResolvedValuesAreSameAsSourceAndOther(
+        public void WithTwo_OtherIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
             StructType otherLast)
         {
             var sourceValue = MinusFifteenIdSomeStringNameRecord;

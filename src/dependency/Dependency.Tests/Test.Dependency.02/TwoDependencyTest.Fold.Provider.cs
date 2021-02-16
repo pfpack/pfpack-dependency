@@ -23,7 +23,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void FoldWithProvider_FoldFuncIsNotNull_ExpectResolvedValueIsSameAsMapped(
+        public void FoldWithProvider_FoldFuncIsNotNull_ExpectResolvedValueIsEqualToMapped(
             RecordType mappedValue)
         {
             var source = Dependency.Create(_ => ZeroIdNullNameRecord, _ => PlusFifteenIdRefType);

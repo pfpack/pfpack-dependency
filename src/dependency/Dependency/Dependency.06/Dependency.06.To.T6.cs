@@ -6,6 +6,6 @@ namespace PrimeFuncPack
     {
         public Dependency<T6> ToSixth()
             =>
-            throw new System.NotImplementedException();
+            new(sixthResolver);
     }
 }

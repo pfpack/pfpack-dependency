@@ -6,6 +6,6 @@ namespace PrimeFuncPack
     {
         public Dependency<T2> ToSecond()
             =>
-            throw new System.NotImplementedException();
+            new(secondResolver);
     }
 }

@@ -10,7 +10,7 @@ namespace PrimeFuncPack.Tests
     partial class FiveDependencyTest
     {
         [Fact]
-        public void MapProvider_MapFirstFuncIsNull_ExpectArgumentNullException()
+        public void MapWithProvider_MapFirstFuncIsNull_ExpectArgumentNullException()
         {
             var source = Dependency.Create(
                 _ => SomeTextStructType,
@@ -31,7 +31,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void MapProvider_MapSecondFuncIsNull_ExpectArgumentNullException()
+        public void MapWithProvider_MapSecondFuncIsNull_ExpectArgumentNullException()
         {
             var source = Dependency.Create(
                 _ => LowerSomeTextStructType,
@@ -52,7 +52,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void MapProvider_MapThirdFuncIsNull_ExpectArgumentNullException()
+        public void MapWithProvider_MapThirdFuncIsNull_ExpectArgumentNullException()
         {
             var source = Dependency.Create(
                 _ => MinusFifteenIdSomeStringNameRecord,
@@ -73,7 +73,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void MapProvider_MapFourthFuncIsNull_ExpectArgumentNullException()
+        public void MapWithProvider_MapFourthFuncIsNull_ExpectArgumentNullException()
         {
             var source = Dependency.Create(
                 _ => PlusFifteenIdLowerSomeStringNameRecord,
@@ -94,7 +94,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void MapProvider_MapFifthFuncIsNull_ExpectArgumentNullException()
+        public void MapWithProvider_MapFifthFuncIsNull_ExpectArgumentNullException()
         {
             var source = Dependency.Create(
                 _ => PlusFifteen,
@@ -116,7 +116,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void MapProvider_MapFuncIsNotNull_ExpectResolvedValuesAreSameAsMapped(
+        public void MapWithProvider_MapFuncIsNotNull_ExpectResolvedValuesAreEqualToMapped(
             RecordType mappedLast)
         {
             var source = Dependency.Create(

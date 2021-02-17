@@ -47,5 +47,16 @@ namespace PrimeFuncPack.Tests
                 dependency.Pipe(d => (Func<IServiceProvider, T3>)d).Invoke(ServiceProvider),
                 dependency.Pipe(d => (Func<IServiceProvider, T4>)d).Invoke(ServiceProvider),
                 dependency.Pipe(d => (Func<IServiceProvider, T5>)d).Invoke(ServiceProvider));
+
+        public static (T1 First, T2 Second, T3 Third, T4 Fourth, T5 Fifth, T6 Sixth) Resolve<T1, T2, T3, T4, T5, T6>(
+            this Dependency<T1, T2, T3, T4, T5, T6> dependency)
+            =>
+            new ValueTuple<T1, T2, T3, T4, T5, T6>(
+                dependency.Pipe(d => (Func<IServiceProvider, T1>)d).Invoke(ServiceProvider),
+                dependency.Pipe(d => (Func<IServiceProvider, T2>)d).Invoke(ServiceProvider),
+                dependency.Pipe(d => (Func<IServiceProvider, T3>)d).Invoke(ServiceProvider),
+                dependency.Pipe(d => (Func<IServiceProvider, T4>)d).Invoke(ServiceProvider),
+                dependency.Pipe(d => (Func<IServiceProvider, T5>)d).Invoke(ServiceProvider),
+                dependency.Pipe(d => (Func<IServiceProvider, T6>)d).Invoke(ServiceProvider));
     }
 }

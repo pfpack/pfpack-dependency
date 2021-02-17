@@ -75,7 +75,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void MapWithProvider_MapFuncIsNotNull_ExpectResolvedValuesAreSameAsMapped(
+        public void MapWithProvider_MapFuncIsNotNull_ExpectResolvedValuesAreEqualToMapped(
             StructType mappedLast)
         {
             var source = Dependency.Create(

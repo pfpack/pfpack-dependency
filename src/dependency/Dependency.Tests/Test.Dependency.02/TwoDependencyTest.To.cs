@@ -10,7 +10,7 @@ namespace PrimeFuncPack.Tests
     {
         [Theory]
         [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
-        public void ToFirst_ExpectResolvedValueAreSameAsFirstSource(
+        public void ToFirst_ExpectResolvedValueIsEqualToFirstSource(
             RefType? firstSource)
         {
             var source = Dependency.Create(_ => firstSource, _ => SomeString);
@@ -22,7 +22,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void ToSecond_ExpectResolvedValueAreSameAsSecondSource(
+        public void ToSecond_ExpectResolvedValueIsEqualToSecondSource(
             StructType secondSource)
         {
             var source = Dependency.Create(_ => MinusFifteen, _ => secondSource);

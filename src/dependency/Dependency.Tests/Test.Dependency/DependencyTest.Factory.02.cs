@@ -33,7 +33,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void Create_02_ResolversAreNotNull_ExpectResolvedValuesAreSameAsSource(
+        public void Create_02_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(
             StructType sourceSecond)
         {
             var sourceFirst = PlusFifteenIdRefType;

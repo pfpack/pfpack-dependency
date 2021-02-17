@@ -23,7 +23,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void Map_MapFuncIsNotNull_ExpectResolvedValueIsSameAsMapped(
+        public void Map_MapFuncIsNotNull_ExpectResolvedValueIsEqualToMapped(
             RecordType? mappedValue)
         {
             var source = Dependency.Create(_ => PlusFifteenIdRefType);

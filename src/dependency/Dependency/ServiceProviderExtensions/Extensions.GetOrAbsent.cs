@@ -16,17 +16,15 @@ namespace PrimeFuncPack
         private static Optional<T> InternalGetServiceOrAbsent<T>(
             IServiceProvider serviceProvider)
             where T : notnull
-            =>
-            serviceProvider.GetService(typeof(T)) switch
+        {
+            var service = serviceProvider.GetService(typeof(T));
+
+            if(service is not null)
             {
-                T service
-                => Optional.Present(service),
+                return Optional.Present((T)service);
+            }
 
-                null
-                => Optional<T>.Absent,
-
-                object invalid
-                => throw CreateUnexpectedServiceTypeException(expected: typeof(T), actual: invalid.GetType())
-            };
+            return Optional.Absent<T>();
+        }
     }
 }

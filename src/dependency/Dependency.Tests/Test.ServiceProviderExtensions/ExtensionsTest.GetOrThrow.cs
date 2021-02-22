@@ -44,11 +44,11 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void GetServiceOrThrow_ServiceResultCanNotBeCastToExpectedType_ExpectInvalidCastException()
         {
-            var mockServiceProvider = CreateMockServiceProvider(PlusFifteen);
+            var mockServiceProvider = CreateMockServiceProvider(SomeString);
             var serviceProvider = mockServiceProvider.Object;
 
             _ = Assert.Throws<InvalidCastException>(
-                () => _ = serviceProvider.GetServiceOrThrow<RefType>());
+                () => _ = serviceProvider.GetServiceOrThrow<StructType>());
         }
 
         [Fact]

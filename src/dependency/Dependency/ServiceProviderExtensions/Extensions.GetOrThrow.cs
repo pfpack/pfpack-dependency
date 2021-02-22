@@ -16,17 +16,15 @@ namespace PrimeFuncPack
         private static T InternalGetServiceOrThrow<T>(
             IServiceProvider serviceProvider)
             where T : notnull
-            =>
-            serviceProvider.GetService(typeof(T)) switch
+        {
+            var service = serviceProvider.GetService(typeof(T));
+
+            if(service is not null)
             {
-                T service
-                => service,
+                return (T)service;
+            }
 
-                null
-                => throw CreateNoServiceRegisteredException(typeof(T)),
-
-                object invalid
-                => throw CreateUnexpectedServiceTypeException(expected: typeof(T), actual: invalid.GetType())
-            };
+            throw new InvalidOperationException($"Service {typeof(T)} can not be resolved by service provider.");
+        }
     }
 }

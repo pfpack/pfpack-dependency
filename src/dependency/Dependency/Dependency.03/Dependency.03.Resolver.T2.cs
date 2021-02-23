@@ -6,6 +6,10 @@ namespace PrimeFuncPack
 {
     partial class Dependency<T1, T2, T3>
     {
+        public Func<IServiceProvider, T2> ToSecondResolver()
+            =>
+            secondResolver;
+        
         public static implicit operator Func<IServiceProvider, T2>(
             Dependency<T1, T2, T3> dependency)
             =>

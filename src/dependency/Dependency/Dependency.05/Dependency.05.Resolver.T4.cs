@@ -6,15 +6,19 @@ namespace PrimeFuncPack
 {
     partial class Dependency<T1, T2, T3, T4, T5>
     {
-        public static implicit operator Func<IServiceProvider, T2>(
+        public Func<IServiceProvider, T4> ToFourthResolver()
+            =>
+            fourthResolver;
+        
+        public static implicit operator Func<IServiceProvider, T4>(
             Dependency<T1, T2, T3, T4, T5> dependency)
             =>
-            InternalToSecondResolver(
+            InternalToFourthResolver(
                 dependency ?? throw new ArgumentNullException(nameof(dependency)));
 
-        internal static Func<IServiceProvider, T2> InternalToSecondResolver(
+        internal static Func<IServiceProvider, T4> InternalToFourthResolver(
             Dependency<T1, T2, T3, T4, T5> dependency)
             =>
-            dependency.secondResolver;
+            dependency.fourthResolver;
     }
 }

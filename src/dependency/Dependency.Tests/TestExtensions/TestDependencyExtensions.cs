@@ -58,5 +58,17 @@ namespace PrimeFuncPack.Tests
                 dependency.ToFourthResolver().Invoke(ServiceProvider),
                 dependency.ToFifthResolver().Invoke(ServiceProvider),
                 dependency.ToSixthResolver().Invoke(ServiceProvider));
+
+        public static (T1 First, T2 Second, T3 Third, T4 Fourth, T5 Fifth, T6 Sixth, T7 Seventh) Resolve<T1, T2, T3, T4, T5, T6, T7>(
+            this Dependency<T1, T2, T3, T4, T5, T6, T7> dependency)
+            =>
+            new ValueTuple<T1, T2, T3, T4, T5, T6, T7>(
+                dependency.ToFirstResolver().Invoke(ServiceProvider),
+                dependency.ToSecondResolver().Invoke(ServiceProvider),
+                dependency.ToThirdResolver().Invoke(ServiceProvider),
+                dependency.ToFourthResolver().Invoke(ServiceProvider),
+                dependency.ToFifthResolver().Invoke(ServiceProvider),
+                dependency.ToSixthResolver().Invoke(ServiceProvider),
+                dependency.ToSeventhResolver().Invoke(ServiceProvider));
     }
 }

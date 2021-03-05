@@ -17,13 +17,5 @@ namespace PrimeFuncPack
             this.firstResolver = firstResolver;
             this.secondResolver = secondResolver;
         }
-
-        internal Func<IServiceProvider, T1> InternalFirstResolver
-            =>
-            firstResolver;
-        
-        internal Func<IServiceProvider, T2> InternalSecondResolver
-            =>
-            secondResolver;
     }
 }

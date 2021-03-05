@@ -9,7 +9,8 @@ namespace PrimeFuncPack
         public Dependency<T1, T2, T3, T4, T5, T6, T7> With<T3, T4, T5, T6, T7>(
             Dependency<T3, T4, T5, T6, T7> other)
             =>
-            throw new NotImplementedException();
+            InternalWith(
+                other ?? throw new ArgumentNullException(nameof(other)));
 
         private Dependency<T1, T2, T3, T4, T5, T6, T7> InternalWith<T3, T4, T5, T6, T7>(
             Dependency<T3, T4, T5, T6, T7> other)
@@ -17,10 +18,10 @@ namespace PrimeFuncPack
             new(
                 firstResolver,
                 secondResolver,
-                other.InternalFirstResolver,
-                other.InternalSecondResolver,
-                other.InternalThirdResolver,
-                other.InternalFourthResolver,
-                other.InternalFifthResolver);
+                other.ToFirstResolver(),
+                other.ToSecondResolver(),
+                other.ToThirdResolver(),
+                other.ToFourthResolver(),
+                other.ToFifthResolver());
     }
 }

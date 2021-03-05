@@ -19,7 +19,7 @@ namespace PrimeFuncPack
                 firstResolver,
                 secondResolver,
                 thirdResolver,
-                other.InternalFirstResolver,
-                other.InternalSecondResolver);
+                other.ToFirstResolver(),
+                other.ToSecondResolver());
     }
 }

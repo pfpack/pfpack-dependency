@@ -37,33 +37,5 @@ namespace PrimeFuncPack
             this.sixthResolver = sixthResolver;
             this.seventhResolver = seventhResolver;
         }
-
-        internal Func<IServiceProvider, T1> InternalFirstResolver
-            =>
-            firstResolver;
-        
-        internal Func<IServiceProvider, T2> InternalSecondResolver
-            =>
-            secondResolver;
-
-        internal Func<IServiceProvider, T3> InternalThirdResolver
-            =>
-            thirdResolver;
-
-        internal Func<IServiceProvider, T4> InternalFourthResolver
-            =>
-            fourthResolver;
-
-        internal Func<IServiceProvider, T5> InternalFifthResolver
-            =>
-            fifthResolver;
-
-        internal Func<IServiceProvider, T6> InternalSixthResolver
-            =>
-            sixthResolver;
-
-        internal Func<IServiceProvider, T7> InternalSeventhResolver
-            =>
-            seventhResolver;
     }
 }

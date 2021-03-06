@@ -9,6 +9,6 @@ namespace PrimeFuncPack
         public T6 ResolveSixth(
             IServiceProvider serviceProvider)
             =>
-            throw new NotImplementedException();
+            sixthResolver.Invoke(serviceProvider);
     }
 }

@@ -9,6 +9,6 @@ namespace PrimeFuncPack
         public T5 ResolveFifth(
             IServiceProvider serviceProvider)
             =>
-            throw new NotImplementedException();
+            fifthResolver.Invoke(serviceProvider);
     }
 }

@@ -9,6 +9,6 @@ namespace PrimeFuncPack
         public T7 ResolveSeventh(
             IServiceProvider serviceProvider)
             =>
-            throw new NotImplementedException();
+            seventhResolver.Invoke(serviceProvider);
     }
 }

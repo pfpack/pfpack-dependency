@@ -9,6 +9,6 @@ namespace PrimeFuncPack
         public T4 ResolveFourth(
             IServiceProvider serviceProvider)
             =>
-            throw new NotImplementedException();
+            fourthResolver.Invoke(serviceProvider);
     }
 }

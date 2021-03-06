@@ -9,6 +9,6 @@ namespace PrimeFuncPack
         public T1 ResolveFirst(
             IServiceProvider serviceProvider)
             =>
-            throw new NotImplementedException();
+            firstResolver.Invoke(serviceProvider);
     }
 }

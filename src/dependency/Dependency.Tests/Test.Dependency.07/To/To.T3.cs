@@ -5,22 +5,22 @@ using static PrimeFuncPack.UnitTest.TestData;
 
 namespace PrimeFuncPack.Tests
 {
-    partial class SixDependencyTest
+    partial class SevenDependencyTest
     {
         [Theory]
         [InlineData(null)]
-        [InlineData(MinusFifteen)]
-        [InlineData(Zero)]
-        [InlineData(PlusFifteen)]
+        [InlineData(false)]
+        [InlineData(true)]
         public void ToThird_ExpectResolvedValueIsEqualToThirdSource(
-            int? thirdSource)
+            bool? thirdSource)
         {
             var source = Dependency.Create(
-                _ => MinusFifteenIdNullNameRecord,
-                _ => PlusFifteen,
-                _ => thirdSource,
                 _ => LowerSomeTextStructType,
-                _ => WhiteSpaceString,
+                _ => new object(),
+                _ => thirdSource,
+                _ => MinusFifteen,
+                _ => PlusFifteenIdLowerSomeStringNameRecord,
+                _ => decimal.MinValue,
                 _ => MinusFifteenIdRefType);
 
             var actual = source.ToThird();

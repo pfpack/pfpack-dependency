@@ -1,28 +1,26 @@
 #nullable enable
 
+using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
 namespace PrimeFuncPack.Tests
 {
-    partial class SixDependencyTest
+    partial class SevenDependencyTest
     {
         [Theory]
-        [InlineData(null)]
-        [InlineData(EmptyString)]
-        [InlineData(TabString)]
-        [InlineData(LowerSomeString)]
-        [InlineData(SomeString)]
+        [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
         public void ToSecond_ExpectResolvedValueIsEqualToSecondSource(
-            string? secondSource)
+            StructType secondSource)
         {
             var source = Dependency.Create(
-                _ => SomeTextStructType,
+                _ => MinusFifteen,
                 _ => secondSource,
-                _ => MinusFifteenIdRefType,
-                _ => PlusFifteen,
                 _ => ZeroIdNullNameRecord,
-                _ => long.MaxValue);
+                _ => SomeString,
+                _ => new { Amount = decimal.One },
+                _ => false,
+                _ => PlusFifteenIdRefType);
 
             var actual = source.ToSecond();
             var actualValue = actual.Resolve();

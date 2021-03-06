@@ -6,6 +6,6 @@ namespace PrimeFuncPack
     {
         public Dependency<T4> ToFourth()
             =>
-            throw new System.NotImplementedException();
+            new(fourthResolver);
     }
 }

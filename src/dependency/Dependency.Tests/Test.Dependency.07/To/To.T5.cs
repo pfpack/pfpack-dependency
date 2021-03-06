@@ -1,25 +1,27 @@
 #nullable enable
 
-using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
 namespace PrimeFuncPack.Tests
 {
-    partial class SixDependencyTest
+    partial class SevenDependencyTest
     {
         [Theory]
-        [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
+        [InlineData(null)]
+        [InlineData(WhiteSpaceString)]
+        [InlineData(SomeString)]
         public void ToFifth_ExpectResolvedValueIsEqualToFifthSource(
-            RecordType? fifthSource)
+            string? fifthSource)
         {
             var source = Dependency.Create(
+                _ => false,
+                _ => decimal.MaxValue,
                 _ => MinusFifteenIdRefType,
-                _ => new object(),
-                _ => SomeTextStructType,
-                _ => MinusFifteen,
+                _ => PlusFifteenIdLowerSomeStringNameRecord,
                 _ => fifthSource,
-                _ => ZeroIdRefType);
+                _ => byte.MaxValue,
+                _ => LowerSomeTextStructType);
 
             var actual = source.ToFifth();
 

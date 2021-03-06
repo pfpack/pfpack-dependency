@@ -6,6 +6,6 @@ namespace PrimeFuncPack
     {
         public Dependency<T1> ToFirst()
             =>
-            throw new System.NotImplementedException();
+            new(firstResolver);
     }
 }

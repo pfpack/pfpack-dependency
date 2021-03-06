@@ -12,9 +12,5 @@ namespace PrimeFuncPack
             Func<IServiceProvider, T> resolver)
             =>
             this.resolver = resolver;
-
-        internal Func<IServiceProvider, T> InternalResolver
-            =>
-            resolver;
     }
 }

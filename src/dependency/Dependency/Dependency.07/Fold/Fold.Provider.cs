@@ -9,7 +9,8 @@ namespace PrimeFuncPack
         public Dependency<TR> Fold<TR>(
             Func<IServiceProvider, T1, T2, T3, T4, T5, T6, T7, TR> fold)
             =>
-            throw new NotImplementedException();
+            InternalFold(
+                fold ?? throw new ArgumentNullException(nameof(fold)));
         
         private Dependency<TR> InternalFold<TR>(
             Func<IServiceProvider, T1, T2, T3, T4, T5, T6, T7, TR> fold)

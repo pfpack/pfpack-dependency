@@ -8,6 +8,6 @@ namespace PrimeFuncPack
     {
         public Func<IServiceProvider, T8> ToEighthResolver()
             =>
-            throw new NotImplementedException();
+            eighthResolver;
     }
 }

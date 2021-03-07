@@ -8,6 +8,6 @@ namespace PrimeFuncPack
     {
         public Func<IServiceProvider, T2> ToSecondResolver()
             =>
-            throw new NotImplementedException();
+            secondResolver;
     }
 }

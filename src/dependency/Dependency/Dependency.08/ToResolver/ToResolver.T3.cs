@@ -8,6 +8,6 @@ namespace PrimeFuncPack
     {
         public Func<IServiceProvider, T3> ToThirdResolver()
             =>
-            throw new NotImplementedException();
+            thirdResolver;
     }
 }

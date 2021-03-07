@@ -16,6 +16,14 @@ namespace PrimeFuncPack
             Func<IServiceProvider, T7> seventh,
             Func<IServiceProvider, T8> eighth)
             =>
-            throw new NotImplementedException();
+            new(
+                first ?? throw new ArgumentNullException(nameof(first)),
+                second ?? throw new ArgumentNullException(nameof(second)),
+                third ?? throw new ArgumentNullException(nameof(third)),
+                fourth ?? throw new ArgumentNullException(nameof(fourth)),
+                fifth ?? throw new ArgumentNullException(nameof(fifth)),
+                sixth ?? throw new ArgumentNullException(nameof(sixth)),
+                seventh ?? throw new ArgumentNullException(nameof(seventh)),
+                eighth ?? throw new ArgumentNullException(nameof(eighth)));
     }
 }

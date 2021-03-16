@@ -18,7 +18,7 @@ namespace PrimeFuncPack.Tests
             var fifth = new object();
             var sixth = DateTimeKind.Unspecified;
             var seventh = byte.MaxValue;
-            var eighth = ZeroIdRefType;
+            var rest = ZeroIdRefType;
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = Dependency.Create(
@@ -29,7 +29,7 @@ namespace PrimeFuncPack.Tests
                     _ => fifth,
                     _ => sixth,
                     _ => seventh,
-                    _ => eighth));
+                    _ => rest));
 
             Assert.Equal("first", ex.ParamName);
         }
@@ -43,7 +43,7 @@ namespace PrimeFuncPack.Tests
             var fifth = SomeTextStructType;
             var sixth = MinusFifteenIdRefType;
             var seventh = (MinusFifteen, UpperSomeString, false, LowerSomeString);
-            var eighth = decimal.MaxValue;
+            var rest = decimal.MaxValue;
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = Dependency.Create(
@@ -54,7 +54,7 @@ namespace PrimeFuncPack.Tests
                     _ => fifth,
                     _ => sixth,
                     _ => seventh,
-                    _ => eighth));
+                    _ => rest));
 
             Assert.Equal("second", ex.ParamName);
         }
@@ -68,7 +68,7 @@ namespace PrimeFuncPack.Tests
             var fifth = PlusFifteen;
             var sixth = MinusFifteenIdSomeStringNameRecord;
             var seventh = WhiteSpaceString;
-            var eighth = (SomeString, true, TabString);
+            var rest = (SomeString, true, TabString);
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = Dependency.Create(
@@ -79,7 +79,7 @@ namespace PrimeFuncPack.Tests
                     _ => fifth,
                     _ => sixth,
                     _ => seventh,
-                    _ => eighth));
+                    _ => rest));
 
             Assert.Equal("third", ex.ParamName);
         }
@@ -93,7 +93,7 @@ namespace PrimeFuncPack.Tests
             var fifth = MinusFifteenIdNullNameRecord;
             var sixth = Zero;
             var seventh = (PlusFifteen, decimal.One);
-            var eighth = TabString;
+            var rest = TabString;
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = Dependency.Create(
@@ -104,7 +104,7 @@ namespace PrimeFuncPack.Tests
                     _ => fifth,
                     _ => sixth,
                     _ => seventh,
-                    _ => eighth));
+                    _ => rest));
 
             Assert.Equal("fourth", ex.ParamName);
         }
@@ -118,7 +118,7 @@ namespace PrimeFuncPack.Tests
             var fourth = byte.MaxValue;
             var sixth = DateTimeKind.Unspecified;
             var seventh = decimal.MaxValue;
-            var eighth = LowerSomeTextStructType;
+            var rest = LowerSomeTextStructType;
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = Dependency.Create(
@@ -129,7 +129,7 @@ namespace PrimeFuncPack.Tests
                     NullRecordResolver,
                     _ => sixth,
                     _ => seventh,
-                    _ => eighth));
+                    _ => rest));
 
             Assert.Equal("fifth", ex.ParamName);
         }
@@ -143,7 +143,7 @@ namespace PrimeFuncPack.Tests
             var fourth = MinusFifteenIdNullNameRecord;
             var fifth = ZeroIdRefType;
             var seventh = SomeTextStructType;
-            var eighth = PlusFifteen;
+            var rest = PlusFifteen;
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = Dependency.Create(
@@ -154,7 +154,7 @@ namespace PrimeFuncPack.Tests
                     _ => fifth,
                     NullRecordResolver,
                     _ => seventh,
-                    _ => eighth));
+                    _ => rest));
 
             Assert.Equal("sixth", ex.ParamName);
         }
@@ -168,7 +168,7 @@ namespace PrimeFuncPack.Tests
             var fourth = LowerSomeTextStructType;
             var fifth = new object();
             var sixth = decimal.MinusOne;
-            var eighth = MinusFifteenIdRefType;
+            var rest = MinusFifteenIdRefType;
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = Dependency.Create(
@@ -179,13 +179,13 @@ namespace PrimeFuncPack.Tests
                     _ => fifth,
                     _ => sixth,
                     NullRecordResolver,
-                    _ => eighth));
+                    _ => rest));
 
             Assert.Equal("seventh", ex.ParamName);
         }
 
         [Fact]
-        public void Create_08_EighthIsNull_ExpectArgumentNullException()
+        public void Create_08_RestIsNull_ExpectArgumentNullException()
         {
             var first = ThreeWhiteSpacesString;
             var second = SomeTextStructType;
@@ -206,13 +206,13 @@ namespace PrimeFuncPack.Tests
                     _ => seventh,
                     NullRecordResolver));
 
-            Assert.Equal("eighth", ex.ParamName);
+            Assert.Equal("rest", ex.ParamName);
         }
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
         public void Create_08_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(
-            RecordType? sourceEighth)
+            RecordType? sourceRest)
         {
             var sourceFirst = decimal.MaxValue;
             var sourceSecond = LowerSomeTextStructType;
@@ -230,11 +230,11 @@ namespace PrimeFuncPack.Tests
                 _ => sourceFifth,
                 _ => sourceSixth,
                 _ => sourceSeventh,
-                _ => sourceEighth);
+                _ => sourceRest);
 
             var actualValue = actual.Resolve();
 
-            var expectedValue = ((sourceFirst, sourceSecond, sourceThird, sourceFourth), (sourceFifth, sourceSixth, sourceSeventh, sourceEighth));
+            var expectedValue = ((sourceFirst, sourceSecond, sourceThird, sourceFourth), (sourceFifth, sourceSixth, sourceSeventh, sourceRest));
             Assert.Equal(expectedValue, actualValue);
         }
     }

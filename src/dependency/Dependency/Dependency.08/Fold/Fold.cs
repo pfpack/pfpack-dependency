@@ -4,15 +4,15 @@ using System;
 
 namespace PrimeFuncPack
 {
-    partial class Dependency<T1, T2, T3, T4, T5, T6, T7, T8>
+    partial class Dependency<T1, T2, T3, T4, T5, T6, T7, TRest>
     {
-        public Dependency<TR> Fold<TR>(
-            Func<T1, T2, T3, T4, T5, T6, T7, T8, TR> fold)
+        public Dependency<TResult> Fold<TResult>(
+            Func<T1, T2, T3, T4, T5, T6, T7, TRest, TResult> fold)
             =>
             throw new NotImplementedException();
         
-        private Dependency<TR> InternalFold<TR>(
-            Func<T1, T2, T3, T4, T5, T6, T7, T8, TR> fold)
+        private Dependency<TResult> InternalFold<TResult>(
+            Func<T1, T2, T3, T4, T5, T6, T7, TRest, TResult> fold)
             =>
             new(
                 sp => fold.Invoke(
@@ -23,6 +23,6 @@ namespace PrimeFuncPack
                     fifthResolver.Invoke(sp),
                     sixthResolver.Invoke(sp),
                     seventhResolver.Invoke(sp),
-                    eighthResolver.Invoke(sp)));
+                    restResolver.Invoke(sp)));
     }
 }

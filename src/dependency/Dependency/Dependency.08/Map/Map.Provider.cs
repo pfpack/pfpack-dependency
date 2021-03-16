@@ -4,29 +4,29 @@ using System;
 
 namespace PrimeFuncPack
 {
-    partial class Dependency<T1, T2, T3, T4, T5, T6, T7, T8>
+    partial class Dependency<T1, T2, T3, T4, T5, T6, T7, TRest>
     {
-        public Dependency<TR1, TR2, TR3, TR4, TR5, TR6, TR7, TR8> Map<TR1, TR2, TR3, TR4, TR5, TR6, TR7, TR8>(
-            Func<IServiceProvider, T1, TR1> mapFirst,
-            Func<IServiceProvider, T2, TR2> mapSecond,
-            Func<IServiceProvider, T3, TR3> mapThird,
-            Func<IServiceProvider, T4, TR4> mapFourth,
-            Func<IServiceProvider, T5, TR5> mapFifth,
-            Func<IServiceProvider, T6, TR6> mapSixth,
-            Func<IServiceProvider, T7, TR7> mapSeventh,
-            Func<IServiceProvider, T8, TR8> mapEighth)
+        public Dependency<TResult1, TResult2, TResult3, TResult4, TResult5, TResult6, TResult7, TResultRest> Map<TResult1, TResult2, TResult3, TResult4, TResult5, TResult6, TResult7, TResultRest>(
+            Func<IServiceProvider, T1, TResult1> mapFirst,
+            Func<IServiceProvider, T2, TResult2> mapSecond,
+            Func<IServiceProvider, T3, TResult3> mapThird,
+            Func<IServiceProvider, T4, TResult4> mapFourth,
+            Func<IServiceProvider, T5, TResult5> mapFifth,
+            Func<IServiceProvider, T6, TResult6> mapSixth,
+            Func<IServiceProvider, T7, TResult7> mapSeventh,
+            Func<IServiceProvider, TRest, TResultRest> mapRest)
             =>
             throw new NotImplementedException();
 
-        private Dependency<TR1, TR2, TR3, TR4, TR5, TR6, TR7, TR8> InternalMap<TR1, TR2, TR3, TR4, TR5, TR6, TR7, TR8>(
-            Func<IServiceProvider, T1, TR1> mapFirst,
-            Func<IServiceProvider, T2, TR2> mapSecond,
-            Func<IServiceProvider, T3, TR3> mapThird,
-            Func<IServiceProvider, T4, TR4> mapFourth,
-            Func<IServiceProvider, T5, TR5> mapFifth,
-            Func<IServiceProvider, T6, TR6> mapSixth,
-            Func<IServiceProvider, T7, TR7> mapSeventh,
-            Func<IServiceProvider, T8, TR8> mapEighth)
+        private Dependency<TResult1, TResult2, TResult3, TResult4, TResult5, TResult6, TResult7, TResultRest> InternalMap<TResult1, TResult2, TResult3, TResult4, TResult5, TResult6, TResult7, TResultRest>(
+            Func<IServiceProvider, T1, TResult1> mapFirst,
+            Func<IServiceProvider, T2, TResult2> mapSecond,
+            Func<IServiceProvider, T3, TResult3> mapThird,
+            Func<IServiceProvider, T4, TResult4> mapFourth,
+            Func<IServiceProvider, T5, TResult5> mapFifth,
+            Func<IServiceProvider, T6, TResult6> mapSixth,
+            Func<IServiceProvider, T7, TResult7> mapSeventh,
+            Func<IServiceProvider, TRest, TResultRest> mapRest)
             =>
             new(
                 sp => sp.Pipe(firstResolver).Pipe(first => mapFirst.Invoke(sp, first)),
@@ -36,6 +36,6 @@ namespace PrimeFuncPack
                 sp => sp.Pipe(fifthResolver).Pipe(fifth => mapFifth.Invoke(sp, fifth)),
                 sp => sp.Pipe(sixthResolver).Pipe(sixth => mapSixth.Invoke(sp, sixth)),
                 sp => sp.Pipe(seventhResolver).Pipe(seventh => mapSeventh.Invoke(sp, seventh)),
-                sp => sp.Pipe(eighthResolver).Pipe(eighth => mapEighth.Invoke(sp, eighth)));
+                sp => sp.Pipe(restResolver).Pipe(rest => mapRest.Invoke(sp, rest)));
     }
 }

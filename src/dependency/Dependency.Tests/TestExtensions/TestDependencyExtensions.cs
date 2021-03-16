@@ -71,13 +71,13 @@ namespace PrimeFuncPack.Tests
                 dependency.ToSixthResolver().Invoke(ServiceProvider),
                 dependency.ToSeventhResolver().Invoke(ServiceProvider));
 
-        public static ((T1 First, T2 Second, T3 Third, T4 Fourth) Left, (T5 Fifth, T6 Sixth, T7 Seventh, T8 Eighth) Right) Resolve<T1, T2, T3, T4, T5, T6, T7, T8>(
-            this Dependency<T1, T2, T3, T4, T5, T6, T7, T8> dependency)
+        public static ((T1 First, T2 Second, T3 Third, T4 Fourth) Left, (T5 Fifth, T6 Sixth, T7 Seventh, TRest Eighth) Right) Resolve<T1, T2, T3, T4, T5, T6, T7, TRest>(
+            this Dependency<T1, T2, T3, T4, T5, T6, T7, TRest> dependency)
             =>
             (dependency.ResolveLeftHalf(), dependency.ResolveRightHalf());
 
-        private static (T1 First, T2 Second, T3 Third, T4 Fourth) ResolveLeftHalf<T1, T2, T3, T4, T5, T6, T7, T8>(
-            this Dependency<T1, T2, T3, T4, T5, T6, T7, T8> dependency)
+        private static (T1 First, T2 Second, T3 Third, T4 Fourth) ResolveLeftHalf<T1, T2, T3, T4, T5, T6, T7, TRest>(
+            this Dependency<T1, T2, T3, T4, T5, T6, T7, TRest> dependency)
             =>
             new ValueTuple<T1, T2, T3, T4>(
                 dependency.ToFirstResolver().Invoke(ServiceProvider),
@@ -85,13 +85,13 @@ namespace PrimeFuncPack.Tests
                 dependency.ToThirdResolver().Invoke(ServiceProvider),
                 dependency.ToFourthResolver().Invoke(ServiceProvider));
 
-        private static (T5 Fifth, T6 Sixth, T7 Seventh, T8 Eighth) ResolveRightHalf<T1, T2, T3, T4, T5, T6, T7, T8>(
-            this Dependency<T1, T2, T3, T4, T5, T6, T7, T8> dependency)
+        private static (T5 Fifth, T6 Sixth, T7 Seventh, TRest Eighth) ResolveRightHalf<T1, T2, T3, T4, T5, T6, T7, TRest>(
+            this Dependency<T1, T2, T3, T4, T5, T6, T7, TRest> dependency)
             =>
-            new ValueTuple<T5, T6, T7, T8>(
+            new ValueTuple<T5, T6, T7, TRest>(
                 dependency.ToFifthResolver().Invoke(ServiceProvider),
                 dependency.ToSixthResolver().Invoke(ServiceProvider),
                 dependency.ToSeventhResolver().Invoke(ServiceProvider),
-                dependency.ToEighthResolver().Invoke(ServiceProvider));
+                dependency.ToRestResolver().Invoke(ServiceProvider));
     }
 }

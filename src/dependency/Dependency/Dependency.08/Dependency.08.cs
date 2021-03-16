@@ -4,7 +4,7 @@ using System;
 
 namespace PrimeFuncPack
 {
-    public sealed partial class Dependency<T1, T2, T3, T4, T5, T6, T7, T8>
+    public sealed partial class Dependency<T1, T2, T3, T4, T5, T6, T7, TRest>
     {
         private readonly Func<IServiceProvider, T1> firstResolver;
 
@@ -20,7 +20,7 @@ namespace PrimeFuncPack
 
         private readonly Func<IServiceProvider, T7> seventhResolver;
 
-        private readonly Func<IServiceProvider, T8> eighthResolver;
+        private readonly Func<IServiceProvider, TRest> restResolver;
 
         internal Dependency(
             Func<IServiceProvider, T1> firstResolver,
@@ -30,7 +30,7 @@ namespace PrimeFuncPack
             Func<IServiceProvider, T5> fifthResolver,
             Func<IServiceProvider, T6> sixthResolver,
             Func<IServiceProvider, T7> seventhResolver,
-            Func<IServiceProvider, T8> eighthResolver)
+            Func<IServiceProvider, TRest> restResolver)
         {
             this.firstResolver = firstResolver;
             this.secondResolver = secondResolver;
@@ -39,7 +39,7 @@ namespace PrimeFuncPack
             this.fifthResolver = fifthResolver;
             this.sixthResolver = sixthResolver;
             this.seventhResolver = seventhResolver;
-            this.eighthResolver = eighthResolver;
+            this.restResolver = restResolver;
         }
     }
 }

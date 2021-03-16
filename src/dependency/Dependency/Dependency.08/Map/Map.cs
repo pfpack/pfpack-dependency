@@ -4,29 +4,37 @@ using System;
 
 namespace PrimeFuncPack
 {
-    partial class Dependency<T1, T2, T3, T4, T5, T6, T7, T8>
+    partial class Dependency<T1, T2, T3, T4, T5, T6, T7, TRest>
     {
-        public Dependency<TR1, TR2, TR3, TR4, TR5, TR6, TR7, TR8> Map<TR1, TR2, TR3, TR4, TR5, TR6, TR7, TR8>(
-            Func<T1, TR1> mapFirst,
-            Func<T2, TR2> mapSecond,
-            Func<T3, TR3> mapThird,
-            Func<T4, TR4> mapFourth,
-            Func<T5, TR5> mapFifth,
-            Func<T6, TR6> mapSixth,
-            Func<T7, TR7> mapSeventh,
-            Func<T8, TR8> mapEighth)
+        public Dependency<TResult1, TResult2, TResult3, TResult4, TResult5, TResult6, TResult7, TResultRest> Map<TResult1, TResult2, TResult3, TResult4, TResult5, TResult6, TResult7, TResultRest>(
+            Func<T1, TResult1> mapFirst,
+            Func<T2, TResult2> mapSecond,
+            Func<T3, TResult3> mapThird,
+            Func<T4, TResult4> mapFourth,
+            Func<T5, TResult5> mapFifth,
+            Func<T6, TResult6> mapSixth,
+            Func<T7, TResult7> mapSeventh,
+            Func<TRest, TResultRest> mapRest)
             =>
-            throw new NotImplementedException();
+            InternalMap(
+                mapFirst ?? throw new ArgumentNullException(nameof(mapFirst)),
+                mapSecond ?? throw new ArgumentNullException(nameof(mapSecond)),
+                mapThird ?? throw new ArgumentNullException(nameof(mapThird)),
+                mapFourth ?? throw new ArgumentNullException(nameof(mapFourth)),
+                mapFifth ?? throw new ArgumentNullException(nameof(mapFifth)),
+                mapSixth ?? throw new ArgumentNullException(nameof(mapSixth)),
+                mapSeventh ?? throw new ArgumentNullException(nameof(mapSeventh)),
+                mapRest ?? throw new ArgumentNullException(nameof(mapRest)));
 
-        private Dependency<TR1, TR2, TR3, TR4, TR5, TR6, TR7, TR8> InternalMap<TR1, TR2, TR3, TR4, TR5, TR6, TR7, TR8>(
-            Func<T1, TR1> mapFirst,
-            Func<T2, TR2> mapSecond,
-            Func<T3, TR3> mapThird,
-            Func<T4, TR4> mapFourth,
-            Func<T5, TR5> mapFifth,
-            Func<T6, TR6> mapSixth,
-            Func<T7, TR7> mapSeventh,
-            Func<T8, TR8> mapEighth)
+        private Dependency<TResult1, TResult2, TResult3, TResult4, TResult5, TResult6, TResult7, TResultRest> InternalMap<TResult1, TResult2, TResult3, TResult4, TResult5, TResult6, TResult7, TResultRest>(
+            Func<T1, TResult1> mapFirst,
+            Func<T2, TResult2> mapSecond,
+            Func<T3, TResult3> mapThird,
+            Func<T4, TResult4> mapFourth,
+            Func<T5, TResult5> mapFifth,
+            Func<T6, TResult6> mapSixth,
+            Func<T7, TResult7> mapSeventh,
+            Func<TRest, TResultRest> mapRest)
             =>
             new(
                 sp => sp.Pipe(firstResolver).Pipe(mapFirst),
@@ -36,6 +44,6 @@ namespace PrimeFuncPack
                 sp => sp.Pipe(fifthResolver).Pipe(mapFifth),
                 sp => sp.Pipe(sixthResolver).Pipe(mapSixth),
                 sp => sp.Pipe(seventhResolver).Pipe(mapSeventh),
-                sp => sp.Pipe(eighthResolver).Pipe(mapEighth));
+                sp => sp.Pipe(restResolver).Pipe(mapRest));
     }
 }

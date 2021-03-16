@@ -6,14 +6,14 @@ namespace PrimeFuncPack
 {
     partial class Dependency<T>
     {
-        public Dependency<TR> Map<TR>(
-            Func<T, TR> map)
+        public Dependency<TResult> Map<TResult>(
+            Func<T, TResult> map)
             =>
             InternalMap(
                 map ?? throw new ArgumentNullException(nameof(map)));
 
-        private Dependency<TR> InternalMap<TR>(
-            Func<T, TR> map)
+        private Dependency<TResult> InternalMap<TResult>(
+            Func<T, TResult> map)
             =>
             new(
                 sp => sp.Pipe(resolver).Pipe(map));

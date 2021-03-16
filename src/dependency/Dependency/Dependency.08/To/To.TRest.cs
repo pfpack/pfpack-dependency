@@ -2,9 +2,9 @@
 
 namespace PrimeFuncPack
 {
-    partial class Dependency<T1, T2, T3, T4, T5, T6, T7, T8>
+    partial class Dependency<T1, T2, T3, T4, T5, T6, T7, TRest>
     {
-        public Dependency<T8> ToEighth()
+        public Dependency<TRest> ToRest()
             =>
             throw new System.NotImplementedException();
     }

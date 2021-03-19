@@ -9,7 +9,8 @@ namespace PrimeFuncPack
         public Dependency<T1, T2, T3, T4, T5, T6, T7, T8> With<T5, T6, T7, T8>(
             Dependency<T5, T6, T7, T8> other)
             =>
-            throw new NotImplementedException();
+            InternalWith(
+                other ?? throw new ArgumentNullException(nameof(other)));
 
         private Dependency<T1, T2, T3, T4, T5, T6, T7, T8> InternalWith<T5, T6, T7, T8>(
             Dependency<T5, T6, T7, T8> other)

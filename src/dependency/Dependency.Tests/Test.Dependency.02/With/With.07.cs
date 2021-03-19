@@ -27,6 +27,7 @@ namespace PrimeFuncPack.Tests
         {
             var firstSource = decimal.MaxValue;
             var secondSource = MinusFifteenIdSomeStringNameRecord;
+            
             var source = Dependency.Create(_ => firstSource, _ => secondSource);
             
             var otherFirst = ZeroIdRefType;

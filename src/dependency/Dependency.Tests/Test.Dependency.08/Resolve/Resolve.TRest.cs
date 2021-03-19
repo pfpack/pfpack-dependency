@@ -20,7 +20,7 @@ namespace PrimeFuncPack.Tests
                 _ => new { Name = UpperSomeString },
                 _ => MinusFifteenIdNullNameRecord,
                 _ => decimal.One,
-                _ => false,
+                _ => true,
                 _ => ZeroIdRefType,
                 _ => Array.Empty<DateTimeOffset>(),
                 _ => rest);

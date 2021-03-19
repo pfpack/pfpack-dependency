@@ -6,6 +6,6 @@ namespace PrimeFuncPack
     {
         public Dependency<T5> ToFifth()
             =>
-            throw new System.NotImplementedException();
+            new(fifthResolver);
     }
 }

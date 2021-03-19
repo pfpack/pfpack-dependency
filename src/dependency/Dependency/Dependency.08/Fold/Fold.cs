@@ -9,12 +9,14 @@ namespace PrimeFuncPack
         public Dependency<TResult> Fold<TResult>(
             Func<T1, T2, T3, T4, T5, T6, T7, TRest, TResult> fold)
             =>
-            throw new NotImplementedException();
+            InternalFold(
+                fold ?? throw new ArgumentNullException(nameof(fold)));
         
         private Dependency<TResult> InternalFold<TResult>(
             Func<T1, T2, T3, T4, T5, T6, T7, TRest, TResult> fold)
             =>
-            new(
+            throw new NotImplementedException();
+            /*new(
                 sp => fold.Invoke(
                     firstResolver.Invoke(sp),
                     secondResolver.Invoke(sp),
@@ -23,6 +25,6 @@ namespace PrimeFuncPack
                     fifthResolver.Invoke(sp),
                     sixthResolver.Invoke(sp),
                     seventhResolver.Invoke(sp),
-                    restResolver.Invoke(sp)));
+                    restResolver.Invoke(sp)));*/
     }
 }

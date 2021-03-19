@@ -6,6 +6,6 @@ namespace PrimeFuncPack
     {
         public Dependency<TRest> ToRest()
             =>
-            throw new System.NotImplementedException();
+            new(restResolver);
     }
 }

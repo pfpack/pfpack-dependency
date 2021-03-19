@@ -6,14 +6,14 @@ namespace PrimeFuncPack
 {
     partial class Dependency<T1, T2, T3, T4, T5, T6, T7>
     {
-        public Dependency<TR> Fold<TR>(
-            Func<T1, T2, T3, T4, T5, T6, T7, TR> fold)
+        public Dependency<TResult> Fold<TResult>(
+            Func<T1, T2, T3, T4, T5, T6, T7, TResult> fold)
             =>
             InternalFold(
                 fold ?? throw new ArgumentNullException(nameof(fold)));
         
-        private Dependency<TR> InternalFold<TR>(
-            Func<T1, T2, T3, T4, T5, T6, T7, TR> fold)
+        private Dependency<TResult> InternalFold<TResult>(
+            Func<T1, T2, T3, T4, T5, T6, T7, TResult> fold)
             =>
             new(
                 sp => fold.Invoke(

@@ -70,5 +70,28 @@ namespace PrimeFuncPack.Tests
                 dependency.ToFifthResolver().Invoke(ServiceProvider),
                 dependency.ToSixthResolver().Invoke(ServiceProvider),
                 dependency.ToSeventhResolver().Invoke(ServiceProvider));
+
+        public static ((T1 First, T2 Second, T3 Third, T4 Fourth) Left, (T5 Fifth, T6 Sixth, T7 Seventh, TRest Eighth) Right) Resolve<T1, T2, T3, T4, T5, T6, T7, TRest>(
+            this Dependency<T1, T2, T3, T4, T5, T6, T7, TRest> dependency)
+            =>
+            (dependency.ResolveLeftHalf(), dependency.ResolveRightHalf());
+
+        private static (T1 First, T2 Second, T3 Third, T4 Fourth) ResolveLeftHalf<T1, T2, T3, T4, T5, T6, T7, TRest>(
+            this Dependency<T1, T2, T3, T4, T5, T6, T7, TRest> dependency)
+            =>
+            new ValueTuple<T1, T2, T3, T4>(
+                dependency.ToFirstResolver().Invoke(ServiceProvider),
+                dependency.ToSecondResolver().Invoke(ServiceProvider),
+                dependency.ToThirdResolver().Invoke(ServiceProvider),
+                dependency.ToFourthResolver().Invoke(ServiceProvider));
+
+        private static (T5 Fifth, T6 Sixth, T7 Seventh, TRest Eighth) ResolveRightHalf<T1, T2, T3, T4, T5, T6, T7, TRest>(
+            this Dependency<T1, T2, T3, T4, T5, T6, T7, TRest> dependency)
+            =>
+            new ValueTuple<T5, T6, T7, TRest>(
+                dependency.ToFifthResolver().Invoke(ServiceProvider),
+                dependency.ToSixthResolver().Invoke(ServiceProvider),
+                dependency.ToSeventhResolver().Invoke(ServiceProvider),
+                dependency.ToRestResolver().Invoke(ServiceProvider));
     }
 }

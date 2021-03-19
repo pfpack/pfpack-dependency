@@ -33,8 +33,8 @@ namespace PrimeFuncPack.Tests
         [InlineData(null)]
         [InlineData(false)]
         [InlineData(true)]
-        public void Fold_FoldFuncIsNotNull_ExpectResolvedValueIsEqualToMapped(
-            bool? mappedValue)
+        public void Fold_FoldFuncIsNotNull_ExpectResolvedValueIsEqualToFolded(
+            bool? foldedValue)
         {
             var source = Dependency.Create(
                 _ => SomeTextStructType,
@@ -45,10 +45,10 @@ namespace PrimeFuncPack.Tests
                 _ => (PlusFifteen, WhiteSpaceString),
                 _ => new { Id = PlusFifteen });
 
-            var actual = source.Fold((_, _, _, _, _, _, _) => mappedValue);
+            var actual = source.Fold((_, _, _, _, _, _, _) => foldedValue);
             var actualValue = actual.Resolve();
             
-            Assert.Equal(mappedValue, actualValue);
+            Assert.Equal(foldedValue, actualValue);
         }
     }
 }

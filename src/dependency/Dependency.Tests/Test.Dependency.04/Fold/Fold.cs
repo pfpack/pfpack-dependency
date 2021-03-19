@@ -25,16 +25,16 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void Fold_FoldFuncIsNotNull_ExpectResolvedValueIsEqualToMapped(
-            RecordType mappedValue)
+        public void Fold_FoldFuncIsNotNull_ExpectResolvedValueIsEqualToFolded(
+            RecordType foldedValue)
         {
             var source = Dependency.Create(
                 _ => PlusFifteenIdRefType, _ => EmptyString, _ => UpperSomeString, _ => SomeTextStructType);
 
-            var actual = source.Fold((_, _, _, _) => mappedValue);
+            var actual = source.Fold((_, _, _, _) => foldedValue);
             var actualValue = actual.Resolve();
             
-            Assert.Equal(mappedValue, actualValue);
+            Assert.Equal(foldedValue, actualValue);
         }
     }
 }

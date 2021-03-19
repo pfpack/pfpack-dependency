@@ -6,20 +6,20 @@ namespace PrimeFuncPack
 {
     partial class Dependency<T1, T2, T3>
     {
-        public Dependency<TR1, TR2, TR3> Map<TR1, TR2, TR3>(
-            Func<IServiceProvider, T1, TR1> mapFirst,
-            Func<IServiceProvider, T2, TR2> mapSecond,
-            Func<IServiceProvider, T3, TR3> mapThird)
+        public Dependency<TResult1, TResult2, TResult3> Map<TResult1, TResult2, TResult3>(
+            Func<IServiceProvider, T1, TResult1> mapFirst,
+            Func<IServiceProvider, T2, TResult2> mapSecond,
+            Func<IServiceProvider, T3, TResult3> mapThird)
             =>
             InternalMap(
                 mapFirst ?? throw new ArgumentNullException(nameof(mapFirst)),
                 mapSecond ?? throw new ArgumentNullException(nameof(mapSecond)),
                 mapThird ?? throw new ArgumentNullException(nameof(mapThird)));
 
-        private Dependency<TR1, TR2, TR3> InternalMap<TR1, TR2, TR3>(
-            Func<IServiceProvider, T1, TR1> mapFirst,
-            Func<IServiceProvider, T2, TR2> mapSecond,
-            Func<IServiceProvider, T3, TR3> mapThird)
+        private Dependency<TResult1, TResult2, TResult3> InternalMap<TResult1, TResult2, TResult3>(
+            Func<IServiceProvider, T1, TResult1> mapFirst,
+            Func<IServiceProvider, T2, TResult2> mapSecond,
+            Func<IServiceProvider, T3, TResult3> mapThird)
             =>
             new(
                 sp => sp.Pipe(firstResolver).Pipe(first => mapFirst.Invoke(sp, first)),

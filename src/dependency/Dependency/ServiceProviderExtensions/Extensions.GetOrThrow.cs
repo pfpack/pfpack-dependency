@@ -24,7 +24,7 @@ namespace PrimeFuncPack
                 return (T)service;
             }
 
-            throw new InvalidOperationException($"Service {typeof(T)} can not be resolved by service provider.");
+            throw new InvalidOperationException($"A service of type {typeof(T)} can not be resolved by the service provider.");
         }
     }
 }

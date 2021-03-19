@@ -29,8 +29,8 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void Fold_FoldFuncIsNotNull_ExpectResolvedValueIsEqualToMapped(
-            StructType mappedValue)
+        public void Fold_FoldFuncIsNotNull_ExpectResolvedValueIsEqualToFolded(
+            StructType foldedValue)
         {
             var source = Dependency.Create(
                 _ => ZeroIdNullNameRecord,
@@ -39,10 +39,10 @@ namespace PrimeFuncPack.Tests
                 _ => LowerSomeString,
                 _ => decimal.MinusOne);
 
-            var actual = source.Fold((_, _, _, _, _) => mappedValue);
+            var actual = source.Fold((_, _, _, _, _) => foldedValue);
             var actualValue = actual.Resolve();
             
-            Assert.Equal(mappedValue, actualValue);
+            Assert.Equal(foldedValue, actualValue);
         }
     }
 }

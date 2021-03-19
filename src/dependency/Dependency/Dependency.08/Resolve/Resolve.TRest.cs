@@ -9,6 +9,6 @@ namespace PrimeFuncPack
         public TRest ResolveRest(
             IServiceProvider serviceProvider)
             =>
-            throw new NotImplementedException();
+            restResolver.Invoke(serviceProvider);
     }
 }

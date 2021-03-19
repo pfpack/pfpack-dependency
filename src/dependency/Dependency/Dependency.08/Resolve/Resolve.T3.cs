@@ -9,6 +9,6 @@ namespace PrimeFuncPack
         public T3 ResolveThird(
             IServiceProvider serviceProvider)
             =>
-            throw new NotImplementedException();
+            thirdResolver.Invoke(serviceProvider);
     }
 }

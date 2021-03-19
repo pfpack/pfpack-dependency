@@ -12,7 +12,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="EarlyFuncPack.Dependency" Version="0.3.0-preview.0.4.7" />
+		<PackageReference Include="EarlyFuncPack.Dependency" Version="0.3.0-preview.0.5.7" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
 		<PackageReference Include="Moq" Version="4.16.1" />
 		<PackageReference Include="PrimeFuncPack.UnitTest.Data" Version="2.0.6" />

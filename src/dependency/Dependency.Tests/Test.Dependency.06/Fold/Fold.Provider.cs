@@ -30,8 +30,8 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
-        public void FoldWithProvider_FoldFuncIsNotNull_ExpectResolvedValueIsEqualToMapped(
-            RefType? mappedValue)
+        public void FoldWithProvider_FoldFuncIsNotNull_ExpectResolvedValueIsEqualToFolded(
+            RefType? foldedValue)
         {
             var source = Dependency.Create(
                 _ => SomeTextStructType,
@@ -41,10 +41,10 @@ namespace PrimeFuncPack.Tests
                 _ => PlusFifteenIdRefType,
                 _ => LowerSomeTextStructType);
 
-            var actual = source.Fold((_, _, _, _, _, _, _) => mappedValue);
+            var actual = source.Fold((_, _, _, _, _, _, _) => foldedValue);
             var actualValue = actual.Resolve();
             
-            Assert.Equal(mappedValue, actualValue);
+            Assert.Equal(foldedValue, actualValue);
         }
     }
 }

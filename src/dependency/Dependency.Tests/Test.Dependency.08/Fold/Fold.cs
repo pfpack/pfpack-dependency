@@ -29,5 +29,26 @@ namespace PrimeFuncPack.Tests
             
             Assert.Equal("fold", ex.ParamName);
         }
+
+        [Theory]
+        [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
+        public void Fold_FoldFuncIsNotNull_ExpectResolvedValueIsEqualToFolded(
+            RecordType? foldedValue)
+        {
+            var source = Dependency.Create(
+                _ => new object(),
+                _ => MinusFifteenIdRefType,
+                _ => new[] { true, false, true },
+                _ => PlusFifteen,
+                _ => PlusFifteenIdLowerSomeStringNameRecord,
+                _ => byte.MaxValue,
+                _ => UpperSomeString,
+                _ => LowerSomeTextStructType);
+
+            var actual = source.Fold((_, _, _, _, _, _, _, _) => foldedValue);
+            var actualValue = actual.Resolve();
+            
+            Assert.Equal(foldedValue, actualValue);
+        }
     }
 }

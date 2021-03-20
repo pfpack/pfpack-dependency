@@ -6,7 +6,7 @@ using Moq;
 namespace PrimeFuncPack.Tests
 {
     public sealed partial class ServiceProviderExtensionsTest
-    {
+    {        
         private static readonly IServiceProvider? NullServiceProvider = null;
 
         private static Mock<IServiceProvider> CreateMockServiceProvider(

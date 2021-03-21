@@ -6,7 +6,7 @@ namespace PrimeFuncPack
 {
     partial class Dependency<T>
     {
-        public Func<IServiceProvider, T> ToResolver()
+        internal Func<IServiceProvider, T> ToResolver()
             =>
             resolver;
     }

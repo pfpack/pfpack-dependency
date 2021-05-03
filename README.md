@@ -1,2 +1,2 @@
-# PrimeFuncPack Dependency Pipeline
+# PrimeFuncPack Dependency
 A Functional Programming Pack for .NET

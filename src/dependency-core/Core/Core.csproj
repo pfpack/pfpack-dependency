@@ -9,10 +9,10 @@
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<Description>PrimeFuncPack: A Functional Programming Pack for .NET</Description>
-		<Copyright>Copyright © 2020 Andrei Sergeev, Pavel Moskovoy</Copyright>
+		<Copyright>Copyright © 2020-2021 Andrei Sergeev, Pavel Moskovoy</Copyright>
 		<RootNamespace>PrimeFuncPack</RootNamespace>
 		<AssemblyName>PrimeFuncPack.Dependency.Core</AssemblyName>
-		<Version>1.0.0</Version>
+		<Version>1.0.1-preview.1.0.0</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -24,7 +24,7 @@
 
 	<ItemGroup>
 	  <PackageReference Include="PrimeFuncPack.Core.Unit" Version="1.1.0" />
-	  <PackageReference Include="PrimeFuncPack.Primitives" Version="1.1.0" />
+	  <PackageReference Include="PrimeFuncPack.Primitives" Version="1.1.2" />
 	</ItemGroup>
 
 </Project>

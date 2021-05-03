@@ -8,7 +8,6 @@ namespace PrimeFuncPack
     {
         public static Dependency<Unit> Create()
             =>
-            new(
-                _ => Unit.Value);
+            new(Unit.From);
     }
 }

@@ -6,15 +6,13 @@ namespace PrimeFuncPack
 {
     partial class ServiceProviderExtensions
     {
-        public static T GetServiceOrThrow<T>(
-            this IServiceProvider serviceProvider)
+        public static T GetServiceOrThrow<T>(this IServiceProvider serviceProvider)
             where T : notnull
             =>
             InternalGetServiceOrThrow<T>(
                 serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider)));
 
-        private static T InternalGetServiceOrThrow<T>(
-            IServiceProvider serviceProvider)
+        private static T InternalGetServiceOrThrow<T>(IServiceProvider serviceProvider)
             where T : notnull
         {
             var service = serviceProvider.GetService(typeof(T));

@@ -15,7 +15,7 @@ namespace PrimeFuncPack.Tests
             var source = Dependency.Create(_ => MinusFifteen, _ => SomeTextStructType);
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With<RefType>(null!));
+                () => _ = source.With((Dependency<RefType>)null!));
             
             Assert.Equal("other", ex.ParamName);
         }

@@ -7,15 +7,15 @@ namespace PrimeFuncPack
     partial class Dependency<T>
     {
         public Dependency<T, T2> With<T2>(
-            Dependency<T2> other)
+            Func<IServiceProvider, T2> second)
             =>
             InternalWith(
-                other ?? throw new ArgumentNullException(nameof(other)));
+                second ?? throw new ArgumentNullException(nameof(second)));
 
         private Dependency<T, T2> InternalWith<T2>(
-            Dependency<T2> other)
+            Func<IServiceProvider, T2> secondResolver)
             =>
-            InternalWith(
-                other.Resolve);
+            new(
+                resolver, secondResolver);
     }
 }

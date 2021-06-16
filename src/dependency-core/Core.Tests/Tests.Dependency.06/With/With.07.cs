@@ -21,7 +21,7 @@ namespace PrimeFuncPack.Tests
                 _ => ThreeWhiteSpacesString);
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With<DateTimeOffset>(null!));
+                () => _ = source.With((Dependency<DateTimeOffset>)null!));
             
             Assert.Equal("other", ex.ParamName);
         }

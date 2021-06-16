@@ -14,7 +14,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
     <PackageReference Include="Moq" Version="4.16.1" />
-    <PackageReference Include="PrimeFuncPack.Dependency.Core" Version="1.1.0-preview.1.0.0" />
+    <PackageReference Include="PrimeFuncPack.Dependency.Core" Version="1.1.0-rc.1.0.0" />
     <PackageReference Include="PrimeFuncPack.UnitTest.Data" Version="2.0.6" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">

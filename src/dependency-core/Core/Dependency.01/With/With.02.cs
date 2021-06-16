@@ -15,7 +15,8 @@ namespace PrimeFuncPack
         private Dependency<T, T2> InternalWith<T2>(
             Dependency<T2> other)
             =>
-            InternalWith(
+            new(
+                resolver,
                 other.Resolve);
     }
 }

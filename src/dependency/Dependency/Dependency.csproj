@@ -11,7 +11,7 @@
     <Copyright>Copyright © 2020-2021 Andrei Sergeev, Pavel Moskovoy</Copyright>
     <RootNamespace>PrimeFuncPack</RootNamespace>
     <AssemblyName>PrimeFuncPack.Dependency</AssemblyName>
-    <Version>1.0.1</Version>
+    <Version>1.1.0-preview.1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="PrimeFuncPack.Dependency.Core" Version="1.0.1" />
+    <PackageReference Include="PrimeFuncPack.Dependency.Core" Version="1.1.0-preview.1.0.0" />
     <PackageReference Include="PrimeFuncPack.Dependency.ServiceProviderExtensions" Version="1.0.1" />
   </ItemGroup>
 

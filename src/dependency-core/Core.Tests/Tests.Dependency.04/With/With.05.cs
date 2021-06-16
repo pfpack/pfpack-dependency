@@ -19,7 +19,7 @@ namespace PrimeFuncPack.Tests
                 _ => PlusFifteenIdRefType);
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With<object>(null!));
+                () => _ = source.With((Dependency<object>)null!));
             
             Assert.Equal("other", ex.ParamName);
         }

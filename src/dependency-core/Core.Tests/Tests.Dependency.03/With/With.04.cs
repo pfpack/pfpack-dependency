@@ -15,7 +15,7 @@ namespace PrimeFuncPack.Tests
             var source = Dependency.Create(_ => ZeroIdRefType, _ => PlusFifteenIdRefType, _ => LowerSomeTextStructType);
 
             var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With<RecordType?>(null!));
+                () => _ = source.With((Dependency<RecordType?>)null!));
             
             Assert.Equal("other", ex.ParamName);
         }

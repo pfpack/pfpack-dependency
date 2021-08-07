@@ -67,3 +67,7 @@ jobs:
 
     - name: Pack Dependency
       run: dotnet pack ./src/*/*/Dependency.csproj --no-restore -o ~/nuget
+      
+    - name: Push Packages
+      if: ${{ github.event_name == 'push' }}
+      run: dotnet nuget push "../../../nuget/*.nupkg" -k ${{ secrets.NuGetSourcePassword }} --skip-duplicate

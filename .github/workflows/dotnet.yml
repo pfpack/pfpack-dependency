@@ -1,0 +1,45 @@
+name: .NET
+
+on:
+  push:
+    branches: [ main ]
+    
+  pull_request:
+    branches: [ main ]
+    
+  release:
+    types: [ published ]
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+  
+    - name: Create Local NuGet Directory
+      run: mkdir ~/nuget
+      
+    - name: Add Local Nuget Source
+      run: dotnet nuget add source ~/nuget
+      
+    - name: Restore ServiceProviderExtensions
+      run: dotnet restore ./src/*/*/ServiceProviderExtensions.csproj
+
+    - name: Build ServiceProviderExtensions
+      run: dotnet build ./src/*/*/ServiceProviderExtensions.csproj --no-restore
+
+    - name: Pack ServiceProviderExtensions
+      run: dotnet pack ./src/*/*/ServiceProviderExtensions.csproj --no-restore -o ~/nuget
+      
+    - name: Restore ServiceProviderExtensions.Tests
+      run: dotnet restore ./src/*/*/ServiceProviderExtensions.Tests.csproj
+
+    - name: Test ServiceProviderExtensions.Tests
+      run: dotnet test ./src/*/*/ServiceProviderExtensions.Tests.csproj --no-restore

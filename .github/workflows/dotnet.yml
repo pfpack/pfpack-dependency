@@ -70,4 +70,4 @@ jobs:
       
     - name: Push Packages
       if: ${{ github.event_name == 'push' }}
-      run: dotnet nuget push "../../../nuget/*.nupkg" -k ${{ secrets.NuGetSourcePassword }} --skip-duplicate
+      run: dotnet nuget push "../../../nuget/*.nupkg" -s https://api.nuget.org/v3/index.json -k ${{ secrets.NuGetSourcePassword }} --skip-duplicate

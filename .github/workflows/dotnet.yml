@@ -29,17 +29,41 @@ jobs:
     - name: Add Local Nuget Source
       run: dotnet nuget add source ~/nuget
       
-    - name: Restore ServiceProviderExtensions
+    - name: Restore Dependency.ServiceProviderExtensions
       run: dotnet restore ./src/*/*/ServiceProviderExtensions.csproj
 
-    - name: Build ServiceProviderExtensions
+    - name: Build Dependency.ServiceProviderExtensions
       run: dotnet build ./src/*/*/ServiceProviderExtensions.csproj --no-restore
 
-    - name: Pack ServiceProviderExtensions
+    - name: Pack Dependency.ServiceProviderExtensions
       run: dotnet pack ./src/*/*/ServiceProviderExtensions.csproj --no-restore -o ~/nuget
       
-    - name: Restore ServiceProviderExtensions.Tests
+    - name: Restore Dependency.ServiceProviderExtensions.Tests
       run: dotnet restore ./src/*/*/ServiceProviderExtensions.Tests.csproj
 
-    - name: Test ServiceProviderExtensions.Tests
+    - name: Test Dependency.ServiceProviderExtensions.Tests
       run: dotnet test ./src/*/*/ServiceProviderExtensions.Tests.csproj --no-restore
+      
+    - name: Restore Dependency.Core
+      run: dotnet restore ./src/*/*/Core.csproj
+
+    - name: Build Dependency.Core
+      run: dotnet build ./src/*/*/Core.csproj --no-restore
+
+    - name: Pack Dependency.Core
+      run: dotnet pack ./src/*/*/Core.csproj --no-restore -o ~/nuget
+      
+    - name: Restore Dependency.Core.Tests
+      run: dotnet restore ./src/*/*/Core.Tests.csproj
+
+    - name: Test Dependency.Core.Tests
+      run: dotnet test ./src/*/*/Core.Tests.csproj --no-restore
+      
+    - name: Restore Dependency
+      run: dotnet restore ./src/*/*/Dependency.csproj
+
+    - name: Build Dependency
+      run: dotnet build ./src/*/*/Dependency.csproj --no-restore
+
+    - name: Pack Dependency
+      run: dotnet pack ./src/*/*/Dependency.csproj --no-restore -o ~/nuget

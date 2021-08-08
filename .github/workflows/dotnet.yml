@@ -33,40 +33,40 @@ jobs:
       run: dotnet restore ./src/*/*/ServiceProviderExtensions.csproj
 
     - name: Build Dependency.ServiceProviderExtensions
-      run: dotnet build ./src/*/*/ServiceProviderExtensions.csproj --no-restore
+      run: dotnet build ./src/*/*/ServiceProviderExtensions.csproj --no-restore  -c Release
 
     - name: Pack Dependency.ServiceProviderExtensions
-      run: dotnet pack ./src/*/*/ServiceProviderExtensions.csproj --no-restore -o ~/nuget
+      run: dotnet pack ./src/*/*/ServiceProviderExtensions.csproj --no-restore -o ~/nuget  -c Release
       
     - name: Restore Dependency.ServiceProviderExtensions.Tests
       run: dotnet restore ./src/*/*/ServiceProviderExtensions.Tests.csproj
 
     - name: Test Dependency.ServiceProviderExtensions.Tests
-      run: dotnet test ./src/*/*/ServiceProviderExtensions.Tests.csproj --no-restore
+      run: dotnet test ./src/*/*/ServiceProviderExtensions.Tests.csproj --no-restore  -c Release
       
     - name: Restore Dependency.Core
       run: dotnet restore ./src/*/*/Core.csproj
 
     - name: Build Dependency.Core
-      run: dotnet build ./src/*/*/Core.csproj --no-restore
+      run: dotnet build ./src/*/*/Core.csproj --no-restore  -c Release
 
     - name: Pack Dependency.Core
-      run: dotnet pack ./src/*/*/Core.csproj --no-restore -o ~/nuget
+      run: dotnet pack ./src/*/*/Core.csproj --no-restore -o ~/nuget  -c Release
       
     - name: Restore Dependency.Core.Tests
       run: dotnet restore ./src/*/*/Core.Tests.csproj
 
     - name: Test Dependency.Core.Tests
-      run: dotnet test ./src/*/*/Core.Tests.csproj --no-restore
+      run: dotnet test ./src/*/*/Core.Tests.csproj --no-restore  -c Release
       
     - name: Restore Dependency
       run: dotnet restore ./src/*/*/Dependency.csproj
 
     - name: Build Dependency
-      run: dotnet build ./src/*/*/Dependency.csproj --no-restore
+      run: dotnet build ./src/*/*/Dependency.csproj --no-restore  -c Release
 
     - name: Pack Dependency
-      run: dotnet pack ./src/*/*/Dependency.csproj --no-restore -o ~/nuget
+      run: dotnet pack ./src/*/*/Dependency.csproj --no-restore -o ~/nuget  -c Release
       
     - name: Push Packages
       if: ${{ github.event_name == 'release' }}

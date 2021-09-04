@@ -9,10 +9,10 @@ namespace PrimeFuncPack
         public Dependency<TResult> Fold<TResult>(
             Func<T1, T2, T3, T4, TResult> fold)
             =>
-            InternalFold(
+            InnerFold(
                 fold ?? throw new ArgumentNullException(nameof(fold)));
         
-        private Dependency<TResult> InternalFold<TResult>(
+        private Dependency<TResult> InnerFold<TResult>(
             Func<T1, T2, T3, T4, TResult> fold)
             =>
             new(

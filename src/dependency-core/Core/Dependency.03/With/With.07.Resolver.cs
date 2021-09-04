@@ -12,13 +12,13 @@ namespace PrimeFuncPack
             Func<IServiceProvider, T6> sixth,
             Func<IServiceProvider, T7> seventh)
             =>
-            InternalWith(
+            InnerWith(
                 fourth ?? throw new ArgumentNullException(nameof(fourth)),
                 fifth ?? throw new ArgumentNullException(nameof(fifth)),
                 sixth ?? throw new ArgumentNullException(nameof(sixth)),
                 seventh ?? throw new ArgumentNullException(nameof(seventh)));
 
-        private Dependency<T1, T2, T3, T4, T5, T6, T7> InternalWith<T4, T5, T6, T7>(
+        private Dependency<T1, T2, T3, T4, T5, T6, T7> InnerWith<T4, T5, T6, T7>(
             Func<IServiceProvider, T4> fourthResolver,
             Func<IServiceProvider, T5> fifthResolver,
             Func<IServiceProvider, T6> sixthResolver,

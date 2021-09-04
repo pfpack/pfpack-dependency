@@ -1,8 +1,4 @@
-﻿#nullable enable
-
-using System.Collections.Generic;
-using System.Linq;
-using static PrimeFuncPack.UnitTest.TestData;
+﻿using static PrimeFuncPack.UnitTest.TestData;
 
 namespace PrimeFuncPack.Tests
 {

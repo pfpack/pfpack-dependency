@@ -9,10 +9,10 @@ namespace PrimeFuncPack
         public Dependency<T, T2> With<T2>(
             Dependency<T2> other)
             =>
-            InternalWith(
+            InnerWith(
                 other ?? throw new ArgumentNullException(nameof(other)));
 
-        private Dependency<T, T2> InternalWith<T2>(
+        private Dependency<T, T2> InnerWith<T2>(
             Dependency<T2> other)
             =>
             new(

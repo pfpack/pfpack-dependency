@@ -14,7 +14,7 @@ namespace PrimeFuncPack
             Func<T5, TResult5> mapFifth,
             Func<T6, TResult6> mapSixth)
             =>
-            InternalMap(
+            InnerMap(
                 mapFirst ?? throw new ArgumentNullException(nameof(mapFirst)),
                 mapSecond ?? throw new ArgumentNullException(nameof(mapSecond)),
                 mapThird ?? throw new ArgumentNullException(nameof(mapThird)),
@@ -22,7 +22,7 @@ namespace PrimeFuncPack
                 mapFifth ?? throw new ArgumentNullException(nameof(mapFifth)),
                 mapSixth ?? throw new ArgumentNullException(nameof(mapSixth)));
 
-        private Dependency<TResult1, TResult2, TResult3, TResult4, TResult5, TResult6> InternalMap<TResult1, TResult2, TResult3, TResult4, TResult5, TResult6>(
+        private Dependency<TResult1, TResult2, TResult3, TResult4, TResult5, TResult6> InnerMap<TResult1, TResult2, TResult3, TResult4, TResult5, TResult6>(
             Func<T1, TResult1> mapFirst,
             Func<T2, TResult2> mapSecond,
             Func<T3, TResult3> mapThird,

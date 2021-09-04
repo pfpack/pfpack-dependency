@@ -1,6 +1,3 @@
-#nullable enable
-
-using System;
 using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
@@ -10,7 +7,7 @@ namespace PrimeFuncPack.Tests
     partial class DependencyTest
     {
         [Fact]
-        public void Create_08_FirstIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_08_FirstIsNull_ExpectArgumentNullException()
         {
             var second = MinusFifteen;
             var third = SomeString;
@@ -22,7 +19,7 @@ namespace PrimeFuncPack.Tests
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = Dependency.Create(
-                    NullRecordResolver,
+                    NullStructResolver,
                     _ => second,
                     _ => third,
                     _ => fourth,
@@ -35,7 +32,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_08_SecondIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_08_SecondIsNull_ExpectArgumentNullException()
         {
             var first = PlusFifteenIdSomeStringNameRecord;
             var third = new { Id = PlusFifteen, Value = decimal.MinusOne };
@@ -60,7 +57,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_08_ThirdIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_08_ThirdIsNull_ExpectArgumentNullException()
         {
             var first = ZeroIdRefType;
             var second = decimal.MinusOne;
@@ -74,7 +71,7 @@ namespace PrimeFuncPack.Tests
                 () => _ = Dependency.Create(
                     _ => first,
                     _ => second,
-                    NullRecordResolver,
+                    NullRefResolver,
                     _ => fourth,
                     _ => fifth,
                     _ => sixth,
@@ -85,7 +82,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_08_FourthIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_08_FourthIsNull_ExpectArgumentNullException()
         {
             var first = DateTimeKind.Utc;
             var second = SomeTextStructType;
@@ -110,7 +107,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_08_FifthIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_08_FifthIsNull_ExpectArgumentNullException()
         {
             var first = PlusFifteenIdLowerSomeStringNameRecord;
             var second = PlusFifteenIdRefType;
@@ -126,7 +123,7 @@ namespace PrimeFuncPack.Tests
                     _ => second,
                     _ => third,
                     _ => fourth,
-                    NullRecordResolver,
+                    NullRefResolver,
                     _ => sixth,
                     _ => seventh,
                     _ => rest));
@@ -135,7 +132,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_08_SixthIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_08_SixthIsNull_ExpectArgumentNullException()
         {
             var first = true;
             var second = decimal.MinValue;
@@ -160,7 +157,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_08_SeventhIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_08_SeventhIsNull_ExpectArgumentNullException()
         {
             var first = ZeroIdNullNameRecord;
             var second = UpperSomeString;
@@ -178,14 +175,14 @@ namespace PrimeFuncPack.Tests
                     _ => fourth,
                     _ => fifth,
                     _ => sixth,
-                    NullRecordResolver,
+                    NullStructResolver,
                     _ => rest));
 
             Assert.Equal("seventh", ex.ParamName);
         }
 
         [Fact]
-        public void Create_08_RestIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_08_RestIsNull_ExpectArgumentNullException()
         {
             var first = ThreeWhiteSpacesString;
             var second = SomeTextStructType;
@@ -204,14 +201,14 @@ namespace PrimeFuncPack.Tests
                     _ => fifth,
                     _ => sixth,
                     _ => seventh,
-                    NullRecordResolver));
+                    NullRefResolver));
 
             Assert.Equal("rest", ex.ParamName);
         }
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void Create_08_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void CreateWithProvider_08_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(
             RecordType? sourceRest)
         {
             var sourceFirst = decimal.MaxValue;

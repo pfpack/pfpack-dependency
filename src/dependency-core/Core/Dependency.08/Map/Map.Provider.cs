@@ -16,7 +16,7 @@ namespace PrimeFuncPack
             Func<IServiceProvider, T7, TResult7> mapSeventh,
             Func<IServiceProvider, TRest, TResultRest> mapRest)
             =>
-            InternalMap(
+            InnerMap(
                 mapFirst ?? throw new ArgumentNullException(nameof(mapFirst)),
                 mapSecond ?? throw new ArgumentNullException(nameof(mapSecond)),
                 mapThird ?? throw new ArgumentNullException(nameof(mapThird)),
@@ -26,7 +26,7 @@ namespace PrimeFuncPack
                 mapSeventh ?? throw new ArgumentNullException(nameof(mapSeventh)),
                 mapRest ?? throw new ArgumentNullException(nameof(mapRest)));
 
-        private Dependency<TResult1, TResult2, TResult3, TResult4, TResult5, TResult6, TResult7, TResultRest> InternalMap<TResult1, TResult2, TResult3, TResult4, TResult5, TResult6, TResult7, TResultRest>(
+        private Dependency<TResult1, TResult2, TResult3, TResult4, TResult5, TResult6, TResult7, TResultRest> InnerMap<TResult1, TResult2, TResult3, TResult4, TResult5, TResult6, TResult7, TResultRest>(
             Func<IServiceProvider, T1, TResult1> mapFirst,
             Func<IServiceProvider, T2, TResult2> mapSecond,
             Func<IServiceProvider, T3, TResult3> mapThird,

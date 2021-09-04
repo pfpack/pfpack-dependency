@@ -1,6 +1,3 @@
-#nullable enable
-
-using System;
 using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
@@ -10,7 +7,7 @@ namespace PrimeFuncPack.Tests
     partial class DependencyTest
     {
         [Fact]
-        public void Create_02_FirstIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_02_FirstIsNull_ExpectArgumentNullException()
         {
             var second = PlusFifteenIdSomeStringNameRecord;
 
@@ -21,7 +18,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_02_SecondIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_02_SecondIsNull_ExpectArgumentNullException()
         {
             var first = SomeTextStructType;
 
@@ -33,7 +30,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void Create_02_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void CreateWithProvider_02_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(
             StructType sourceSecond)
         {
             var sourceFirst = PlusFifteenIdRefType;

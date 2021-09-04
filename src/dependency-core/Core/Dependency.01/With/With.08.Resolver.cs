@@ -15,7 +15,7 @@ namespace PrimeFuncPack
             Func<IServiceProvider, T7> seventh,
             Func<IServiceProvider, T8> rest)
             =>
-            InternalWith(
+            InnerWith(
                 second ?? throw new ArgumentNullException(nameof(second)),
                 third ?? throw new ArgumentNullException(nameof(third)),
                 fourth ?? throw new ArgumentNullException(nameof(fourth)),
@@ -24,7 +24,7 @@ namespace PrimeFuncPack
                 seventh ?? throw new ArgumentNullException(nameof(seventh)),
                 rest ?? throw new ArgumentNullException(nameof(rest)));
 
-        private Dependency<T, T2, T3, T4, T5, T6, T7, T8> InternalWith<T2, T3, T4, T5, T6, T7, T8>(
+        private Dependency<T, T2, T3, T4, T5, T6, T7, T8> InnerWith<T2, T3, T4, T5, T6, T7, T8>(
             Func<IServiceProvider, T2> secondResolver,
             Func<IServiceProvider, T3> thirdResolver,
             Func<IServiceProvider, T4> fourthResolver,

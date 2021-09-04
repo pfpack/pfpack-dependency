@@ -1,6 +1,3 @@
-#nullable enable
-
-using System;
 using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
@@ -10,7 +7,7 @@ namespace PrimeFuncPack.Tests
     partial class DependencyTest
     {
         [Fact]
-        public void Create_07_FirstIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_07_FirstIsNull_ExpectArgumentNullException()
         {
             var second = PlusFifteen;
             var third = SomeTextStructType;
@@ -33,7 +30,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_07_SecondIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_07_SecondIsNull_ExpectArgumentNullException()
         {
             var first = MinusFifteenIdRefType;
             var third = new object();
@@ -56,7 +53,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_07_ThirdIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_07_ThirdIsNull_ExpectArgumentNullException()
         {
             var first = PlusFifteenIdLowerSomeStringNameRecord;
             var second = new { Id = PlusFifteen };
@@ -79,7 +76,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_07_FourthIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_07_FourthIsNull_ExpectArgumentNullException()
         {
             var first = SomeTextStructType;
             var second = DateTimeKind.Utc;
@@ -102,7 +99,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_07_FifthIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_07_FifthIsNull_ExpectArgumentNullException()
         {
             var first = MinusFifteenIdRefType;
             var second = PlusFifteenIdLowerSomeStringNameRecord;
@@ -125,7 +122,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_07_SixthIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_07_SixthIsNull_ExpectArgumentNullException()
         {
             var first = MinusFifteen;
             var second = MinusFifteenIdRefType;
@@ -148,7 +145,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_07_SeventhIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_07_SeventhIsNull_ExpectArgumentNullException()
         {
             var first = SomeTextStructType;
             var second = new { Text = SomeString };
@@ -172,7 +169,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void Create_07_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void CreateWithProvider_07_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(
             StructType sourceSeventh)
         {
             var sourceFirst = MinusFifteenIdSomeStringNameRecord;

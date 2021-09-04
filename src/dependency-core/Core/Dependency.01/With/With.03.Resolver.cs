@@ -10,11 +10,11 @@ namespace PrimeFuncPack
             Func<IServiceProvider, T2> second,
             Func<IServiceProvider, T3> third)
             =>
-            InternalWith(
+            InnerWith(
                 second ?? throw new ArgumentNullException(nameof(second)),
                 third ?? throw new ArgumentNullException(nameof(third)));
 
-        private Dependency<T, T2, T3> InternalWith<T2, T3>(
+        private Dependency<T, T2, T3> InnerWith<T2, T3>(
             Func<IServiceProvider, T2> secondResolver,
             Func<IServiceProvider, T3> thirdResolver)
             =>

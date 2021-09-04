@@ -1,6 +1,3 @@
-#nullable enable
-
-using System;
 using PrimeFuncPack.UnitTest;
 using Xunit;
 
@@ -13,7 +10,7 @@ namespace PrimeFuncPack.Tests
         {
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = Dependency<RefType?>.Create(
-                    null!));
+                    (Func<IServiceProvider, RefType?>)null!));
 
             Assert.Equal("single", ex.ParamName);
         }

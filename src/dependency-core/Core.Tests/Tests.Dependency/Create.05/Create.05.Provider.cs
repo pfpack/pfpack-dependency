@@ -1,6 +1,3 @@
-#nullable enable
-
-using System;
 using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
@@ -10,7 +7,7 @@ namespace PrimeFuncPack.Tests
     partial class DependencyTest
     {
         [Fact]
-        public void Create_05_FirstIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_05_FirstIsNull_ExpectArgumentNullException()
         {
             var second = SomeTextStructType;
             var third = MinusFifteenIdNullNameRecord;
@@ -24,7 +21,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_05_SecondIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_05_SecondIsNull_ExpectArgumentNullException()
         {
             var first = SomeTextStructType;
             var third = MinusFifteenIdRefType;
@@ -38,7 +35,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_05_ThirdIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_05_ThirdIsNull_ExpectArgumentNullException()
         {
             var first = PlusFifteenIdRefType;
             var second = int.MaxValue;
@@ -52,7 +49,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_05_FourthIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_05_FourthIsNull_ExpectArgumentNullException()
         {
             var first = new object();
             var second = SomeString;
@@ -66,7 +63,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void Create_05_FifthIsNull_ExpectArgumentNullException()
+        public void CreateWithProvider_05_FifthIsNull_ExpectArgumentNullException()
         {
             var first = new { Id = PlusFifteen };
             var second = SomeTextStructType;
@@ -81,7 +78,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void Create_05_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void CreateWithProvider_05_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(
             StructType sourceFifth)
         {
             var sourceFirst = LowerSomeTextStructType;

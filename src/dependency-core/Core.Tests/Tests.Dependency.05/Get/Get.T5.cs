@@ -1,5 +1,3 @@
-#nullable enable
-
 using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;

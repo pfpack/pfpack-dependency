@@ -208,7 +208,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
-        public void Create_08_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void Create_08_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
             RefType sourceRest)
         {
             var sourceFirst = new { Value = decimal.One };

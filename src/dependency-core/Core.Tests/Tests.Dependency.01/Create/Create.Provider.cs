@@ -17,7 +17,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void CreateWithProvider_SingleIsNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void CreateWithProvider_SingleIsNotNull_ExpectResolvedValueIsEqualToSource(
             StructType sourceSingle)
         {
             var actual = Dependency<StructType>.Create(

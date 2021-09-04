@@ -210,7 +210,7 @@ namespace PrimeFuncPack.Tests
         [InlineData(null)]
         [InlineData(EmptyString)]
         [InlineData(SomeString)]
-        public void Create_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void Create_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
             string? sourceRest)
         {
             var sourceFirst = SomeTextStructType;

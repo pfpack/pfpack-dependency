@@ -11,6 +11,9 @@ namespace PrimeFuncPack
             Func<T2> second,
             Func<T3> third)
             =>
-            throw new NotImplementedException();
+            Dependency<T1, T2, T3>.InternalCreate(
+                first ?? throw new ArgumentNullException(nameof(first)),
+                second ?? throw new ArgumentNullException(nameof(second)),
+                third ?? throw new ArgumentNullException(nameof(third)));
     }
 }

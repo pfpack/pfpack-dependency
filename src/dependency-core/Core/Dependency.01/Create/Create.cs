@@ -9,6 +9,13 @@ namespace PrimeFuncPack
         public static Dependency<T> Create(
             Func<T> single)
             =>
-            throw new NotImplementedException();
+            InternalCreate(
+                single ?? throw new ArgumentNullException(nameof(single)));
+
+        internal static Dependency<T> InternalCreate(
+            Func<T> single)
+            =>
+            new(
+                _ => single.Invoke());
     }
 }

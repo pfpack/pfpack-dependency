@@ -9,20 +9,20 @@ namespace PrimeFuncPack
         public static T GetServiceOrThrow<T>(this IServiceProvider serviceProvider)
             where T : notnull
             =>
-            InternalGetServiceOrThrow<T>(
+            InnerGetServiceOrThrow<T>(
                 serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider)));
 
-        private static T InternalGetServiceOrThrow<T>(IServiceProvider serviceProvider)
+        private static T InnerGetServiceOrThrow<T>(IServiceProvider serviceProvider)
             where T : notnull
         {
             var service = serviceProvider.GetService(typeof(T));
 
-            if(service is not null)
+            if (service is not null)
             {
                 return (T)service;
             }
 
-            throw new InvalidOperationException($"A service of type {typeof(T)} can not be resolved by the service provider.");
+            throw new InvalidOperationException($"A service of type {typeof(T)} cannot be resolved by the service provider.");
         }
     }
 }

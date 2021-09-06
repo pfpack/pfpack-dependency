@@ -13,14 +13,14 @@ namespace PrimeFuncPack
             Func<IServiceProvider, T4, TResult4> mapFourth,
             Func<IServiceProvider, T5, TResult5> mapFifth)
             =>
-            InternalMap(
+            InnerMap(
                 mapFirst ?? throw new ArgumentNullException(nameof(mapFirst)),
                 mapSecond ?? throw new ArgumentNullException(nameof(mapSecond)),
                 mapThird ?? throw new ArgumentNullException(nameof(mapThird)),
                 mapFourth ?? throw new ArgumentNullException(nameof(mapFourth)),
                 mapFifth ?? throw new ArgumentNullException(nameof(mapFifth)));
 
-        private Dependency<TResult1, TResult2, TResult3, TResult4, TResult5> InternalMap<TResult1, TResult2, TResult3, TResult4, TResult5>(
+        private Dependency<TResult1, TResult2, TResult3, TResult4, TResult5> InnerMap<TResult1, TResult2, TResult3, TResult4, TResult5>(
             Func<IServiceProvider, T1, TResult1> mapFirst,
             Func<IServiceProvider, T2, TResult2> mapSecond,
             Func<IServiceProvider, T3, TResult3> mapThird,

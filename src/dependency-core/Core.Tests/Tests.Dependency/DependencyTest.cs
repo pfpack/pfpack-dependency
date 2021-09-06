@@ -1,6 +1,3 @@
-#nullable enable
-
-using System;
 using PrimeFuncPack.UnitTest;
 
 namespace PrimeFuncPack.Tests
@@ -12,5 +9,11 @@ namespace PrimeFuncPack.Tests
         private static readonly Func<IServiceProvider, RefType> NullRefResolver = null!;
 
         private static readonly Func<IServiceProvider, RecordType> NullRecordResolver = null!;
+
+        private static readonly Func<StructType> NullStructFactory = null!;
+
+        private static readonly Func<RefType> NullRefFactory = null!;
+
+        private static readonly Func<RecordType> NullRecordFactory = null!;
     }
 }

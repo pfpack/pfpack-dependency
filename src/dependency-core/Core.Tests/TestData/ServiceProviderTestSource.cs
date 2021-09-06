@@ -1,22 +1,16 @@
-#nullable enable
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Moq;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+internal static class ServiceProviderTestSource
 {
-    internal static class ServiceProviderTestSource
-    {
-        public static IEnumerable<object?[]> NullableProviders
-            =>
-            new[]
-            {
-                null,
-                Mock.Of<IServiceProvider>()
-            }
-            .Select(
-                sp => new object?[] { sp });
-    }
+    public static IEnumerable<object?[]> NullableProviders
+        =>
+        new[]
+        {
+            null,
+            Mock.Of<IServiceProvider>()
+        }
+        .Select(
+            sp => new object?[] { sp });
 }

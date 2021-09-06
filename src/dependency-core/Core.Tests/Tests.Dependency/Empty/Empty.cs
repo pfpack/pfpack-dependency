@@ -1,6 +1,3 @@
-#nullable enable
-
-using System;
 using Xunit;
 
 namespace PrimeFuncPack.Tests

@@ -10,11 +10,11 @@ namespace PrimeFuncPack
             Func<T1, TResult1> mapFirst,
             Func<T2, TResult2> mapSecond)
             =>
-            InternalMap(
+            InnerMap(
                 mapFirst ?? throw new ArgumentNullException(nameof(mapFirst)),
                 mapSecond ?? throw new ArgumentNullException(nameof(mapSecond)));
 
-        private Dependency<TResult1, TResult2> InternalMap<TResult1, TResult2>(
+        private Dependency<TResult1, TResult2> InnerMap<TResult1, TResult2>(
             Func<T1, TResult1> mapFirst,
             Func<T2, TResult2> mapSecond)
             =>

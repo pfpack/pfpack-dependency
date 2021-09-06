@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
@@ -11,7 +12,7 @@
     <Copyright>Copyright © 2020-2021 Andrei Sergeev, Pavel Moskovoy</Copyright>
     <RootNamespace>PrimeFuncPack</RootNamespace>
     <AssemblyName>PrimeFuncPack.Dependency</AssemblyName>
-    <Version>1.2.0-preview.1.0.0</Version>
+    <Version>1.2.0-preview.1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,8 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="PrimeFuncPack.Dependency.Core" Version="1.2.0-preview.2.0.0" />
-    <PackageReference Include="PrimeFuncPack.Dependency.ServiceProviderExtensions" Version="1.0.1" />
+    <PackageReference Include="PrimeFuncPack.Dependency.Core" Version="1.2.0-preview.2.0.1" />
+    <PackageReference Include="PrimeFuncPack.Dependency.ServiceProviderExtensions" Version="1.0.2-preview.1.0.0" />
   </ItemGroup>
 
 </Project>

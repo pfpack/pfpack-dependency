@@ -9,20 +9,20 @@ namespace PrimeFuncPack
         public static Optional<T> GetServiceOrAbsent<T>(this IServiceProvider serviceProvider)
             where T : notnull
             =>
-            InternalGetServiceOrAbsent<T>(
+            InnerGetServiceOrAbsent<T>(
                 serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider)));
 
-        private static Optional<T> InternalGetServiceOrAbsent<T>(IServiceProvider serviceProvider)
+        private static Optional<T> InnerGetServiceOrAbsent<T>(IServiceProvider serviceProvider)
             where T : notnull
         {
             var service = serviceProvider.GetService(typeof(T));
 
-            if(service is not null)
+            if (service is not null)
             {
-                return Optional.Present((T)service);
+                return Optional<T>.Present((T)service);
             }
 
-            return Optional.Absent<T>();
+            return default;
         }
     }
 }

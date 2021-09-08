@@ -7,7 +7,7 @@ namespace PrimeFuncPack.Tests
     partial class SevenDependencyTest
     {
         [Fact]
-        public void WithOneResolver_SeventhIsNull_ExpectArgumentNullException()
+        public void WithOneResolver_RestIsNull_ExpectArgumentNullException()
         {
             var source = Dependency.Create(
                 _ => MinusOne,

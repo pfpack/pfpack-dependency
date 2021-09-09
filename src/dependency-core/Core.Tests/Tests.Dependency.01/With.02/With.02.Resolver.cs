@@ -18,9 +18,9 @@ namespace PrimeFuncPack.Tests
         }
 
         [Theory]
-        [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
+        [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
         public void WithOneResolver_SecondIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            RefType? secondValue)
+            RecordType? secondValue)
         {
             var sourceValue = SomeTextStructType;
             var source = Dependency.Create(_ => sourceValue);

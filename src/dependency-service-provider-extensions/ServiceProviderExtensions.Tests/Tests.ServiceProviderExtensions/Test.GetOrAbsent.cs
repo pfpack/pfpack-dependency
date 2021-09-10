@@ -1,5 +1,3 @@
-#nullable enable
-
 using Moq;
 using PrimeFuncPack.UnitTest;
 using Xunit;
@@ -13,7 +11,7 @@ namespace PrimeFuncPack.Tests
         public void GetServiceOrAbsent_ServiceProviderIsNull_ExpectArgumentNullException()
         {
             var ex = Assert.Throws<ArgumentNullException>(
-                ()=> _ = NullServiceProvider!.GetServiceOrAbsent<RefType>());
+                () => _ = NullServiceProvider!.GetServiceOrAbsent<RefType>());
 
             Assert.Equal("serviceProvider", ex.ParamName);
         }

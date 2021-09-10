@@ -1,5 +1,3 @@
-#nullable enable
-
 using Moq;
 
 namespace PrimeFuncPack.Tests

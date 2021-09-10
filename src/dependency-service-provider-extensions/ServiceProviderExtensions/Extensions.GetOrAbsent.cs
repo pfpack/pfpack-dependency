@@ -17,12 +17,9 @@ namespace PrimeFuncPack
         {
             var service = serviceProvider.GetService(typeof(T));
 
-            if (service is not null)
-            {
-                return Optional<T>.Present((T)service);
-            }
-
-            return default;
+            return service is not null
+                ? Optional<T>.Present((T)service)
+                : default;
         }
     }
 }

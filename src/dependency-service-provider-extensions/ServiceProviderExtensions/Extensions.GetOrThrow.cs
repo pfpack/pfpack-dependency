@@ -17,12 +17,9 @@ namespace PrimeFuncPack
         {
             var service = serviceProvider.GetService(typeof(T));
 
-            if (service is not null)
-            {
-                return (T)service;
-            }
-
-            throw new InvalidOperationException($"A service of type {typeof(T)} cannot be resolved by the service provider.");
+            return service is not null
+                ? (T)service
+                : throw new InvalidOperationException($"A service of type {typeof(T)} cannot be resolved by the service provider.");
         }
     }
 }

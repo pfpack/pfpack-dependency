@@ -7,6 +7,21 @@ namespace PrimeFuncPack.Tests
     partial class SevenDependencyTest
     {
         [Fact]
+        public void Obsolete_Create_ExpectMethodIsObsolete()
+        {
+            var type = typeof(Dependency<,,,,,,>);
+            var methodName = nameof(Dependency<long?, StructType, object, RefType?, string, bool, RecordType?>.Create);
+
+            var obsoleteAttribute = ReflectionAssert.IsStaticMethodObsolete(type, methodName);
+
+            Assert.False(obsoleteAttribute.IsError);
+
+            var expectedInsteadMethodName = "Dependency<T1, T2, T3, T4, T5, T6, T7>.From";
+            Assert.Contains(expectedInsteadMethodName, obsoleteAttribute.Message, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        [Obsolete]
+        [Fact]
         public void Obsolete_Create_FirstIsNull_ExpectArgumentNullException()
         {
             var second = decimal.MinValue;
@@ -29,6 +44,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("first", ex.ParamName);
         }
 
+        [Obsolete]
         [Fact]
         public void Obsolete_Create_SecondIsNull_ExpectArgumentNullException()
         {
@@ -52,6 +68,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("second", ex.ParamName);
         }
 
+        [Obsolete]
         [Fact]
         public void Obsolete_Create_ThirdIsNull_ExpectArgumentNullException()
         {
@@ -75,6 +92,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("third", ex.ParamName);
         }
 
+        [Obsolete]
         [Fact]
         public void Obsolete_Create_FourthIsNull_ExpectArgumentNullException()
         {
@@ -98,6 +116,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("fourth", ex.ParamName);
         }
 
+        [Obsolete]
         [Fact]
         public void Obsolete_Create_FifthIsNull_ExpectArgumentNullException()
         {
@@ -121,6 +140,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("fifth", ex.ParamName);
         }
 
+        [Obsolete]
         [Fact]
         public void Obsolete_Create_SixthIsNull_ExpectArgumentNullException()
         {
@@ -144,6 +164,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("sixth", ex.ParamName);
         }
 
+        [Obsolete]
         [Fact]
         public void Obsolete_Create_SeventhIsNull_ExpectArgumentNullException()
         {
@@ -167,6 +188,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("seventh", ex.ParamName);
         }
 
+        [Obsolete]
         [Theory]
         [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
         public void Obsolete_Create_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(

@@ -6,7 +6,7 @@ namespace PrimeFuncPack
 {
     partial class Dependency<T>
     {
-        //[Obsolete(ObsoleteMessage.OneDependencyCreateIsObsolete, false)]
+        [Obsolete(ObsoleteMessage.OneDependencyCreateIsObsolete, false)]
         public static Dependency<T> Create(
             Func<IServiceProvider, T> single)
             =>

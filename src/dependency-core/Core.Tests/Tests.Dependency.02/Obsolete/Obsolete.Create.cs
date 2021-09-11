@@ -7,6 +7,21 @@ namespace PrimeFuncPack.Tests
     partial class TwoDependencyTest
     {
         [Fact]
+        public void Obsolete_Create_ExpectMethodIsObsolete()
+        {
+            var type = typeof(Dependency<,>);
+            var methodName = nameof(Dependency<object, RefType?>.Create);
+
+            var obsoleteAttribute = ReflectionAssert.IsStaticMethodObsolete(type, methodName);
+
+            Assert.False(obsoleteAttribute.IsError);
+
+            var expectedInsteadMethodName = "Dependency<T1, T2>.From";
+            Assert.Contains(expectedInsteadMethodName, obsoleteAttribute.Message, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        [Obsolete]
+        [Fact]
         public void Obsolete_Create_FirstIsNull_ExpectArgumentNullException()
         {
             var second = ZeroIdRefType;
@@ -19,6 +34,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("first", ex.ParamName);
         }
 
+        [Obsolete]
         [Fact]
         public void Obsolete_Create_SecondIsNull_ExpectArgumentNullException()
         {
@@ -32,6 +48,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("second", ex.ParamName);
         }
 
+        [Obsolete]
         [Theory]
         [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
         public void Obsolete_Create_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(

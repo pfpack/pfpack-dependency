@@ -7,6 +7,21 @@ namespace PrimeFuncPack.Tests
     partial class FourDependencyTest
     {
         [Fact]
+        public void Obsolete_Create_ExpectMethodIsObsolete()
+        {
+            var type = typeof(Dependency<,,,>);
+            var methodName = nameof(Dependency<RefType?, RecordType, StructType, string?>.Create);
+
+            var obsoleteAttribute = ReflectionAssert.IsStaticMethodObsolete(type, methodName);
+
+            Assert.False(obsoleteAttribute.IsError);
+
+            var expectedInsteadMethodName = "Dependency<T1, T2, T3, T4>.From";
+            Assert.Contains(expectedInsteadMethodName, obsoleteAttribute.Message, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        [Obsolete]
+        [Fact]
         public void Obsolete_Create_FirstIsNull_ExpectArgumentNullException()
         {
             var second = MinusFifteenIdRefType;
@@ -23,6 +38,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("first", ex.ParamName);
         }
 
+        [Obsolete]
         [Fact]
         public void Obsolete_Create_SecondIsNull_ExpectArgumentNullException()
         {
@@ -40,6 +56,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("second", ex.ParamName);
         }
 
+        [Obsolete]
         [Fact]
         public void Obsolete_Create_ThirdIsNull_ExpectArgumentNullException()
         {
@@ -57,6 +74,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("third", ex.ParamName);
         }
 
+        [Obsolete]
         [Fact]
         public void Obsolete_Create_FourthIsNull_ExpectArgumentNullException()
         {
@@ -74,6 +92,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("fourth", ex.ParamName);
         }
 
+        [Obsolete]
         [Theory]
         [InlineData(null)]
         [InlineData(EmptyString)]

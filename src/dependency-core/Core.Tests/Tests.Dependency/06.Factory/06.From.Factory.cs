@@ -6,7 +6,7 @@ namespace PrimeFuncPack.Tests
     partial class DependencyTest
     {
         [Fact]
-        public void FromFactory_06_FirstIsNull_ExpectArgumentNullException()
+        public void From_Factory_06_FirstIsNull_ExpectArgumentNullException()
         {
             var second = new { Value = decimal.MinusOne };
             var third = PlusFifteenIdRefType;
@@ -27,7 +27,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_06_SecondIsNull_ExpectArgumentNullException()
+        public void From_Factory_06_SecondIsNull_ExpectArgumentNullException()
         {
             var first = DateTimeKind.Utc;
             var third = ThreeWhiteSpacesString;
@@ -48,7 +48,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_06_ThirdIsNull_ExpectArgumentNullException()
+        public void From_Factory_06_ThirdIsNull_ExpectArgumentNullException()
         {
             var first = ZeroIdRefType;
             var second = false;
@@ -69,7 +69,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_06_FourthIsNull_ExpectArgumentNullException()
+        public void From_Factory_06_FourthIsNull_ExpectArgumentNullException()
         {
             var first = byte.MaxValue;
             var second = new object();
@@ -90,7 +90,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_06_FifthIsNull_ExpectArgumentNullException()
+        public void From_Factory_06_FifthIsNull_ExpectArgumentNullException()
         {
             var first = new object();
             var second = SomeTextStructType;
@@ -111,7 +111,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_06_SixthIsNull_ExpectArgumentNullException()
+        public void From_Factory_06_SixthIsNull_ExpectArgumentNullException()
         {
             var first = SomeTextStructType;
             var second = byte.MaxValue;
@@ -135,7 +135,7 @@ namespace PrimeFuncPack.Tests
         [InlineData(null)]
         [InlineData(MinusOne)]
         [InlineData(int.MaxValue)]
-        public void FromFactory_06_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void From_Factory_06_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
             int? sourceSixth)
         {
             var sourceFirst = new object();

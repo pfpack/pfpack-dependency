@@ -6,7 +6,7 @@ namespace PrimeFuncPack.Tests
     partial class DependencyTest
     {
         [Fact]
-        public void FromFactory_07_FirstIsNull_ExpectArgumentNullException()
+        public void From_Factory_07_FirstIsNull_ExpectArgumentNullException()
         {
             var second = UpperSomeString;
             var third = byte.MaxValue;
@@ -29,7 +29,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_07_SecondIsNull_ExpectArgumentNullException()
+        public void From_Factory_07_SecondIsNull_ExpectArgumentNullException()
         {
             var first = decimal.MaxValue;
             var third = PlusFifteenIdRefType;
@@ -52,7 +52,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_07_ThirdIsNull_ExpectArgumentNullException()
+        public void From_Factory_07_ThirdIsNull_ExpectArgumentNullException()
         {
             var first = MinusFifteenIdSomeStringNameRecord;
             var second = DateTimeKind.Utc;
@@ -75,7 +75,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_07_FourthIsNull_ExpectArgumentNullException()
+        public void From_Factory_07_FourthIsNull_ExpectArgumentNullException()
         {
             var first = Array.Empty<DateTimeOffset?>();
             var second = LowerSomeTextStructType;
@@ -98,7 +98,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_07_FifthIsNull_ExpectArgumentNullException()
+        public void From_Factory_07_FifthIsNull_ExpectArgumentNullException()
         {
             var first = TabString;
             var second = PlusFifteenIdSomeStringNameRecord;
@@ -121,7 +121,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_07_SixthIsNull_ExpectArgumentNullException()
+        public void From_Factory_07_SixthIsNull_ExpectArgumentNullException()
         {
             var first = DateTimeKind.Utc;
             var second = new[] { long.MinValue };
@@ -144,7 +144,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_07_SeventhIsNull_ExpectArgumentNullException()
+        public void From_Factory_07_SeventhIsNull_ExpectArgumentNullException()
         {
             var first = ZeroIdNullNameRecord;
             var second = Array.Empty<decimal>();
@@ -170,7 +170,7 @@ namespace PrimeFuncPack.Tests
         [InlineData(null)]
         [InlineData(EmptyString)]
         [InlineData(SomeString)]
-        public void FromFactory_07_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void From_Factory_07_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
             string sourceSeventh)
         {
             var sourceFirst = PlusFifteenIdRefType;

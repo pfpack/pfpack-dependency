@@ -7,7 +7,7 @@ namespace PrimeFuncPack.Tests
     partial class DependencyTest
     {
         [Fact]
-        public void FromFactory_08_FirstIsNull_ExpectArgumentNullException()
+        public void From_Factory_08_FirstIsNull_ExpectArgumentNullException()
         {
             var second = PlusFifteen;
             var third = new object();
@@ -32,7 +32,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_08_SecondIsNull_ExpectArgumentNullException()
+        public void From_Factory_08_SecondIsNull_ExpectArgumentNullException()
         {
             var first = DateTimeKind.Utc;
             var third = SomeTextStructType;
@@ -57,7 +57,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_08_ThirdIsNull_ExpectArgumentNullException()
+        public void From_Factory_08_ThirdIsNull_ExpectArgumentNullException()
         {
             var first = Array.Empty<DateTime>();
             var second = default(object);
@@ -82,7 +82,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_08_FourthIsNull_ExpectArgumentNullException()
+        public void From_Factory_08_FourthIsNull_ExpectArgumentNullException()
         {
             var first = true;
             var second = DateTimeKind.Local;
@@ -107,7 +107,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_08_FifthIsNull_ExpectArgumentNullException()
+        public void From_Factory_08_FifthIsNull_ExpectArgumentNullException()
         {
             var first = ThreeWhiteSpacesString;
             var second = int.MinValue;
@@ -132,7 +132,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_08_SixthIsNull_ExpectArgumentNullException()
+        public void From_Factory_08_SixthIsNull_ExpectArgumentNullException()
         {
             var first = Array.Empty<long>();
             var second = new { Id = One, Name = SomeString };
@@ -157,7 +157,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_08_SeventhIsNull_ExpectArgumentNullException()
+        public void From_Factory_08_SeventhIsNull_ExpectArgumentNullException()
         {
             var first = byte.MaxValue;
             var second = ZeroIdNullNameRecord;
@@ -182,7 +182,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_08_RestIsNull_ExpectArgumentNullException()
+        public void From_Factory_08_RestIsNull_ExpectArgumentNullException()
         {
             var first = true;
             var second = MinusFifteenIdRefType;
@@ -208,7 +208,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
-        public void FromFactory_08_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void From_Factory_08_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
             RefType sourceRest)
         {
             var sourceFirst = new { Value = decimal.One };

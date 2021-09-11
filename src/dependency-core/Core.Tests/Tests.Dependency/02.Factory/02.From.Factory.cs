@@ -7,7 +7,7 @@ namespace PrimeFuncPack.Tests
     partial class DependencyTest
     {
         [Fact]
-        public void FromFactory_02_FirstIsNull_ExpectArgumentNullException()
+        public void From_Factory_02_FirstIsNull_ExpectArgumentNullException()
         {
             var second = PlusFifteenIdLowerSomeStringNameRecord;
 
@@ -20,7 +20,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_02_SecondIsNull_ExpectArgumentNullException()
+        public void From_Factory_02_SecondIsNull_ExpectArgumentNullException()
         {
             var first = MinusFifteenIdRefType;
 
@@ -34,7 +34,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
-        public void FromFactory_02_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void From_Factory_02_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
             RefType sourceSecond)
         {
             var sourceFirst = true;

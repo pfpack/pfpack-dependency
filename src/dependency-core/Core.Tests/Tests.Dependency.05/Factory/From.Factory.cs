@@ -7,7 +7,7 @@ namespace PrimeFuncPack.Tests
     partial class FiveDependencyTest
     {
         [Fact]
-        public void FromFactory_FirstIsNull_ExpectArgumentNullException()
+        public void From_Factory_FirstIsNull_ExpectArgumentNullException()
         {
             var second = ThreeWhiteSpacesString;
             var third = MinusFifteenIdRefType;
@@ -26,7 +26,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_SecondIsNull_ExpectArgumentNullException()
+        public void From_Factory_SecondIsNull_ExpectArgumentNullException()
         {
             var first = UpperSomeString;
             var third = One;
@@ -45,7 +45,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_ThirdIsNull_ExpectArgumentNullException()
+        public void From_Factory_ThirdIsNull_ExpectArgumentNullException()
         {
             var first = new { Name = SomeString };
             var second = MinusFifteenIdRefType;
@@ -64,7 +64,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_FourthIsNull_ExpectArgumentNullException()
+        public void From_Factory_FourthIsNull_ExpectArgumentNullException()
         {
             var first = default(int?);
             var second = PlusFifteenIdRefType;
@@ -83,7 +83,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_FifthIsNull_ExpectArgumentNullException()
+        public void From_Factory_FifthIsNull_ExpectArgumentNullException()
         {
             var first = MinusFifteenIdSomeStringNameRecord;
             var second = One;
@@ -103,7 +103,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void FromFactory_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void From_Factory_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
             StructType sourceFifth)
         {
             var sourceFirst = MinusFifteenIdRefType;

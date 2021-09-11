@@ -7,7 +7,7 @@ namespace PrimeFuncPack.Tests
     partial class DependencyTest
     {
         [Fact]
-        public void FromFactory_05_FirstIsNull_ExpectArgumentNullException()
+        public void From_Factory_05_FirstIsNull_ExpectArgumentNullException()
         {
             var second = SomeTextStructType;
             var third = new object();
@@ -26,7 +26,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_05_SecondIsNull_ExpectArgumentNullException()
+        public void From_Factory_05_SecondIsNull_ExpectArgumentNullException()
         {
             var first = EmptyString;
             var third = MinusFifteenIdNullNameRecord;
@@ -45,7 +45,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_05_ThirdIsNull_ExpectArgumentNullException()
+        public void From_Factory_05_ThirdIsNull_ExpectArgumentNullException()
         {
             var first = long.MinValue;
             var second = PlusFifteenIdRefType;
@@ -64,7 +64,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_05_FourthIsNull_ExpectArgumentNullException()
+        public void From_Factory_05_FourthIsNull_ExpectArgumentNullException()
         {
             var first = MinusFifteenIdRefType;
             var second = true;
@@ -83,7 +83,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_05_FifthIsNull_ExpectArgumentNullException()
+        public void From_Factory_05_FifthIsNull_ExpectArgumentNullException()
         {
             var first = MinusFifteenIdSomeStringNameRecord;
             var second = false;
@@ -103,7 +103,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void FromFactory_05_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void From_Factory_05_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
             RecordType sourceFifth)
         {
             var sourceFirst = SomeTextStructType;

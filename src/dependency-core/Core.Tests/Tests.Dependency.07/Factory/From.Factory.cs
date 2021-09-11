@@ -7,7 +7,7 @@ namespace PrimeFuncPack.Tests
     partial class SevenDependencyTest
     {
         [Fact]
-        public void FromFactory_FirstIsNull_ExpectArgumentNullException()
+        public void From_Factory_FirstIsNull_ExpectArgumentNullException()
         {
             var second = long.MinValue;
             var third = EmptyString;
@@ -30,7 +30,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_SecondIsNull_ExpectArgumentNullException()
+        public void From_Factory_SecondIsNull_ExpectArgumentNullException()
         {
             var first = byte.MaxValue;
             var third = LowerSomeTextStructType;
@@ -53,7 +53,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_ThirdIsNull_ExpectArgumentNullException()
+        public void From_Factory_ThirdIsNull_ExpectArgumentNullException()
         {
             var first = DateTimeKind.Utc;
             var second = PlusFifteenIdRefType;
@@ -76,7 +76,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_FourthIsNull_ExpectArgumentNullException()
+        public void From_Factory_FourthIsNull_ExpectArgumentNullException()
         {
             var first = default(RefType);
             var second = MinusOne;
@@ -99,7 +99,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_FifthIsNull_ExpectArgumentNullException()
+        public void From_Factory_FifthIsNull_ExpectArgumentNullException()
         {
             var first = new object();
             var second = MinusFifteenIdSomeStringNameRecord;
@@ -122,7 +122,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_SixthIsNull_ExpectArgumentNullException()
+        public void From_Factory_SixthIsNull_ExpectArgumentNullException()
         {
             var first = long.MinValue;
             var second = LowerSomeTextStructType;
@@ -145,7 +145,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_SeventhIsNull_ExpectArgumentNullException()
+        public void From_Factory_SeventhIsNull_ExpectArgumentNullException()
         {
             var first = ZeroIdRefType;
             var second = MixedWhiteSpacesString;
@@ -169,7 +169,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void FromFactory_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void From_Factory_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
             StructType sourceSeventh)
         {
             var sourceFirst = MinusFifteenIdNullNameRecord;

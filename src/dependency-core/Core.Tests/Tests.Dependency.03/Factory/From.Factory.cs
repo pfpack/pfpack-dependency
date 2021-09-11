@@ -7,7 +7,7 @@ namespace PrimeFuncPack.Tests
     partial class ThreeDependencyTest
     {
         [Fact]
-        public void FromFactory_FirstIsNull_ExpectArgumentNullException()
+        public void From_Factory_FirstIsNull_ExpectArgumentNullException()
         {
             var second = PlusFifteenIdSomeStringNameRecord;
             var third = SomeTextStructType;
@@ -22,7 +22,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_SecondIsNull_ExpectArgumentNullException()
+        public void From_Factory_SecondIsNull_ExpectArgumentNullException()
         {
             var first = ZeroIdNullNameRecord;
             var third = PlusFifteenIdRefType;
@@ -37,7 +37,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_ThirdIsNull_ExpectArgumentNullException()
+        public void From_Factory_ThirdIsNull_ExpectArgumentNullException()
         {
             var first = LowerSomeTextStructType;
             var second = PlusFifteenIdRefType;
@@ -55,7 +55,7 @@ namespace PrimeFuncPack.Tests
         [InlineData(null)]
         [InlineData(byte.MinValue)]
         [InlineData(byte.MaxValue)]
-        public void FromFactory_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void From_Factory_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
             byte? sourceThird)
         {
             var sourceFirst = PlusFifteenIdRefType;

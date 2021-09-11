@@ -7,7 +7,7 @@ namespace PrimeFuncPack.Tests
     partial class OneDependencyTest
     {
         [Fact]
-        public void FromFactory_SingleIsNull_ExpectArgumentNullException()
+        public void From_Factory_SingleIsNull_ExpectArgumentNullException()
         {
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = Dependency<StructType?>.From(
@@ -20,7 +20,7 @@ namespace PrimeFuncPack.Tests
         [InlineData(null)]
         [InlineData(EmptyString)]
         [InlineData(SomeString)]
-        public void FromFactory_SingleIsNotNull_ExpectResolvedValueIsEqualToSource(
+        public void From_Factory_SingleIsNotNull_ExpectResolvedValueIsEqualToSource(
             string? sourceSingle)
         {
             var actual = Dependency<string?>.From(

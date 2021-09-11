@@ -6,7 +6,7 @@ namespace PrimeFuncPack.Tests
     partial class DependencyTest
     {
         [Fact]
-        public void FromFactory_04_FirstIsNull_ExpectArgumentNullException()
+        public void From_Factory_04_FirstIsNull_ExpectArgumentNullException()
         {
             var second = MinusFifteenIdRefType;
             var third = One;
@@ -23,7 +23,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_04_SecondIsNull_ExpectArgumentNullException()
+        public void From_Factory_04_SecondIsNull_ExpectArgumentNullException()
         {
             var first = MinusFifteenIdRefType;
             var third = LowerSomeTextStructType;
@@ -40,7 +40,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_04_ThirdIsNull_ExpectArgumentNullException()
+        public void From_Factory_04_ThirdIsNull_ExpectArgumentNullException()
         {
             var first = SomeString;
             var second = ZeroIdNullNameRecord;
@@ -57,7 +57,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_04_FourthIsNull_ExpectArgumentNullException()
+        public void From_Factory_04_FourthIsNull_ExpectArgumentNullException()
         {
             var first = SomeTextStructType;
             var second = ZeroIdRefType;
@@ -77,7 +77,7 @@ namespace PrimeFuncPack.Tests
         [InlineData(null)]
         [InlineData(EmptyString)]
         [InlineData(SomeString)]
-        public void FromFactory_04_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void From_Factory_04_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
             string? sourceFourth)
         {
             var sourceFirst = PlusFifteenIdRefType;

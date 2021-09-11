@@ -6,7 +6,7 @@ namespace PrimeFuncPack.Tests
     partial class DependencyTest
     {
         [Fact]
-        public void FromFactory_01_SingleIsNull_ExpectArgumentNullException()
+        public void From_Factory_01_SingleIsNull_ExpectArgumentNullException()
         {
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = Dependency.From(NullRefFactory));
@@ -16,7 +16,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void FromFactory_01_SingleIsNotNull_ExpectResolvedValueIsEqualToSource(
+        public void From_Factory_01_SingleIsNotNull_ExpectResolvedValueIsEqualToSource(
             RecordType sourceSingle)
         {
             var actual = Dependency.From(() => sourceSingle);

@@ -7,7 +7,7 @@ namespace PrimeFuncPack.Tests
     partial class SixDependencyTest
     {
         [Fact]
-        public void FromFactory_FirstIsNull_ExpectArgumentNullException()
+        public void From_Factory_FirstIsNull_ExpectArgumentNullException()
         {
             var second = PlusFifteenIdLowerSomeStringNameRecord;
             var third = ZeroIdRefType;
@@ -28,7 +28,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_SecondIsNull_ExpectArgumentNullException()
+        public void From_Factory_SecondIsNull_ExpectArgumentNullException()
         {
             var first = PlusFifteenIdRefType;
             var third = default(object?);
@@ -49,7 +49,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_ThirdIsNull_ExpectArgumentNullException()
+        public void From_Factory_ThirdIsNull_ExpectArgumentNullException()
         {
             var first = MinusFifteenIdSomeStringNameRecord;
             var second = long.MaxValue;
@@ -70,7 +70,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_FourthIsNull_ExpectArgumentNullException()
+        public void From_Factory_FourthIsNull_ExpectArgumentNullException()
         {
             var first = LowerSomeTextStructType;
             var second = new object();
@@ -91,7 +91,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_FifthIsNull_ExpectArgumentNullException()
+        public void From_Factory_FifthIsNull_ExpectArgumentNullException()
         {
             var first = decimal.MinValue;
             var second = MixedWhiteSpacesString;
@@ -112,7 +112,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_SixthIsNull_ExpectArgumentNullException()
+        public void From_Factory_SixthIsNull_ExpectArgumentNullException()
         {
             var first = PlusFifteenIdLowerSomeStringNameRecord;
             var second = false;
@@ -134,7 +134,7 @@ namespace PrimeFuncPack.Tests
 
         [Theory]
         [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void FromFactory_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void From_Factory_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
             RecordType? sourceSixth)
         {
             var sourceFirst = WhiteSpaceString;

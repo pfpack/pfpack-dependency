@@ -7,7 +7,7 @@ namespace PrimeFuncPack.Tests
     partial class EightDependencyTest
     {
         [Fact]
-        public void FromFactory_FirstIsNull_ExpectArgumentNullException()
+        public void From_Factory_FirstIsNull_ExpectArgumentNullException()
         {
             var second = ThreeWhiteSpacesString;
             var third = decimal.MinValue;
@@ -32,7 +32,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_SecondIsNull_ExpectArgumentNullException()
+        public void From_Factory_SecondIsNull_ExpectArgumentNullException()
         {
             var first = MinusFifteenIdRefType;
             var third = long.MaxValue;
@@ -57,7 +57,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_ThirdIsNull_ExpectArgumentNullException()
+        public void From_Factory_ThirdIsNull_ExpectArgumentNullException()
         {
             var first = new { Text = WhiteSpaceString };
             var second = SomeTextStructType;
@@ -82,7 +82,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_FourthIsNull_ExpectArgumentNullException()
+        public void From_Factory_FourthIsNull_ExpectArgumentNullException()
         {
             var first = UpperSomeString;
             var second = new object();
@@ -107,7 +107,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_FifthIsNull_ExpectArgumentNullException()
+        public void From_Factory_FifthIsNull_ExpectArgumentNullException()
         {
             var first = LowerSomeTextStructType;
             var second = decimal.MinusOne;
@@ -132,7 +132,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_SixthIsNull_ExpectArgumentNullException()
+        public void From_Factory_SixthIsNull_ExpectArgumentNullException()
         {
             var first = int.MinValue;
             var second = MinusFifteenIdRefType;
@@ -157,7 +157,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_SeventhIsNull_ExpectArgumentNullException()
+        public void From_Factory_SeventhIsNull_ExpectArgumentNullException()
         {
             var first = decimal.MaxValue;
             var second = true;
@@ -182,7 +182,7 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void FromFactory_RestIsNull_ExpectArgumentNullException()
+        public void From_Factory_RestIsNull_ExpectArgumentNullException()
         {
             var first = new object();
             var second = LowerSomeString;
@@ -210,7 +210,7 @@ namespace PrimeFuncPack.Tests
         [InlineData(null)]
         [InlineData(EmptyString)]
         [InlineData(SomeString)]
-        public void FromFactory_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        public void From_Factory_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
             string? sourceRest)
         {
             var sourceFirst = SomeTextStructType;

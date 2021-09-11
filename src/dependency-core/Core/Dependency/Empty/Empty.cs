@@ -6,11 +6,6 @@ namespace PrimeFuncPack
 {
     partial class Dependency
     {
-        public static Dependency<Unit> Empty => DependencyEmpty.Value;
-
-        private static class DependencyEmpty
-        {
-            public static readonly Dependency<Unit> Value = Create();
-        }
+        public static Dependency<Unit> Empty => new(Unit.From);
     }
 }

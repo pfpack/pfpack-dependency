@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         {
             var second = PlusFifteenIdRefType;
 
-            var dependency = Dependency.Create(
+            var dependency = Dependency.From(
                 _ => decimal.MaxValue,
                 _ => second,
                 _ => MinusFifteenIdSomeStringNameRecord,

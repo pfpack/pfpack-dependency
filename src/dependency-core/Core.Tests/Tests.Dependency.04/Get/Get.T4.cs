@@ -11,7 +11,7 @@ namespace PrimeFuncPack.Tests
         public void GetFourth_ExpectResolvedValueIsEqualToFourthSource(
             RecordType? fourthSource)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => int.MaxValue, _ => ZeroIdRefType, _ => new object(), _ => fourthSource);
 
             var actual = source.GetFourth();

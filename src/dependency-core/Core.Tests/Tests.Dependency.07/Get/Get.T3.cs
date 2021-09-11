@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         public void GetThird_ExpectResolvedValueIsEqualToThirdSource(
             bool? thirdSource)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => LowerSomeTextStructType,
                 _ => new object(),
                 _ => thirdSource,

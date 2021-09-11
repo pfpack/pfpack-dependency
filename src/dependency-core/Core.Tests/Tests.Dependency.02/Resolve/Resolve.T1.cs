@@ -11,7 +11,7 @@ namespace PrimeFuncPack.Tests
             IServiceProvider serviceProvider)
         {
             var first = SomeTextStructType;
-            var dependency = Dependency.Create(_ => first, _ => MinusFifteenIdNullNameRecord);
+            var dependency = Dependency.From(_ => first, _ => MinusFifteenIdNullNameRecord);
 
             var actual = dependency.ResolveFirst(serviceProvider);
             Assert.Equal(first, actual);

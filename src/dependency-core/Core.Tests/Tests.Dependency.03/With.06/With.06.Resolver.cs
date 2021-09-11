@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithThreeResolvers_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => SomeTextStructType, _ => false, _ => MinusFifteen);
 
             var fifthValue = MixedWhiteSpacesString;
@@ -27,7 +27,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithThreeResolvers_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => LowerSomeTextStructType, _ => byte.MaxValue, _ => PlusFifteenIdSomeStringNameRecord);
 
             var fourthValue = ZeroIdRefType;
@@ -45,7 +45,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithThreeResolvers_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => UpperSomeString, _ => MinusFifteenIdRefType, _ => SomeTextStructType);
 
             var fourthValue = PlusFifteenIdSomeStringNameRecord;
@@ -69,7 +69,7 @@ namespace PrimeFuncPack.Tests
             var secondSource = false;
 
             var thirdSource = new[] { SomeString };
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource);
 
             var fourthValue = MinusFifteenIdRefType;
             var fifthValue = new object();

@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         public void GetSeventh_ExpectResolvedValueIsEqualToSeventhSource(
             bool? seventhSource)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => ZeroIdRefType,
                 _ => byte.MinValue,
                 _ => WhiteSpaceString,

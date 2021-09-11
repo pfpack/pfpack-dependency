@@ -8,7 +8,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourResolvers_SecondIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => PlusFifteenIdRefType);
+            var source = Dependency.From(_ => PlusFifteenIdRefType);
 
             var thirdValue = LowerSomeTextStructType;
             var fourthValue = MixedWhiteSpacesString;
@@ -28,7 +28,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourResolvers_ThirdIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => PlusFifteenIdRefType);
+            var source = Dependency.From(_ => PlusFifteenIdRefType);
 
             var secondValue = new object();
             var fourthValue = MinusFifteenIdSomeStringNameRecord;
@@ -48,7 +48,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourResolvers_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => EmptyString);
+            var source = Dependency.From(_ => EmptyString);
 
             var secondValue = SomeTextStructType;
             var thirdValue = PlusFifteenIdLowerSomeStringNameRecord;
@@ -68,7 +68,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourResolvers_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => ZeroIdRefType);
+            var source = Dependency.From(_ => ZeroIdRefType);
 
             var secondValue = DateTimeKind.Utc;
             var thirdValue = LowerSomeTextStructType;
@@ -93,7 +93,7 @@ namespace PrimeFuncPack.Tests
             int? lastValue)
         {
             var sourceValue = MinusFifteenIdNullNameRecord;
-            var source = Dependency.Create(_ => sourceValue);
+            var source = Dependency.From(_ => sourceValue);
             
             var secondValue = SomeTextStructType;
             var thirdValue = false;

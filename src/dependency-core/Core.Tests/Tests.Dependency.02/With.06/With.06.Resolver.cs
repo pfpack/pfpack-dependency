@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourResolvers_ThirdIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => int.MaxValue, _ => LowerSomeTextStructType);
+            var source = Dependency.From(_ => int.MaxValue, _ => LowerSomeTextStructType);
 
             var fourthValue = PlusFifteenIdRefType;
             var fifthValue = new object();
@@ -29,7 +29,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourResolvers_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => SomeTextStructType, _ => MinusFifteenIdRefType);
+            var source = Dependency.From(_ => SomeTextStructType, _ => MinusFifteenIdRefType);
 
             var thirdValue = SomeString;
             var fifthValue = PlusFifteenIdLowerSomeStringNameRecord;
@@ -49,7 +49,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourResolvers_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => PlusFifteenIdSomeStringNameRecord, _ => decimal.MaxValue);
+            var source = Dependency.From(_ => PlusFifteenIdSomeStringNameRecord, _ => decimal.MaxValue);
 
             var thirdValue = LowerSomeTextStructType;
             var fourthValue = ZeroIdRefType;
@@ -69,7 +69,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourResolvers_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => SomeString, _ => MinusFifteenIdRefType);
+            var source = Dependency.From(_ => SomeString, _ => MinusFifteenIdRefType);
 
             var thirdValue = PlusFifteen;
             var fourthValue = SomeTextStructType;
@@ -96,7 +96,7 @@ namespace PrimeFuncPack.Tests
             var firstSource = PlusFifteenIdLowerSomeStringNameRecord;
             var secondSource = MinusFifteenIdRefType;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource);
 
             var thirdValue = MinusOne;
             var fourthValue = true;

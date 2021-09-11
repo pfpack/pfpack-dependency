@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithOneDependency_OtherIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MinusFifteen, _ => SomeTextStructType);
+            var source = Dependency.From(_ => MinusFifteen, _ => SomeTextStructType);
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.With((Dependency<RefType>)null!));
@@ -25,8 +25,8 @@ namespace PrimeFuncPack.Tests
             var firstSource = ZeroIdRefType;
             var secondSource = SomeTextStructType;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource);
-            var other = Dependency.Create(_ => otherValue);
+            var source = Dependency.From(_ => firstSource, _ => secondSource);
+            var other = Dependency.From(_ => otherValue);
 
             var actual = source.With(other);
             var actualValue = actual.Resolve();

@@ -9,10 +9,18 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void Obsolete_Create_ExpectMethodIsObsolete()
         {
-            var type = typeof(Dependency<,,>);
+            var type = typeof(Dependency<int?, StructType, RecordType>);
             var methodName = nameof(Dependency<int?, StructType, RecordType>.Create);
 
-            var obsoleteAttribute = ReflectionAssert.IsStaticMethodObsolete(type, methodName);
+            var methodTypes = new[]
+            {
+                typeof(Func<IServiceProvider, int?>),
+                typeof(Func<IServiceProvider, StructType>),
+                typeof(Func<IServiceProvider, RecordType>)
+            };
+
+            var method = type.GetPublicStaticMethodOrThrow(methodName, 0, methodTypes);
+            var obsoleteAttribute = method.GetObsoleteAttributeOrThrow();
 
             Assert.False(obsoleteAttribute.IsError);
 
@@ -20,7 +28,7 @@ namespace PrimeFuncPack.Tests
             Assert.Contains(expectedInsteadMethodName, obsoleteAttribute.Message, StringComparison.InvariantCultureIgnoreCase);
         }
 
-        [Obsolete]
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Fact]
         public void Obsolete_Create_FirstIsNull_ExpectArgumentNullException()
         {
@@ -36,7 +44,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("first", ex.ParamName);
         }
 
-        [Obsolete]
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Fact]
         public void Obsolete_Create_SecondIsNull_ExpectArgumentNullException()
         {
@@ -52,7 +60,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("second", ex.ParamName);
         }
 
-        [Obsolete]
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Fact]
         public void Obsolete_Create_ThirdIsNull_ExpectArgumentNullException()
         {
@@ -68,7 +76,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("third", ex.ParamName);
         }
 
-        [Obsolete]
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Theory]
         [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
         public void Obsolete_Create_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(

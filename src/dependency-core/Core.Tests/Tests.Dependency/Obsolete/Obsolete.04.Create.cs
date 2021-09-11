@@ -7,6 +7,22 @@ namespace PrimeFuncPack.Tests
     partial class DependencyTest
     {
         [Fact]
+        public void Obsolete_Create_04_ExpectMethodIsObsolete()
+        {
+            var type = typeof(Dependency);
+            var methodName = nameof(Dependency.Create);
+
+            var method = type.GetPublicStaticMethodOrThrow(methodName, 4);
+            var obsoleteAttribute = method.GetObsoleteAttributeOrThrow();
+
+            Assert.False(obsoleteAttribute.IsError);
+
+            var expectedInsteadMethodName = $"{nameof(Dependency)}.{nameof(Dependency.From)}";
+            Assert.Contains(expectedInsteadMethodName, obsoleteAttribute.Message, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
+        [Fact]
         public void Obsolete_Create_04_FirstIsNull_ExpectArgumentNullException()
         {
             var second = ZeroIdRefType;
@@ -19,6 +35,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("first", ex.ParamName);
         }
 
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Fact]
         public void Obsolete_Create_04_SecondIsNull_ExpectArgumentNullException()
         {
@@ -32,6 +49,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("second", ex.ParamName);
         }
 
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Fact]
         public void Obsolete_Create_04_ThirdIsNull_ExpectArgumentNullException()
         {
@@ -45,6 +63,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("third", ex.ParamName);
         }
 
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Fact]
         public void Obsolete_Create_04_FourthIsNull_ExpectArgumentNullException()
         {
@@ -58,6 +77,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("fourth", ex.ParamName);
         }
 
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Theory]
         [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
         public void Obsolete_Create_04_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(

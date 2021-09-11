@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithOneResolver_SeventhIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => PlusFifteenIdRefType,
                 _ => MixedWhiteSpacesString,
                 _ => SomeTextStructType,
@@ -37,7 +37,7 @@ namespace PrimeFuncPack.Tests
             var fifthSource = ZeroIdNullNameRecord;
             var sixthSource = Array.Empty<DateTime>();
 
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource, _ => sixthSource);
 
             var actual = source.With(_ => seventhValue);

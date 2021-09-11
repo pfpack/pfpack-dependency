@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixDependency_OtherIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => SomeTextStructType);
+            var source = Dependency.From(_ => SomeTextStructType);
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.With<RefType, long?, RecordType?, string, object, DateTime>(null!));
@@ -23,7 +23,7 @@ namespace PrimeFuncPack.Tests
             RefType otherLast)
         {
             var sourceValue = PlusFifteenIdLowerSomeStringNameRecord;
-            var source = Dependency.Create(_ => sourceValue);
+            var source = Dependency.From(_ => sourceValue);
             
             var otherFirst = UpperSomeString;
             var otherSecond = new object();
@@ -33,7 +33,7 @@ namespace PrimeFuncPack.Tests
 
             var otherFifth = DateTimeKind.Utc;
 
-            var other = Dependency.Create(
+            var other = Dependency.From(
                 _ => otherFirst, _ => otherSecond, _ => otherThird, _ => otherFourth, _ => otherFifth, _ => otherLast);
 
             var actual = source.With(other);

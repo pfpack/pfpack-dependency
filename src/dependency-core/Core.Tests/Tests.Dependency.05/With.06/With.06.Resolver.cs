@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithOneResolver_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusFifteen,
                 _ => SomeTextStructType,
                 _ => PlusFifteenIdRefType,
@@ -35,7 +35,7 @@ namespace PrimeFuncPack.Tests
 
             var fifthSource = PlusFifteenIdRefType;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource);
 
             var actual = source.With(_ => sixthValue);
             var actualValue = actual.Resolve();

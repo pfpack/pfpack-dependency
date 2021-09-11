@@ -11,7 +11,7 @@ namespace PrimeFuncPack.Tests
         public void GetSecond_ExpectResolvedValueIsEqualToSecondSource(
             StructType secondSource)
         {
-            var source = Dependency.Create(_ => MinusFifteen, _ => secondSource);
+            var source = Dependency.From(_ => MinusFifteen, _ => secondSource);
             var actual = source.GetSecond();
 
             var actualValue = actual.Resolve();

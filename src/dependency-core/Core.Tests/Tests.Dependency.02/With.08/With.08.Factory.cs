@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixFactories_ThirdIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => PlusFifteenIdSomeStringNameRecord, _ => decimal.One);
+            var source = Dependency.From(_ => PlusFifteenIdSomeStringNameRecord, _ => decimal.One);
 
             var fourthValue = Array.Empty<long?>();
             var fifthValue = MinusFifteenIdRefType;
@@ -34,7 +34,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixFactories_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => new { Id = One }, _ => ZeroIdRefType);
+            var source = Dependency.From(_ => new { Id = One }, _ => ZeroIdRefType);
 
             var thirdValue = MinusFifteenIdSomeStringNameRecord;
             var fifthValue = false;
@@ -59,7 +59,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixFactories_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => true, _ => MinusOne);
+            var source = Dependency.From(_ => true, _ => MinusOne);
 
             var thirdValue = new object();
             var fourthValue = SomeTextStructType;
@@ -84,7 +84,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixFactories_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => Array.Empty<DateTimeOffset>(), _ => LowerSomeTextStructType);
+            var source = Dependency.From(_ => Array.Empty<DateTimeOffset>(), _ => LowerSomeTextStructType);
 
             var thirdValue = new object();
             var fourthValue = ZeroIdNullNameRecord;
@@ -109,7 +109,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixFactories_SeventhIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => PlusFifteenIdSomeStringNameRecord, _ => int.MaxValue);
+            var source = Dependency.From(_ => PlusFifteenIdSomeStringNameRecord, _ => int.MaxValue);
 
             var thirdValue = DateTimeKind.Local;
             var fourthValue = SomeTextStructType;
@@ -134,7 +134,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixFactories_RestIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => DateTimeKind.Unspecified, _ => MinusFifteenIdRefType);
+            var source = Dependency.From(_ => DateTimeKind.Unspecified, _ => MinusFifteenIdRefType);
 
             var thirdValue = SomeTextStructType;
             var fourthValue = MinusOne;
@@ -164,7 +164,7 @@ namespace PrimeFuncPack.Tests
             var firstSource = ThreeWhiteSpacesString;
             var secondSource = new object();
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource);
 
             var thirdValue = SomeTextStructType;
             var fourthValue = byte.MaxValue;

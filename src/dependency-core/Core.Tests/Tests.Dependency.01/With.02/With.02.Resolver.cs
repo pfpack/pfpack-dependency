@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithOneResolver_SecondIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MinusFifteenIdSomeStringNameRecord);
+            var source = Dependency.From(_ => MinusFifteenIdSomeStringNameRecord);
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.With((Func<IServiceProvider, DateTimeOffset?>)null!));
@@ -23,7 +23,7 @@ namespace PrimeFuncPack.Tests
             RecordType? secondValue)
         {
             var sourceValue = SomeTextStructType;
-            var source = Dependency.Create(_ => sourceValue);
+            var source = Dependency.From(_ => sourceValue);
 
             var actual = source.With(_ => secondValue);
             var actualValue = actual.Resolve();

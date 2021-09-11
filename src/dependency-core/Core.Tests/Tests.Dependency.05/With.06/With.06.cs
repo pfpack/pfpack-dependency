@@ -19,7 +19,7 @@ namespace PrimeFuncPack.Tests
 
             var fifthSource = long.MaxValue;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource);
 
             var actual = source.With(sixthValue);
             var actualValue = actual.Resolve();

@@ -13,7 +13,7 @@ namespace PrimeFuncPack.Tests
             string secondValue)
         {
             var sourceValue = PlusFifteenIdRefType;
-            var source = Dependency.Create(_ => sourceValue);
+            var source = Dependency.From(_ => sourceValue);
 
             var actual = source.With(secondValue);
             var actualValue = actual.Resolve();

@@ -11,7 +11,7 @@ namespace PrimeFuncPack.Tests
             IServiceProvider serviceProvider)
         {
             var second = MinusFifteenIdRefType;
-            var dependency = Dependency.Create(_ => PlusFifteen, _ => second);
+            var dependency = Dependency.From(_ => PlusFifteen, _ => second);
 
             var actual = dependency.ResolveSecond(serviceProvider);
             Assert.Equal(second, actual);

@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void Map_MapFirstFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => LowerSomeString, _ => ZeroIdRefType, _ => MinusFifteenIdSomeStringNameRecord, _ => int.MinValue);
 
             var mapFirst = (Func<string?, long>)null!;
@@ -24,7 +24,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void Map_MapSecondFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => int.MaxValue, _ => PlusFifteenIdRefType, _ => decimal.One, _ => LowerSomeTextStructType);
 
             var mapSecond = (Func<RefType, DateTimeOffset?>)null!;
@@ -39,7 +39,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void Map_MapThirdFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => LowerSomeString, _ => Zero, _ => default(StructType), _ => new object());
 
             var mapThird = (Func<StructType, RecordType?>)null!;
@@ -54,7 +54,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void Map_MapFourthFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusFifteenIdSomeStringNameRecord, _ => LowerSomeString, _ => int.MaxValue, _ => decimal.MinusOne);
 
             var mapFourth = (Func<decimal, RecordType>)null!;
@@ -71,7 +71,7 @@ namespace PrimeFuncPack.Tests
         public void Map_MapFuncIsNotNull_ExpectResolvedValuesAreEqualToMapped(
             RecordType? mappedLast)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => LowerSomeTextStructType, _ => MinusFifteenIdRefType, _ => LowerSomeString, _ => new object());
 
             var mappedFirst = long.MaxValue;

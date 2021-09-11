@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         {
             var second = PlusFifteenIdLowerSomeStringNameRecord;
 
-            var dependency = Dependency.Create(
+            var dependency = Dependency.From(
                 _ => DateTimeKind.Utc,
                 _ => second,
                 _ => MinusFifteenIdNullNameRecord,

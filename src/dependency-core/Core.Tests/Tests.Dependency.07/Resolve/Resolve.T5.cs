@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         {
             var fifth = DateTimeKind.Local;
 
-            var dependency = Dependency.Create(
+            var dependency = Dependency.From(
                 _ => PlusFifteenIdLowerSomeStringNameRecord,
                 _ => LowerSomeTextStructType,
                 _ => new { Id = PlusFifteen },

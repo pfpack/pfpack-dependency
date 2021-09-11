@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         {
             var sixth = DateTimeKind.Unspecified;
 
-            var dependency = Dependency.Create(
+            var dependency = Dependency.From(
                 _ => SomeTextStructType,
                 _ => MinusFifteenIdNullNameRecord,
                 _ => PlusFifteenIdRefType,

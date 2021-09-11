@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         {
             var first = MinusFifteenIdSomeStringNameRecord;
 
-            var dependency = Dependency.Create(
+            var dependency = Dependency.From(
                 _ => first,
                 _ => SomeTextStructType,
                 _ => new { Value = decimal.One },

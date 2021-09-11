@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithThreeDependency_OtherIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => SomeTextStructType, _ => long.MaxValue);
+            var source = Dependency.From(_ => SomeTextStructType, _ => long.MaxValue);
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.With<RecordType?, StructType, decimal>(null!));
@@ -24,11 +24,11 @@ namespace PrimeFuncPack.Tests
         {
             var firstSource = default(StructType);
             var secondSource = MinusFifteenIdNullNameRecord;
-            var source = Dependency.Create(_ => firstSource, _ => secondSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource);
             
             var otherFirst = decimal.One;
             var otherSecond = PlusFifteen;
-            var other = Dependency.Create(_ => otherFirst, _ => otherSecond, _ => otherLast);
+            var other = Dependency.From(_ => otherFirst, _ => otherSecond, _ => otherLast);
 
             var actual = source.With(other);
             var actualValue = actual.Resolve();

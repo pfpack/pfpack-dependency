@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         {
             var third = new { Text = SomeString };
 
-            var dependency = Dependency.Create(
+            var dependency = Dependency.From(
                 _ => MinusFifteenIdRefType,
                 _ => byte.MaxValue,
                 _ => third,

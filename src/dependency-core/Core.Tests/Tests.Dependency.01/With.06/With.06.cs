@@ -13,7 +13,7 @@ namespace PrimeFuncPack.Tests
             string lastValue)
         {
             var sourceValue = new { Value = decimal.MaxValue };
-            var source = Dependency.Create(_ => sourceValue);
+            var source = Dependency.From(_ => sourceValue);
             
             var secondValue = LowerSomeTextStructType;
             var thirdValue = MixedWhiteSpacesString;

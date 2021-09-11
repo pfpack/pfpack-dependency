@@ -17,7 +17,7 @@ namespace PrimeFuncPack.Tests
             var thirdSource = new object();
             var fourthSource = DateTimeKind.Unspecified;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
 
             var actual = source.With(fifthValue);
             var actualValue = actual.Resolve();

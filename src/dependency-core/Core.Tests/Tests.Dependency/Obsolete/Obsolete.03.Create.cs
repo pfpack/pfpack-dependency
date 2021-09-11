@@ -7,6 +7,22 @@ namespace PrimeFuncPack.Tests
     partial class DependencyTest
     {
         [Fact]
+        public void Obsolete_Create_03_ExpectMethodIsObsolete()
+        {
+            var type = typeof(Dependency);
+            var methodName = nameof(Dependency.Create);
+
+            var method = type.GetPublicStaticMethodOrThrow(methodName, 3);
+            var obsoleteAttribute = method.GetObsoleteAttributeOrThrow();
+
+            Assert.False(obsoleteAttribute.IsError);
+
+            var expectedInsteadMethodName = $"{nameof(Dependency)}.{nameof(Dependency.From)}";
+            Assert.Contains(expectedInsteadMethodName, obsoleteAttribute.Message, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
+        [Fact]
         public void Obsolete_Create_03_FirstIsNull_ExpectArgumentNullException()
         {
             var second = MinusFifteenIdRefType;
@@ -18,6 +34,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("first", ex.ParamName);
         }
 
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Fact]
         public void Obsolete_Create_03_SecondIsNull_ExpectArgumentNullException()
         {
@@ -30,6 +47,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("second", ex.ParamName);
         }
 
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Fact]
         public void Obsolete_Create_03_ThirdIsNull_ExpectArgumentNullException()
         {
@@ -42,6 +60,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("third", ex.ParamName);
         }
 
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Theory]
         [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
         public void Obsolete_Create_03_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(

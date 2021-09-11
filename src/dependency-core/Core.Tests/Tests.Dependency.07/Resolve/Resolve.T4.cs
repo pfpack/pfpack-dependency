@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         {
             var fourth = byte.MaxValue;
 
-            var dependency = Dependency.Create(
+            var dependency = Dependency.From(
                 _ => MinusFifteen,
                 _ => UpperSomeString,
                 _ => SomeTextStructType,

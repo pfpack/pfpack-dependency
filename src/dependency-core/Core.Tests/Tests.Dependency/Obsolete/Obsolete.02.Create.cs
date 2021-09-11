@@ -7,6 +7,22 @@ namespace PrimeFuncPack.Tests
     partial class DependencyTest
     {
         [Fact]
+        public void Obsolete_Create_02_ExpectMethodIsObsolete()
+        {
+            var type = typeof(Dependency);
+            var methodName = nameof(Dependency.Create);
+
+            var method = type.GetPublicStaticMethodOrThrow(methodName, 2);
+            var obsoleteAttribute = method.GetObsoleteAttributeOrThrow();
+
+            Assert.False(obsoleteAttribute.IsError);
+
+            var expectedInsteadMethodName = $"{nameof(Dependency)}.{nameof(Dependency.From)}";
+            Assert.Contains(expectedInsteadMethodName, obsoleteAttribute.Message, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
+        [Fact]
         public void Obsolete_Create_02_FirstIsNull_ExpectArgumentNullException()
         {
             var second = PlusFifteenIdSomeStringNameRecord;
@@ -17,6 +33,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("first", ex.ParamName);
         }
 
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Fact]
         public void Obsolete_Create_02_SecondIsNull_ExpectArgumentNullException()
         {
@@ -28,6 +45,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("second", ex.ParamName);
         }
 
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Theory]
         [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
         public void Obsolete_Create_02_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(

@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithThreeResolvers_SecondIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => SomeTextStructType);
+            var source = Dependency.From(_ => SomeTextStructType);
 
             var thirdValue = PlusFifteenIdSomeStringNameRecord;
             var lastValue = MinusFifteenIdRefType;
@@ -26,7 +26,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithThreeResolvers_ThirdIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => ZeroIdNullNameRecord);
+            var source = Dependency.From(_ => ZeroIdNullNameRecord);
 
             var secondValue = PlusFifteenIdRefType;
             var lastValue = LowerSomeString;
@@ -43,7 +43,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithThreeResolvers_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MinusFifteenIdRefType);
+            var source = Dependency.From(_ => MinusFifteenIdRefType);
 
             var secondValue = One;
             var thirdValue = LowerSomeTextStructType;
@@ -63,7 +63,7 @@ namespace PrimeFuncPack.Tests
             RecordType? lastValue)
         {
             var sourceValue = LowerSomeTextStructType;
-            var source = Dependency.Create(_ => sourceValue);
+            var source = Dependency.From(_ => sourceValue);
             
             var secondValue = MinusFifteenIdRefType;
             var thirdValue = DateTimeKind.Local;

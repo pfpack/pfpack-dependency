@@ -11,7 +11,7 @@ namespace PrimeFuncPack.Tests
         public void GetThird_ExpectResolvedValueIsEqualToThirdSource(
             RefType? thirdSource)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => default(StructType?), _ => MinusFifteenIdSomeStringNameRecord, _ => thirdSource, _ => ZeroIdRefType);
 
             var actual = source.GetThird();

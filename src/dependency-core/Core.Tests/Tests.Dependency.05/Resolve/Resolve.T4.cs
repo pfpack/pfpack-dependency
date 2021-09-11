@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         {
             var fourth = ThreeWhiteSpacesString;
 
-            var dependency = Dependency.Create(
+            var dependency = Dependency.From(
                 _ => MinusFifteenIdSomeStringNameRecord,
                 _ => PlusFifteenIdRefType,
                 _ => SomeTextStructType,

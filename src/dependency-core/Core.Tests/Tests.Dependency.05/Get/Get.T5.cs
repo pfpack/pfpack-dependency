@@ -11,7 +11,7 @@ namespace PrimeFuncPack.Tests
         public void GetFifth_ExpectResolvedValueIsEqualToFifthSource(
             RefType fifthSource)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => SomeString,
                 _ => decimal.MaxValue,
                 _ => new { Name = UpperSomeString },

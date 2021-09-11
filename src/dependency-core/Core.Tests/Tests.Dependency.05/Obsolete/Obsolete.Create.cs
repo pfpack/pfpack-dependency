@@ -9,10 +9,20 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void Obsolete_Create_ExpectMethodIsObsolete()
         {
-            var type = typeof(Dependency<,,,,>);
+            var type = typeof(Dependency<StructType, long, RecordType?, bool?, RefType>);
             var methodName = nameof(Dependency<StructType, long, RecordType?, bool?, RefType>.Create);
 
-            var obsoleteAttribute = ReflectionAssert.IsStaticMethodObsolete(type, methodName);
+            var methodTypes = new[]
+            {
+                typeof(Func<IServiceProvider, StructType>),
+                typeof(Func<IServiceProvider, long>),
+                typeof(Func<IServiceProvider, RecordType?>),
+                typeof(Func<IServiceProvider, bool?>),
+                typeof(Func<IServiceProvider, RefType>)
+            };
+
+            var method = type.GetPublicStaticMethodOrThrow(methodName, 0, methodTypes);
+            var obsoleteAttribute = method.GetObsoleteAttributeOrThrow();
 
             Assert.False(obsoleteAttribute.IsError);
 
@@ -20,7 +30,7 @@ namespace PrimeFuncPack.Tests
             Assert.Contains(expectedInsteadMethodName, obsoleteAttribute.Message, StringComparison.InvariantCultureIgnoreCase);
         }
 
-        [Obsolete]
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Fact]
         public void Obsolete_Create_FirstIsNull_ExpectArgumentNullException()
         {
@@ -40,7 +50,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("first", ex.ParamName);
         }
 
-        [Obsolete]
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Fact]
         public void Obsolete_Create_SecondIsNull_ExpectArgumentNullException()
         {
@@ -60,7 +70,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("second", ex.ParamName);
         }
 
-        [Obsolete]
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Fact]
         public void Obsolete_Create_ThirdIsNull_ExpectArgumentNullException()
         {
@@ -80,7 +90,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("third", ex.ParamName);
         }
 
-        [Obsolete]
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Fact]
         public void Obsolete_Create_FourthIsNull_ExpectArgumentNullException()
         {
@@ -100,7 +110,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("fourth", ex.ParamName);
         }
 
-        [Obsolete]
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Fact]
         public void Obsolete_Create_FifthIsNull_ExpectArgumentNullException()
         {
@@ -120,7 +130,7 @@ namespace PrimeFuncPack.Tests
             Assert.Equal("fifth", ex.ParamName);
         }
 
-        [Obsolete]
+        [Obsolete(ObsoleteMessage.TestMethodObsolete)]
         [Theory]
         [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
         public void Obsolete_Create_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(

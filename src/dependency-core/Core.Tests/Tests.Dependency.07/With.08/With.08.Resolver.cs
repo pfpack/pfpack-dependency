@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithOneResolver_RestIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusOne,
                 _ => LowerSomeTextStructType,
                 _ => new { Sum = decimal.One },
@@ -40,7 +40,7 @@ namespace PrimeFuncPack.Tests
 
             var seventhSource = double.MaxValue;
 
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource, _ => sixthSource, _ => seventhSource);
 
             var actual = source.With(_ => restValue);

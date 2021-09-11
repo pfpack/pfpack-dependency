@@ -11,7 +11,7 @@ namespace PrimeFuncPack.Tests
         public void GetSixth_ExpectResolvedValueIsEqualToSixthSource(
             StructType sixthSource)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => SomeTextStructType,
                 _ => MinusFifteen,
                 _ => LowerSomeString,

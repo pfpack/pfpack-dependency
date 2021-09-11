@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
             RefType lastValue)
         {
             var sourceValue = PlusFifteenIdLowerSomeStringNameRecord;
-            var source = Dependency.Create(_ => sourceValue);
+            var source = Dependency.From(_ => sourceValue);
             
             var secondValue = long.MinValue;
             var thirdValue = LowerSomeTextStructType;

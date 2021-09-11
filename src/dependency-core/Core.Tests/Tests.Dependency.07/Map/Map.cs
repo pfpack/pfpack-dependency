@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void Map_MapFirstFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => SomeString,
                 _ => new object(),
                 _ => PlusFifteenIdLowerSomeStringNameRecord,
@@ -34,7 +34,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void Map_MapSecondFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => byte.MaxValue,
                 _ => SomeTextStructType,
                 _ => MinusFifteen,
@@ -59,7 +59,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void Map_MapThirdFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => PlusFifteenIdLowerSomeStringNameRecord,
                 _ => DateTimeKind.Local,
                 _ => MinusFifteenIdRefType,
@@ -84,7 +84,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void Map_MapFourthFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => PlusFifteenIdRefType,
                 _ => SomeString,
                 _ => new object(),
@@ -109,7 +109,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void Map_MapFifthFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => new { Name = SomeString },
                 _ => LowerSomeTextStructType,
                 _ => UpperSomeString,
@@ -134,7 +134,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void Map_MapSixthFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => PlusFifteen,
                 _ => SomeTextStructType,
                 _ => new object(),
@@ -159,7 +159,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void Map_MapSeventhFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusFifteenIdRefType,
                 _ => ZeroIdNullNameRecord,
                 _ => false,
@@ -186,7 +186,7 @@ namespace PrimeFuncPack.Tests
         public void Map_MapFuncIsNotNull_ExpectResolvedValuesAreEqualToMapped(
             RefType mappedLast)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusFifteenIdSomeStringNameRecord,
                 _ => LowerSomeString,
                 _ => PlusFifteenIdRefType,

@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void Map_MapFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => SomeTextStructType);
+            var source = Dependency.From(_ => SomeTextStructType);
             var map = (Func<StructType, RefType>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
@@ -23,7 +23,7 @@ namespace PrimeFuncPack.Tests
         public void Map_MapFuncIsNotNull_ExpectResolvedValueIsEqualToMapped(
             RecordType? mappedValue)
         {
-            var source = Dependency.Create(_ => PlusFifteenIdRefType);
+            var source = Dependency.From(_ => PlusFifteenIdRefType);
             var actual = source.Map(_ => mappedValue);
 
             var actualValue = actual.Resolve();

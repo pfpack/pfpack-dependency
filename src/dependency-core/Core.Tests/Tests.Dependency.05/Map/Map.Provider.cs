@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapFirstFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => SomeTextStructType,
                 _ => MinusFifteenIdRefType,
                 _ => SomeString,
@@ -30,7 +30,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapSecondFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => LowerSomeTextStructType,
                 _ => ZeroIdRefType,
                 _ => new { Name = SomeString },
@@ -51,7 +51,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapThirdFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusFifteenIdSomeStringNameRecord,
                 _ => ZeroIdRefType,
                 _ => LowerSomeTextStructType,
@@ -72,7 +72,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapFourthFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => PlusFifteenIdLowerSomeStringNameRecord,
                 _ => LowerSomeString,
                 _ => long.MaxValue,
@@ -93,7 +93,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapFifthFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => PlusFifteen,
                 _ => UpperSomeString,
                 _ => int.MaxValue,
@@ -116,7 +116,7 @@ namespace PrimeFuncPack.Tests
         public void MapWithProvider_MapFuncIsNotNull_ExpectResolvedValuesAreEqualToMapped(
             RecordType mappedLast)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusFifteen,
                 _ => EmptyString,
                 _ => (RefType?)null,

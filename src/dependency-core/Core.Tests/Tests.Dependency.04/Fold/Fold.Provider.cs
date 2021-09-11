@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void FoldWithProvider_FoldFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => SomeTextStructType, _ => LowerSomeString, _ => int.MaxValue, _ => PlusFifteenIdRefType);
 
             var fold = (Func<IServiceProvider, StructType, string, int, RefType?, object>)null!;
@@ -25,7 +25,7 @@ namespace PrimeFuncPack.Tests
         public void FoldWithProvider_FoldFuncIsNotNull_ExpectResolvedValueIsEqualToFolded(
             StructType foldedValue)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => SomeTextStructType, _ => long.MaxValue, _ => LowerSomeString, _ => MinusFifteenIdRefType);
 
             var actual = source.Fold((_, _, _, _, _) => foldedValue);

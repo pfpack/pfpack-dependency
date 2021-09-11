@@ -22,7 +22,7 @@ namespace PrimeFuncPack.Tests
 
             var seventhSource = MinusFifteenIdRefType;
 
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource, _ => sixthSource, _ => seventhSource);
 
             var actual = source.With(restValue);

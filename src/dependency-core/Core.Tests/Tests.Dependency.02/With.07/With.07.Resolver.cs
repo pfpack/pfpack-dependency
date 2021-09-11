@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveResolvers_ThirdIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => SomeTextStructType, _ => PlusFifteenIdRefType);
+            var source = Dependency.From(_ => SomeTextStructType, _ => PlusFifteenIdRefType);
 
             var fourthValue = true;
             var fifthValue = decimal.MinValue;
@@ -31,7 +31,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveResolvers_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MinusOne, _ => ZeroIdNullNameRecord);
+            var source = Dependency.From(_ => MinusOne, _ => ZeroIdNullNameRecord);
 
             var thirdValue = LowerSomeTextStructType;
             var fifthValue = WhiteSpaceString;
@@ -53,7 +53,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveResolvers_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MinusFifteenIdRefType, _ => Zero);
+            var source = Dependency.From(_ => MinusFifteenIdRefType, _ => Zero);
 
             var thirdValue = PlusFifteenIdSomeStringNameRecord;
             var fourthValue = SomeTextStructType;
@@ -75,7 +75,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveResolvers_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MinusOne, _ => PlusFifteenIdSomeStringNameRecord);
+            var source = Dependency.From(_ => MinusOne, _ => PlusFifteenIdSomeStringNameRecord);
 
             var thirdValue = long.MinValue;
             var fourthValue = new object();
@@ -97,7 +97,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveResolvers_SeventhIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => false, _ => SomeTextStructType);
+            var source = Dependency.From(_ => false, _ => SomeTextStructType);
 
             var thirdValue = byte.MaxValue;
             var fourthValue = LowerSomeString;
@@ -124,7 +124,7 @@ namespace PrimeFuncPack.Tests
             var firstSource = MinusOne;
             var secondSource = SomeTextStructType;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource);
 
             var thirdValue = new object();
             var fourthValue = DateTimeKind.Local;

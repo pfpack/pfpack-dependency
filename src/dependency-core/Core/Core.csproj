@@ -13,7 +13,7 @@
     <Copyright>Copyright © 2020-2021 Andrei Sergeev, Pavel Moskovoy</Copyright>
     <RootNamespace>PrimeFuncPack</RootNamespace>
     <AssemblyName>PrimeFuncPack.Dependency.Core</AssemblyName>
-    <Version>1.2.0-preview.6.1.9</Version>
+    <Version>1.2.0-preview.6.1.12</Version>
   </PropertyGroup>
 
   <ItemGroup>

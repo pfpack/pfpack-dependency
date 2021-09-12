@@ -6,7 +6,7 @@ namespace PrimeFuncPack
 {
     partial class Dependency
     {
-        [Obsolete(ObsoleteMessage.DependencyCreateEmptyIsObsolete, false)]
+        [Obsolete(ObsoleteMessage.DependencyCreateEmpty, ObsoleteError.DependencyCreate)]
         public static Dependency<Unit> Create()
             =>
             new(Unit.From);

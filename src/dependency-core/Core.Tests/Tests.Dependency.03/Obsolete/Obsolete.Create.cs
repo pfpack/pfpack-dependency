@@ -24,8 +24,8 @@ namespace PrimeFuncPack.Tests
 
             Assert.False(obsoleteAttribute.IsError);
 
-            var expectedInsteadMethodName = "Dependency<T1, T2, T3>.From";
-            Assert.Contains(expectedInsteadMethodName, obsoleteAttribute.Message, StringComparison.InvariantCultureIgnoreCase);
+            var expectedNewMethodName = nameof(Dependency<int?, StructType, RecordType>.From);
+            Assert.Contains(expectedNewMethodName, obsoleteAttribute.Message, StringComparison.InvariantCulture);
         }
 
         [Obsolete(ObsoleteMessage.TestMethodObsolete)]

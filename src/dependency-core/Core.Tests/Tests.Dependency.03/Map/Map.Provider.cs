@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapFirstFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => SomeString, _ => LowerSomeTextStructType, _ => MinusFifteenIdNullNameRecord);
 
             var mapFirst = (Func<IServiceProvider, string, DateTimeOffset>)null!;
@@ -24,7 +24,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapSecondFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => ZeroIdRefType, _ => PlusFifteen, _ => SomeTextStructType);
 
             var mapSecond = (Func<IServiceProvider, int, RefType>)null!;
@@ -39,7 +39,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapThirdFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => UpperSomeString, _ => long.MinValue, _ => MinusFifteenIdSomeStringNameRecord);
 
             var mapThird = (Func<IServiceProvider, RecordType, StructType?>)null!;
@@ -56,7 +56,7 @@ namespace PrimeFuncPack.Tests
         public void MapWithProvider_MapFuncIsNotNull_ExpectResolvedValuesAreEqualToMapped(
             StructType mappedLast)
         {
-            var source = Dependency.Create(_ => new object(), _ => SomeTextStructType, _ => PlusFifteen);
+            var source = Dependency.From(_ => new object(), _ => SomeTextStructType, _ => PlusFifteen);
 
             var mappedFirst = MinusFifteenIdNullNameRecord;
             var mappedSecond = MinusFifteenIdRefType;

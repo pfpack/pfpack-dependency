@@ -11,7 +11,7 @@ namespace PrimeFuncPack.Tests
         public void GetRest_ExpectResolvedValueIsEqualToRestSource(
             RecordType restSource)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => decimal.MaxValue,
                 _ => new Tuple<int?, string?, string>(null, EmptyString, UpperSomeString),
                 _ => Array.Empty<byte>(),

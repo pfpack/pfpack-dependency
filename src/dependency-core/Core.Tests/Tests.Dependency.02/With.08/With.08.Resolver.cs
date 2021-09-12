@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixResolvers_ThirdIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MinusFifteenIdRefType, _ => PlusFifteen);
+            var source = Dependency.From(_ => MinusFifteenIdRefType, _ => PlusFifteen);
 
             var fourthValue = DateTimeKind.Unspecified;
             var fifthValue = SomeTextStructType;
@@ -34,7 +34,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixResolvers_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => decimal.One, _ => MinusFifteenIdRefType);
+            var source = Dependency.From(_ => decimal.One, _ => MinusFifteenIdRefType);
 
             var thirdValue = byte.MaxValue;
             var fifthValue = PlusFifteenIdSomeStringNameRecord;
@@ -59,7 +59,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixResolvers_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => SomeTextStructType, _ => PlusFifteenIdRefType);
+            var source = Dependency.From(_ => SomeTextStructType, _ => PlusFifteenIdRefType);
 
             var thirdValue = int.MinValue;
             var fourthValue = false;
@@ -84,7 +84,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixResolvers_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => decimal.MinusOne, _ => PlusFifteenIdRefType);
+            var source = Dependency.From(_ => decimal.MinusOne, _ => PlusFifteenIdRefType);
 
             var thirdValue = true;
             var fourthValue = LowerSomeString;
@@ -109,7 +109,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixResolvers_SeventhIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MinusOne, _ => MinusFifteenIdSomeStringNameRecord);
+            var source = Dependency.From(_ => MinusOne, _ => MinusFifteenIdSomeStringNameRecord);
 
             var thirdValue = decimal.One;
             var fourthValue = Array.Empty<string?>();
@@ -134,7 +134,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixResolvers_RestIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => SomeString, _ => true);
+            var source = Dependency.From(_ => SomeString, _ => true);
 
             var thirdValue = DateTimeKind.Local;
             var fourthValue = PlusFifteenIdRefType;
@@ -164,7 +164,7 @@ namespace PrimeFuncPack.Tests
             var firstSource = PlusFifteenIdLowerSomeStringNameRecord;
             var secondSource = MinusOne;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource);
 
             var thirdValue = false;
             var fourthValue = Array.Empty<DateTime?>();

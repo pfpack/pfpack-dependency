@@ -14,7 +14,7 @@ namespace PrimeFuncPack.Tests
         public void GetSecond_ExpectResolvedValueIsEqualToSecondSource(
             string? secondSource)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => SomeTextStructType,
                 _ => secondSource,
                 _ => MinusFifteenIdRefType,

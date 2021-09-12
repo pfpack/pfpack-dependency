@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithThreeResolvers_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusFifteenIdSomeStringNameRecord,
                 _ => UpperSomeString,
                 _ => Zero,
@@ -31,7 +31,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithThreeResolvers_SeventhIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => new object(),
                 _ => SomeTextStructType,
                 _ => false,
@@ -53,7 +53,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithThreeResolvers_RestIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => SomeTextStructType,
                 _ => DateTimeKind.Unspecified,
                 _ => decimal.MinusOne,
@@ -85,7 +85,7 @@ namespace PrimeFuncPack.Tests
 
             var fifthSource = DateTimeKind.Utc;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource);
 
             var sixthValue = MinusFifteenIdSomeStringNameRecord;
             var seventhValue = byte.MaxValue;

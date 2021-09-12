@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveFactories_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusFifteenIdRefType, _ => new object(), _ => decimal.MaxValue);
 
             var fifthValue = false;
@@ -32,7 +32,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveFactories_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => long.MinValue, _ => true, _ => SomeTextStructType);
 
             var fourthValue = ThreeWhiteSpacesString;
@@ -55,7 +55,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveFactories_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => LowerSomeTextStructType, _ => long.MinValue, _ => new object());
 
             var fourthValue = PlusFifteenIdSomeStringNameRecord;
@@ -78,7 +78,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveFactories_SeventhIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => default(string), _ => SomeTextStructType, _ => decimal.MinusOne);
 
             var fourthValue = new object();
@@ -101,7 +101,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveFactories_RestIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => false, _ => PlusFifteenIdLowerSomeStringNameRecord, _ => SomeTextStructType);
 
             var fourthValue = new object();
@@ -130,7 +130,7 @@ namespace PrimeFuncPack.Tests
             var secondSource = decimal.MaxValue;
 
             var thirdSource = EmptyString;
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource);
 
             var fourthValue = ZeroIdNullNameRecord;
             var fifthValue = new { Id = One };

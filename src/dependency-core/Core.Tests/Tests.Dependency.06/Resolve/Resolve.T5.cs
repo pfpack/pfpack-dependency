@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         {
             var fifth = ZeroIdNullNameRecord;
 
-            var dependency = Dependency.Create(
+            var dependency = Dependency.From(
                 _ => MinusFifteen,
                 _ => EmptyString,
                 _ => MinusFifteenIdNullNameRecord,

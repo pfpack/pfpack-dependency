@@ -11,7 +11,7 @@ namespace PrimeFuncPack.Tests
         public void GetFifth_ExpectResolvedValueIsEqualToFifthSource(
             RecordType? fifthSource)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusFifteenIdRefType,
                 _ => new object(),
                 _ => SomeTextStructType,

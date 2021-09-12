@@ -17,7 +17,7 @@ namespace PrimeFuncPack.Tests
             var thirdSource = true;
             var fourthSource = TabString;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
 
             var fifthValue = LowerSomeTextStructType;
 

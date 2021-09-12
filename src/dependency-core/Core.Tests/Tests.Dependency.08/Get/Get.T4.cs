@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         public void GetFourth_ExpectResolvedValueIsEqualToFourthSource(
             int? fourthSource)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => Zero,
                 _ => PlusFifteenIdRefType,
                 _ => new { Name = SomeString, Id = PlusFifteen },

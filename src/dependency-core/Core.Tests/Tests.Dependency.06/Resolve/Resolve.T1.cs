@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         {
             var first = UpperSomeString;
 
-            var dependency = Dependency.Create(
+            var dependency = Dependency.From(
                 _ => first,
                 _ => ZeroIdRefType,
                 _ => MinusFifteen,

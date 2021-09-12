@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourFactories_ThirdIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => SomeTextStructType, _ => decimal.One);
+            var source = Dependency.From(_ => SomeTextStructType, _ => decimal.One);
 
             var fourthValue = DateTimeKind.Local;
             var fifthValue = ZeroIdNullNameRecord;
@@ -29,7 +29,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourFactories_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => PlusFifteenIdSomeStringNameRecord, _ => One);
+            var source = Dependency.From(_ => PlusFifteenIdSomeStringNameRecord, _ => One);
 
             var thirdValue = LowerSomeTextStructType;
             var fifthValue = new object();
@@ -49,7 +49,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourFactories_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => false, _ => SomeTextStructType);
+            var source = Dependency.From(_ => false, _ => SomeTextStructType);
 
             var thirdValue = ZeroIdRefType;
             var fourthValue = ThreeWhiteSpacesString;
@@ -69,7 +69,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourFactories_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => TabString, _ => decimal.One);
+            var source = Dependency.From(_ => TabString, _ => decimal.One);
 
             var thirdValue = ulong.MaxValue;
             var fourthValue = MinusFifteenIdRefType;
@@ -94,7 +94,7 @@ namespace PrimeFuncPack.Tests
             var firstSource = true;
             var secondSource = DateTimeKind.Utc;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource);
 
             var thirdValue = SomeTextStructType;
             var fourthValue = new object();

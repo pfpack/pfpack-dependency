@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithOneFactory_SeventhIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => SomeTextStructType,
                 _ => MinusOne,
                 _ => new object(),
@@ -37,7 +37,7 @@ namespace PrimeFuncPack.Tests
             var fifthSource = decimal.MaxValue;
             var sixthSource = MinusFifteenIdSomeStringNameRecord;
 
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource, _ => sixthSource);
 
             var actual = source.With(() => seventhValue);

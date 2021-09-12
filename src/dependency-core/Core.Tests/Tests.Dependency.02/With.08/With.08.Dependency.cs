@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixDependency_OtherIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MinusFifteenIdSomeStringNameRecord, _ => long.MaxValue);
+            var source = Dependency.From(_ => MinusFifteenIdSomeStringNameRecord, _ => long.MaxValue);
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.With<string?, bool, object, RefType?, DateTimeOffset, decimal>(null!));
@@ -27,7 +27,7 @@ namespace PrimeFuncPack.Tests
             var firstSource = decimal.MaxValue;
             var secondSource = MinusFifteenIdSomeStringNameRecord;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource);
             
             var otherFirst = new Tuple<int, string, bool?>(int.MaxValue, EmptyString, true);
             var otherSecond = TwoWhiteSpacesString;
@@ -37,7 +37,7 @@ namespace PrimeFuncPack.Tests
 
             var otherFifth = SomeTextStructType;
 
-            var other = Dependency.Create(
+            var other = Dependency.From(
                 _ => otherFirst, _ => otherSecond, _ => otherThird, _ => otherFourth, _ => otherFifth, _ => otherLast);
 
             var actual = source.With(other);

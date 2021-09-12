@@ -11,7 +11,7 @@ namespace PrimeFuncPack.Tests
         public void GetSeventh_ExpectResolvedValueIsEqualToSeventhSource(
             RecordType? seventhSource)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => SomeTextStructType,
                 _ => new { Text = LowerSomeString },
                 _ => byte.MaxValue,

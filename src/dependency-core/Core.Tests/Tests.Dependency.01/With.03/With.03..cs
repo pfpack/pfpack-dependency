@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
             RecordType lastValue)
         {
             var sourceValue = SomeTextStructType;
-            var source = Dependency.Create(_ => sourceValue);
+            var source = Dependency.From(_ => sourceValue);
             
             var secondValue = ZeroIdRefType;
 

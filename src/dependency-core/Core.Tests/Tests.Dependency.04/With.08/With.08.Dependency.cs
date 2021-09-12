@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourDependency_OtherIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => PlusFifteen,
                 _ => MinusFifteenIdNullNameRecord,
                 _ => EmptyString,
@@ -32,14 +32,14 @@ namespace PrimeFuncPack.Tests
             var thirdSource = MinusFifteenIdRefType;
             var fourthSource = new { Value = decimal.One };
 
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
 
             var otherFirst = SomeTextStructType;
             var otherSecond = One;
 
             var otherThird = new[] { int.MinValue, Zero, PlusFifteen };
-            var other = Dependency.Create(_ => otherFirst, _ => otherSecond, _ => otherThird, _ => otherLast);
+            var other = Dependency.From(_ => otherFirst, _ => otherSecond, _ => otherThird, _ => otherLast);
 
             var actual = source.With(other);
             var actualValue = actual.Resolve();

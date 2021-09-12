@@ -11,7 +11,7 @@ namespace PrimeFuncPack.Tests
         public void GetFirst_ExpectResolvedValueIsEqualToFirstSource(
             RecordType firstSource)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => firstSource, _ => MinusFifteenIdSomeStringNameRecord, _ => ZeroIdRefType, _ => PlusFifteen);
 
             var actual = source.GetFirst();

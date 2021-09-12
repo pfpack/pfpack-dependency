@@ -15,7 +15,7 @@ namespace PrimeFuncPack.Tests
             var secondSource = byte.MaxValue;
 
             var thirdSource = MinusFifteenIdRefType;
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource);
 
             var fourthValue = SomeTextStructType;
             var fifthValue = new object();

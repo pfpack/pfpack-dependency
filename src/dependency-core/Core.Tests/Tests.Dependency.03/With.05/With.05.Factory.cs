@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithTwoFactories_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => LowerSomeTextStructType, _ => PlusFifteenIdRefType, _ => long.MinValue);
 
             var fifthValue = ZeroIdNullNameRecord;
@@ -25,7 +25,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithTwoFactories_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => new object(), _ => SomeTextStructType, _ => MinusFifteenIdRefType);
 
             var fourthValue = PlusFifteenIdLowerSomeStringNameRecord;
@@ -47,7 +47,7 @@ namespace PrimeFuncPack.Tests
             var secondSource = DateTimeKind.Unspecified;
 
             var thirdSource = ZeroIdNullNameRecord;
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource);
 
             var fourthValue = PlusFifteenIdRefType;
 

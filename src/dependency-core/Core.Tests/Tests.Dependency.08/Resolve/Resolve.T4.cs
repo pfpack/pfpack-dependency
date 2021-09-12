@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         {
             var fourth = PlusFifteenIdLowerSomeStringNameRecord;
 
-            var dependency = Dependency.Create(
+            var dependency = Dependency.From(
                 _ => new Tuple<int, bool>(MinusOne, true),
                 _ => MinusFifteenIdRefType,
                 _ => long.MinValue,

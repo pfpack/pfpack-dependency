@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithThreeFactories_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => new object(),
                 _ => DateTimeKind.Utc,
                 _ => PlusFifteenIdLowerSomeStringNameRecord,
@@ -31,7 +31,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithThreeFactories_SeventhIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => false,
                 _ => MinusFifteenIdSomeStringNameRecord,
                 _ => byte.MaxValue,
@@ -53,7 +53,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithThreeFactories_RestIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => Zero,
                 _ => PlusFifteenIdRefType,
                 _ => Array.Empty<string>(),
@@ -85,7 +85,7 @@ namespace PrimeFuncPack.Tests
 
             var fifthSource = new[] { byte.MaxValue };
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource);
 
             var sixthValue = true;
             var seventhValue = PlusFifteenIdRefType;

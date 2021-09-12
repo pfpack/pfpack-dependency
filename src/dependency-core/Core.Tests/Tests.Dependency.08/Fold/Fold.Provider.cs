@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void FoldWithProvider_FoldFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusFifteen,
                 _ => new { Value = decimal.MinValue },
                 _ => false,
@@ -32,7 +32,7 @@ namespace PrimeFuncPack.Tests
         public void FoldWithProvider_FoldFuncIsNotNull_ExpectResolvedValueIsEqualToFolded(
             StructType foldedValue)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => int.MinValue,
                 _ => new object(),
                 _ => WhiteSpaceString,

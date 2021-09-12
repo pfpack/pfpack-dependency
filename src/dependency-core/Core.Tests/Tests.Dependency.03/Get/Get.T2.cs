@@ -11,7 +11,7 @@ namespace PrimeFuncPack.Tests
         public void GetSecond_ExpectResolvedValueIsEqualToSecondSource(
             RefType secondSource)
         {
-            var source = Dependency.Create(_ => SomeString, _ => secondSource, _ => new object());
+            var source = Dependency.From(_ => SomeString, _ => secondSource, _ => new object());
             var actual = source.GetSecond();
 
             var actualValue = actual.Resolve();

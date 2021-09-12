@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapFirstFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => ZeroIdRefType,
                 _ => MinusFifteen,
                 _ => long.MinValue,
@@ -32,7 +32,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapSecondFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => ZeroIdRefType,
                 _ => SomeTextStructType,
                 _ => PlusFifteenIdLowerSomeStringNameRecord,
@@ -55,7 +55,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapThirdFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => new { Id = PlusFifteen },
                 _ => DateTimeKind.Local,
                 _ => MinusFifteenIdRefType,
@@ -78,7 +78,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapFourthFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => decimal.One,
                 _ => SomeTextStructType,
                 _ => LowerSomeTextStructType,
@@ -101,7 +101,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapFifthFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusFifteenIdNullNameRecord,
                 _ => Zero,
                 _ => MinusFifteenIdRefType,
@@ -124,7 +124,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapSixthFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => UpperSomeString,
                 _ => PlusFifteen,
                 _ => MinusFifteenIdNullNameRecord,
@@ -149,7 +149,7 @@ namespace PrimeFuncPack.Tests
         public void MapWithProvider_MapFuncIsNotNull_ExpectResolvedValuesAreEqualToMapped(
             RecordType? mappedLast)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => long.MaxValue,
                 _ => MinusFifteen,
                 _ => LowerSomeString,

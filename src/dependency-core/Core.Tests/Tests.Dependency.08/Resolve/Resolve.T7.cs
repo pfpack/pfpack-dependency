@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         {
             var seventh = UpperSomeString;
 
-            var dependency = Dependency.Create(
+            var dependency = Dependency.From(
                 _ => new object(),
                 _ => MinusFifteenIdSomeStringNameRecord,
                 _ => Zero,

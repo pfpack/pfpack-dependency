@@ -8,7 +8,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithTwoResolvers_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusFifteenIdRefType, _ => PlusFifteenIdSomeStringNameRecord, _ => EmptyString);
 
             var fifthValue = SomeTextStructType;
@@ -24,7 +24,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithTwoResolvers_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => ZeroIdNullNameRecord, _ => LowerSomeTextStructType, _ => false);
 
             var fourthValue = MinusFifteenIdRefType;
@@ -48,7 +48,7 @@ namespace PrimeFuncPack.Tests
             var secondSource = byte.MaxValue;
 
             var thirdSource = MinusFifteenIdRefType;
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource);
 
             var fourthValue = SomeTextStructType;
 

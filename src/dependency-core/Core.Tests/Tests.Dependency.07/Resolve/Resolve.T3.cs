@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         {
             var third = LowerSomeTextStructType;
 
-            var dependency = Dependency.Create(
+            var dependency = Dependency.From(
                 _ => DateTimeKind.Utc,
                 _ => MinusFifteenIdSomeStringNameRecord,
                 _ => third,

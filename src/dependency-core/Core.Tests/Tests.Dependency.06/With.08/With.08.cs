@@ -18,7 +18,7 @@ namespace PrimeFuncPack.Tests
             var fifthSource = PlusFifteenIdRefType;
             var sixthSource = new object();
 
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => firstSource,
                 _ => secondSource,
                 _ => thirdSource,

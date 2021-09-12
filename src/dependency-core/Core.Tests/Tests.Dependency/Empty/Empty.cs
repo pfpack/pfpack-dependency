@@ -14,12 +14,12 @@ namespace PrimeFuncPack.Tests
         }
 
         [Fact]
-        public void GetEmptyTwoTimes_ExpectDependenciesAreSame()
+        public void GetEmptyTwoTimes_ExpectDependenciesAreNotSame()
         {
             var firstDependency = Dependency.Empty;
             var secondDependency = Dependency.Empty;
 
-            Assert.Same(firstDependency, secondDependency);
+            Assert.NotSame(firstDependency, secondDependency);
         }
     }
 }

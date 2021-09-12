@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveResolvers_SecondIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => SomeTextStructType);
+            var source = Dependency.From(_ => SomeTextStructType);
 
             var thirdValue = ZeroIdNullNameRecord;
             var fourthValue = MinusOne;
@@ -31,7 +31,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveResolvers_ThirdIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MinusFifteenIdSomeStringNameRecord);
+            var source = Dependency.From(_ => MinusFifteenIdSomeStringNameRecord);
 
             var secondValue = ZeroIdRefType;
             var fourthValue = DateTimeKind.Utc;
@@ -53,7 +53,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveResolvers_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => long.MaxValue);
+            var source = Dependency.From(_ => long.MaxValue);
 
             var secondValue = MinusFifteenIdRefType;
             var thirdValue = UpperSomeString;
@@ -75,7 +75,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveResolvers_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => SomeTextStructType);
+            var source = Dependency.From(_ => SomeTextStructType);
 
             var secondValue = PlusFifteenIdSomeStringNameRecord;
             var thirdValue = new object();
@@ -97,7 +97,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveResolvers_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => SomeTextStructType);
+            var source = Dependency.From(_ => SomeTextStructType);
 
             var secondValue = WhiteSpaceString;
             var thirdValue = MinusFifteenIdNullNameRecord;
@@ -122,7 +122,7 @@ namespace PrimeFuncPack.Tests
             RefType lastValue)
         {
             var sourceValue = SomeTextStructType;
-            var source = Dependency.Create(_ => sourceValue);
+            var source = Dependency.From(_ => sourceValue);
             
             var secondValue = ZeroIdNullNameRecord;
             var thirdValue = new object();

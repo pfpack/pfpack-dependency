@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveResolvers_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => SomeTextStructType, _ => MinusFifteenIdSomeStringNameRecord, _ => Zero);
 
             var fifthValue = MinusFifteenIdRefType;
@@ -32,7 +32,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveResolvers_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => ZeroIdRefType, _ => decimal.One, _ => PlusFifteen);
 
             var fourthValue = DateTimeKind.Unspecified;
@@ -55,7 +55,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveResolvers_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusFifteenIdSomeStringNameRecord, _ => SomeTextStructType, _ => PlusFifteenIdRefType);
 
             var fourthValue = DateTimeKind.Utc;
@@ -78,7 +78,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveResolvers_SeventhIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => false, _ => MixedWhiteSpacesString, _ => DateTimeKind.Unspecified);
 
             var fourthValue = MinusFifteenIdRefType;
@@ -101,7 +101,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveResolvers_RestIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => LowerSomeTextStructType, _ => MinusFifteenIdRefType, _ => decimal.One);
 
             var fourthValue = true;
@@ -130,7 +130,7 @@ namespace PrimeFuncPack.Tests
             var secondSource = MinusFifteenIdSomeStringNameRecord;
 
             var thirdSource = SomeString;
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource);
 
             var fourthValue = true;
             var fifthValue = LowerSomeTextStructType;

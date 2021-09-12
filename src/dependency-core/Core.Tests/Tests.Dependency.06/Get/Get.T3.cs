@@ -13,7 +13,7 @@ namespace PrimeFuncPack.Tests
         public void GetThird_ExpectResolvedValueIsEqualToThirdSource(
             int? thirdSource)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusFifteenIdNullNameRecord,
                 _ => PlusFifteen,
                 _ => thirdSource,

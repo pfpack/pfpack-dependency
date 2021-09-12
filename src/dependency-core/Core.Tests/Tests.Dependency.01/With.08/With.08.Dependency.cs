@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSevenDependency_OtherIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MinusFifteenIdRefType);
+            var source = Dependency.From(_ => MinusFifteenIdRefType);
 
             var ex = Assert.Throws<ArgumentNullException>(
                 () => _ = source.With<object?, DateTimeOffset, StructType, decimal?, RecordType, RefType, string>(null!));
@@ -25,7 +25,7 @@ namespace PrimeFuncPack.Tests
             int? otherLast)
         {
             var sourceValue = new { Value = decimal.MaxValue };
-            var source = Dependency.Create(_ => sourceValue);
+            var source = Dependency.From(_ => sourceValue);
             
             var otherFirst = new[] { int.MinValue, MinusOne, PlusFifteen };
             var otherSecond = DateTimeKind.Local;
@@ -36,7 +36,7 @@ namespace PrimeFuncPack.Tests
             var otherFifth = false;
             var otherSixth = MinusFifteenIdSomeStringNameRecord;
 
-            var other = Dependency.Create(
+            var other = Dependency.From(
                 _ => otherFirst, _ => otherSecond, _ => otherThird, _ => otherFourth, _ => otherFifth, _ => otherSixth, _ => otherLast);
 
             var actual = source.With(other);

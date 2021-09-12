@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapFirstFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => SomeTextStructType, _ => int.MaxValue, _ => decimal.MinusOne, _ => PlusFifteenIdRefType);
 
             var ex = Assert.Throws<ArgumentNullException>(
@@ -25,7 +25,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapSecondFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => int.MinValue, _ => MinusFifteen, _ => PlusFifteenIdRefType, _ => SomeString);
 
             var ex = Assert.Throws<ArgumentNullException>(
@@ -41,7 +41,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapThirdFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => SomeTextStructType, _ => MinusFifteenIdRefType, _ => new object(), _ => int.MaxValue);
 
             var ex = Assert.Throws<ArgumentNullException>(
@@ -57,7 +57,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void MapWithProvider_MapFourthFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => LowerSomeString, _ => PlusFifteenIdRefType, _ => int.MinValue, _ => MinusFifteenIdSomeStringNameRecord);
 
             var ex = Assert.Throws<ArgumentNullException>(
@@ -75,7 +75,7 @@ namespace PrimeFuncPack.Tests
         public void MapWithProvider_MapFuncIsNotNull_ExpectResolvedValuesAreEqualToMapped(
             StructType mappedLast)
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusFifteen,
                 _ => UpperSomeString,
                 _ => LowerSomeTextStructType,

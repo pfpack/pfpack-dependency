@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSevenResolvers_SecondIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => SomeTextStructType);
+            var source = Dependency.From(_ => SomeTextStructType);
 
             var thirdValue = EmptyString;
             var fourthValue = MinusFifteenIdRefType;
@@ -36,7 +36,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSevenResolvers_ThirdIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => SomeTextStructType);
+            var source = Dependency.From(_ => SomeTextStructType);
 
             var secondValue = Array.Empty<byte>();
             var fourthValue = MinusFifteenIdRefType;
@@ -63,7 +63,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSevenResolvers_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MinusFifteenIdRefType);
+            var source = Dependency.From(_ => MinusFifteenIdRefType);
 
             var secondValue = MixedWhiteSpacesString;
             var thirdValue = MinusFifteenIdRefType;
@@ -90,7 +90,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSevenResolvers_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => decimal.MaxValue);
+            var source = Dependency.From(_ => decimal.MaxValue);
 
             var secondValue = long.MaxValue;
             var thirdValue = SomeTextStructType;
@@ -117,7 +117,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSevenResolvers_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => decimal.MinusOne);
+            var source = Dependency.From(_ => decimal.MinusOne);
 
             var secondValue = MinusOne;
             var thirdValue = SomeTextStructType;
@@ -144,7 +144,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSevenResolvers_SeventhIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MinusFifteenIdSomeStringNameRecord);
+            var source = Dependency.From(_ => MinusFifteenIdSomeStringNameRecord);
 
             var secondValue = UpperSomeString;
             var thirdValue = int.MaxValue;
@@ -171,7 +171,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSevenResolvers_RestIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MinusFifteenIdSomeStringNameRecord);
+            var source = Dependency.From(_ => MinusFifteenIdSomeStringNameRecord);
 
             var secondValue = SomeTextStructType;
             var thirdValue = PlusFifteen;
@@ -201,7 +201,7 @@ namespace PrimeFuncPack.Tests
             RecordType lastValue)
         {
             var sourceValue = new { Value = MinusFifteen };
-            var source = Dependency.Create(_ => sourceValue);
+            var source = Dependency.From(_ => sourceValue);
             
             var secondValue = new[] { Zero, int.MinValue, int.MaxValue };
             var thirdValue = new object();

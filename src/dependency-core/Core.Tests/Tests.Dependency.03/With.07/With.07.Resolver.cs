@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourResolvers_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => false, _ => PlusFifteenIdRefType, _ => LowerSomeTextStructType);
 
             var fifthValue = decimal.One;
@@ -30,7 +30,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourResolvers_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusOne, _ => SomeTextStructType, _ => byte.MaxValue);
 
             var fourthValue = bool.TrueString;
@@ -51,7 +51,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourResolvers_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => ZeroIdRefType, _ => PlusFifteenIdSomeStringNameRecord, _ => int.MinValue);
 
             var fourthValue = SomeTextStructType;
@@ -72,7 +72,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourResolvers_SeventhIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => long.MaxValue, _ => MinusFifteenIdSomeStringNameRecord, _ => Array.Empty<DateTimeOffset>());
 
             var fourthValue = new { Id = PlusFifteen, Name = SomeString };
@@ -101,7 +101,7 @@ namespace PrimeFuncPack.Tests
             var secondSource = ZeroIdNullNameRecord;
 
             var thirdSource = long.MinValue;
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource);
 
             var fourthValue = DateTimeKind.Local;
             var fifthValue = MinusOne;

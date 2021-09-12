@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixFactories_SecondIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => long.MaxValue);
+            var source = Dependency.From(_ => long.MaxValue);
 
             var thirdValue = DateTimeKind.Local;
             var fourthValue = new object();
@@ -34,7 +34,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixFactories_ThirdIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => PlusFifteenIdSomeStringNameRecord);
+            var source = Dependency.From(_ => PlusFifteenIdSomeStringNameRecord);
 
             var secondValue = new object();
             var fourthValue = SomeTextStructType;
@@ -59,7 +59,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixFactories_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => int.MaxValue);
+            var source = Dependency.From(_ => int.MaxValue);
 
             var secondValue = PlusFifteenIdLowerSomeStringNameRecord;
             var thirdValue = EmptyString;
@@ -84,7 +84,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixFactories_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => byte.MaxValue);
+            var source = Dependency.From(_ => byte.MaxValue);
 
             var secondValue = ZeroIdRefType;
             var thirdValue = MinusFifteenIdSomeStringNameRecord;
@@ -109,7 +109,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixFactories_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => byte.MaxValue);
+            var source = Dependency.From(_ => byte.MaxValue);
 
             var secondValue = PlusFifteenIdRefType;
             var thirdValue = new object();
@@ -134,7 +134,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithSixFactories_SeventhIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => new object());
+            var source = Dependency.From(_ => new object());
 
             var secondValue = LowerSomeTextStructType;
             var thirdValue = EmptyString;
@@ -162,7 +162,7 @@ namespace PrimeFuncPack.Tests
             RefType? lastValue)
         {
             var sourceValue = int.MaxValue;
-            var source = Dependency.Create(_ => sourceValue);
+            var source = Dependency.From(_ => sourceValue);
             
             var secondValue = MinusFifteenIdSomeStringNameRecord;
             var thirdValue = UpperSomeString;

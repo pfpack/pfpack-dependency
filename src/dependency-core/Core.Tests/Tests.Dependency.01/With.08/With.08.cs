@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
             RefType? lastValue)
         {
             var sourceValue = long.MinValue;
-            var source = Dependency.Create(_ => sourceValue);
+            var source = Dependency.From(_ => sourceValue);
             
             var secondValue = new object();
             var thirdValue = default(string);

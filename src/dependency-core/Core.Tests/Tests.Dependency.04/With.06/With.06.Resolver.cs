@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithTwoResolvers_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => ZeroIdRefType,
                 _ => new object(),
                 _ => long.MaxValue,
@@ -28,7 +28,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithTwoResolvers_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => ZeroIdNullNameRecord,
                 _ => SomeTextStructType,
                 _ => decimal.MinusOne,
@@ -57,7 +57,7 @@ namespace PrimeFuncPack.Tests
             var thirdSource = new { Name = UpperSomeString, Sum = decimal.One };
             var fourthSource = SomeTextStructType;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
 
             var fifthValue = MinusFifteenIdSomeStringNameRecord;
 

@@ -14,7 +14,7 @@ namespace PrimeFuncPack.Tests
             var firstSource = SomeTextStructType;
             var secondSource = new object();
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource);
 
             var thirdValue = MinusFifteenIdRefType;
             var fourthValue = long.MinValue;

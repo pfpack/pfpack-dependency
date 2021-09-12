@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         {
             var fifth = true;
 
-            var dependency = Dependency.Create(
+            var dependency = Dependency.From(
                 _ => PlusFifteen,
                 _ => new object(),
                 _ => ZeroIdRefType,

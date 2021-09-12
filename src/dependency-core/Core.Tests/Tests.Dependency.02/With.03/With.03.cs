@@ -15,7 +15,7 @@ namespace PrimeFuncPack.Tests
             var firstSource = SomeTextStructType;
             var secondSource = PlusFifteenIdSomeStringNameRecord;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource);
 
             var actual = source.With(thirdValue);
             var actualValue = actual.Resolve();

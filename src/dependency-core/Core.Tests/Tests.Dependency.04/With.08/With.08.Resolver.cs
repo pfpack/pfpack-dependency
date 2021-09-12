@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourResolvers_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => LowerSomeString,
                 _ => PlusFifteenIdRefType,
                 _ => MinusFifteenIdNullNameRecord,
@@ -33,7 +33,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourResolvers_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => ZeroIdNullNameRecord,
                 _ => MinusFifteenIdRefType,
                 _ => new[] { EmptyString, UpperSomeString, SomeString },
@@ -57,7 +57,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourResolvers_SeventhIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => decimal.MaxValue,
                 _ => MinusFifteenIdSomeStringNameRecord,
                 _ => SomeTextStructType,
@@ -81,7 +81,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFourResolvers_RestIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => MinusFifteenIdSomeStringNameRecord,
                 _ => LowerSomeTextStructType,
                 _ => Zero,
@@ -113,7 +113,7 @@ namespace PrimeFuncPack.Tests
             var thirdSource = MinusFifteenIdRefType;
             var fourthSource = UpperSomeString;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
 
             var fifthValue = true;
 

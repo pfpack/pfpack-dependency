@@ -15,7 +15,7 @@ namespace PrimeFuncPack.Tests
             var firstSource = SomeTextStructType;
             var secondSource = MinusFifteenIdNullNameRecord;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource);
             var thirdValue = PlusFifteenIdRefType;
 
             var actual = source.With(thirdValue, lastValue);

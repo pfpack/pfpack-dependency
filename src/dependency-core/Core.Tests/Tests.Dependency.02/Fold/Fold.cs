@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void Fold_FoldFuncIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => PlusFifteenIdRefType, _ => SomeString);
+            var source = Dependency.From(_ => PlusFifteenIdRefType, _ => SomeString);
             var fold = (Func<RefType, string, StructType>)null!;
 
             var ex = Assert.Throws<ArgumentNullException>(
@@ -23,7 +23,7 @@ namespace PrimeFuncPack.Tests
         public void Fold_FoldFuncIsNotNull_ExpectResolvedValueIsEqualToFolded(
             RefType? foldedValue)
         {
-            var source = Dependency.Create(_ => MinusFifteen, _ => LowerSomeTextStructType);
+            var source = Dependency.From(_ => MinusFifteen, _ => LowerSomeTextStructType);
             var actual = source.Fold((_, _) => foldedValue);
 
             var actualValue = actual.Resolve();

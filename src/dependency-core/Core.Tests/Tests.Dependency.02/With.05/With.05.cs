@@ -15,7 +15,7 @@ namespace PrimeFuncPack.Tests
             var firstSource = PlusFifteenIdRefType;
             var secondSource = decimal.MinusOne;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource);
 
             var thirdValue = LowerSomeTextStructType;
             var fourthValue = MinusFifteenIdNullNameRecord;

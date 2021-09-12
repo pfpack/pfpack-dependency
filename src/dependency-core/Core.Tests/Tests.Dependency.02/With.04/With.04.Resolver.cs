@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithTwoResolvers_ThirdIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => SomeTextStructType, _ => MinusFifteenIdSomeStringNameRecord);
+            var source = Dependency.From(_ => SomeTextStructType, _ => MinusFifteenIdSomeStringNameRecord);
             var lastValue = ZeroIdRefType;
 
             var ex = Assert.Throws<ArgumentNullException>(
@@ -23,7 +23,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithTwoResolvers_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => PlusFifteenIdRefType, _ => MinusOne);
+            var source = Dependency.From(_ => PlusFifteenIdRefType, _ => MinusOne);
             var thirdValue = SomeTextStructType;
 
             var ex = Assert.Throws<ArgumentNullException>(
@@ -42,7 +42,7 @@ namespace PrimeFuncPack.Tests
             var firstSource = PlusFifteenIdRefType;
             var secondSource = SomeString;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource);
             var thirdValue = ZeroIdNullNameRecord;
 
             var actual = source.With(_ => thirdValue, _ => lastValue);

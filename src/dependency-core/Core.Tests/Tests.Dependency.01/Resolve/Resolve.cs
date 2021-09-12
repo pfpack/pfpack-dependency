@@ -11,7 +11,7 @@ namespace PrimeFuncPack.Tests
             IServiceProvider serviceProvider)
         {
             var source = PlusFifteenIdLowerSomeStringNameRecord;
-            var dependency = Dependency.Create(_ => source);
+            var dependency = Dependency.From(_ => source);
 
             var actual = dependency.Resolve(serviceProvider);
             Assert.Equal(source, actual);

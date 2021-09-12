@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithTwoFactories_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => WhiteSpaceString,
                 _ => One,
                 _ => MinusFifteenIdRefType,
@@ -29,7 +29,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithTwoFactories_SeventhIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(
+            var source = Dependency.From(
                 _ => byte.MaxValue,
                 _ => true,
                 _ => LowerSomeTextStructType,
@@ -59,7 +59,7 @@ namespace PrimeFuncPack.Tests
 
             var fifthSource = SomeTextStructType;
 
-            var source = Dependency.Create(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource);
+            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource);
 
             var sixthValue = PlusFifteenIdRefType;
 

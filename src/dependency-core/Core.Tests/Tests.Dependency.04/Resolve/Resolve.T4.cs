@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         {
             var fourth = MinusFifteenIdSomeStringNameRecord;
 
-            var dependency = Dependency.Create(
+            var dependency = Dependency.From(
                 _ => SomeTextStructType,
                 _ => WhiteSpaceString,
                 _ => PlusFifteenIdRefType,

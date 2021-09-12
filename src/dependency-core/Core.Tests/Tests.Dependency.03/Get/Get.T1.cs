@@ -11,7 +11,7 @@ namespace PrimeFuncPack.Tests
         public void GetFirst_ExpectResolvedValueAreEqualToFirstSource(
             StructType firstSource)
         {
-            var source = Dependency.Create(_ => firstSource, _ => SomeString, _ => PlusFifteenIdRefType);
+            var source = Dependency.From(_ => firstSource, _ => SomeString, _ => PlusFifteenIdRefType);
             var actual = source.GetFirst();
 
             var actualValue = actual.Resolve();

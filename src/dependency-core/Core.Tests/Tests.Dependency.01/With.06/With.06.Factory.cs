@@ -9,7 +9,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveFactories_SecondIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => long.MinValue);
+            var source = Dependency.From(_ => long.MinValue);
 
             var thirdValue = false;
             var fourthValue = SomeTextStructType;
@@ -31,7 +31,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveFactories_ThirdIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MinusFifteenIdRefType);
+            var source = Dependency.From(_ => MinusFifteenIdRefType);
 
             var secondValue = int.MaxValue;
             var fourthValue = new object();
@@ -53,7 +53,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveFactories_FourthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => LowerSomeTextStructType);
+            var source = Dependency.From(_ => LowerSomeTextStructType);
 
             var secondValue = new object();
             var thirdValue = decimal.One;
@@ -75,7 +75,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveFactories_FifthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => new object());
+            var source = Dependency.From(_ => new object());
 
             var secondValue = DateTimeKind.Unspecified;
             var thirdValue = ZeroIdRefType;
@@ -97,7 +97,7 @@ namespace PrimeFuncPack.Tests
         [Fact]
         public void WithFiveFactories_SixthIsNull_ExpectArgumentNullException()
         {
-            var source = Dependency.Create(_ => MixedWhiteSpacesString);
+            var source = Dependency.From(_ => MixedWhiteSpacesString);
 
             var secondValue = PlusFifteenIdRefType;
             var thirdValue = LowerSomeTextStructType;
@@ -122,7 +122,7 @@ namespace PrimeFuncPack.Tests
             StructType lastValue)
         {
             var sourceValue = MinusFifteenIdNullNameRecord;
-            var source = Dependency.Create(_ => sourceValue);
+            var source = Dependency.From(_ => sourceValue);
             
             var secondValue = DateTimeKind.Utc;
             var thirdValue = MinusFifteenIdRefType;

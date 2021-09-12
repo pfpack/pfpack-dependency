@@ -12,7 +12,7 @@ namespace PrimeFuncPack.Tests
         {
             var second = LowerSomeTextStructType;
 
-            var dependency = Dependency.Create(
+            var dependency = Dependency.From(
                 _ => new { Id = PlusFifteen },
                 _ => second,
                 _ => TabString,

@@ -1,3 +1,4 @@
+using System;
 using PrimeFuncPack.UnitTest;
 
 namespace PrimeFuncPack.Tests

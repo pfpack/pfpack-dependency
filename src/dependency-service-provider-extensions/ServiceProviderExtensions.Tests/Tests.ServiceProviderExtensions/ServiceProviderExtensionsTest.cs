@@ -1,3 +1,4 @@
+using System;
 using Moq;
 
 namespace PrimeFuncPack.Tests

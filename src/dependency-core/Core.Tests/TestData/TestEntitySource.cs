@@ -1,4 +1,6 @@
-﻿using static PrimeFuncPack.UnitTest.TestData;
+﻿using System.Collections.Generic;
+using System.Linq;
+using static PrimeFuncPack.UnitTest.TestData;
 
 namespace PrimeFuncPack.Tests
 {

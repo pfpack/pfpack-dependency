@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 

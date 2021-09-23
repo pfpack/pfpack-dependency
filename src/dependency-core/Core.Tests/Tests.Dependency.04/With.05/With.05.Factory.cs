@@ -3,45 +3,44 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class FourDependencyTest
 {
-    partial class FourDependencyTest
+    [Fact]
+    public void WithOneFactory_FifthIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithOneFactory_FifthIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => new { Text = EmptyString },
-                _ => decimal.One,
-                _ => MinusFifteenIdSomeStringNameRecord,
-                _ => LowerSomeTextStructType);
+        var source = Dependency.From(
+            _ => new { Text = EmptyString },
+            _ => decimal.One,
+            _ => MinusFifteenIdSomeStringNameRecord,
+            _ => LowerSomeTextStructType);
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With((Func<RefType>)null!));
-            
-            Assert.Equal("fifth", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With((Func<RefType>)null!));
 
-        [Theory]
-        [InlineData(null)]
-        [InlineData(false)]
-        [InlineData(true)]
-        public void WithOneFactory_FifthIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            bool? fifthValue)
-        {
-            var firstSource = PlusFifteenIdSomeStringNameRecord;
-            var secondSource = ZeroIdRefType;
+        Assert.Equal("fifth", ex.ParamName);
+    }
 
-            var thirdSource = MinusOne;
-            var fourthSource = SomeTextStructType;
+    [Theory]
+    [InlineData(null)]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void WithOneFactory_FifthIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        bool? fifthValue)
+    {
+        var firstSource = PlusFifteenIdSomeStringNameRecord;
+        var secondSource = ZeroIdRefType;
 
-            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
+        var thirdSource = MinusOne;
+        var fourthSource = SomeTextStructType;
 
-            var actual = source.With(() => fifthValue);
-            var actualValue = actual.Resolve();
+        var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
 
-            var expectedValue = (firstSource, secondSource, thirdSource, fourthSource, fifthValue);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var actual = source.With(() => fifthValue);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = (firstSource, secondSource, thirdSource, fourthSource, fifthValue);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

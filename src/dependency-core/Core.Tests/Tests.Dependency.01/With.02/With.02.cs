@@ -1,25 +1,24 @@
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class OneDependencyTest
 {
-    partial class OneDependencyTest
+    [Theory]
+    [InlineData(null)]
+    [InlineData(EmptyString)]
+    [InlineData(SomeString)]
+    public void WithOne_ExpectResolvedValuesAreEqualToSourceAndOther(
+        string secondValue)
     {
-        [Theory]
-        [InlineData(null)]
-        [InlineData(EmptyString)]
-        [InlineData(SomeString)]
-        public void WithOne_ExpectResolvedValuesAreEqualToSourceAndOther(
-            string secondValue)
-        {
-            var sourceValue = PlusFifteenIdRefType;
-            var source = Dependency.From(_ => sourceValue);
+        var sourceValue = PlusFifteenIdRefType;
+        var source = Dependency.From(_ => sourceValue);
 
-            var actual = source.With(secondValue);
-            var actualValue = actual.Resolve();
+        var actual = source.With(secondValue);
+        var actualValue = actual.Resolve();
 
-            var expectedValue = (sourceValue, secondValue);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var expectedValue = (sourceValue, secondValue);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

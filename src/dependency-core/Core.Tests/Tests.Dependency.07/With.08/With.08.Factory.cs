@@ -3,54 +3,53 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class SevenDependencyTest
 {
-    partial class SevenDependencyTest
+    [Fact]
+    public void WithOneFactory_RestIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithOneFactory_RestIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => SomeTextStructType,
-                _ => DateTimeKind.Unspecified,
-                _ => decimal.MaxValue,
-                _ => One,
-                _ => true,
-                _ => PlusFifteenIdSomeStringNameRecord,
-                _ => WhiteSpaceString);
+        var source = Dependency.From(
+            _ => SomeTextStructType,
+            _ => DateTimeKind.Unspecified,
+            _ => decimal.MaxValue,
+            _ => One,
+            _ => true,
+            _ => PlusFifteenIdSomeStringNameRecord,
+            _ => WhiteSpaceString);
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With((Func<RefType>)null!));
-            
-            Assert.Equal("rest", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With((Func<RefType>)null!));
 
-        [Theory]
-        [InlineData(null)]
-        [InlineData(MinusOne)]
-        [InlineData(Zero)]
-        public void WithOneFactory_RestIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            int? restValue)
-        {
-            var firstSource = new object();
-            var secondSource = LowerSomeTextStructType;
+        Assert.Equal("rest", ex.ParamName);
+    }
 
-            var thirdSource = decimal.MinValue;
-            var fourthSource = false;
+    [Theory]
+    [InlineData(null)]
+    [InlineData(MinusOne)]
+    [InlineData(Zero)]
+    public void WithOneFactory_RestIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        int? restValue)
+    {
+        var firstSource = new object();
+        var secondSource = LowerSomeTextStructType;
 
-            var fifthSource = byte.MaxValue;
-            var sixthSource = MinusFifteenIdSomeStringNameRecord;
+        var thirdSource = decimal.MinValue;
+        var fourthSource = false;
 
-            var seventhSource = PlusFifteenIdRefType;
+        var fifthSource = byte.MaxValue;
+        var sixthSource = MinusFifteenIdSomeStringNameRecord;
 
-            var source = Dependency.From(
-                _ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource, _ => sixthSource, _ => seventhSource);
+        var seventhSource = PlusFifteenIdRefType;
 
-            var actual = source.With(() => restValue);
-            var actualValue = actual.Resolve();
+        var source = Dependency.From(
+            _ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource, _ => sixthSource, _ => seventhSource);
 
-            var expectedValue = ((firstSource, secondSource, thirdSource, fourthSource), (fifthSource, sixthSource, seventhSource, restValue));
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var actual = source.With(() => restValue);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = ((firstSource, secondSource, thirdSource, fourthSource), (fifthSource, sixthSource, seventhSource, restValue));
+        Assert.Equal(expectedValue, actualValue);
     }
 }

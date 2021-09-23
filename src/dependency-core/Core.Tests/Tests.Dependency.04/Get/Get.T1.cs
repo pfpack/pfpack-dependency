@@ -2,22 +2,21 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class FourDependencyTest
 {
-    partial class FourDependencyTest
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
+    public void GetFirst_ExpectResolvedValueIsEqualToFirstSource(
+        RecordType firstSource)
     {
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void GetFirst_ExpectResolvedValueIsEqualToFirstSource(
-            RecordType firstSource)
-        {
-            var source = Dependency.From(
-                _ => firstSource, _ => MinusFifteenIdSomeStringNameRecord, _ => ZeroIdRefType, _ => PlusFifteen);
+        var source = Dependency.From(
+            _ => firstSource, _ => MinusFifteenIdSomeStringNameRecord, _ => ZeroIdRefType, _ => PlusFifteen);
 
-            var actual = source.GetFirst();
-            var actualValue = actual.Resolve();
+        var actual = source.GetFirst();
+        var actualValue = actual.Resolve();
 
-            Assert.Equal(firstSource, actualValue);
-        }
+        Assert.Equal(firstSource, actualValue);
     }
 }

@@ -3,36 +3,35 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class FourDependencyTest
 {
-    partial class FourDependencyTest
+    [Fact]
+    public void Fold_FoldFuncIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void Fold_FoldFuncIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => ZeroIdRefType, _ => SomeTextStructType, _ => MinusFifteenIdSomeStringNameRecord, _ => decimal.MinusOne);
+        var source = Dependency.From(
+            _ => ZeroIdRefType, _ => SomeTextStructType, _ => MinusFifteenIdSomeStringNameRecord, _ => decimal.MinusOne);
 
-            var fold = (Func<RefType?, StructType, RecordType, decimal, int?>)null!;
+        var fold = (Func<RefType?, StructType, RecordType, decimal, int?>)null!;
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.Fold(fold));
-            
-            Assert.Equal("fold", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.Fold(fold));
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void Fold_FoldFuncIsNotNull_ExpectResolvedValueIsEqualToFolded(
-            RecordType foldedValue)
-        {
-            var source = Dependency.From(
-                _ => PlusFifteenIdRefType, _ => EmptyString, _ => UpperSomeString, _ => SomeTextStructType);
+        Assert.Equal("fold", ex.ParamName);
+    }
 
-            var actual = source.Fold((_, _, _, _) => foldedValue);
-            var actualValue = actual.Resolve();
-            
-            Assert.Equal(foldedValue, actualValue);
-        }
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
+    public void Fold_FoldFuncIsNotNull_ExpectResolvedValueIsEqualToFolded(
+        RecordType foldedValue)
+    {
+        var source = Dependency.From(
+            _ => PlusFifteenIdRefType, _ => EmptyString, _ => UpperSomeString, _ => SomeTextStructType);
+
+        var actual = source.Fold((_, _, _, _) => foldedValue);
+        var actualValue = actual.Resolve();
+
+        Assert.Equal(foldedValue, actualValue);
     }
 }

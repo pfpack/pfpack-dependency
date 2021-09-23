@@ -3,37 +3,36 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class OneDependencyTest
 {
-    partial class OneDependencyTest
+    [Fact]
+    public void WithOneDependency_OtherIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithOneDependency_OtherIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(_ => PlusFifteenIdRefType);
-            Dependency<StructType> other = null!;
+        var source = Dependency.From(_ => PlusFifteenIdRefType);
+        Dependency<StructType> other = null!;
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With(other));
-            
-            Assert.Equal("other", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With(other));
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
-        public void WithOneDependency_OtherIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            RefType? otherValue)
-        {
-            var sourceValue = MinusFifteenIdSomeStringNameRecord;
-            var source = Dependency.From(_ => sourceValue);
+        Assert.Equal("other", ex.ParamName);
+    }
 
-            var other = Dependency.From(_ => otherValue);
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
+    public void WithOneDependency_OtherIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        RefType? otherValue)
+    {
+        var sourceValue = MinusFifteenIdSomeStringNameRecord;
+        var source = Dependency.From(_ => sourceValue);
 
-            var actual = source.With(other);
-            var actualValue = actual.Resolve();
+        var other = Dependency.From(_ => otherValue);
 
-            var expectedValue = (sourceValue, otherValue);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var actual = source.With(other);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = (sourceValue, otherValue);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

@@ -3,33 +3,32 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class FiveDependencyTest
 {
-    partial class FiveDependencyTest
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
+    public void WithThree_ExpectResolvedValuesAreEqualToSourceAndOther(
+        RecordType lastValue)
     {
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void WithThree_ExpectResolvedValuesAreEqualToSourceAndOther(
-            RecordType lastValue)
-        {
-            var firstSource = PlusFifteenIdRefType;
-            var secondSource = decimal.MinusOne;
+        var firstSource = PlusFifteenIdRefType;
+        var secondSource = decimal.MinusOne;
 
-            var thirdSource = long.MaxValue;
-            var fourthSource = false;
+        var thirdSource = long.MaxValue;
+        var fourthSource = false;
 
-            var fifthSource = new { Id = One };
+        var fifthSource = new { Id = One };
 
-            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource);
+        var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource);
 
-            var sixthValue = SomeTextStructType;
-            var seventhValue = DateTimeKind.Local;
+        var sixthValue = SomeTextStructType;
+        var seventhValue = DateTimeKind.Local;
 
-            var actual = source.With(sixthValue, seventhValue, lastValue);
-            var actualValue = actual.Resolve();
+        var actual = source.With(sixthValue, seventhValue, lastValue);
+        var actualValue = actual.Resolve();
 
-            var expectedValue = ((firstSource, secondSource, thirdSource, fourthSource), (fifthSource, sixthValue, seventhValue, lastValue));
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var expectedValue = ((firstSource, secondSource, thirdSource, fourthSource), (fifthSource, sixthValue, seventhValue, lastValue));
+        Assert.Equal(expectedValue, actualValue);
     }
 }

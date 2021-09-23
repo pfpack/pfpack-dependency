@@ -3,50 +3,49 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class FourDependencyTest
 {
-    partial class FourDependencyTest
+    [Fact]
+    public void WithTwoDependency_OtherIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithTwoDependency_OtherIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => MinusFifteenIdRefType,
-                _ => SomeTextStructType,
-                _ => PlusFifteenIdLowerSomeStringNameRecord,
-                _ => MinusFifteen);
+        var source = Dependency.From(
+            _ => MinusFifteenIdRefType,
+            _ => SomeTextStructType,
+            _ => PlusFifteenIdLowerSomeStringNameRecord,
+            _ => MinusFifteen);
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With<DateTimeKind, RefType?>(null!));
-            
-            Assert.Equal("other", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With<DateTimeKind, RefType?>(null!));
 
-        [Theory]
-        [InlineData(null)]
-        [InlineData(int.MinValue)]
-        [InlineData(Zero)]
-        [InlineData(PlusFifteen)]
-        public void WithTwoDependency_OtherIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            int? otherLast)
-        {
-            var firstSource = MinusFifteenIdRefType;
-            var secondSource = LowerSomeTextStructType;
+        Assert.Equal("other", ex.ParamName);
+    }
 
-            var thirdSource = UpperSomeString;
-            var fourthSource = MinusFifteenIdNullNameRecord;
+    [Theory]
+    [InlineData(null)]
+    [InlineData(int.MinValue)]
+    [InlineData(Zero)]
+    [InlineData(PlusFifteen)]
+    public void WithTwoDependency_OtherIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        int? otherLast)
+    {
+        var firstSource = MinusFifteenIdRefType;
+        var secondSource = LowerSomeTextStructType;
 
-            var source = Dependency.From(
-                _ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
+        var thirdSource = UpperSomeString;
+        var fourthSource = MinusFifteenIdNullNameRecord;
 
-            var otherFirst = PlusFifteenIdRefType;
-            var other = Dependency.From(_ => otherFirst, _ => otherLast);
+        var source = Dependency.From(
+            _ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
 
-            var actual = source.With(other);
-            var actualValue = actual.Resolve();
+        var otherFirst = PlusFifteenIdRefType;
+        var other = Dependency.From(_ => otherFirst, _ => otherLast);
 
-            var expectedValue = (firstSource, secondSource, thirdSource, fourthSource, otherFirst, otherLast);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var actual = source.With(other);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = (firstSource, secondSource, thirdSource, fourthSource, otherFirst, otherLast);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

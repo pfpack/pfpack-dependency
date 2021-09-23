@@ -3,44 +3,43 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class ThreeDependencyTest
 {
-    partial class ThreeDependencyTest
+    [Fact]
+    public void WithFourDependency_OtherIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithFourDependency_OtherIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => MinusFifteenIdRefType, _ => SomeTextStructType, _ => DateTimeKind.Utc);
+        var source = Dependency.From(
+            _ => MinusFifteenIdRefType, _ => SomeTextStructType, _ => DateTimeKind.Utc);
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With<string, RecordType?, object?, DateTime>(null!));
-            
-            Assert.Equal("other", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With<string, RecordType?, object?, DateTime>(null!));
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void WithFourDependency_OtherIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            RecordType? otherLast)
-        {
-            var firstSource = MinusFifteen;
-            var secondSource = PlusFifteenIdRefType;
+        Assert.Equal("other", ex.ParamName);
+    }
 
-            var thirdSource = LowerSomeTextStructType;
-            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource);
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
+    public void WithFourDependency_OtherIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        RecordType? otherLast)
+    {
+        var firstSource = MinusFifteen;
+        var secondSource = PlusFifteenIdRefType;
 
-            var otherFirst = UpperSomeString;
-            var otherSecond = decimal.MinusOne;
+        var thirdSource = LowerSomeTextStructType;
+        var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource);
 
-            var otherThird = new { Name = SomeString };
-            var other = Dependency.From(_ => otherFirst, _ => otherSecond, _ => otherThird, _ => otherLast);
+        var otherFirst = UpperSomeString;
+        var otherSecond = decimal.MinusOne;
 
-            var actual = source.With(other);
-            var actualValue = actual.Resolve();
+        var otherThird = new { Name = SomeString };
+        var other = Dependency.From(_ => otherFirst, _ => otherSecond, _ => otherThird, _ => otherLast);
 
-            var expectedValue = (firstSource, secondSource, thirdSource, otherFirst, otherSecond, otherThird, otherLast);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var actual = source.With(other);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = (firstSource, secondSource, thirdSource, otherFirst, otherSecond, otherThird, otherLast);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

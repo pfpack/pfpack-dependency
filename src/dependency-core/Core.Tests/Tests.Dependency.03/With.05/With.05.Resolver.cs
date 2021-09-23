@@ -2,62 +2,61 @@ using System;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class ThreeDependencyTest
 {
-    partial class ThreeDependencyTest
+    [Fact]
+    public void WithTwoResolvers_FourthIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithTwoResolvers_FourthIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => MinusFifteenIdRefType, _ => PlusFifteenIdSomeStringNameRecord, _ => EmptyString);
+        var source = Dependency.From(
+            _ => MinusFifteenIdRefType, _ => PlusFifteenIdSomeStringNameRecord, _ => EmptyString);
 
-            var fifthValue = SomeTextStructType;
+        var fifthValue = SomeTextStructType;
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With(
-                    (Func<IServiceProvider, DateTime>)null!,
-                    _ => fifthValue));
-            
-            Assert.Equal("fourth", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With(
+                (Func<IServiceProvider, DateTime>)null!,
+                _ => fifthValue));
 
-        [Fact]
-        public void WithTwoResolvers_FifthIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => ZeroIdNullNameRecord, _ => LowerSomeTextStructType, _ => false);
+        Assert.Equal("fourth", ex.ParamName);
+    }
 
-            var fourthValue = MinusFifteenIdRefType;
+    [Fact]
+    public void WithTwoResolvers_FifthIsNull_ExpectArgumentNullException()
+    {
+        var source = Dependency.From(
+            _ => ZeroIdNullNameRecord, _ => LowerSomeTextStructType, _ => false);
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With(
-                    _ => fourthValue,
-                    (Func<IServiceProvider, object?>)null!));
-            
-            Assert.Equal("fifth", ex.ParamName);
-        }
+        var fourthValue = MinusFifteenIdRefType;
 
-        [Theory]
-        [InlineData(null)]
-        [InlineData(WhiteSpaceString)]
-        [InlineData(UpperSomeString)]
-        public void WithTwoResolvers_OthersAreNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            string lastValue)
-        {
-            var firstSource = PlusFifteenIdLowerSomeStringNameRecord;
-            var secondSource = byte.MaxValue;
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With(
+                _ => fourthValue,
+                (Func<IServiceProvider, object?>)null!));
 
-            var thirdSource = MinusFifteenIdRefType;
-            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource);
+        Assert.Equal("fifth", ex.ParamName);
+    }
 
-            var fourthValue = SomeTextStructType;
+    [Theory]
+    [InlineData(null)]
+    [InlineData(WhiteSpaceString)]
+    [InlineData(UpperSomeString)]
+    public void WithTwoResolvers_OthersAreNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        string lastValue)
+    {
+        var firstSource = PlusFifteenIdLowerSomeStringNameRecord;
+        var secondSource = byte.MaxValue;
 
-            var actual = source.With(_ => fourthValue, _ => lastValue);
-            var actualValue = actual.Resolve();
+        var thirdSource = MinusFifteenIdRefType;
+        var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource);
 
-            var expectedValue = (firstSource, secondSource, thirdSource, fourthValue, lastValue);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var fourthValue = SomeTextStructType;
+
+        var actual = source.With(_ => fourthValue, _ => lastValue);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = (firstSource, secondSource, thirdSource, fourthValue, lastValue);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

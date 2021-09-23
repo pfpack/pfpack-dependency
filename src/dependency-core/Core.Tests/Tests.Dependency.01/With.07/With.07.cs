@@ -3,31 +3,30 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class OneDependencyTest
 {
-    partial class OneDependencyTest
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
+    public void WithSix_ExpectResolvedValuesAreEqualToSourceAndOther(
+        RecordType? lastValue)
     {
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void WithSix_ExpectResolvedValuesAreEqualToSourceAndOther(
-            RecordType? lastValue)
-        {
-            var sourceValue = SomeTextStructType;
-            var source = Dependency.From(_ => sourceValue);
-            
-            var secondValue = DateTimeKind.Utc;
-            var thirdValue = new object();
+        var sourceValue = SomeTextStructType;
+        var source = Dependency.From(_ => sourceValue);
 
-            var fourthValue = PlusFifteenIdRefType;
-            var fifthValue = true;
+        var secondValue = DateTimeKind.Utc;
+        var thirdValue = new object();
 
-            var sixthValue = TabString;
+        var fourthValue = PlusFifteenIdRefType;
+        var fifthValue = true;
 
-            var actual = source.With(secondValue, thirdValue, fourthValue, fifthValue, sixthValue, lastValue);
-            var actualValue = actual.Resolve();
+        var sixthValue = TabString;
 
-            var expectedValue = (sourceValue, secondValue, thirdValue, fourthValue, fifthValue, sixthValue, lastValue);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var actual = source.With(secondValue, thirdValue, fourthValue, fifthValue, sixthValue, lastValue);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = (sourceValue, secondValue, thirdValue, fourthValue, fifthValue, sixthValue, lastValue);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

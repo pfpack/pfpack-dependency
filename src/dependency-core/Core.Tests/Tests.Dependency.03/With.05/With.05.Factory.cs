@@ -3,60 +3,59 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class ThreeDependencyTest
 {
-    partial class ThreeDependencyTest
+    [Fact]
+    public void WithTwoFactories_FourthIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithTwoFactories_FourthIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => LowerSomeTextStructType, _ => PlusFifteenIdRefType, _ => long.MinValue);
+        var source = Dependency.From(
+            _ => LowerSomeTextStructType, _ => PlusFifteenIdRefType, _ => long.MinValue);
 
-            var fifthValue = ZeroIdNullNameRecord;
+        var fifthValue = ZeroIdNullNameRecord;
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With(
-                    (Func<RecordType>)null!,
-                    () => fifthValue));
-            
-            Assert.Equal("fourth", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With(
+                (Func<RecordType>)null!,
+                () => fifthValue));
 
-        [Fact]
-        public void WithTwoFactories_FifthIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => new object(), _ => SomeTextStructType, _ => MinusFifteenIdRefType);
+        Assert.Equal("fourth", ex.ParamName);
+    }
 
-            var fourthValue = PlusFifteenIdLowerSomeStringNameRecord;
+    [Fact]
+    public void WithTwoFactories_FifthIsNull_ExpectArgumentNullException()
+    {
+        var source = Dependency.From(
+            _ => new object(), _ => SomeTextStructType, _ => MinusFifteenIdRefType);
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With(
-                    () => fourthValue,
-                    (Func<int?>)null!));
-            
-            Assert.Equal("fifth", ex.ParamName);
-        }
+        var fourthValue = PlusFifteenIdLowerSomeStringNameRecord;
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void WithTwoFactories_OthersAreNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            StructType lastValue)
-        {
-            var firstSource = new { Value = decimal.MaxValue };
-            var secondSource = DateTimeKind.Unspecified;
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With(
+                () => fourthValue,
+                (Func<int?>)null!));
 
-            var thirdSource = ZeroIdNullNameRecord;
-            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource);
+        Assert.Equal("fifth", ex.ParamName);
+    }
 
-            var fourthValue = PlusFifteenIdRefType;
+    [Theory]
+    [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
+    public void WithTwoFactories_OthersAreNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        StructType lastValue)
+    {
+        var firstSource = new { Value = decimal.MaxValue };
+        var secondSource = DateTimeKind.Unspecified;
 
-            var actual = source.With(() => fourthValue, () => lastValue);
-            var actualValue = actual.Resolve();
+        var thirdSource = ZeroIdNullNameRecord;
+        var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource);
 
-            var expectedValue = (firstSource, secondSource, thirdSource, fourthValue, lastValue);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var fourthValue = PlusFifteenIdRefType;
+
+        var actual = source.With(() => fourthValue, () => lastValue);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = (firstSource, secondSource, thirdSource, fourthValue, lastValue);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

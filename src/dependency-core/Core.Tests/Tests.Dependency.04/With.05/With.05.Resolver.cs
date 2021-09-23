@@ -3,43 +3,42 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class FourDependencyTest
 {
-    partial class FourDependencyTest
+    [Fact]
+    public void WithOneResolver_FifthIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithOneResolver_FifthIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => SomeTextStructType,
-                _ => ZeroIdNullNameRecord,
-                _ => LowerSomeString,
-                _ => PlusFifteenIdRefType);
+        var source = Dependency.From(
+            _ => SomeTextStructType,
+            _ => ZeroIdNullNameRecord,
+            _ => LowerSomeString,
+            _ => PlusFifteenIdRefType);
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With((Func<IServiceProvider, DateTimeOffset>)null!));
-            
-            Assert.Equal("fifth", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With((Func<IServiceProvider, DateTimeOffset>)null!));
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
-        public void WithOneResolver_FifthIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            RefType fifthValue)
-        {
-            var firstSource = LowerSomeTextStructType;
-            var secondSource = false;
+        Assert.Equal("fifth", ex.ParamName);
+    }
 
-            var thirdSource = MinusFifteenIdNullNameRecord;
-            var fourthSource = byte.MaxValue;
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
+    public void WithOneResolver_FifthIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        RefType fifthValue)
+    {
+        var firstSource = LowerSomeTextStructType;
+        var secondSource = false;
 
-            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
+        var thirdSource = MinusFifteenIdNullNameRecord;
+        var fourthSource = byte.MaxValue;
 
-            var actual = source.With(_ => fifthValue);
-            var actualValue = actual.Resolve();
+        var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
 
-            var expectedValue = (firstSource, secondSource, thirdSource, fourthSource, fifthValue);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var actual = source.With(_ => fifthValue);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = (firstSource, secondSource, thirdSource, fourthSource, fifthValue);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

@@ -1,6 +1,5 @@
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+public sealed partial class SevenDependencyTest
 {
-    public sealed partial class SevenDependencyTest
-    {
-    }
 }

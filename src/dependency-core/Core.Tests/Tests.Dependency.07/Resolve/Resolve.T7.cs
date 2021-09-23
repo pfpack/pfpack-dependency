@@ -2,28 +2,27 @@ using System;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class SevenDependencyTest
 {
-    partial class SevenDependencyTest
+    [Theory]
+    [MemberData(nameof(ServiceProviderTestSource.NullableProviders), MemberType = typeof(ServiceProviderTestSource))]
+    public void ResolveSeventh_ExpectResolvedValueIsEqualToSeventhSourceValue(
+        IServiceProvider serviceProvider)
     {
-        [Theory]
-        [MemberData(nameof(ServiceProviderTestSource.NullableProviders), MemberType = typeof(ServiceProviderTestSource))]
-        public void ResolveSeventh_ExpectResolvedValueIsEqualToSeventhSourceValue(
-            IServiceProvider serviceProvider)
-        {
-            var seventh = PlusFifteenIdRefType;
+        var seventh = PlusFifteenIdRefType;
 
-            var dependency = Dependency.From(
-                _ => SomeTextStructType,
-                _ => new object(),
-                _ => MinusFifteenIdSomeStringNameRecord,
-                _ => long.MaxValue,
-                _ => DateTimeKind.Unspecified,
-                _ => decimal.MinusOne,
-                _ => seventh);
+        var dependency = Dependency.From(
+            _ => SomeTextStructType,
+            _ => new object(),
+            _ => MinusFifteenIdSomeStringNameRecord,
+            _ => long.MaxValue,
+            _ => DateTimeKind.Unspecified,
+            _ => decimal.MinusOne,
+            _ => seventh);
 
-            var actual = dependency.ResolveSeventh(serviceProvider);
-            Assert.Equal(seventh, actual);
-        }
+        var actual = dependency.ResolveSeventh(serviceProvider);
+        Assert.Equal(seventh, actual);
     }
 }

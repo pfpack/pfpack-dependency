@@ -2,26 +2,25 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class FiveDependencyTest
 {
-    partial class FiveDependencyTest
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
+    public void GetFirst_ExpectResolvedValueIsEqualToFirstSource(
+        RefType? firstSource)
     {
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
-        public void GetFirst_ExpectResolvedValueIsEqualToFirstSource(
-            RefType? firstSource)
-        {
-            var source = Dependency.From(
-                _ => firstSource,
-                _ => SomeTextStructType,
-                _ => PlusFifteenIdLowerSomeStringNameRecord,
-                _ => (string?)null,
-                _ => new object());
+        var source = Dependency.From(
+            _ => firstSource,
+            _ => SomeTextStructType,
+            _ => PlusFifteenIdLowerSomeStringNameRecord,
+            _ => (string?)null,
+            _ => new object());
 
-            var actual = source.GetFirst();
-            var actualValue = actual.Resolve();
+        var actual = source.GetFirst();
+        var actualValue = actual.Resolve();
 
-            Assert.Equal(firstSource, actualValue);
-        }
+        Assert.Equal(firstSource, actualValue);
     }
 }

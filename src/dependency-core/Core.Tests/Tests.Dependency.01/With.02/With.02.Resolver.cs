@@ -3,34 +3,33 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class OneDependencyTest
 {
-    partial class OneDependencyTest
+    [Fact]
+    public void WithOneResolver_SecondIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithOneResolver_SecondIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(_ => MinusFifteenIdSomeStringNameRecord);
+        var source = Dependency.From(_ => MinusFifteenIdSomeStringNameRecord);
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With((Func<IServiceProvider, DateTimeOffset?>)null!));
-            
-            Assert.Equal("second", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With((Func<IServiceProvider, DateTimeOffset?>)null!));
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void WithOneResolver_SecondIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            RecordType? secondValue)
-        {
-            var sourceValue = SomeTextStructType;
-            var source = Dependency.From(_ => sourceValue);
+        Assert.Equal("second", ex.ParamName);
+    }
 
-            var actual = source.With(_ => secondValue);
-            var actualValue = actual.Resolve();
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
+    public void WithOneResolver_SecondIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        RecordType? secondValue)
+    {
+        var sourceValue = SomeTextStructType;
+        var source = Dependency.From(_ => sourceValue);
 
-            var expectedValue = (sourceValue, secondValue);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var actual = source.With(_ => secondValue);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = (sourceValue, secondValue);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

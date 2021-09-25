@@ -3,54 +3,53 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class TwoDependencyTest
 {
-    partial class TwoDependencyTest
+    [Fact]
+    public void WithTwoFactories_ThirdIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithTwoFactories_ThirdIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(_ => PlusFifteenIdSomeStringNameRecord, _ => long.MinValue);
-            var lastValue = LowerSomeTextStructType;
+        var source = Dependency.From(_ => PlusFifteenIdSomeStringNameRecord, _ => long.MinValue);
+        var lastValue = LowerSomeTextStructType;
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With(
-                    (Func<RefType?>)null!,
-                    () => lastValue));
-            
-            Assert.Equal("third", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With(
+                (Func<RefType?>)null!,
+                () => lastValue));
 
-        [Fact]
-        public void WithTwoFactories_FourthIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(_ => decimal.MaxValue, _ => PlusFifteenIdRefType);
-            var thirdValue = ZeroIdNullNameRecord;
+        Assert.Equal("third", ex.ParamName);
+    }
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With(
-                    () => thirdValue,
-                    (Func<StructType>)null!));
-            
-            Assert.Equal("fourth", ex.ParamName);
-        }
+    [Fact]
+    public void WithTwoFactories_FourthIsNull_ExpectArgumentNullException()
+    {
+        var source = Dependency.From(_ => decimal.MaxValue, _ => PlusFifteenIdRefType);
+        var thirdValue = ZeroIdNullNameRecord;
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void WithTwoFactories_OthersAreNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            RecordType? lastValue)
-        {
-            var firstSource = new { Value = long.MaxValue };
-            var secondSource = MinusFifteenIdRefType;
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With(
+                () => thirdValue,
+                (Func<StructType>)null!));
 
-            var source = Dependency.From(_ => firstSource, _ => secondSource);
-            var thirdValue = SomeTextStructType;
+        Assert.Equal("fourth", ex.ParamName);
+    }
 
-            var actual = source.With(() => thirdValue, () => lastValue);
-            var actualValue = actual.Resolve();
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
+    public void WithTwoFactories_OthersAreNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        RecordType? lastValue)
+    {
+        var firstSource = new { Value = long.MaxValue };
+        var secondSource = MinusFifteenIdRefType;
 
-            var expectedValue = (firstSource, secondSource, thirdValue, lastValue);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var source = Dependency.From(_ => firstSource, _ => secondSource);
+        var thirdValue = SomeTextStructType;
+
+        var actual = source.With(() => thirdValue, () => lastValue);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = (firstSource, secondSource, thirdValue, lastValue);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

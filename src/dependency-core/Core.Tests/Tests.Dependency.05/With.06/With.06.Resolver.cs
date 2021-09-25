@@ -3,46 +3,45 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class FiveDependencyTest
 {
-    partial class FiveDependencyTest
+    [Fact]
+    public void WithOneResolver_SixthIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithOneResolver_SixthIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => MinusFifteen,
-                _ => SomeTextStructType,
-                _ => PlusFifteenIdRefType,
-                _ => true,
-                _ => MinusFifteenIdSomeStringNameRecord);
+        var source = Dependency.From(
+            _ => MinusFifteen,
+            _ => SomeTextStructType,
+            _ => PlusFifteenIdRefType,
+            _ => true,
+            _ => MinusFifteenIdSomeStringNameRecord);
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With((Func<IServiceProvider, long>)null!));
-            
-            Assert.Equal("sixth", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With((Func<IServiceProvider, long>)null!));
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void WithOneResolver_OthersAreNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            RecordType? sixthValue)
-        {
-            var firstSource = long.MinValue;
-            var secondSource = LowerSomeTextStructType;
+        Assert.Equal("sixth", ex.ParamName);
+    }
 
-            var thirdSource = byte.MaxValue;
-            var fourthSource = new[] { EmptyString, MixedWhiteSpacesString, TabString };
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
+    public void WithOneResolver_OthersAreNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        RecordType? sixthValue)
+    {
+        var firstSource = long.MinValue;
+        var secondSource = LowerSomeTextStructType;
 
-            var fifthSource = PlusFifteenIdRefType;
+        var thirdSource = byte.MaxValue;
+        var fourthSource = new[] { EmptyString, MixedWhiteSpacesString, TabString };
 
-            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource);
+        var fifthSource = PlusFifteenIdRefType;
 
-            var actual = source.With(_ => sixthValue);
-            var actualValue = actual.Resolve();
+        var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource);
 
-            var expectedValue = (firstSource, secondSource, thirdSource, fourthSource, fifthSource, sixthValue);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var actual = source.With(_ => sixthValue);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = (firstSource, secondSource, thirdSource, fourthSource, fifthSource, sixthValue);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

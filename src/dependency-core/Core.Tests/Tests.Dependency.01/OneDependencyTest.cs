@@ -1,6 +1,5 @@
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+public sealed partial class OneDependencyTest
 {
-    public sealed partial class OneDependencyTest
-    {
-    }
 }

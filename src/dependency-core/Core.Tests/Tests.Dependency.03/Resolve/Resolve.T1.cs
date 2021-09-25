@@ -2,24 +2,23 @@ using System;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class ThreeDependencyTest
 {
-    partial class ThreeDependencyTest
+    [Theory]
+    [MemberData(nameof(ServiceProviderTestSource.NullableProviders), MemberType = typeof(ServiceProviderTestSource))]
+    public void ResolveFirst_ExpectResolvedValueIsEqualToFirstSourceValue(
+        IServiceProvider serviceProvider)
     {
-        [Theory]
-        [MemberData(nameof(ServiceProviderTestSource.NullableProviders), MemberType = typeof(ServiceProviderTestSource))]
-        public void ResolveFirst_ExpectResolvedValueIsEqualToFirstSourceValue(
-            IServiceProvider serviceProvider)
-        {
-            var first = MinusFifteenIdNullNameRecord;
+        var first = MinusFifteenIdNullNameRecord;
 
-            var dependency = Dependency.From(
-                _ => first,
-                _ => new { Name = SomeString },
-                _ => SomeTextStructType);
+        var dependency = Dependency.From(
+            _ => first,
+            _ => new { Name = SomeString },
+            _ => SomeTextStructType);
 
-            var actual = dependency.ResolveFirst(serviceProvider);
-            Assert.Equal(first, actual);
-        }
+        var actual = dependency.ResolveFirst(serviceProvider);
+        Assert.Equal(first, actual);
     }
 }

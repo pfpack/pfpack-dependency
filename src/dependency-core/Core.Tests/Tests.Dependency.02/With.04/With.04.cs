@@ -1,28 +1,27 @@
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class TwoDependencyTest
 {
-    partial class TwoDependencyTest
+    [Theory]
+    [InlineData(null)]
+    [InlineData(EmptyString)]
+    [InlineData(SomeString)]
+    public void WithTwo_ExpectResolvedValuesAreEqualToSourceAndOther(
+        string? lastValue)
     {
-        [Theory]
-        [InlineData(null)]
-        [InlineData(EmptyString)]
-        [InlineData(SomeString)]
-        public void WithTwo_ExpectResolvedValuesAreEqualToSourceAndOther(
-            string? lastValue)
-        {
-            var firstSource = SomeTextStructType;
-            var secondSource = MinusFifteenIdNullNameRecord;
+        var firstSource = SomeTextStructType;
+        var secondSource = MinusFifteenIdNullNameRecord;
 
-            var source = Dependency.From(_ => firstSource, _ => secondSource);
-            var thirdValue = PlusFifteenIdRefType;
+        var source = Dependency.From(_ => firstSource, _ => secondSource);
+        var thirdValue = PlusFifteenIdRefType;
 
-            var actual = source.With(thirdValue, lastValue);
-            var actualValue = actual.Resolve();
+        var actual = source.With(thirdValue, lastValue);
+        var actualValue = actual.Resolve();
 
-            var expectedValue = (firstSource, secondSource, thirdValue, lastValue);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var expectedValue = (firstSource, secondSource, thirdValue, lastValue);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

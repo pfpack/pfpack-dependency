@@ -3,40 +3,39 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class ThreeDependencyTest
 {
-    partial class ThreeDependencyTest
+    [Fact]
+    public void WithTwoDependency_OtherIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithTwoDependency_OtherIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(_ => int.MinValue, _ => MinusFifteenIdRefType, _ => new object());
+        var source = Dependency.From(_ => int.MinValue, _ => MinusFifteenIdRefType, _ => new object());
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With<string, StructType>(null!));
-            
-            Assert.Equal("other", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With<string, StructType>(null!));
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void WithTwoDependency_OtherIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            RecordType? otherLast)
-        {
-            var firstSource = NullTextStructType;
-            var secondSource = PlusFifteenIdRefType;
+        Assert.Equal("other", ex.ParamName);
+    }
 
-            var thirdSource = int.MinValue;
-            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource);
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
+    public void WithTwoDependency_OtherIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        RecordType? otherLast)
+    {
+        var firstSource = NullTextStructType;
+        var secondSource = PlusFifteenIdRefType;
 
-            var otherFirst = PlusFifteenIdRefType;
-            var other = Dependency.From(_ => otherFirst, _ => otherLast);
+        var thirdSource = int.MinValue;
+        var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource);
 
-            var actual = source.With(other);
-            var actualValue = actual.Resolve();
+        var otherFirst = PlusFifteenIdRefType;
+        var other = Dependency.From(_ => otherFirst, _ => otherLast);
 
-            var expectedValue = (firstSource, secondSource, thirdSource, otherFirst, otherLast);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var actual = source.With(other);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = (firstSource, secondSource, thirdSource, otherFirst, otherLast);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

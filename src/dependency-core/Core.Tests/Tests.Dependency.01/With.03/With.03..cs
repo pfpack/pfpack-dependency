@@ -2,25 +2,24 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class OneDependencyTest
 {
-    partial class OneDependencyTest
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
+    public void WithTwo_ExpectResolvedValuesAreEqualToSourceAndOther(
+        RecordType lastValue)
     {
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void WithTwo_ExpectResolvedValuesAreEqualToSourceAndOther(
-            RecordType lastValue)
-        {
-            var sourceValue = SomeTextStructType;
-            var source = Dependency.From(_ => sourceValue);
-            
-            var secondValue = ZeroIdRefType;
+        var sourceValue = SomeTextStructType;
+        var source = Dependency.From(_ => sourceValue);
 
-            var actual = source.With(secondValue, lastValue);
-            var actualValue = actual.Resolve();
+        var secondValue = ZeroIdRefType;
 
-            var expectedValue = (sourceValue, secondValue, lastValue);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var actual = source.With(secondValue, lastValue);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = (sourceValue, secondValue, lastValue);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

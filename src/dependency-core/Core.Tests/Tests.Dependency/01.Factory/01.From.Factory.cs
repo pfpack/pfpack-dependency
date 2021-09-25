@@ -2,28 +2,27 @@ using System;
 using PrimeFuncPack.UnitTest;
 using Xunit;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class DependencyTest
 {
-    partial class DependencyTest
+    [Fact]
+    public void From_Factory_01_SingleIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void From_Factory_01_SingleIsNull_ExpectArgumentNullException()
-        {
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = Dependency.From(NullRefFactory));
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = Dependency.From(NullRefFactory));
 
-            Assert.Equal("single", ex.ParamName);
-        }
+        Assert.Equal("single", ex.ParamName);
+    }
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void From_Factory_01_SingleIsNotNull_ExpectResolvedValueIsEqualToSource(
-            RecordType sourceSingle)
-        {
-            var actual = Dependency.From(() => sourceSingle);
-            var actualValue = actual.Resolve();
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
+    public void From_Factory_01_SingleIsNotNull_ExpectResolvedValueIsEqualToSource(
+        RecordType sourceSingle)
+    {
+        var actual = Dependency.From(() => sourceSingle);
+        var actualValue = actual.Resolve();
 
-            Assert.Equal(sourceSingle, actualValue);
-        }
+        Assert.Equal(sourceSingle, actualValue);
     }
 }

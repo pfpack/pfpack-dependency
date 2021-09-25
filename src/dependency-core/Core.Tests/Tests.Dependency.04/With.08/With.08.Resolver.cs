@@ -3,129 +3,128 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class FourDependencyTest
 {
-    partial class FourDependencyTest
+    [Fact]
+    public void WithFourResolvers_FifthIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithFourResolvers_FifthIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => LowerSomeString,
-                _ => PlusFifteenIdRefType,
-                _ => MinusFifteenIdNullNameRecord,
-                _ => decimal.MaxValue);
+        var source = Dependency.From(
+            _ => LowerSomeString,
+            _ => PlusFifteenIdRefType,
+            _ => MinusFifteenIdNullNameRecord,
+            _ => decimal.MaxValue);
 
-            var sixthValue = SomeTextStructType;
+        var sixthValue = SomeTextStructType;
 
-            var seventhValue = new object();
-            var restValue = PlusFifteen;
+        var seventhValue = new object();
+        var restValue = PlusFifteen;
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With(
-                    (Func<IServiceProvider, RecordType>)null!,
-                    _ => sixthValue,
-                    _ => seventhValue,
-                    _ => restValue));
-            
-            Assert.Equal("fifth", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With(
+                (Func<IServiceProvider, RecordType>)null!,
+                _ => sixthValue,
+                _ => seventhValue,
+                _ => restValue));
 
-        [Fact]
-        public void WithFourResolvers_SixthIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => ZeroIdNullNameRecord,
-                _ => MinusFifteenIdRefType,
-                _ => new[] { EmptyString, UpperSomeString, SomeString },
-                _ => new { Name = SomeString });
+        Assert.Equal("fifth", ex.ParamName);
+    }
 
-            var fifthValue = byte.MaxValue;
+    [Fact]
+    public void WithFourResolvers_SixthIsNull_ExpectArgumentNullException()
+    {
+        var source = Dependency.From(
+            _ => ZeroIdNullNameRecord,
+            _ => MinusFifteenIdRefType,
+            _ => new[] { EmptyString, UpperSomeString, SomeString },
+            _ => new { Name = SomeString });
 
-            var seventhValue = DateTimeKind.Utc;
-            var restValue = LowerSomeTextStructType;
+        var fifthValue = byte.MaxValue;
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With(
-                    _ => fifthValue,
-                    (Func<IServiceProvider, DateTime?>)null!,
-                    _ => seventhValue,
-                    _ => restValue));
-            
-            Assert.Equal("sixth", ex.ParamName);
-        }
+        var seventhValue = DateTimeKind.Utc;
+        var restValue = LowerSomeTextStructType;
 
-        [Fact]
-        public void WithFourResolvers_SeventhIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => decimal.MaxValue,
-                _ => MinusFifteenIdSomeStringNameRecord,
-                _ => SomeTextStructType,
-                _ => false);
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With(
+                _ => fifthValue,
+                (Func<IServiceProvider, DateTime?>)null!,
+                _ => seventhValue,
+                _ => restValue));
 
-            var fifthValue = UpperSomeString;
+        Assert.Equal("sixth", ex.ParamName);
+    }
 
-            var sixthValue = long.MinValue;
-            var restValue = SomeTextStructType;
+    [Fact]
+    public void WithFourResolvers_SeventhIsNull_ExpectArgumentNullException()
+    {
+        var source = Dependency.From(
+            _ => decimal.MaxValue,
+            _ => MinusFifteenIdSomeStringNameRecord,
+            _ => SomeTextStructType,
+            _ => false);
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With(
-                    _ => fifthValue,
-                    _ => sixthValue,
-                    (Func<IServiceProvider, StructType>)null!,
-                    _ => restValue));
-            
-            Assert.Equal("seventh", ex.ParamName);
-        }
+        var fifthValue = UpperSomeString;
 
-        [Fact]
-        public void WithFourResolvers_RestIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => MinusFifteenIdSomeStringNameRecord,
-                _ => LowerSomeTextStructType,
-                _ => Zero,
-                _ => SomeString);
+        var sixthValue = long.MinValue;
+        var restValue = SomeTextStructType;
 
-            var fifthValue = byte.MaxValue;
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With(
+                _ => fifthValue,
+                _ => sixthValue,
+                (Func<IServiceProvider, StructType>)null!,
+                _ => restValue));
 
-            var sixthValue = decimal.One;
-            var seventhValue = MinusFifteenIdRefType;
+        Assert.Equal("seventh", ex.ParamName);
+    }
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With(
-                    _ => fifthValue,
-                    _ => sixthValue,
-                    _ => seventhValue,
-                    (Func<IServiceProvider, StructType?>)null!));
-            
-            Assert.Equal("rest", ex.ParamName);
-        }
+    [Fact]
+    public void WithFourResolvers_RestIsNull_ExpectArgumentNullException()
+    {
+        var source = Dependency.From(
+            _ => MinusFifteenIdSomeStringNameRecord,
+            _ => LowerSomeTextStructType,
+            _ => Zero,
+            _ => SomeString);
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void WithFourResolvers_OthersAreNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            StructType lastValue)
-        {
-            var firstSource = DateTimeKind.Local;
-            var secondSource = new { Value = decimal.MinValue };
+        var fifthValue = byte.MaxValue;
 
-            var thirdSource = MinusFifteenIdRefType;
-            var fourthSource = UpperSomeString;
+        var sixthValue = decimal.One;
+        var seventhValue = MinusFifteenIdRefType;
 
-            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With(
+                _ => fifthValue,
+                _ => sixthValue,
+                _ => seventhValue,
+                (Func<IServiceProvider, StructType?>)null!));
 
-            var fifthValue = true;
+        Assert.Equal("rest", ex.ParamName);
+    }
 
-            var sixthValue = long.MaxValue;
-            var seventhValue = ZeroIdNullNameRecord;
+    [Theory]
+    [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
+    public void WithFourResolvers_OthersAreNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        StructType lastValue)
+    {
+        var firstSource = DateTimeKind.Local;
+        var secondSource = new { Value = decimal.MinValue };
 
-            var actual = source.With(_ => fifthValue, _ => sixthValue, _ => seventhValue, _ => lastValue);
-            var actualValue = actual.Resolve();
+        var thirdSource = MinusFifteenIdRefType;
+        var fourthSource = UpperSomeString;
 
-            var expectedValue = ((firstSource, secondSource, thirdSource, fourthSource), (fifthValue, sixthValue, seventhValue, lastValue));
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource);
+
+        var fifthValue = true;
+
+        var sixthValue = long.MaxValue;
+        var seventhValue = ZeroIdNullNameRecord;
+
+        var actual = source.With(_ => fifthValue, _ => sixthValue, _ => seventhValue, _ => lastValue);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = ((firstSource, secondSource, thirdSource, fourthSource), (fifthValue, sixthValue, seventhValue, lastValue));
+        Assert.Equal(expectedValue, actualValue);
     }
 }

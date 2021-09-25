@@ -3,37 +3,36 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class OneDependencyTest
 {
-    partial class OneDependencyTest
+    [Fact]
+    public void WithTwoDependency_OtherIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithTwoDependency_OtherIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(_ => MinusFifteenIdNullNameRecord);
+        var source = Dependency.From(_ => MinusFifteenIdNullNameRecord);
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With<StructType, object?>(null!));
-            
-            Assert.Equal("other", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With<StructType, object?>(null!));
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void WithTwoDependency_OtherIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            StructType otherLast)
-        {
-            var sourceValue = MinusFifteenIdSomeStringNameRecord;
-            var source = Dependency.From(_ => sourceValue);
+        Assert.Equal("other", ex.ParamName);
+    }
 
-            var otherFirst = PlusFifteenIdRefType;
-            var other = Dependency.From(_ => otherFirst, _ => otherLast);
+    [Theory]
+    [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
+    public void WithTwoDependency_OtherIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        StructType otherLast)
+    {
+        var sourceValue = MinusFifteenIdSomeStringNameRecord;
+        var source = Dependency.From(_ => sourceValue);
 
-            var actual = source.With(other);
-            var actualValue = actual.Resolve();
+        var otherFirst = PlusFifteenIdRefType;
+        var other = Dependency.From(_ => otherFirst, _ => otherLast);
 
-            var expectedValue = (sourceValue, otherFirst, otherLast);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var actual = source.With(other);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = (sourceValue, otherFirst, otherLast);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

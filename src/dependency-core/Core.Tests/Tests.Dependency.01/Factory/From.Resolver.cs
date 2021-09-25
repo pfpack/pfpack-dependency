@@ -2,32 +2,31 @@ using System;
 using PrimeFuncPack.UnitTest;
 using Xunit;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class OneDependencyTest
 {
-    partial class OneDependencyTest
+    [Fact]
+    public void From_Resolver_SingleIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void From_Resolver_SingleIsNull_ExpectArgumentNullException()
-        {
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = Dependency<RefType?>.From(
-                    (Func<IServiceProvider, RefType?>)null!));
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = Dependency<RefType?>.From(
+                (Func<IServiceProvider, RefType?>)null!));
 
-            Assert.Equal("single", ex.ParamName);
-        }
+        Assert.Equal("single", ex.ParamName);
+    }
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void From_Resolver_SingleIsNotNull_ExpectResolvedValueIsEqualToSource(
-            StructType sourceSingle)
-        {
-            var actual = Dependency<StructType>.From(
-                _ => sourceSingle);
+    [Theory]
+    [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
+    public void From_Resolver_SingleIsNotNull_ExpectResolvedValueIsEqualToSource(
+        StructType sourceSingle)
+    {
+        var actual = Dependency<StructType>.From(
+            _ => sourceSingle);
 
-            var actualValue = actual.Resolve();
+        var actualValue = actual.Resolve();
 
-            var expectedValue = sourceSingle;
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var expectedValue = sourceSingle;
+        Assert.Equal(expectedValue, actualValue);
     }
 }

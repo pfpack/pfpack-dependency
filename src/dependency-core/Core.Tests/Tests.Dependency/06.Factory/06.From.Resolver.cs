@@ -3,159 +3,158 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class DependencyTest
 {
-    partial class DependencyTest
+    [Fact]
+    public void From_Resolver_06_FirstIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void From_Resolver_06_FirstIsNull_ExpectArgumentNullException()
-        {
-            var second = LowerSomeString;
-            var third = MinusFifteenIdRefType;
-            var fourth = SomeTextStructType;
-            var fifth = MinusFifteen;
-            var sixth = PlusFifteenIdLowerSomeStringNameRecord;
+        var second = LowerSomeString;
+        var third = MinusFifteenIdRefType;
+        var fourth = SomeTextStructType;
+        var fifth = MinusFifteen;
+        var sixth = PlusFifteenIdLowerSomeStringNameRecord;
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = Dependency.From(
-                    NullRecordResolver,
-                    _ => second,
-                    _ => third,
-                    _ => fourth,
-                    _ => fifth,
-                    _ => sixth));
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = Dependency.From(
+                NullRecordResolver,
+                _ => second,
+                _ => third,
+                _ => fourth,
+                _ => fifth,
+                _ => sixth));
 
-            Assert.Equal("first", ex.ParamName);
-        }
+        Assert.Equal("first", ex.ParamName);
+    }
 
-        [Fact]
-        public void From_Resolver_06_SecondIsNull_ExpectArgumentNullException()
-        {
-            var first = new object();
-            var third = PlusFifteen;
-            var fourth = ZeroIdNullNameRecord;
-            var fifth = UpperSomeString;
-            var sixth = LowerSomeTextStructType;
+    [Fact]
+    public void From_Resolver_06_SecondIsNull_ExpectArgumentNullException()
+    {
+        var first = new object();
+        var third = PlusFifteen;
+        var fourth = ZeroIdNullNameRecord;
+        var fifth = UpperSomeString;
+        var sixth = LowerSomeTextStructType;
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = Dependency.From(
-                    _ => first,
-                    NullRefResolver,
-                    _ => third,
-                    _ => fourth,
-                    _ => fifth,
-                    _ => sixth));
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = Dependency.From(
+                _ => first,
+                NullRefResolver,
+                _ => third,
+                _ => fourth,
+                _ => fifth,
+                _ => sixth));
 
-            Assert.Equal("second", ex.ParamName);
-        }
+        Assert.Equal("second", ex.ParamName);
+    }
 
-        [Fact]
-        public void From_Resolver_06_ThirdIsNull_ExpectArgumentNullException()
-        {
-            var first = SomeTextStructType;
-            var second = Zero;
-            var fourth = MinusFifteenIdSomeStringNameRecord;
-            var fifth = LowerSomeString;
-            var sixth = ZeroIdRefType;
+    [Fact]
+    public void From_Resolver_06_ThirdIsNull_ExpectArgumentNullException()
+    {
+        var first = SomeTextStructType;
+        var second = Zero;
+        var fourth = MinusFifteenIdSomeStringNameRecord;
+        var fifth = LowerSomeString;
+        var sixth = ZeroIdRefType;
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = Dependency.From(
-                    _ => first,
-                    _ => second,
-                    NullStructResolver,
-                    _ => fourth,
-                    _ => fifth,
-                    _ => sixth));
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = Dependency.From(
+                _ => first,
+                _ => second,
+                NullStructResolver,
+                _ => fourth,
+                _ => fifth,
+                _ => sixth));
 
-            Assert.Equal("third", ex.ParamName);
-        }
+        Assert.Equal("third", ex.ParamName);
+    }
 
-        [Fact]
-        public void From_Resolver_06_FourthIsNull_ExpectArgumentNullException()
-        {
-            var first = UpperSomeString;
-            var second = long.MinValue;
-            var third = MinusFifteenIdNullNameRecord;
-            var fifth = new { Id = PlusFifteen };
-            var sixth = SomeTextStructType;
+    [Fact]
+    public void From_Resolver_06_FourthIsNull_ExpectArgumentNullException()
+    {
+        var first = UpperSomeString;
+        var second = long.MinValue;
+        var third = MinusFifteenIdNullNameRecord;
+        var fifth = new { Id = PlusFifteen };
+        var sixth = SomeTextStructType;
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = Dependency.From(
-                    _ => first,
-                    _ => second,
-                    _ => third,
-                    NullRefResolver,
-                    _ => fifth,
-                    _ => sixth));
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = Dependency.From(
+                _ => first,
+                _ => second,
+                _ => third,
+                NullRefResolver,
+                _ => fifth,
+                _ => sixth));
 
-            Assert.Equal("fourth", ex.ParamName);
-        }
+        Assert.Equal("fourth", ex.ParamName);
+    }
 
-        [Fact]
-        public void From_Resolver_06_FifthIsNull_ExpectArgumentNullException()
-        {
-            var first = LowerSomeTextStructType;
-            var second = UpperSomeString;
-            var third = PlusFifteen;
-            var fourth = EmptyString;
-            var sixth = MinusFifteenIdSomeStringNameRecord;
+    [Fact]
+    public void From_Resolver_06_FifthIsNull_ExpectArgumentNullException()
+    {
+        var first = LowerSomeTextStructType;
+        var second = UpperSomeString;
+        var third = PlusFifteen;
+        var fourth = EmptyString;
+        var sixth = MinusFifteenIdSomeStringNameRecord;
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = Dependency.From(
-                    _ => first,
-                    _ => second,
-                    _ => third,
-                    _ => fourth,
-                    NullStructResolver,
-                    _ => sixth));
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = Dependency.From(
+                _ => first,
+                _ => second,
+                _ => third,
+                _ => fourth,
+                NullStructResolver,
+                _ => sixth));
 
-            Assert.Equal("fifth", ex.ParamName);
-        }
+        Assert.Equal("fifth", ex.ParamName);
+    }
 
-        [Fact]
-        public void From_Resolver_06_SixthIsNull_ExpectArgumentNullException()
-        {
-            var first = PlusFifteenIdLowerSomeStringNameRecord;
-            var second = decimal.MinusOne;
-            var third = UpperSomeString;
-            var fourth = SomeTextStructType;
-            var fifth = MinusFifteenIdRefType;
+    [Fact]
+    public void From_Resolver_06_SixthIsNull_ExpectArgumentNullException()
+    {
+        var first = PlusFifteenIdLowerSomeStringNameRecord;
+        var second = decimal.MinusOne;
+        var third = UpperSomeString;
+        var fourth = SomeTextStructType;
+        var fifth = MinusFifteenIdRefType;
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = Dependency.From(
-                    _ => first,
-                    _ => second,
-                    _ => third,
-                    _ => fourth,
-                    _ => fifth,
-                    NullRecordResolver));
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = Dependency.From(
+                _ => first,
+                _ => second,
+                _ => third,
+                _ => fourth,
+                _ => fifth,
+                NullRecordResolver));
 
-            Assert.Equal("sixth", ex.ParamName);
-        }
+        Assert.Equal("sixth", ex.ParamName);
+    }
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
-        public void From_Resolver_06_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(
-            RefType? sourceSixth)
-        {
-            var sourceFirst = MinusFifteen;
-            var sourceSecond = WhiteSpaceString;
-            var sourceThird = new object();
-            var sourceFourth = LowerSomeTextStructType;
-            var sourceFifth = PlusFifteenIdLowerSomeStringNameRecord;
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
+    public void From_Resolver_06_ResolversAreNotNull_ExpectResolvedValuesAreEqualToSource(
+        RefType? sourceSixth)
+    {
+        var sourceFirst = MinusFifteen;
+        var sourceSecond = WhiteSpaceString;
+        var sourceThird = new object();
+        var sourceFourth = LowerSomeTextStructType;
+        var sourceFifth = PlusFifteenIdLowerSomeStringNameRecord;
 
-            var actual = Dependency.From(
-                _ => sourceFirst,
-                _ => sourceSecond,
-                _ => sourceThird,
-                _ => sourceFourth,
-                _ => sourceFifth,
-                _ => sourceSixth);
+        var actual = Dependency.From(
+            _ => sourceFirst,
+            _ => sourceSecond,
+            _ => sourceThird,
+            _ => sourceFourth,
+            _ => sourceFifth,
+            _ => sourceSixth);
 
-            var actualValue = actual.Resolve();
+        var actualValue = actual.Resolve();
 
-            var expectedValue = (sourceFirst, sourceSecond, sourceThird, sourceFourth, sourceFifth, sourceSixth);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var expectedValue = (sourceFirst, sourceSecond, sourceThird, sourceFourth, sourceFifth, sourceSixth);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

@@ -2,30 +2,29 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class FiveDependencyTest
 {
-    partial class FiveDependencyTest
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
+    public void WithOne_ExpectResolvedValuesAreEqualToSourceAndOther(
+        RefType sixthValue)
     {
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
-        public void WithOne_ExpectResolvedValuesAreEqualToSourceAndOther(
-            RefType sixthValue)
-        {
-            var firstSource = new object();
-            var secondSource = int.MinValue;
+        var firstSource = new object();
+        var secondSource = int.MinValue;
 
-            var thirdSource = SomeTextStructType;
-            var fourthSource = PlusFifteenIdSomeStringNameRecord;
+        var thirdSource = SomeTextStructType;
+        var fourthSource = PlusFifteenIdSomeStringNameRecord;
 
-            var fifthSource = long.MaxValue;
+        var fifthSource = long.MaxValue;
 
-            var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource);
+        var source = Dependency.From(_ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource);
 
-            var actual = source.With(sixthValue);
-            var actualValue = actual.Resolve();
+        var actual = source.With(sixthValue);
+        var actualValue = actual.Resolve();
 
-            var expectedValue = (firstSource, secondSource, thirdSource, fourthSource, fifthSource, sixthValue);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var expectedValue = (firstSource, secondSource, thirdSource, fourthSource, fifthSource, sixthValue);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

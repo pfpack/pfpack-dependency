@@ -3,143 +3,142 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class FiveDependencyTest
 {
-    partial class FiveDependencyTest
+    [Fact]
+    public void Map_MapFirstFuncIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void Map_MapFirstFuncIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => PlusFifteen,
-                _ => SomeTextStructType,
-                _ => ZeroIdRefType,
-                _ => new object(),
-                _ => PlusFifteenIdSomeStringNameRecord);
+        var source = Dependency.From(
+            _ => PlusFifteen,
+            _ => SomeTextStructType,
+            _ => ZeroIdRefType,
+            _ => new object(),
+            _ => PlusFifteenIdSomeStringNameRecord);
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.Map(
-                    (Func<int, DateTime?>)null!,
-                    _ => WhiteSpaceString,
-                    _ => long.MaxValue,
-                    _ => MinusFifteen,
-                    _ => LowerSomeString));
-            
-            Assert.Equal("mapFirst", ex.ParamName);
-        }
-
-        [Fact]
-        public void Map_MapSecondFuncIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => MinusFifteenIdRefType,
-                _ => LowerSomeString,
-                _ => PlusFifteen,
-                _ => SomeTextStructType,
-                _ => ZeroIdRefType);
-
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.Map(
-                    _ => SomeTextStructType,
-                    (Func<string, long>)null!,
-                    _ => decimal.One,
-                    _ => new object(),
-                    _ => WhiteSpaceString));
-            
-            Assert.Equal("mapSecond", ex.ParamName);
-        }
-
-        [Fact]
-        public void Map_MapThirdFuncIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => ZeroIdRefType,
-                _ => PlusFifteen,
-                _ => LowerSomeString,
-                _ => LowerSomeTextStructType,
-                _ => decimal.One);
-
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.Map(
-                    _ => EmptyString,
-                    _ => MinusFifteenIdNullNameRecord,
-                    (Func<string?, object>)null!,
-                    _ => PlusFifteenIdRefType,
-                    _ => new { Value = long.MaxValue }));
-            
-            Assert.Equal("mapThird", ex.ParamName);
-        }
-
-        [Fact]
-        public void Map_MapFourthFuncIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => MinusFifteen,
-                _ => SomeTextStructType,
-                _ => ZeroIdRefType,
-                _ => UpperSomeString,
-                _ => MinusFifteenIdSomeStringNameRecord);
-
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.Map(
-                    _ => SomeString,
-                    _ => WhiteSpaceString,
-                    _ => long.MaxValue,
-                    (Func<string, long?>)null!,
-                    _ => new object()));
-            
-            Assert.Equal("mapFourth", ex.ParamName);
-        }
-
-        [Fact]
-        public void Map_MapFifthFuncIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => ZeroIdRefType,
-                _ => LowerSomeTextStructType,
-                _ => PlusFifteenIdSomeStringNameRecord,
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.Map(
+                (Func<int, DateTime?>)null!,
                 _ => WhiteSpaceString,
-                _ => MinusFifteenIdRefType);
+                _ => long.MaxValue,
+                _ => MinusFifteen,
+                _ => LowerSomeString));
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.Map(
-                    _ => SomeTextStructType,
-                    _ => PlusFifteen,
-                    _ => decimal.One,
-                    _ => int.MaxValue,
-                    (Func<RefType, StructType>)null!));
-            
-            Assert.Equal("mapFifth", ex.ParamName);
-        }
+        Assert.Equal("mapFirst", ex.ParamName);
+    }
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
-        public void Map_MapFuncIsNotNull_ExpectResolvedValuesAreEqualToMapped(
-            RefType mappedLast)
-        {
-            var source = Dependency.From(
-                _ => PlusFifteenIdSomeStringNameRecord,
+    [Fact]
+    public void Map_MapSecondFuncIsNull_ExpectArgumentNullException()
+    {
+        var source = Dependency.From(
+            _ => MinusFifteenIdRefType,
+            _ => LowerSomeString,
+            _ => PlusFifteen,
+            _ => SomeTextStructType,
+            _ => ZeroIdRefType);
+
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.Map(
+                _ => SomeTextStructType,
+                (Func<string, long>)null!,
+                _ => decimal.One,
+                _ => new object(),
+                _ => WhiteSpaceString));
+
+        Assert.Equal("mapSecond", ex.ParamName);
+    }
+
+    [Fact]
+    public void Map_MapThirdFuncIsNull_ExpectArgumentNullException()
+    {
+        var source = Dependency.From(
+            _ => ZeroIdRefType,
+            _ => PlusFifteen,
+            _ => LowerSomeString,
+            _ => LowerSomeTextStructType,
+            _ => decimal.One);
+
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.Map(
+                _ => EmptyString,
+                _ => MinusFifteenIdNullNameRecord,
+                (Func<string?, object>)null!,
+                _ => PlusFifteenIdRefType,
+                _ => new { Value = long.MaxValue }));
+
+        Assert.Equal("mapThird", ex.ParamName);
+    }
+
+    [Fact]
+    public void Map_MapFourthFuncIsNull_ExpectArgumentNullException()
+    {
+        var source = Dependency.From(
+            _ => MinusFifteen,
+            _ => SomeTextStructType,
+            _ => ZeroIdRefType,
+            _ => UpperSomeString,
+            _ => MinusFifteenIdSomeStringNameRecord);
+
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.Map(
                 _ => SomeString,
+                _ => WhiteSpaceString,
+                _ => long.MaxValue,
+                (Func<string, long?>)null!,
+                _ => new object()));
+
+        Assert.Equal("mapFourth", ex.ParamName);
+    }
+
+    [Fact]
+    public void Map_MapFifthFuncIsNull_ExpectArgumentNullException()
+    {
+        var source = Dependency.From(
+            _ => ZeroIdRefType,
+            _ => LowerSomeTextStructType,
+            _ => PlusFifteenIdSomeStringNameRecord,
+            _ => WhiteSpaceString,
+            _ => MinusFifteenIdRefType);
+
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.Map(
+                _ => SomeTextStructType,
+                _ => PlusFifteen,
+                _ => decimal.One,
                 _ => int.MaxValue,
-                _ => MinusFifteenIdRefType,
-                _ => PlusFifteen);
+                (Func<RefType, StructType>)null!));
 
-            var mappedFirst = default(DateTime);
-            var mappedSecond = MinusFifteenIdSomeStringNameRecord;
-            var mappedThird = ZeroIdRefType;
-            var mappedFourth = new object();
+        Assert.Equal("mapFifth", ex.ParamName);
+    }
 
-            var actual = source.Map(
-                _ => mappedFirst,
-                _ => mappedSecond,
-                _ => mappedThird,
-                _ => mappedFourth,
-                _ => mappedLast);
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
+    public void Map_MapFuncIsNotNull_ExpectResolvedValuesAreEqualToMapped(
+        RefType mappedLast)
+    {
+        var source = Dependency.From(
+            _ => PlusFifteenIdSomeStringNameRecord,
+            _ => SomeString,
+            _ => int.MaxValue,
+            _ => MinusFifteenIdRefType,
+            _ => PlusFifteen);
 
-            var actualValue = actual.Resolve();
-            var expectedValue = (mappedFirst, mappedSecond, mappedThird, mappedFourth, mappedLast);
+        var mappedFirst = default(DateTime);
+        var mappedSecond = MinusFifteenIdSomeStringNameRecord;
+        var mappedThird = ZeroIdRefType;
+        var mappedFourth = new object();
 
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var actual = source.Map(
+            _ => mappedFirst,
+            _ => mappedSecond,
+            _ => mappedThird,
+            _ => mappedFourth,
+            _ => mappedLast);
+
+        var actualValue = actual.Resolve();
+        var expectedValue = (mappedFirst, mappedSecond, mappedThird, mappedFourth, mappedLast);
+
+        Assert.Equal(expectedValue, actualValue);
     }
 }

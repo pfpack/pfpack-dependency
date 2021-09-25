@@ -3,27 +3,26 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class SixDependencyTest
 {
-    partial class SixDependencyTest
+    [Theory]
+    [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
+    public void GetFirst_ExpectResolvedValueIsEqualToFirstSource(
+        StructType firstSource)
     {
-        [Theory]
-        [MemberData(nameof(TestEntitySource.StructTypes), MemberType = typeof(TestEntitySource))]
-        public void GetFirst_ExpectResolvedValueIsEqualToFirstSource(
-            StructType firstSource)
-        {
-            var source = Dependency.From(
-                _ => firstSource,
-                _ => MinusFifteenIdNullNameRecord,
-                _ => PlusFifteen,
-                _ => DateTimeKind.Unspecified,
-                _ => MinusFifteenIdRefType,
-                _ => UpperSomeString);
+        var source = Dependency.From(
+            _ => firstSource,
+            _ => MinusFifteenIdNullNameRecord,
+            _ => PlusFifteen,
+            _ => DateTimeKind.Unspecified,
+            _ => MinusFifteenIdRefType,
+            _ => UpperSomeString);
 
-            var actual = source.GetFirst();
-            var actualValue = actual.Resolve();
+        var actual = source.GetFirst();
+        var actualValue = actual.Resolve();
 
-            Assert.Equal(firstSource, actualValue);
-        }
+        Assert.Equal(firstSource, actualValue);
     }
 }

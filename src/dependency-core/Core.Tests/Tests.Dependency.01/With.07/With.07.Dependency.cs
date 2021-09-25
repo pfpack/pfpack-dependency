@@ -3,45 +3,44 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class OneDependencyTest
 {
-    partial class OneDependencyTest
+    [Fact]
+    public void WithSixDependency_OtherIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithSixDependency_OtherIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(_ => SomeTextStructType);
+        var source = Dependency.From(_ => SomeTextStructType);
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With<RefType, long?, RecordType?, string, object, DateTime>(null!));
-            
-            Assert.Equal("other", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With<RefType, long?, RecordType?, string, object, DateTime>(null!));
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
-        public void WithSixDependency_OtherIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            RefType otherLast)
-        {
-            var sourceValue = PlusFifteenIdLowerSomeStringNameRecord;
-            var source = Dependency.From(_ => sourceValue);
-            
-            var otherFirst = UpperSomeString;
-            var otherSecond = new object();
+        Assert.Equal("other", ex.ParamName);
+    }
 
-            var otherThird = decimal.One;
-            var otherFourth = LowerSomeTextStructType;
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RefTypes), MemberType = typeof(TestEntitySource))]
+    public void WithSixDependency_OtherIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        RefType otherLast)
+    {
+        var sourceValue = PlusFifteenIdLowerSomeStringNameRecord;
+        var source = Dependency.From(_ => sourceValue);
 
-            var otherFifth = DateTimeKind.Utc;
+        var otherFirst = UpperSomeString;
+        var otherSecond = new object();
 
-            var other = Dependency.From(
-                _ => otherFirst, _ => otherSecond, _ => otherThird, _ => otherFourth, _ => otherFifth, _ => otherLast);
+        var otherThird = decimal.One;
+        var otherFourth = LowerSomeTextStructType;
 
-            var actual = source.With(other);
-            var actualValue = actual.Resolve();
+        var otherFifth = DateTimeKind.Utc;
 
-            var expectedValue = (sourceValue, otherFirst, otherSecond, otherThird, otherFourth, otherFifth, otherLast);
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var other = Dependency.From(
+            _ => otherFirst, _ => otherSecond, _ => otherThird, _ => otherFourth, _ => otherFifth, _ => otherLast);
+
+        var actual = source.With(other);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = (sourceValue, otherFirst, otherSecond, otherThird, otherFourth, otherFifth, otherLast);
+        Assert.Equal(expectedValue, actualValue);
     }
 }

@@ -3,49 +3,48 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class TwoDependencyTest
 {
-    partial class TwoDependencyTest
+    [Fact]
+    public void WithSixDependency_OtherIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithSixDependency_OtherIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(_ => MinusFifteenIdSomeStringNameRecord, _ => long.MaxValue);
+        var source = Dependency.From(_ => MinusFifteenIdSomeStringNameRecord, _ => long.MaxValue);
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With<string?, bool, object, RefType?, DateTimeOffset, decimal>(null!));
-            
-            Assert.Equal("other", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With<string?, bool, object, RefType?, DateTimeOffset, decimal>(null!));
 
-        [Theory]
-        [InlineData(null)]
-        [InlineData(false)]
-        [InlineData(true)]
-        public void WithSixDependency_OtherIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            bool? otherLast)
-        {
-            var firstSource = decimal.MaxValue;
-            var secondSource = MinusFifteenIdSomeStringNameRecord;
+        Assert.Equal("other", ex.ParamName);
+    }
 
-            var source = Dependency.From(_ => firstSource, _ => secondSource);
-            
-            var otherFirst = new Tuple<int, string, bool?>(int.MaxValue, EmptyString, true);
-            var otherSecond = TwoWhiteSpacesString;
+    [Theory]
+    [InlineData(null)]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void WithSixDependency_OtherIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        bool? otherLast)
+    {
+        var firstSource = decimal.MaxValue;
+        var secondSource = MinusFifteenIdSomeStringNameRecord;
 
-            var otherThird = PlusFifteenIdRefType;
-            var otherFourth = new object();
+        var source = Dependency.From(_ => firstSource, _ => secondSource);
 
-            var otherFifth = SomeTextStructType;
+        var otherFirst = new Tuple<int, string, bool?>(int.MaxValue, EmptyString, true);
+        var otherSecond = TwoWhiteSpacesString;
 
-            var other = Dependency.From(
-                _ => otherFirst, _ => otherSecond, _ => otherThird, _ => otherFourth, _ => otherFifth, _ => otherLast);
+        var otherThird = PlusFifteenIdRefType;
+        var otherFourth = new object();
 
-            var actual = source.With(other);
-            var actualValue = actual.Resolve();
+        var otherFifth = SomeTextStructType;
 
-            var expectedValue = ((firstSource, secondSource, otherFirst, otherSecond), (otherThird, otherFourth, otherFifth, otherLast));
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var other = Dependency.From(
+            _ => otherFirst, _ => otherSecond, _ => otherThird, _ => otherFourth, _ => otherFifth, _ => otherLast);
+
+        var actual = source.With(other);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = ((firstSource, secondSource, otherFirst, otherSecond), (otherThird, otherFourth, otherFifth, otherLast));
+        Assert.Equal(expectedValue, actualValue);
     }
 }

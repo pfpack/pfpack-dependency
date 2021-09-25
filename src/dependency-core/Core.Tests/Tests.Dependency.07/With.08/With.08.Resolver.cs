@@ -3,52 +3,51 @@ using PrimeFuncPack.UnitTest;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class SevenDependencyTest
 {
-    partial class SevenDependencyTest
+    [Fact]
+    public void WithOneResolver_RestIsNull_ExpectArgumentNullException()
     {
-        [Fact]
-        public void WithOneResolver_RestIsNull_ExpectArgumentNullException()
-        {
-            var source = Dependency.From(
-                _ => MinusOne,
-                _ => LowerSomeTextStructType,
-                _ => new { Sum = decimal.One },
-                _ => PlusFifteenIdRefType,
-                _ => MinusFifteenIdNullNameRecord,
-                _ => byte.MaxValue,
-                _ => SomeString);
+        var source = Dependency.From(
+            _ => MinusOne,
+            _ => LowerSomeTextStructType,
+            _ => new { Sum = decimal.One },
+            _ => PlusFifteenIdRefType,
+            _ => MinusFifteenIdNullNameRecord,
+            _ => byte.MaxValue,
+            _ => SomeString);
 
-            var ex = Assert.Throws<ArgumentNullException>(
-                () => _ = source.With((Func<IServiceProvider, DateTimeOffset?>)null!));
-            
-            Assert.Equal("rest", ex.ParamName);
-        }
+        var ex = Assert.Throws<ArgumentNullException>(
+            () => _ = source.With((Func<IServiceProvider, DateTimeOffset?>)null!));
 
-        [Theory]
-        [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
-        public void WithOneResolver_RestIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-            RecordType restValue)
-        {
-            var firstSource = UpperSomeString;
-            var secondSource = DateTimeKind.Utc;
+        Assert.Equal("rest", ex.ParamName);
+    }
 
-            var thirdSource = new object();
-            var fourthSource = byte.MaxValue;
+    [Theory]
+    [MemberData(nameof(TestEntitySource.RecordTypes), MemberType = typeof(TestEntitySource))]
+    public void WithOneResolver_RestIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
+        RecordType restValue)
+    {
+        var firstSource = UpperSomeString;
+        var secondSource = DateTimeKind.Utc;
 
-            var fifthSource = ZeroIdRefType;
-            var sixthSource = true;
+        var thirdSource = new object();
+        var fourthSource = byte.MaxValue;
 
-            var seventhSource = double.MaxValue;
+        var fifthSource = ZeroIdRefType;
+        var sixthSource = true;
 
-            var source = Dependency.From(
-                _ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource, _ => sixthSource, _ => seventhSource);
+        var seventhSource = double.MaxValue;
 
-            var actual = source.With(_ => restValue);
-            var actualValue = actual.Resolve();
+        var source = Dependency.From(
+            _ => firstSource, _ => secondSource, _ => thirdSource, _ => fourthSource, _ => fifthSource, _ => sixthSource, _ => seventhSource);
 
-            var expectedValue = ((firstSource, secondSource, thirdSource, fourthSource), (fifthSource, sixthSource, seventhSource, restValue));
-            Assert.Equal(expectedValue, actualValue);
-        }
+        var actual = source.With(_ => restValue);
+        var actualValue = actual.Resolve();
+
+        var expectedValue = ((firstSource, secondSource, thirdSource, fourthSource), (fifthSource, sixthSource, seventhSource, restValue));
+        Assert.Equal(expectedValue, actualValue);
     }
 }

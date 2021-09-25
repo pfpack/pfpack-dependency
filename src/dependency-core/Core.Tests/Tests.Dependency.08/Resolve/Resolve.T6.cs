@@ -2,29 +2,28 @@ using System;
 using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
-namespace PrimeFuncPack.Tests
+namespace PrimeFuncPack.Tests;
+
+partial class EightDependencyTest
 {
-    partial class EightDependencyTest
+    [Theory]
+    [MemberData(nameof(ServiceProviderTestSource.NullableProviders), MemberType = typeof(ServiceProviderTestSource))]
+    public void ResolveSixth_ExpectResolvedValueIsEqualToSixthSourceValue(
+        IServiceProvider serviceProvider)
     {
-        [Theory]
-        [MemberData(nameof(ServiceProviderTestSource.NullableProviders), MemberType = typeof(ServiceProviderTestSource))]
-        public void ResolveSixth_ExpectResolvedValueIsEqualToSixthSourceValue(
-            IServiceProvider serviceProvider)
-        {
-            var sixth = new Tuple<long, string?>(long.MinValue, EmptyString);
+        var sixth = new Tuple<long, string?>(long.MinValue, EmptyString);
 
-            var dependency = Dependency.From(
-                _ => MinusFifteenIdSomeStringNameRecord,
-                _ => (true, UpperSomeString),
-                _ => new { Id = One },
-                _ => ZeroIdRefType,
-                _ => SomeTextStructType,
-                _ => sixth,
-                _ => MinusFifteen,
-                _ => DateTimeKind.Local);
+        var dependency = Dependency.From(
+            _ => MinusFifteenIdSomeStringNameRecord,
+            _ => (true, UpperSomeString),
+            _ => new { Id = One },
+            _ => ZeroIdRefType,
+            _ => SomeTextStructType,
+            _ => sixth,
+            _ => MinusFifteen,
+            _ => DateTimeKind.Local);
 
-            var actual = dependency.ResolveSixth(serviceProvider);
-            Assert.Equal(sixth, actual);
-        }
+        var actual = dependency.ResolveSixth(serviceProvider);
+        Assert.Equal(sixth, actual);
     }
 }

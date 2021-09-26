@@ -3,10 +3,10 @@ name: .NET
 on:
   push:
     branches: [ feature/*, master ]
-    
+
   pull_request:
     branches: [ master ]
-    
+
   release:
     types: [ published ]
     branches: [ master ]
@@ -23,13 +23,13 @@ jobs:
       with:
         dotnet-version: 6.0.x
         include-prerelease: true
-  
+
     - name: Create Local NuGet Directory
       run: mkdir ~/nuget
-      
+
     - name: Add Local Nuget Source
       run: dotnet nuget add source ~/nuget
-      
+
     - name: Restore Dependency.ServiceProviderExtensions
       run: dotnet restore ./src/*/*/ServiceProviderExtensions.csproj
 
@@ -38,13 +38,13 @@ jobs:
 
     - name: Pack Dependency.ServiceProviderExtensions
       run: dotnet pack ./src/*/*/ServiceProviderExtensions.csproj --no-restore -o ~/nuget  -c Release
-      
+
     - name: Restore Dependency.ServiceProviderExtensions.Tests
       run: dotnet restore ./src/*/*/ServiceProviderExtensions.Tests.csproj
 
     - name: Test Dependency.ServiceProviderExtensions.Tests
       run: dotnet test ./src/*/*/ServiceProviderExtensions.Tests.csproj --no-restore  -c Release
-      
+
     - name: Restore Dependency.Core
       run: dotnet restore ./src/*/*/Core.csproj
 
@@ -53,13 +53,13 @@ jobs:
 
     - name: Pack Dependency.Core
       run: dotnet pack ./src/*/*/Core.csproj --no-restore -o ~/nuget  -c Release
-      
+
     - name: Restore Dependency.Core.Tests
       run: dotnet restore ./src/*/*/Core.Tests.csproj
 
     - name: Test Dependency.Core.Tests
       run: dotnet test ./src/*/*/Core.Tests.csproj --no-restore  -c Release
-      
+
     - name: Restore Dependency
       run: dotnet restore ./src/*/*/Dependency.csproj
 
@@ -68,7 +68,7 @@ jobs:
 
     - name: Pack Dependency
       run: dotnet pack ./src/*/*/Dependency.csproj --no-restore -o ~/nuget  -c Release
-      
+
     - name: Push Packages
       if: ${{ github.event_name == 'release' }}
       run: dotnet nuget push "../../../nuget/*.nupkg" -s https://api.nuget.org/v3/index.json -k ${{ secrets.NuGetSourcePassword }} --skip-duplicate

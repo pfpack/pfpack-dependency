@@ -28,10 +28,10 @@ namespace PrimeFuncPack
             Func<T5, TResult5> mapFifth)
             =>
             new(
-                sp => sp.Pipe(firstResolver).Pipe(mapFirst),
-                sp => sp.Pipe(secondResolver).Pipe(mapSecond),
-                sp => sp.Pipe(thirdResolver).Pipe(mapThird),
-                sp => sp.Pipe(fourthResolver).Pipe(mapFourth),
-                sp => sp.Pipe(fifthResolver).Pipe(mapFifth));
+                sp => sp.InternalPipe(firstResolver).InternalPipe(mapFirst),
+                sp => sp.InternalPipe(secondResolver).InternalPipe(mapSecond),
+                sp => sp.InternalPipe(thirdResolver).InternalPipe(mapThird),
+                sp => sp.InternalPipe(fourthResolver).InternalPipe(mapFourth),
+                sp => sp.InternalPipe(fifthResolver).InternalPipe(mapFifth));
     }
 }

@@ -19,7 +19,7 @@ namespace PrimeFuncPack
             Func<IServiceProvider, T2, TResult2> mapSecond)
             =>
             new(
-                sp => sp.Pipe(firstResolver).Pipe(first => mapFirst.Invoke(sp, first)),
-                sp => sp.Pipe(secondResolver).Pipe(second => mapSecond.Invoke(sp, second)));
+                sp => sp.InternalPipe(firstResolver).InternalPipe(first => mapFirst.Invoke(sp, first)),
+                sp => sp.InternalPipe(secondResolver).InternalPipe(second => mapSecond.Invoke(sp, second)));
     }
 }

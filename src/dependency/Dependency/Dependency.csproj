@@ -1,18 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-    <Authors>Andrei Sergeev, Pavel Moskovoy</Authors>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Description>PrimeFuncPack: A Functional Programming Pack for .NET</Description>
+    <Authors>Andrei Sergeev, Pavel Moskovoy</Authors>
     <Copyright>Copyright © 2020-2021 Andrei Sergeev, Pavel Moskovoy</Copyright>
+    <Description>PrimeFuncPack Dependency is a framework for .NET providing a functional programming based technology to build consistent dependency trees validated in the compile time.</Description>
     <RootNamespace>PrimeFuncPack</RootNamespace>
     <AssemblyName>PrimeFuncPack.Dependency</AssemblyName>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,8 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="PrimeFuncPack.Dependency.Core" Version="1.2.0" />
-    <PackageReference Include="PrimeFuncPack.Dependency.ServiceProviderExtensions" Version="1.0.2" />
+    <PackageReference Include="PrimeFuncPack.Dependency.Core" Version="1.2.1" />
+    <PackageReference Include="PrimeFuncPack.Dependency.ServiceProviderExtensions" Version="1.0.3" />
   </ItemGroup>
 
 </Project>

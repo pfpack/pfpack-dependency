@@ -37,13 +37,13 @@ namespace PrimeFuncPack
             Func<TRest, TResultRest> mapRest)
             =>
             new(
-                sp => sp.Pipe(firstResolver).Pipe(mapFirst),
-                sp => sp.Pipe(secondResolver).Pipe(mapSecond),
-                sp => sp.Pipe(thirdResolver).Pipe(mapThird),
-                sp => sp.Pipe(fourthResolver).Pipe(mapFourth),
-                sp => sp.Pipe(fifthResolver).Pipe(mapFifth),
-                sp => sp.Pipe(sixthResolver).Pipe(mapSixth),
-                sp => sp.Pipe(seventhResolver).Pipe(mapSeventh),
-                sp => sp.Pipe(restResolver).Pipe(mapRest));
+                sp => sp.InternalPipe(firstResolver).InternalPipe(mapFirst),
+                sp => sp.InternalPipe(secondResolver).InternalPipe(mapSecond),
+                sp => sp.InternalPipe(thirdResolver).InternalPipe(mapThird),
+                sp => sp.InternalPipe(fourthResolver).InternalPipe(mapFourth),
+                sp => sp.InternalPipe(fifthResolver).InternalPipe(mapFifth),
+                sp => sp.InternalPipe(sixthResolver).InternalPipe(mapSixth),
+                sp => sp.InternalPipe(seventhResolver).InternalPipe(mapSeventh),
+                sp => sp.InternalPipe(restResolver).InternalPipe(mapRest));
     }
 }

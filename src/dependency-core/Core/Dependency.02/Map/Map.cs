@@ -19,7 +19,7 @@ namespace PrimeFuncPack
             Func<T2, TResult2> mapSecond)
             =>
             new(
-                sp => sp.Pipe(firstResolver).Pipe(mapFirst),
-                sp => sp.Pipe(secondResolver).Pipe(mapSecond));
+                sp => sp.InternalPipe(firstResolver).InternalPipe(mapFirst),
+                sp => sp.InternalPipe(secondResolver).InternalPipe(mapSecond));
     }
 }

@@ -31,11 +31,11 @@ namespace PrimeFuncPack
             Func<IServiceProvider, T6, TResult6> mapSixth)
             =>
             new(
-                sp => sp.Pipe(firstResolver).Pipe(first => mapFirst.Invoke(sp, first)),
-                sp => sp.Pipe(secondResolver).Pipe(second => mapSecond.Invoke(sp, second)),
-                sp => sp.Pipe(thirdResolver).Pipe(third => mapThird.Invoke(sp, third)),
-                sp => sp.Pipe(fourthResolver).Pipe(fourth => mapFourth.Invoke(sp, fourth)),
-                sp => sp.Pipe(fifthResolver).Pipe(fifth => mapFifth.Invoke(sp, fifth)),
-                sp => sp.Pipe(sixthResolver).Pipe(sixth => mapSixth.Invoke(sp, sixth)));
+                sp => sp.InternalPipe(firstResolver).InternalPipe(first => mapFirst.Invoke(sp, first)),
+                sp => sp.InternalPipe(secondResolver).InternalPipe(second => mapSecond.Invoke(sp, second)),
+                sp => sp.InternalPipe(thirdResolver).InternalPipe(third => mapThird.Invoke(sp, third)),
+                sp => sp.InternalPipe(fourthResolver).InternalPipe(fourth => mapFourth.Invoke(sp, fourth)),
+                sp => sp.InternalPipe(fifthResolver).InternalPipe(fifth => mapFifth.Invoke(sp, fifth)),
+                sp => sp.InternalPipe(sixthResolver).InternalPipe(sixth => mapSixth.Invoke(sp, sixth)));
     }
 }

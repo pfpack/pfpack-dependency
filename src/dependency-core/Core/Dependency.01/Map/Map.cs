@@ -16,6 +16,6 @@ namespace PrimeFuncPack
             Func<T, TResult> map)
             =>
             new(
-                sp => sp.Pipe(resolver).Pipe(map));
+                sp => sp.InternalPipe(resolver).InternalPipe(map));
     }
 }

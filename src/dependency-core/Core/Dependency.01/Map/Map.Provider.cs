@@ -16,6 +16,6 @@ namespace PrimeFuncPack
             Func<IServiceProvider, T, TResult> map)
             =>
             new(
-                sp => sp.Pipe(resolver).Pipe(value => map.Invoke(sp, value)));
+                sp => sp.InternalPipe(resolver).InternalPipe(value => map.Invoke(sp, value)));
     }
 }

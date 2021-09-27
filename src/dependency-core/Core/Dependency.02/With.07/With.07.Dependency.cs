@@ -18,10 +18,10 @@ namespace PrimeFuncPack
             new(
                 firstResolver,
                 secondResolver,
-                other.ToFirstResolver(),
-                other.ToSecondResolver(),
-                other.ToThirdResolver(),
-                other.ToFourthResolver(),
-                other.ToFifthResolver());
+                other.InternalToFirstResolver(),
+                other.InternalToSecondResolver(),
+                other.InternalToThirdResolver(),
+                other.InternalToFourthResolver(),
+                other.InternalToFifthResolver());
     }
 }

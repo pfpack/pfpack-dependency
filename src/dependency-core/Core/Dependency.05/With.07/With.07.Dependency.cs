@@ -21,7 +21,7 @@ namespace PrimeFuncPack
                 thirdResolver,
                 fourthResolver,
                 fifthResolver,
-                other.ToFirstResolver(),
-                other.ToSecondResolver());
+                other.InternalToFirstResolver(),
+                other.InternalToSecondResolver());
     }
 }

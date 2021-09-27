@@ -7,6 +7,8 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/pfpack/pfpack-dependency</PackageProjectUrl>
     <Authors>Andrei Sergeev, Pavel Moskovoy</Authors>
     <Copyright>Copyright © 2020-2021 Andrei Sergeev, Pavel Moskovoy</Copyright>
     <Description>PrimeFuncPack Dependency.Core is a core library for .NET providing a functional programming based technology to build consistent dependency trees validated in the compile time.</Description>
@@ -16,6 +18,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\..\..\docs\dependency-core\README.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
     <None Include="..\..\..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>

@@ -17,12 +17,12 @@ namespace PrimeFuncPack
             =>
             new(
                 resolver,
-                other.ToFirstResolver(),
-                other.ToSecondResolver(),
-                other.ToThirdResolver(),
-                other.ToFourthResolver(),
-                other.ToFifthResolver(),
-                other.ToSixthResolver(),
-                other.ToSeventhResolver());
+                other.InternalToFirstResolver(),
+                other.InternalToSecondResolver(),
+                other.InternalToThirdResolver(),
+                other.InternalToFourthResolver(),
+                other.InternalToFifthResolver(),
+                other.InternalToSixthResolver(),
+                other.InternalToSeventhResolver());
     }
 }

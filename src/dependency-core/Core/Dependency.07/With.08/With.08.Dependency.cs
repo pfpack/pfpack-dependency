@@ -23,6 +23,6 @@ namespace PrimeFuncPack
                 fifthResolver,
                 sixthResolver,
                 seventhResolver,
-                other.ToResolver());
+                other.InternalToResolver());
     }
 }

@@ -10,6 +10,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/pfpack/pfpack-dependency</PackageProjectUrl>
     <RepositoryUrl>https://github.com/pfpack/pfpack-dependency</RepositoryUrl>
+    <Company>pfpack</Company>
     <Authors>Andrei Sergeev, Pavel Moskovoy</Authors>
     <Copyright>Copyright © 2020-2021 Andrei Sergeev, Pavel Moskovoy</Copyright>
     <Description>PrimeFuncPack Dependency.ServiceProviderExtensions is a library for .NET providing useful extensions for the service provider.</Description>

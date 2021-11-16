@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <InvariantGlobalization>true</InvariantGlobalization>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -17,7 +17,7 @@
     <Description>PrimeFuncPack Dependency is a framework for .NET providing a functional programming based technology to build consistent dependency trees validated in the compile time.</Description>
     <RootNamespace>PrimeFuncPack</RootNamespace>
     <AssemblyName>PrimeFuncPack.Dependency</AssemblyName>
-    <Version>1.2.2-rc.1.0.1</Version>
+    <Version>2.0.0-preview.2.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,8 +32,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="PrimeFuncPack.Dependency.Core" Version="1.2.2-rc.1.0.1" />
-    <PackageReference Include="PrimeFuncPack.Dependency.ServiceProviderExtensions" Version="1.0.4" />
+    <PackageReference Include="PrimeFuncPack.Dependency.Core" Version="2.0.0-preview.2.1.0" />
+    <PackageReference Include="PrimeFuncPack.Dependency.ServiceProviderExtensions" Version="2.0.0-preview.1.0.0" />
   </ItemGroup>
 
 </Project>

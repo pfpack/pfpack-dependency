@@ -1,16 +1,13 @@
-#nullable enable
+namespace PrimeFuncPack;
 
-namespace PrimeFuncPack
+partial class Dependency<T>
 {
-    partial class Dependency<T>
-    {
-        public Dependency<T, T2, T3> With<T2, T3>(
-            T2 second,
-            T3 third)
-            =>
-            new(
-                resolver,
-                _ => second,
-                _ => third);
-    }
+    public Dependency<T, T2, T3> With<T2, T3>(
+        T2 second,
+        T3 third)
+        =>
+        new(
+            resolver,
+            _ => second,
+            _ => third);
 }

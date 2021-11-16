@@ -1,14 +1,11 @@
-#nullable enable
-
 using System;
 
-namespace PrimeFuncPack
+namespace PrimeFuncPack;
+
+partial class Dependency<T1, T2, T3>
 {
-    partial class Dependency<T1, T2, T3>
-    {
-        public T3 ResolveThird(
-            IServiceProvider serviceProvider)
-            =>
-            thirdResolver.Invoke(serviceProvider);
-    }
+    public T3 ResolveThird(
+        IServiceProvider serviceProvider)
+        =>
+        thirdResolver.Invoke(serviceProvider);
 }

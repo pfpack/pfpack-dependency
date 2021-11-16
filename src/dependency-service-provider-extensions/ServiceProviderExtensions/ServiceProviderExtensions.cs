@@ -1,8 +1,5 @@
-#nullable enable
+namespace PrimeFuncPack;
 
-namespace PrimeFuncPack
+public static partial class ServiceProviderExtensions
 {
-    public static partial class ServiceProviderExtensions
-    {
-    }
 }

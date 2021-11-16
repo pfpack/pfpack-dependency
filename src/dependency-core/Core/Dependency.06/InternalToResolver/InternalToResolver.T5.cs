@@ -1,13 +1,10 @@
-#nullable enable
-
 using System;
 
-namespace PrimeFuncPack
+namespace PrimeFuncPack;
+
+partial class Dependency<T1, T2, T3, T4, T5, T6>
 {
-    partial class Dependency<T1, T2, T3, T4, T5, T6>
-    {
-        internal Func<IServiceProvider, T5> InternalToFifthResolver()
-            =>
-            fifthResolver;
-    }
+    internal Func<IServiceProvider, T5> InternalToFifthResolver()
+        =>
+        fifthResolver;
 }

@@ -1,8 +1,5 @@
-#nullable enable
+namespace PrimeFuncPack;
 
-namespace PrimeFuncPack
+public static partial class Dependency
 {
-    public static partial class Dependency
-    {
-    }
 }

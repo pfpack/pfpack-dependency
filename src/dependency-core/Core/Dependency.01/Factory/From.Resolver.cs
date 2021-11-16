@@ -1,15 +1,12 @@
-#nullable enable
-
 using System;
 
-namespace PrimeFuncPack
+namespace PrimeFuncPack;
+
+partial class Dependency<T>
 {
-    partial class Dependency<T>
-    {
-        public static Dependency<T> From(
-            Func<IServiceProvider, T> single)
-            =>
-            new(
-                single ?? throw new ArgumentNullException(nameof(single)));
-    }
+    public static Dependency<T> From(
+        Func<IServiceProvider, T> single)
+        =>
+        new(
+            single ?? throw new ArgumentNullException(nameof(single)));
 }

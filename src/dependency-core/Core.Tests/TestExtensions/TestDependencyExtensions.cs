@@ -91,4 +91,4 @@ internal static class TestDependencyExtensions
             dependency.ResolveSixth(ServiceProvider),
             dependency.ResolveSeventh(ServiceProvider),
             dependency.ResolveRest(ServiceProvider));
-    }
+}

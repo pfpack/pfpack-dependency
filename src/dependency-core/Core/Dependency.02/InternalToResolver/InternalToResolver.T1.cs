@@ -1,13 +1,10 @@
-#nullable enable
-
 using System;
 
-namespace PrimeFuncPack
+namespace PrimeFuncPack;
+
+partial class Dependency<T1, T2>
 {
-    partial class Dependency<T1, T2>
-    {
-        internal Func<IServiceProvider, T1> InternalToFirstResolver()
-            =>
-            firstResolver;
-    }
+    internal Func<IServiceProvider, T1> InternalToFirstResolver()
+        =>
+        firstResolver;
 }

@@ -1,24 +1,21 @@
-#nullable enable
-
 using System;
 
-namespace PrimeFuncPack
+namespace PrimeFuncPack;
+
+partial class Dependency<T1, T2>
 {
-    partial class Dependency<T1, T2>
-    {
-        public Dependency<TResult> Fold<TResult>(
-            Func<IServiceProvider, T1, T2, TResult> fold)
-            =>
-            InnerFold(
-                fold ?? throw new ArgumentNullException(nameof(fold)));
-        
-        private Dependency<TResult> InnerFold<TResult>(
-            Func<IServiceProvider, T1, T2, TResult> fold)
-            =>
-            new(
-                sp => fold.Invoke(
-                    sp,
-                    firstResolver.Invoke(sp),
-                    secondResolver.Invoke(sp)));
-    }
+    public Dependency<TResult> Fold<TResult>(
+        Func<IServiceProvider, T1, T2, TResult> fold)
+        =>
+        InnerFold(
+            fold ?? throw new ArgumentNullException(nameof(fold)));
+
+    private Dependency<TResult> InnerFold<TResult>(
+        Func<IServiceProvider, T1, T2, TResult> fold)
+        =>
+        new(
+            sp => fold.Invoke(
+                sp,
+                firstResolver.Invoke(sp),
+                secondResolver.Invoke(sp)));
 }

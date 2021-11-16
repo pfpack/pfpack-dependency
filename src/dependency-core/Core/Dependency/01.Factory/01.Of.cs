@@ -1,13 +1,10 @@
-#nullable enable
+namespace PrimeFuncPack;
 
-namespace PrimeFuncPack
+partial class Dependency
 {
-    partial class Dependency
-    {
-        public static Dependency<T> Of<T>(
-            T single)
-            =>
-            Dependency<T>.InternalOf(
-                single);
-    }
+    public static Dependency<T> Of<T>(
+        T single)
+        =>
+        Dependency<T>.InternalOf(
+            single);
 }

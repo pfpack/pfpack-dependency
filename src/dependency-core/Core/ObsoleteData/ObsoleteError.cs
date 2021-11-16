@@ -1,9 +1,6 @@
-#nullable enable
+namespace PrimeFuncPack;
 
-namespace PrimeFuncPack
+internal static class ObsoleteError
 {
-    internal static class ObsoleteError
-    {
-        internal const bool DependencyCreate = false;
-    }
+    internal const bool DependencyCreate = false;
 }

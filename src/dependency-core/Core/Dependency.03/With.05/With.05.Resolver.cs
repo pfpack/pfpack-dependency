@@ -1,24 +1,21 @@
-#nullable enable
-
 using System;
 
-namespace PrimeFuncPack
-{
-    partial class Dependency<T1, T2, T3>
-    {
-        public Dependency<T1, T2, T3, T4, T5> With<T4, T5>(
-            Func<IServiceProvider, T4> fourth,
-            Func<IServiceProvider, T5> fifth)
-            =>
-            InnerWith(
-                fourth ?? throw new ArgumentNullException(nameof(fourth)),
-                fifth ?? throw new ArgumentNullException(nameof(fifth)));
+namespace PrimeFuncPack;
 
-        private Dependency<T1, T2, T3, T4, T5> InnerWith<T4, T5>(
-            Func<IServiceProvider, T4> fourthResolver,
-            Func<IServiceProvider, T5> fifthResolver)
-            =>
-            new(
-                firstResolver, secondResolver, thirdResolver, fourthResolver, fifthResolver);
-    }
+partial class Dependency<T1, T2, T3>
+{
+    public Dependency<T1, T2, T3, T4, T5> With<T4, T5>(
+        Func<IServiceProvider, T4> fourth,
+        Func<IServiceProvider, T5> fifth)
+        =>
+        InnerWith(
+            fourth ?? throw new ArgumentNullException(nameof(fourth)),
+            fifth ?? throw new ArgumentNullException(nameof(fifth)));
+
+    private Dependency<T1, T2, T3, T4, T5> InnerWith<T4, T5>(
+        Func<IServiceProvider, T4> fourthResolver,
+        Func<IServiceProvider, T5> fifthResolver)
+        =>
+        new(
+            firstResolver, secondResolver, thirdResolver, fourthResolver, fifthResolver);
 }

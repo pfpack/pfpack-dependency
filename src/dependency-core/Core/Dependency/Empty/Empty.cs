@@ -1,12 +1,9 @@
-#nullable enable
-
 using System;
 
-namespace PrimeFuncPack
+namespace PrimeFuncPack;
+
+partial class Dependency
 {
-    partial class Dependency
-    {
-        // TODO: Change to method Empty() in v2.0
-        public static Dependency<Unit> Empty => new(Unit.From);
-    }
+    // TODO: Change to method Empty() in v2.0
+    public static Dependency<Unit> Empty => new(Unit.From);
 }

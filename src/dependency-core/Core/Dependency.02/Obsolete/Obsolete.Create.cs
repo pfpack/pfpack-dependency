@@ -1,18 +1,15 @@
-#nullable enable
-
 using System;
 
-namespace PrimeFuncPack
+namespace PrimeFuncPack;
+
+partial class Dependency<T1, T2>
 {
-    partial class Dependency<T1, T2>
-    {
-        [Obsolete(ObsoleteMessage.DependencyCreate, ObsoleteError.DependencyCreate)]
-        public static Dependency<T1, T2> Create(
-            Func<IServiceProvider, T1> first,
-            Func<IServiceProvider, T2> second)
-            =>
-            new(
-                first ?? throw new ArgumentNullException(nameof(first)),
-                second ?? throw new ArgumentNullException(nameof(second)));
-    }
+    [Obsolete(ObsoleteMessage.DependencyCreate, ObsoleteError.DependencyCreate)]
+    public static Dependency<T1, T2> Create(
+        Func<IServiceProvider, T1> first,
+        Func<IServiceProvider, T2> second)
+        =>
+        new(
+            first ?? throw new ArgumentNullException(nameof(first)),
+            second ?? throw new ArgumentNullException(nameof(second)));
 }

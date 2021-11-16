@@ -1,25 +1,22 @@
-#nullable enable
-
 using System;
 
-namespace PrimeFuncPack
+namespace PrimeFuncPack;
+
+partial class ServiceProviderExtensions
 {
-    partial class ServiceProviderExtensions
+    public static T GetServiceOrThrow<T>(this IServiceProvider serviceProvider)
+        where T : notnull
+        =>
+        InnerGetServiceOrThrow<T>(
+            serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider)));
+
+    private static T InnerGetServiceOrThrow<T>(IServiceProvider serviceProvider)
+        where T : notnull
     {
-        public static T GetServiceOrThrow<T>(this IServiceProvider serviceProvider)
-            where T : notnull
-            =>
-            InnerGetServiceOrThrow<T>(
-                serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider)));
+        var service = serviceProvider.GetService(typeof(T));
 
-        private static T InnerGetServiceOrThrow<T>(IServiceProvider serviceProvider)
-            where T : notnull
-        {
-            var service = serviceProvider.GetService(typeof(T));
-
-            return service is not null
-                ? (T)service
-                : throw new InvalidOperationException($"A service of type {typeof(T)} cannot be resolved by the service provider.");
-        }
+        return service is not null
+            ? (T)service
+            : throw new InvalidOperationException($"A service of type {typeof(T)} cannot be resolved by the service provider.");
     }
 }

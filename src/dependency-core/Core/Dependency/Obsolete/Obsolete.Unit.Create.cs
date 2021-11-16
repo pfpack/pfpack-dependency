@@ -1,14 +1,11 @@
-#nullable enable
-
 using System;
 
-namespace PrimeFuncPack
+namespace PrimeFuncPack;
+
+partial class Dependency
 {
-    partial class Dependency
-    {
-        [Obsolete(ObsoleteMessage.DependencyCreateEmpty, ObsoleteError.DependencyCreate)]
-        public static Dependency<Unit> Create()
-            =>
-            new(Unit.From);
-    }
+    [Obsolete(ObsoleteMessage.DependencyCreateEmpty, ObsoleteError.DependencyCreate)]
+    public static Dependency<Unit> Create()
+        =>
+        new(Unit.From);
 }

@@ -1,25 +1,22 @@
-#nullable enable
-
 using System;
 
-namespace PrimeFuncPack
+namespace PrimeFuncPack;
+
+partial class ServiceProviderExtensions
 {
-    partial class ServiceProviderExtensions
+    public static Optional<T> GetServiceOrAbsent<T>(this IServiceProvider serviceProvider)
+        where T : notnull
+        =>
+        InnerGetServiceOrAbsent<T>(
+            serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider)));
+
+    private static Optional<T> InnerGetServiceOrAbsent<T>(IServiceProvider serviceProvider)
+        where T : notnull
     {
-        public static Optional<T> GetServiceOrAbsent<T>(this IServiceProvider serviceProvider)
-            where T : notnull
-            =>
-            InnerGetServiceOrAbsent<T>(
-                serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider)));
+        var service = serviceProvider.GetService(typeof(T));
 
-        private static Optional<T> InnerGetServiceOrAbsent<T>(IServiceProvider serviceProvider)
-            where T : notnull
-        {
-            var service = serviceProvider.GetService(typeof(T));
-
-            return service is not null
-                ? Optional<T>.Present((T)service)
-                : default;
-        }
+        return service is not null
+            ? Optional<T>.Present((T)service)
+            : default;
     }
 }

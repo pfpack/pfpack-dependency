@@ -1,42 +1,39 @@
-#nullable enable
-
 using System;
 
-namespace PrimeFuncPack
-{
-    partial class Dependency<T>
-    {
-        public Dependency<T, T2, T3, T4, T5, T6, T7> With<T2, T3, T4, T5, T6, T7>(
-            Func<T2> second,
-            Func<T3> third,
-            Func<T4> fourth,
-            Func<T5> fifth,
-            Func<T6> sixth,
-            Func<T7> seventh)
-            =>
-            InnerWith(
-                second ?? throw new ArgumentNullException(nameof(second)),
-                third ?? throw new ArgumentNullException(nameof(third)),
-                fourth ?? throw new ArgumentNullException(nameof(fourth)),
-                fifth ?? throw new ArgumentNullException(nameof(fifth)),
-                sixth ?? throw new ArgumentNullException(nameof(sixth)),
-                seventh ?? throw new ArgumentNullException(nameof(seventh)));
+namespace PrimeFuncPack;
 
-        private Dependency<T, T2, T3, T4, T5, T6, T7> InnerWith<T2, T3, T4, T5, T6, T7>(
-            Func<T2> second,
-            Func<T3> third,
-            Func<T4> fourth,
-            Func<T5> fifth,
-            Func<T6> sixth,
-            Func<T7> seventh)
-            =>
-            new(
-                resolver,
-                _ => second.Invoke(),
-                _ => third.Invoke(),
-                _ => fourth.Invoke(),
-                _ => fifth.Invoke(),
-                _ => sixth.Invoke(),
-                _ => seventh.Invoke());
-    }
+partial class Dependency<T>
+{
+    public Dependency<T, T2, T3, T4, T5, T6, T7> With<T2, T3, T4, T5, T6, T7>(
+        Func<T2> second,
+        Func<T3> third,
+        Func<T4> fourth,
+        Func<T5> fifth,
+        Func<T6> sixth,
+        Func<T7> seventh)
+        =>
+        InnerWith(
+            second ?? throw new ArgumentNullException(nameof(second)),
+            third ?? throw new ArgumentNullException(nameof(third)),
+            fourth ?? throw new ArgumentNullException(nameof(fourth)),
+            fifth ?? throw new ArgumentNullException(nameof(fifth)),
+            sixth ?? throw new ArgumentNullException(nameof(sixth)),
+            seventh ?? throw new ArgumentNullException(nameof(seventh)));
+
+    private Dependency<T, T2, T3, T4, T5, T6, T7> InnerWith<T2, T3, T4, T5, T6, T7>(
+        Func<T2> second,
+        Func<T3> third,
+        Func<T4> fourth,
+        Func<T5> fifth,
+        Func<T6> sixth,
+        Func<T7> seventh)
+        =>
+        new(
+            resolver,
+            _ => second.Invoke(),
+            _ => third.Invoke(),
+            _ => fourth.Invoke(),
+            _ => fifth.Invoke(),
+            _ => sixth.Invoke(),
+            _ => seventh.Invoke());
 }

@@ -17,7 +17,7 @@
     <Description>PrimeFuncPack Dependency.Core is a core library for .NET providing a functional programming based technology to build consistent dependency trees validated in the compile time.</Description>
     <RootNamespace>PrimeFuncPack</RootNamespace>
     <AssemblyName>PrimeFuncPack.Dependency.Core</AssemblyName>
-    <Version>2.0.0-preview.1.0.0</Version>
+    <Version>2.0.0-preview.2.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

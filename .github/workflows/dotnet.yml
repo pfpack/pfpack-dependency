@@ -2,14 +2,14 @@ name: .NET
 
 on:
   push:
-    branches: [ master, dev, feature/*, fix/*, release/* ]
+    branches: [ main, dev, dev/*, feature/*, fix/*, release/* ]
 
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
   release:
     types: [ published ]
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:

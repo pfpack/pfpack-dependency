@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace PrimeFuncPack;
 
@@ -21,9 +20,5 @@ internal sealed class InternalResolver<TDependency>
 
     internal TDependency Invoke(IServiceProvider serviceProvider)
         =>
-        IsDependency ? dependency : resolver.Invoke(serviceProvider);
-
-    [MemberNotNullWhen(true, nameof(dependency))]
-    [MemberNotNullWhen(false, nameof(resolver))]
-    private bool IsDependency => isDependency;
+        isDependency ? dependency! : resolver!.Invoke(serviceProvider);
 }

@@ -10,11 +10,11 @@
     <Authors>Andrei Sergeev, Pavel Moskovoy</Authors>
     <Copyright>Copyright © 2020-2021 Andrei Sergeev, Pavel Moskovoy</Copyright>
     <RootNamespace>PrimeFuncPack.Tests</RootNamespace>
-    <AssemblyName>PrimeFuncPack.Dependency.Tests</AssemblyName>
+    <AssemblyName>PrimeFuncPack.Dependency.Core.Tests</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\Core\Dependency.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

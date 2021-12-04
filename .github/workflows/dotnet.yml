@@ -46,19 +46,19 @@ jobs:
       run: dotnet test ./src/*/*/ServiceProviderExtensions.Tests.csproj --no-restore  -c Release
 
     - name: Restore Dependency.Core
-      run: dotnet restore ./src/*/*/Core.csproj
+      run: dotnet restore ./src/*/*/Dependency.Core.csproj
 
     - name: Build Dependency.Core
-      run: dotnet build ./src/*/*/Core.csproj --no-restore  -c Release
+      run: dotnet build ./src/*/*/Dependency.Core.csproj --no-restore  -c Release
 
     - name: Pack Dependency.Core
-      run: dotnet pack ./src/*/*/Core.csproj --no-restore -o ~/nuget  -c Release
+      run: dotnet pack ./src/*/*/Dependency.Core.csproj --no-restore -o ~/nuget  -c Release
 
     - name: Restore Dependency.Core.Tests
-      run: dotnet restore ./src/*/*/Core.Tests.csproj
+      run: dotnet restore ./src/*/*/Dependency.Core.Tests.csproj
 
     - name: Test Dependency.Core.Tests
-      run: dotnet test ./src/*/*/Core.Tests.csproj --no-restore  -c Release
+      run: dotnet test ./src/*/*/Dependency.Core.Tests.csproj --no-restore  -c Release
 
     - name: Restore Dependency
       run: dotnet restore ./src/*/*/Dependency.csproj

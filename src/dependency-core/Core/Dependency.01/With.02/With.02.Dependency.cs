@@ -15,5 +15,5 @@ partial class Dependency<T>
         =>
         new(
             resolver,
-            other.Resolve);
+            other.InternalToResolver());
 }

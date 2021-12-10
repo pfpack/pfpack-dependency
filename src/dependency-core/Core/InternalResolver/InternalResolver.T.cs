@@ -4,7 +4,7 @@ namespace PrimeFuncPack;
 
 internal sealed class InternalResolver<TDependency>
 {
-    private readonly bool isDependency;
+    private readonly bool isDependencyTag;
 
     private readonly TDependency? dependency;
 
@@ -12,7 +12,7 @@ internal sealed class InternalResolver<TDependency>
 
     internal InternalResolver(TDependency dependency)
         =>
-        (this.dependency, isDependency) = (dependency, true);
+        (this.dependency, isDependencyTag) = (dependency, true);
 
     internal InternalResolver(Func<IServiceProvider, TDependency> resolver)
         =>
@@ -20,5 +20,5 @@ internal sealed class InternalResolver<TDependency>
 
     internal TDependency Invoke(IServiceProvider serviceProvider)
         =>
-        isDependency ? dependency! : resolver!.Invoke(serviceProvider);
+        isDependencyTag ? dependency! : resolver!.Invoke(serviceProvider);
 }

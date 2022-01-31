@@ -13,11 +13,11 @@
     <RepositoryUrl>https://github.com/pfpack/pfpack-dependency</RepositoryUrl>
     <Company>pfpack</Company>
     <Authors>Andrei Sergeev, Pavel Moskovoy</Authors>
-    <Copyright>Copyright © 2020-2021 Andrei Sergeev, Pavel Moskovoy</Copyright>
+    <Copyright>Copyright © 2020-2022 Andrei Sergeev, Pavel Moskovoy</Copyright>
     <Description>PrimeFuncPack Dependency.Core is a core library for .NET providing a functional programming based technology to build consistent dependency trees validated in the compile time.</Description>
     <RootNamespace>PrimeFuncPack</RootNamespace>
     <AssemblyName>PrimeFuncPack.Dependency.Core</AssemblyName>
-    <Version>2.0.0</Version>
+    <Version>2.0.1-rc.1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="PrimeFuncPack.Core.Unit" Version="2.1.0" />
+    <PackageReference Include="PrimeFuncPack.Core.Unit" Version="2.1.2" />
   </ItemGroup>
 
 </Project>

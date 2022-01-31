@@ -16,7 +16,7 @@ partial class ServiceProviderExtensions
         var service = serviceProvider.GetService(typeof(T));
 
         return service is not null
-            ? Optional<T>.Present((T)service)
+            ? new((T)service)
             : default;
     }
 }

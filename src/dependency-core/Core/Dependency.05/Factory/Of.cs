@@ -9,20 +9,6 @@ partial class Dependency<T1, T2, T3, T4, T5>
         T4 fourth,
         T5 fifth)
         =>
-        InternalOf(
-            first, second, third, fourth, fifth);
-
-    internal static Dependency<T1, T2, T3, T4, T5> InternalOf(
-        T1 first,
-        T2 second,
-        T3 third,
-        T4 fourth,
-        T5 fifth)
-        =>
         new(
-            first,
-            second,
-            third,
-            fourth,
-            fifth);
+            first, second, third, fourth, fifth);
 }

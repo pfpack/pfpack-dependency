@@ -8,15 +8,7 @@ partial class Dependency<T1, T2>
         Func<T1> first,
         Func<T2> second)
         =>
-        InternalFrom(
+        new(
             first ?? throw new ArgumentNullException(nameof(first)),
             second ?? throw new ArgumentNullException(nameof(second)));
-
-    internal static Dependency<T1, T2> InternalFrom(
-        Func<T1> first,
-        Func<T2> second)
-        =>
-        new(
-            first,
-            second);
 }

@@ -46,9 +46,18 @@ internal sealed class InternalDependencyResolver<TDependency>
         =>
         tag switch
         {
-            InternalDependencyResolverTag.Instance => instance!,
-            InternalDependencyResolverTag.Factory => factory!.Invoke(),
-            InternalDependencyResolverTag.Resolver => resolver!.Invoke(serviceProvider),
+            InternalDependencyResolverTag.Instance
+            =>
+            instance!,
+
+            InternalDependencyResolverTag.Factory
+            =>
+            factory!.Invoke(),
+
+            InternalDependencyResolverTag.Resolver
+            =>
+            resolver!.Invoke(serviceProvider),
+
             _ => throw new InvalidOperationException("An unexpected tag value.")
         };
 }

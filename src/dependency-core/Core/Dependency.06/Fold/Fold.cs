@@ -13,12 +13,12 @@ partial class Dependency<T1, T2, T3, T4, T5, T6>
     private Dependency<TResult> InnerFold<TResult>(
         Func<T1, T2, T3, T4, T5, T6, TResult> fold)
         =>
-        new(
+        new(new(
             sp => fold.Invoke(
                 firstResolver.Invoke(sp),
                 secondResolver.Invoke(sp),
                 thirdResolver.Invoke(sp),
                 fourthResolver.Invoke(sp),
                 fifthResolver.Invoke(sp),
-                sixthResolver.Invoke(sp)));
+                sixthResolver.Invoke(sp))));
 }

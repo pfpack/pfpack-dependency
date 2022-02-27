@@ -12,5 +12,5 @@ partial class Dependency<T>
         T single)
         =>
         new(
-            _ => single);
+            single);
 }

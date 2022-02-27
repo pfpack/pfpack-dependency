@@ -1,34 +1,32 @@
-using System;
-
 namespace PrimeFuncPack;
 
 public sealed partial class Dependency<T1, T2, T3, T4, T5, T6, T7, TRest>
 {
-    private readonly Func<IServiceProvider, T1> firstResolver;
+    private readonly InternalDependencyResolver<T1> firstResolver;
 
-    private readonly Func<IServiceProvider, T2> secondResolver;
+    private readonly InternalDependencyResolver<T2> secondResolver;
 
-    private readonly Func<IServiceProvider, T3> thirdResolver;
+    private readonly InternalDependencyResolver<T3> thirdResolver;
 
-    private readonly Func<IServiceProvider, T4> fourthResolver;
+    private readonly InternalDependencyResolver<T4> fourthResolver;
 
-    private readonly Func<IServiceProvider, T5> fifthResolver;
+    private readonly InternalDependencyResolver<T5> fifthResolver;
 
-    private readonly Func<IServiceProvider, T6> sixthResolver;
+    private readonly InternalDependencyResolver<T6> sixthResolver;
 
-    private readonly Func<IServiceProvider, T7> seventhResolver;
+    private readonly InternalDependencyResolver<T7> seventhResolver;
 
-    private readonly Func<IServiceProvider, TRest> restResolver;
+    private readonly InternalDependencyResolver<TRest> restResolver;
 
     internal Dependency(
-        Func<IServiceProvider, T1> firstResolver,
-        Func<IServiceProvider, T2> secondResolver,
-        Func<IServiceProvider, T3> thirdResolver,
-        Func<IServiceProvider, T4> fourthResolver,
-        Func<IServiceProvider, T5> fifthResolver,
-        Func<IServiceProvider, T6> sixthResolver,
-        Func<IServiceProvider, T7> seventhResolver,
-        Func<IServiceProvider, TRest> restResolver)
+        InternalDependencyResolver<T1> firstResolver,
+        InternalDependencyResolver<T2> secondResolver,
+        InternalDependencyResolver<T3> thirdResolver,
+        InternalDependencyResolver<T4> fourthResolver,
+        InternalDependencyResolver<T5> fifthResolver,
+        InternalDependencyResolver<T6> sixthResolver,
+        InternalDependencyResolver<T7> seventhResolver,
+        InternalDependencyResolver<TRest> restResolver)
     {
         this.firstResolver = firstResolver;
         this.secondResolver = secondResolver;

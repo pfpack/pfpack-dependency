@@ -14,5 +14,5 @@ partial class Dependency<T>
         Func<T> single)
         =>
         new(
-            _ => single.Invoke());
+            single);
 }

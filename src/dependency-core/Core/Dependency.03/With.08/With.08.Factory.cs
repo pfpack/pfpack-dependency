@@ -29,9 +29,9 @@ partial class Dependency<T1, T2, T3>
             firstResolver,
             secondResolver,
             thirdResolver,
-            _ => fourth.Invoke(),
-            _ => fifth.Invoke(),
-            _ => sixth.Invoke(),
-            _ => seventh.Invoke(),
-            _ => rest.Invoke());
+            fourth,
+            fifth,
+            sixth,
+            seventh,
+            rest);
 }

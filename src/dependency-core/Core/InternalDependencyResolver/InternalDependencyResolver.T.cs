@@ -12,17 +12,17 @@ internal sealed class InternalDependencyResolver<TDependency>
 
     private readonly Func<IServiceProvider, TDependency>? resolver;
 
-    private InternalDependencyResolver(
+    public InternalDependencyResolver(
         TDependency instance)
         =>
         (this.instance, tag) = (instance, InternalDependencyResolverTag.Instance);
 
-    private InternalDependencyResolver(
+    public InternalDependencyResolver(
         Func<TDependency> factory)
         =>
         (this.factory, tag) = (factory, InternalDependencyResolverTag.Factory);
 
-    private InternalDependencyResolver(
+    public InternalDependencyResolver(
         Func<IServiceProvider, TDependency> resolver)
         =>
         (this.resolver, tag) = (resolver, InternalDependencyResolverTag.Resolver);

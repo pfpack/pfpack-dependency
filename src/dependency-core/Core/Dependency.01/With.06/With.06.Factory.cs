@@ -27,9 +27,9 @@ partial class Dependency<T>
         =>
         new(
             resolver,
-            _ => second.Invoke(),
-            _ => third.Invoke(),
-            _ => fourth.Invoke(),
-            _ => fifth.Invoke(),
-            _ => sixth.Invoke());
+            second,
+            third,
+            fourth,
+            fifth,
+            sixth);
 }

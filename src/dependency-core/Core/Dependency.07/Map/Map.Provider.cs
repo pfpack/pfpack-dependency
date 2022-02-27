@@ -32,11 +32,11 @@ partial class Dependency<T1, T2, T3, T4, T5, T6, T7>
         Func<IServiceProvider, T7, TResult7> mapSeventh)
         =>
         new(
-            sp => sp.InternalPipe(firstResolver).InternalPipe(first => mapFirst.Invoke(sp, first)),
-            sp => sp.InternalPipe(secondResolver).InternalPipe(second => mapSecond.Invoke(sp, second)),
-            sp => sp.InternalPipe(thirdResolver).InternalPipe(third => mapThird.Invoke(sp, third)),
-            sp => sp.InternalPipe(fourthResolver).InternalPipe(fourth => mapFourth.Invoke(sp, fourth)),
-            sp => sp.InternalPipe(fifthResolver).InternalPipe(fifth => mapFifth.Invoke(sp, fifth)),
-            sp => sp.InternalPipe(sixthResolver).InternalPipe(sixth => mapSixth.Invoke(sp, sixth)),
-            sp => sp.InternalPipe(seventhResolver).InternalPipe(seventh => mapSeventh.Invoke(sp, seventh)));
+            new(sp => sp.InternalPipe(firstResolver.Invoke).InternalPipe(first => mapFirst.Invoke(sp, first))),
+            new(sp => sp.InternalPipe(secondResolver.Invoke).InternalPipe(second => mapSecond.Invoke(sp, second))),
+            new(sp => sp.InternalPipe(thirdResolver.Invoke).InternalPipe(third => mapThird.Invoke(sp, third))),
+            new(sp => sp.InternalPipe(fourthResolver.Invoke).InternalPipe(fourth => mapFourth.Invoke(sp, fourth))),
+            new(sp => sp.InternalPipe(fifthResolver.Invoke).InternalPipe(fifth => mapFifth.Invoke(sp, fifth))),
+            new(sp => sp.InternalPipe(sixthResolver.Invoke).InternalPipe(sixth => mapSixth.Invoke(sp, sixth))),
+            new(sp => sp.InternalPipe(seventhResolver.Invoke).InternalPipe(seventh => mapSeventh.Invoke(sp, seventh))));
 }

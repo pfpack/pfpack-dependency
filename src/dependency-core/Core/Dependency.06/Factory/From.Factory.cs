@@ -29,10 +29,10 @@ partial class Dependency<T1, T2, T3, T4, T5, T6>
         Func<T6> sixth)
         =>
         new(
-            _ => first.Invoke(),
-            _ => second.Invoke(),
-            _ => third.Invoke(),
-            _ => fourth.Invoke(),
-            _ => fifth.Invoke(),
-            _ => sixth.Invoke());
+            first,
+            second,
+            third,
+            fourth,
+            fifth,
+            sixth);
 }

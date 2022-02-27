@@ -8,5 +8,5 @@ partial class Dependency<T1, T2>
         new(
             firstResolver,
             secondResolver,
-            _ => third);
+            third);
 }

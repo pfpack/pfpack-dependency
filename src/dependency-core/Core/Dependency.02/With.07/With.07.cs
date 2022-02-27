@@ -12,9 +12,9 @@ partial class Dependency<T1, T2>
         new(
             firstResolver,
             secondResolver,
-            _ => third,
-            _ => fourth,
-            _ => fifth,
-            _ => sixth,
-            _ => seventh);
+            third,
+            fourth,
+            fifth,
+            sixth,
+            seventh);
 }

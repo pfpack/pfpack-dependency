@@ -22,10 +22,10 @@ partial class Dependency<T1, T2, T3, T4, T5, T6>
         T6 sixth)
         =>
         new(
-            _ => first,
-            _ => second,
-            _ => third,
-            _ => fourth,
-            _ => fifth,
-            _ => sixth);
+            first,
+            second,
+            third,
+            fourth,
+            fifth,
+            sixth);
 }

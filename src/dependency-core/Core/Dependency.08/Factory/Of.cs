@@ -26,12 +26,12 @@ partial class Dependency<T1, T2, T3, T4, T5, T6, T7, TRest>
         TRest rest)
         =>
         new(
-            _ => first,
-            _ => second,
-            _ => third,
-            _ => fourth,
-            _ => fifth,
-            _ => sixth,
-            _ => seventh,
-            _ => rest);
+            first,
+            second,
+            third,
+            fourth,
+            fifth,
+            sixth,
+            seventh,
+            rest);
 }

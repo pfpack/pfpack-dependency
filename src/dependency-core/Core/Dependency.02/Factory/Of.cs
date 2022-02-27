@@ -14,6 +14,6 @@ partial class Dependency<T1, T2>
         T2 second)
         =>
         new(
-            _ => first,
-            _ => second);
+            first,
+            second);
 }

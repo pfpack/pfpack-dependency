@@ -20,7 +20,7 @@ partial class Dependency<T1, T2, T3>
         Func<T3> third)
         =>
         new(
-            _ => first.Invoke(),
-            _ => second.Invoke(),
-            _ => third.Invoke());
+            first,
+            second,
+            third);
 }

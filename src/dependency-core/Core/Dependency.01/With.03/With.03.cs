@@ -8,6 +8,6 @@ partial class Dependency<T>
         =>
         new(
             resolver,
-            _ => second,
-            _ => third);
+            second,
+            third);
 }

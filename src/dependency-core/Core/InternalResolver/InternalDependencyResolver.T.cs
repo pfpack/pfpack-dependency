@@ -31,6 +31,6 @@ internal sealed class InternalDependencyResolver<TDependency>
             InternalDependencyResolverTag.Instance => instance!,
             InternalDependencyResolverTag.Factory => factory!.Invoke(),
             InternalDependencyResolverTag.Resolver => resolver!.Invoke(serviceProvider),
-            _ => throw new InvalidOperationException("An unexpected tag value")
+            _ => throw new InvalidOperationException("An unexpected tag value.")
         };
 }

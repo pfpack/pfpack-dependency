@@ -12,19 +12,19 @@ internal sealed class InternalDependencyResolver<TDependency>
 
     private readonly Func<IServiceProvider, TDependency>? resolver;
 
-    internal InternalDependencyResolver(TDependency instance)
+    public InternalDependencyResolver(TDependency instance)
         =>
         (this.instance, tag) = (instance, InternalDependencyResolverTag.Instance);
 
-    internal InternalDependencyResolver(Func<TDependency> factory)
+    public InternalDependencyResolver(Func<TDependency> factory)
         =>
         (this.factory, tag) = (factory, InternalDependencyResolverTag.Factory);
 
-    internal InternalDependencyResolver(Func<IServiceProvider, TDependency> resolver)
+    public InternalDependencyResolver(Func<IServiceProvider, TDependency> resolver)
         =>
         (this.resolver, tag) = (resolver, InternalDependencyResolverTag.Resolver);
 
-    internal TDependency Invoke(IServiceProvider serviceProvider)
+    public TDependency Invoke(IServiceProvider serviceProvider)
         =>
         tag switch
         {
@@ -33,4 +33,16 @@ internal sealed class InternalDependencyResolver<TDependency>
             InternalDependencyResolverTag.Resolver => resolver!.Invoke(serviceProvider),
             _ => throw new InvalidOperationException("An unexpected tag value.")
         };
+
+    public static implicit operator InternalDependencyResolver<TDependency>(TDependency instance)
+        =>
+        new(instance);
+
+    public static implicit operator InternalDependencyResolver<TDependency>(Func<TDependency> factory)
+        =>
+        new(factory);
+
+    public static implicit operator InternalDependencyResolver<TDependency>(Func<IServiceProvider, TDependency> resolver)
+        =>
+        new(resolver);
 }

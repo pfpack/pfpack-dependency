@@ -20,7 +20,7 @@ partial class Dependency<T1, T2, T3>
         Func<T3, TResult3> mapThird)
         =>
         new(
-            new(sp => sp.InternalPipe(firstResolver.Invoke).InternalPipe(mapFirst)),
-            new(sp => sp.InternalPipe(secondResolver.Invoke).InternalPipe(mapSecond)),
-            new(sp => sp.InternalPipe(thirdResolver.Invoke).InternalPipe(mapThird)));
+            new(sp => sp.InternalResolveThenMap(firstResolver.Invoke, mapFirst)),
+            new(sp => sp.InternalResolveThenMap(secondResolver.Invoke, mapSecond)),
+            new(sp => sp.InternalResolveThenMap(thirdResolver.Invoke, mapThird)));
 }

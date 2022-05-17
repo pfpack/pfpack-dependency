@@ -11,9 +11,9 @@ partial class Dependency<T>
         =>
         new(
             resolver,
-            _ => second,
-            _ => third,
-            _ => fourth,
-            _ => fifth,
-            _ => sixth);
+            second,
+            third,
+            fourth,
+            fifth,
+            sixth);
 }

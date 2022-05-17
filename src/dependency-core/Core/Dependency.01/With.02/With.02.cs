@@ -7,5 +7,5 @@ partial class Dependency<T>
         =>
         new(
             resolver,
-            _ => second);
+            second);
 }

@@ -33,11 +33,11 @@ partial class Dependency<T>
         =>
         new(
             resolver,
-            _ => second.Invoke(),
-            _ => third.Invoke(),
-            _ => fourth.Invoke(),
-            _ => fifth.Invoke(),
-            _ => sixth.Invoke(),
-            _ => seventh.Invoke(),
-            _ => rest.Invoke());
+            second,
+            third,
+            fourth,
+            fifth,
+            sixth,
+            seventh,
+            rest);
 }

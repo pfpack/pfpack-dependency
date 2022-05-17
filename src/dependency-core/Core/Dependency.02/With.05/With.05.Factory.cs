@@ -22,7 +22,7 @@ partial class Dependency<T1, T2>
         new(
             firstResolver,
             secondResolver,
-            _ => third.Invoke(),
-            _ => fourth.Invoke(),
-            _ => fifth.Invoke());
+            third,
+            fourth,
+            fifth);
 }

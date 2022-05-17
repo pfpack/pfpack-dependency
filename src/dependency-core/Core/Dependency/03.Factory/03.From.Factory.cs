@@ -9,7 +9,7 @@ partial class Dependency
         Func<T2> second,
         Func<T3> third)
         =>
-        Dependency<T1, T2, T3>.InternalFrom(
+        new(
             first ?? throw new ArgumentNullException(nameof(first)),
             second ?? throw new ArgumentNullException(nameof(second)),
             third ?? throw new ArgumentNullException(nameof(third)));

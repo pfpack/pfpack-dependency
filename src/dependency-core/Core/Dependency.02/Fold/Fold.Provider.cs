@@ -13,9 +13,9 @@ partial class Dependency<T1, T2>
     private Dependency<TResult> InnerFold<TResult>(
         Func<IServiceProvider, T1, T2, TResult> fold)
         =>
-        new(
+        new(new(
             sp => fold.Invoke(
                 sp,
                 firstResolver.Invoke(sp),
-                secondResolver.Invoke(sp)));
+                secondResolver.Invoke(sp))));
 }

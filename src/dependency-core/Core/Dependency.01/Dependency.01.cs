@@ -1,13 +1,11 @@
-using System;
-
 namespace PrimeFuncPack;
 
 public sealed partial class Dependency<T>
 {
-    private readonly Func<IServiceProvider, T> resolver;
+    private readonly InternalDependencyResolver<T> resolver;
 
     internal Dependency(
-        Func<IServiceProvider, T> resolver)
+        InternalDependencyResolver<T> resolver)
         =>
         this.resolver = resolver;
 }

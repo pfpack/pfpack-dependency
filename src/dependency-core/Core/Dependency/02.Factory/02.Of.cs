@@ -6,6 +6,6 @@ partial class Dependency
         T1 first,
         T2 second)
         =>
-        Dependency<T1, T2>.InternalOf(
+        new(
             first, second);
 }

@@ -12,6 +12,6 @@ partial class Dependency<T1, T2, T3, T4, T5>
             thirdResolver,
             fourthResolver,
             fifthResolver,
-            _ => sixth,
-            _ => seventh);
+            sixth,
+            seventh);
 }

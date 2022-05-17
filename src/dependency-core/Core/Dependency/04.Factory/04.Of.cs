@@ -8,6 +8,6 @@ partial class Dependency
         T3 third,
         T4 fourth)
         =>
-        Dependency<T1, T2, T3, T4>.InternalOf(
+        new(
             first, second, third, fourth);
 }

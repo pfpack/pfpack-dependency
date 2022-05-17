@@ -26,9 +26,9 @@ partial class Dependency<T1, T2, T3, T4, T5>
         Func<T5, TResult5> mapFifth)
         =>
         new(
-            sp => sp.InternalPipe(firstResolver).InternalPipe(mapFirst),
-            sp => sp.InternalPipe(secondResolver).InternalPipe(mapSecond),
-            sp => sp.InternalPipe(thirdResolver).InternalPipe(mapThird),
-            sp => sp.InternalPipe(fourthResolver).InternalPipe(mapFourth),
-            sp => sp.InternalPipe(fifthResolver).InternalPipe(mapFifth));
+            new(sp => sp.InternalResolveThenMap(firstResolver.Invoke, mapFirst)),
+            new(sp => sp.InternalResolveThenMap(secondResolver.Invoke, mapSecond)),
+            new(sp => sp.InternalResolveThenMap(thirdResolver.Invoke, mapThird)),
+            new(sp => sp.InternalResolveThenMap(fourthResolver.Invoke, mapFourth)),
+            new(sp => sp.InternalResolveThenMap(fifthResolver.Invoke, mapFifth)));
 }

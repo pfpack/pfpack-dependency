@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <InvariantGlobalization>true</InvariantGlobalization>
@@ -13,11 +13,11 @@
     <RepositoryUrl>https://github.com/pfpack/pfpack-dependency</RepositoryUrl>
     <Company>pfpack</Company>
     <Authors>Andrei Sergeev, Pavel Moskovoy</Authors>
-    <Copyright>Copyright © 2020-2022 Andrei Sergeev, Pavel Moskovoy</Copyright>
+    <Copyright>Copyright © 2020-2023 Andrei Sergeev, Pavel Moskovoy</Copyright>
     <Description>PrimeFuncPack Dependency.ServiceProviderExtensions is a library for .NET providing useful extensions for the service provider.</Description>
     <RootNamespace>PrimeFuncPack</RootNamespace>
     <AssemblyName>PrimeFuncPack.Dependency.ServiceProviderExtensions</AssemblyName>
-    <Version>2.0.2</Version>
+    <Version>2.1.0-rc.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="PrimeFuncPack.Core.Optional" Version="2.0.1" />
+    <PackageReference Include="PrimeFuncPack.Core.Optional" Version="2.1.0" />
   </ItemGroup>
 
 </Project>

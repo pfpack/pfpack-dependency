@@ -10,7 +10,7 @@ partial class TwoDependencyTest
     [InlineData(EmptyString)]
     [InlineData(SomeString)]
     public void WithThree_ExpectResolvedValuesAreEqualToSourceAndOther(
-        string lastValue)
+        string? lastValue)
     {
         var firstSource = PlusFifteenIdRefType;
         var secondSource = decimal.MinusOne;

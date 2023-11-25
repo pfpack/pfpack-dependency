@@ -10,7 +10,7 @@ partial class OneDependencyTest
     [InlineData(EmptyString)]
     [InlineData(SomeString)]
     public void WithFive_ExpectResolvedValuesAreEqualToSourceAndOther(
-        string lastValue)
+        string? lastValue)
     {
         var sourceValue = new { Value = decimal.MaxValue };
         var source = Dependency.From(_ => sourceValue);

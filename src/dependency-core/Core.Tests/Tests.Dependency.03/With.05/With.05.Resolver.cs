@@ -43,7 +43,7 @@ partial class ThreeDependencyTest
     [InlineData(WhiteSpaceString)]
     [InlineData(UpperSomeString)]
     public void WithTwoResolvers_OthersAreNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-        string lastValue)
+        string? lastValue)
     {
         var firstSource = PlusFifteenIdLowerSomeStringNameRecord;
         var secondSource = byte.MaxValue;

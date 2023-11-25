@@ -24,7 +24,7 @@ partial class ThreeDependencyTest
     [InlineData(EmptyString)]
     [InlineData(SomeString)]
     public void WithOneFactory_FourthIsNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-        string fourthValue)
+        string? fourthValue)
     {
         var firstSource = LowerSomeTextStructType;
         var secondSource = MinusFifteenIdRefType;

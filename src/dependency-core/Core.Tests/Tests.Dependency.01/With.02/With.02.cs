@@ -10,7 +10,7 @@ partial class OneDependencyTest
     [InlineData(EmptyString)]
     [InlineData(SomeString)]
     public void WithOne_ExpectResolvedValuesAreEqualToSourceAndOther(
-        string secondValue)
+        string? secondValue)
     {
         var sourceValue = PlusFifteenIdRefType;
         var source = Dependency.From(_ => sourceValue);

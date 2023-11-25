@@ -172,7 +172,7 @@ partial class DependencyTest
     [InlineData(EmptyString)]
     [InlineData(SomeString)]
     public void From_Factory_07_FactoriesAreNotNull_ExpectResolvedValuesAreEqualToSource(
-        string sourceSeventh)
+        string? sourceSeventh)
     {
         var sourceFirst = PlusFifteenIdRefType;
         var sourceSecond = long.MaxValue;

@@ -2,7 +2,7 @@ name: .NET
 
 on:
   push:
-    branches: [ main, dev, dev/*, feature/*, fix/*, release/* ]
+    branches: [ main, dev, feature/*, fix/*, release/* ]
 
   pull_request:
     branches: [ main ]
@@ -17,18 +17,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
-        include-prerelease: false
+        dotnet-version: |
+            6.0.x
+            7.0.x
+            8.0.x
+
+    # Create Local NuGet Source
 
     - name: Create Local NuGet Directory
       run: mkdir ~/nuget
 
     - name: Add Local Nuget Source
       run: dotnet nuget add source ~/nuget
+
+     # ServiceProviderExtensions
 
     - name: Restore Dependency.ServiceProviderExtensions
       run: dotnet restore ./src/*/*/ServiceProviderExtensions.csproj
@@ -45,6 +51,8 @@ jobs:
     - name: Test Dependency.ServiceProviderExtensions.Tests
       run: dotnet test ./src/*/*/ServiceProviderExtensions.Tests.csproj --no-restore  -c Release
 
+    # Dependency.Core
+
     - name: Restore Dependency.Core
       run: dotnet restore ./src/*/*/Dependency.Core.csproj
 
@@ -60,6 +68,8 @@ jobs:
     - name: Test Dependency.Core.Tests
       run: dotnet test ./src/*/*/Dependency.Core.Tests.csproj --no-restore  -c Release
 
+    # Dependency
+
     - name: Restore Dependency
       run: dotnet restore ./src/*/*/Dependency.csproj
 
@@ -69,6 +79,12 @@ jobs:
     - name: Pack Dependency
       run: dotnet pack ./src/*/*/Dependency.csproj --no-restore -o ~/nuget  -c Release
 
+      # Push
+
     - name: Push Packages
       if: ${{ github.event_name == 'release' }}
-      run: dotnet nuget push "../../../nuget/*.nupkg" -s https://api.nuget.org/v3/index.json -k ${{ secrets.NuGetSourcePassword }} --skip-duplicate
+      run: >
+        dotnet nuget push "../../../nuget/*.nupkg"
+        -s https://api.nuget.org/v3/index.json
+        -k ${{ secrets.NuGetSourcePassword }}
+        --skip-duplicate

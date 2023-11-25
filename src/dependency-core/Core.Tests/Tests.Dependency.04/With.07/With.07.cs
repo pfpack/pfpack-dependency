@@ -10,7 +10,7 @@ partial class FourDependencyTest
     [InlineData(EmptyString)]
     [InlineData(SomeString)]
     public void WithThree_ExpectResolvedValuesAreEqualToSourceAndOther(
-        string lastValue)
+        string? lastValue)
     {
         var firstSource = TabString;
         var secondSource = MinusFifteenIdNullNameRecord;

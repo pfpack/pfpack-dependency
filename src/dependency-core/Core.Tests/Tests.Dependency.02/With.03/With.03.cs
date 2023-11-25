@@ -10,7 +10,7 @@ partial class TwoDependencyTest
     [InlineData(EmptyString)]
     [InlineData(SomeString)]
     public void WithOne_ExpectResolvedValuesAreEqualToSourceAndOther(
-        string thirdValue)
+        string? thirdValue)
     {
         var firstSource = SomeTextStructType;
         var secondSource = PlusFifteenIdSomeStringNameRecord;

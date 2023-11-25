@@ -92,7 +92,7 @@ partial class TwoDependencyTest
     [InlineData(EmptyString)]
     [InlineData(SomeString)]
     public void WithFourResolvers_OthersAreNotNull_ExpectResolvedValuesAreEqualToSourceAndOther(
-        string lastValue)
+        string? lastValue)
     {
         var firstSource = PlusFifteenIdLowerSomeStringNameRecord;
         var secondSource = MinusFifteenIdRefType;

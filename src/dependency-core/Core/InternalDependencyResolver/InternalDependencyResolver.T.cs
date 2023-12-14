@@ -4,7 +4,7 @@ namespace PrimeFuncPack;
 
 internal sealed partial class InternalDependencyResolver<TDependency>
 {
-    private readonly InternalDependencyResolverTag tag;
+    private readonly Tag tag;
 
     private readonly TDependency? instance;
 

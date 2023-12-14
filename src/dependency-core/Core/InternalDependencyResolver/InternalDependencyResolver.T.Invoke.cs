@@ -6,17 +6,11 @@ partial class InternalDependencyResolver<TDependency>
 {
     public TDependency Invoke(IServiceProvider serviceProvider) => tag switch
     {
-        InternalDependencyResolverTag.Instance
-        =>
-        instance!,
+        Tag.Instance => instance!,
 
-        InternalDependencyResolverTag.Factory
-        =>
-        factory!.Invoke(),
+        Tag.Factory => factory!.Invoke(),
 
-        InternalDependencyResolverTag.Resolver
-        =>
-        resolver!.Invoke(serviceProvider),
+        Tag.Resolver => resolver!.Invoke(serviceProvider),
 
         _ => throw new InvalidOperationException("An unexpected tag value.")
     };

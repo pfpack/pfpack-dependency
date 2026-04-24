@@ -1,19 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Moq;
+using Xunit;
 
 namespace PrimeFuncPack.Tests;
 
 internal static class ServiceProviderTestSource
 {
-    public static IEnumerable<object?[]> NullableProviders
+    public static TheoryData<IServiceProvider> NullableProviders
         =>
-        new[]
+        new()
         {
-            null,
+            null!,
             Mock.Of<IServiceProvider>()
-        }
-        .Select(
-            sp => new object?[] { sp });
+        };
 }

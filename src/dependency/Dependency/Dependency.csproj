@@ -1,11 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <InvariantGlobalization>true</InvariantGlobalization>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>$(NoWarn);IDE0130</NoWarn>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -13,11 +14,11 @@
     <RepositoryUrl>https://github.com/pfpack/pfpack-dependency</RepositoryUrl>
     <Company>pfpack</Company>
     <Authors>Andrei Sergeev, Pavel Moskovoy</Authors>
-    <Copyright>Copyright © 2020-2023 Andrei Sergeev, Pavel Moskovoy</Copyright>
+    <Copyright>Copyright © 2020-2026 Andrei Sergeev, Pavel Moskovoy</Copyright>
     <Description>PrimeFuncPack Dependency is a framework for .NET providing a functional programming based technology to build consistent dependency trees validated in the compile time.</Description>
     <RootNamespace>PrimeFuncPack</RootNamespace>
     <AssemblyName>PrimeFuncPack.Dependency</AssemblyName>
-    <Version>2.1.0</Version>
+    <Version>2.2.0-preview.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,8 +33,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="PrimeFuncPack.Dependency.Core" Version="2.1.0" />
-    <PackageReference Include="PrimeFuncPack.Dependency.ServiceProviderExtensions" Version="2.1.0" />
+    <ProjectReference Include="../../dependency-core/Core/Dependency.Core.csproj" />
+    <ProjectReference Include="../../dependency-service-provider-extensions/ServiceProviderExtensions/ServiceProviderExtensions.csproj" />
   </ItemGroup>
 
 </Project>

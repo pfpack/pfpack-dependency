@@ -1,50 +1,31 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using PrimeFuncPack.UnitTest;
+using Xunit;
 using static PrimeFuncPack.UnitTest.TestData;
 
 namespace PrimeFuncPack.Tests;
 
 internal static class TestEntitySource
 {
-    public static IEnumerable<object?[]> RefTypes
+    public static TheoryData<RefType> RefTypes
         =>
-        new[]
-        {
+        [
             PlusFifteenIdRefType,
             MinusFifteenIdRefType,
-            null
-        }
-        .ToNullableTestSourceValues();
+            new(null!)
+        ];
 
-    public static IEnumerable<object?[]> RecordTypes
+    public static TheoryData<RecordType> RecordTypes
         =>
-        new[]
-        {
+        [
             PlusFifteenIdSomeStringNameRecord,
             ZeroIdNullNameRecord,
-            null
-        }
-        .ToNullableTestSourceValues();
+            new(null!)
+        ];
 
-    public static IEnumerable<object[]> StructTypes
+    public static TheoryData<StructType> StructTypes
         =>
-        new[]
-        {
+        [
             SomeTextStructType,
-            default
-        }
-        .ToTestSourceValues();
-
-    private static IEnumerable<object[]> ToTestSourceValues<T>(
-        this IEnumerable<T> source)
-        where T : notnull
-        =>
-        source.Select(
-            value => new object[] { value });
-
-    private static IEnumerable<object?[]> ToNullableTestSourceValues<T>(
-        this IEnumerable<T> source)
-        =>
-        source.Select(
-            value => new object?[] { value });
+            new(default)
+        ];
 }

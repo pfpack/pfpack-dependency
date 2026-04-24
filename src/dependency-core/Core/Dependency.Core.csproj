@@ -36,8 +36,4 @@
     <PackageReference Include="PrimeFuncPack.Core.Unit" Version="4.0.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dependency/Pipe/" />
-  </ItemGroup>
-
 </Project>

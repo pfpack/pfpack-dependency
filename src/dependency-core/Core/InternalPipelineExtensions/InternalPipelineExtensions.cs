@@ -1,4 +1,6 @@
-namespace System;
+using System;
+
+namespace PrimeFuncPack;
 
 internal static class InternalPipelineExtensions
 {

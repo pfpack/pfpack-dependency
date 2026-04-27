@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/.sln/">
+    <File Path="./.github/workflows/dotnet.yml" />
+    <File Path="./LICENSE" />
+    <File Path="./.gitignore" />
+    <File Path="./README.md" />
+  </Folder>
+  <Folder Name="/dependency-core/">
+    <Project Path="src/dependency-core/Core.Tests/Dependency.Core.Tests.csproj" />
+    <Project Path="src/dependency-core/Core/Dependency.Core.csproj" />
+  </Folder>
+  <Folder Name="/dependency-service-provider-extensions/">
+    <Project Path="src/dependency-service-provider-extensions/ServiceProviderExtensions.Tests/ServiceProviderExtensions.Tests.csproj" />
+    <Project Path="src/dependency-service-provider-extensions/ServiceProviderExtensions/ServiceProviderExtensions.csproj" />
+  </Folder>
+  <Folder Name="/dependency/">
+    <Project Path="src/dependency/Dependency/Dependency.csproj" />
+  </Folder>
+</Solution>

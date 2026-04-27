@@ -6,7 +6,7 @@ namespace PrimeFuncPack.Tests;
 partial class DependencyTest
 {
     [Fact]
-    [Obsolete("This test is obsolete and will be removed in future versions")]
+    [Obsolete("This test is obsolete and will be removed in future versions.")]
     public void Empty_ExpectResolvedValueIsUnit()
     {
         var actual = Dependency.Empty();
@@ -16,7 +16,7 @@ partial class DependencyTest
     }
 
     [Fact]
-    [Obsolete("This test is obsolete and will be removed in future versions")]
+    [Obsolete("This test is obsolete and will be removed in future versions.")]
     public void EmptyTwoTimes_ExpectDependenciesAreNotSame()
     {
         var firstDependency = Dependency.Empty();

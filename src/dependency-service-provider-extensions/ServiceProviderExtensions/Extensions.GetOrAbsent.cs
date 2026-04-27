@@ -13,7 +13,7 @@ partial class ServiceProviderExtensions
     private static Optional<T> InnerGetServiceOrAbsent<T>(IServiceProvider serviceProvider)
         where T : notnull
         =>
-        serviceProvider.GetService(typeof(T)) is object service
+        serviceProvider.GetService(typeof(T)) is { } service
         ? new((T)service)
         : default;
 }

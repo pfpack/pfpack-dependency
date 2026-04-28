@@ -26,16 +26,16 @@ jobs:
       run: mkdir ~/nuget
 
     - name: Restore solution
-      run: dotnet restore src/Dependency.slnx
+      run: dotnet restore
 
     - name: Build solution
-      run: dotnet build src/Dependency.slnx --no-restore  -c Release
+      run: dotnet build --no-restore  -c Release
 
     - name: Test solution
-      run: dotnet test src/Dependency.slnx --no-restore  -c Release
+      run: dotnet test --no-restore  -c Release
 
     - name: Pack solution
-      run: dotnet pack src/Dependency.slnx --no-restore -o ~/nuget  -c Release
+      run: dotnet pack --no-restore -o ~/nuget  -c Release
 
     - name: Push Packages
       if: ${{ github.event_name == 'release' }}
